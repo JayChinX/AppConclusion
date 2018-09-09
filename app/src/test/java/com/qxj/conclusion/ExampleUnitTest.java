@@ -1,4 +1,4 @@
-package com.qxj.appconclusion;
+package com.qxj.conclusion;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package com.qxj.appconclusion;
+package com.qxj.conclusion;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
