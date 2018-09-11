@@ -64,7 +64,7 @@ class PermissionUtil(private val context: AppConclusionActivity) {
         return true
     }
 
-    private fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+    fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         if (requestCode == REQUEST_CODE_PERMISSION) {
             if (isAllGranted(grantResults))
                 mHasPermissionRunnable?.run()
