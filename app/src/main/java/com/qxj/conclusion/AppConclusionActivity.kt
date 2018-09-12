@@ -6,13 +6,15 @@ import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
-import android.util.Log
 import android.view.View
 import android.view.View.inflate
 import com.qxj.conclusion.ConclusionUtils.ConfigPreference
 import com.qxj.conclusion.ConclusionUtils.LogTool
 import com.qxj.conclusion.ConclusionUtils.PermissionUtil
 import kotlinx.android.synthetic.main.alert_dialog.view.*
+import com.qxj.conclusion.AppConfig.win_height
+import com.qxj.conclusion.AppConfig.win_width
+
 
 open class AppConclusionActivity : AppCompatActivity() {
     
@@ -29,9 +31,17 @@ open class AppConclusionActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         window.setBackgroundDrawable(null)
+
+        //计算屏幕宽高
+        val dm = resources.displayMetrics
+        win_height = dm.heightPixels
+        win_width = dm.widthPixels
+
+
         permissionUtil.checkStoragePermission(Runnable{
             LogTool.d(TAG, "有权限")
         })
+
     }
 
     fun showPermissionDialog(message: String) {
@@ -48,21 +58,21 @@ open class AppConclusionActivity : AppCompatActivity() {
     }
 
     private fun showAlertDialog(message: String, leftStr: String, rightStr: String, leftListener: OnClickListener?, rightListener: OnClickListener?) {
-        val dialog = Dialog(this, R.style.mydialogstyle)
-        val view = inflate(this, R.layout.alert_dialog, null)
-        dialog.setContentView(view)
-        view.tv_alert_negative.text = leftStr
-        view.tv_alert_positive.text = rightStr
-        view.tv_alert_message.text = message
-        view.tv_alert_negative.setOnClickListener { v ->
-            leftListener?.onClick(v)
-            dialog.dismiss()
-        }
-        view.tv_alert_positive.setOnClickListener { v ->
-            rightListener?.onClick(v)
-            dialog.dismiss()
-        }
-        dialog.show()
+//        val dialog = Dialog(this, R.style.MyDialogStyle)
+//        val view = inflate(this, R.layout.alert_dialog, null)
+//        dialog.setContentView(view)
+//        view.tv_alert_negative.text = leftStr
+//        view.tv_alert_positive.text = rightStr
+//        view.tv_alert_message.text = message
+//        view.tv_alert_negative.setOnClickListener { v ->
+//            leftListener?.onClick(v)
+//            dialog.dismiss()
+//        }
+//        view.tv_alert_positive.setOnClickListener { v ->
+//            rightListener?.onClick(v)
+//            dialog.dismiss()
+//        }
+//        dialog.show()
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
