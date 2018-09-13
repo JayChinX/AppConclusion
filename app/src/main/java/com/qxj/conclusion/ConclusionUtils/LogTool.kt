@@ -9,7 +9,7 @@ import java.util.concurrent.Executors
 
 object LogTool {
     private const val TOP_LINE = "" +
-            "\n^^^^^^^^^^^^^less code,less bug^^^^^^^^^^^^^^\n" +
+            "^^^^^^^^^^^^^less code,less bug^^^^^^^^^^^^^^\n" +
             "                   _ooOoo_\n" +
             "                  o8888888o\n" +
             "                  88\" . \"88\n" +
@@ -42,17 +42,18 @@ object LogTool {
     private var logSize = 2 * 1024 * 1024L//设置log文件大小 k
     private val execu: ExecutorService = Executors.newFixedThreadPool(1)
 
+    private val TAG: String = LogTool::class.java.name
     init {
-//        Log.e("www.hotapk.cn_log", TOP_LINE)
+        Log.e(TAG, TOP_LINE)
         initLogFile()
     }
 
 
-    fun v(tag: String = "com.qxj.conclusion", msg: String) = debug.debugLog(tag, msg, Log.VERBOSE)
-    fun d(tag: String = "com.qxj.conclusion", msg: String) = debug.debugLog(tag, msg, Log.DEBUG)
-    fun i(tag: String = "com.qxj.conclusion", msg: String) = debug.debugLog(tag, msg, Log.INFO)
-    fun w(tag: String = "com.qxj.conclusion", msg: String) = debug.debugLog(tag, msg, Log.WARN)
-    fun e(tag: String = "com.qxj.conclusion", msg: String) = debug.debugLog(tag, msg, Log.ERROR)
+    fun v(tag: String = TAG, msg: String) = debug.debugLog(tag, msg, Log.VERBOSE)
+    fun d(tag: String = TAG, msg: String) = debug.debugLog(tag, msg, Log.DEBUG)
+    fun i(tag: String = TAG, msg: String) = debug.debugLog(tag, msg, Log.INFO)
+    fun w(tag: String = TAG, msg: String) = debug.debugLog(tag, msg, Log.WARN)
+    fun e(tag: String = TAG, msg: String) = debug.debugLog(tag, msg, Log.ERROR)
 
 
     private fun targetStackTraceMSg(): String {
@@ -80,8 +81,9 @@ object LogTool {
     }
 
 
+    //保存位置
     private fun initLogFile() {
-        logDir = "${FileUtils.getRootDir()}/hotapk.cn"
+        logDir = "${FileUtils.getRootDir()}/QXJ"
         FileUtils.mkDir(logDir)
     }
 
@@ -106,7 +108,7 @@ object LogTool {
         val bytes: ByteArray = msg.toByteArray()
         val length = bytes.size
         val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US)
-        var newMsg = "$TOP_BORDER\n$LEFT_BORDER\t${sdf.format(Date())}\n$LEFT_BORDER\t${targetStackTraceMSg()}"
+        var newMsg = "$TOP_BORDER\n$LEFT_BORDER\t${sdf.format(Date())}\t${targetStackTraceMSg()}"
         if (length > CHUNK_SIZE) {
             var i = 0
             while (i < length) {
@@ -136,13 +138,13 @@ object LogTool {
                 if (length > logSize) {
                     val id = files[0].name.replace("${data}_", "").replace(".log", "").toInt() + 1
                     filepath = "$logDir/${data}_$id.log"
-                    FileUtils.creatFile(filepath)
+                    FileUtils.createFile(filepath)
                 } else {
                     filepath = files[0].absolutePath
                 }
             } else {
                 filepath = "$logDir/${data}_1.log"
-                FileUtils.creatFile(filepath)
+                FileUtils.createFile(filepath)
             }
             FileUtils.appendText(File(filepath), "\r\n$tag\n$msg")
         }

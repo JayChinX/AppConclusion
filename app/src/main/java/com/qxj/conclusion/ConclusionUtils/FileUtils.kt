@@ -38,7 +38,7 @@ object FileUtils {
     }
 
     /** * 创建文件 * filePath 文件路径 */
-    fun creatFile(filePath: String) {
+    fun createFile(filePath: String) {
         val file = File(filePath)
         if (!file.exists()) {
             file.createNewFile()
@@ -117,7 +117,10 @@ object FileUtils {
             val fos = FileOutputStream(destFile)
             fis.copyTo(fos)
             fos.flush()
-            CloseIoUtils.closeIO(fos, fis)
+
+            fis.close()
+            fos.close()
+
             true
         }
     }
@@ -185,7 +188,8 @@ object FileUtils {
             return null
         }
         bytes = inp.readBytes(length)
-        CloseIoUtils.closeIO(inp)
+
+        inp.close()
         return bytes
     }
 

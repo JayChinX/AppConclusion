@@ -6,6 +6,7 @@ import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
+import android.util.Log
 import android.view.View
 import android.view.View.inflate
 import com.qxj.conclusion.ConclusionUtils.ConfigPreference
@@ -14,6 +15,8 @@ import com.qxj.conclusion.ConclusionUtils.PermissionUtil
 import kotlinx.android.synthetic.main.alert_dialog.view.*
 import com.qxj.conclusion.AppConfig.win_height
 import com.qxj.conclusion.AppConfig.win_width
+import com.qxj.conclusion.CustomView.CustomDialog.DialogFragmentHelper
+import com.qxj.conclusion.CustomView.CustomDialog.IDialogResultListener
 
 
 open class AppConclusionActivity : AppCompatActivity() {
@@ -45,34 +48,50 @@ open class AppConclusionActivity : AppCompatActivity() {
     }
 
     fun showPermissionDialog(message: String) {
-        showAlertDialog(message, "取消", "去开启", null, object : OnClickListener {
-            override fun onClick(v: View) {
+        showAlertDialog("权限", message, "取消", "去开启", null, object : OnClickListener {
+            override fun onClick() {
                 val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
                 intent.data = Uri.parse("package:$packageName")
                 startActivity(intent)
             }
-        })
+        }, true)
     }
     interface OnClickListener {
-        fun onClick(v: View)
+        fun onClick()
     }
 
-    private fun showAlertDialog(message: String, leftStr: String, rightStr: String, leftListener: OnClickListener?, rightListener: OnClickListener?) {
-//        val dialog = Dialog(this, R.style.MyDialogStyle)
-//        val view = inflate(this, R.layout.alert_dialog, null)
-//        dialog.setContentView(view)
-//        view.tv_alert_negative.text = leftStr
-//        view.tv_alert_positive.text = rightStr
-//        view.tv_alert_message.text = message
-//        view.tv_alert_negative.setOnClickListener { v ->
-//            leftListener?.onClick(v)
-//            dialog.dismiss()
-//        }
-//        view.tv_alert_positive.setOnClickListener { v ->
-//            rightListener?.onClick(v)
-//            dialog.dismiss()
-//        }
-//        dialog.show()
+    fun showAlertDialog(title: String, message: String, leftStr: String?, rightStr: String?, leftListener: OnClickListener?, rightListener: OnClickListener?, cancelable: Boolean) {
+
+        if (null != leftStr && null != rightStr) {
+            DialogFragmentHelper().showInsertDialog(fragmentManager, title,message, leftStr, rightStr, object : IDialogResultListener<String> {
+                override fun onDataResult(result: String) {
+                    Log.d(TAG, "onClick $result")
+                    when (result) {
+                        leftStr -> {
+                            leftListener?.onClick()
+                        }
+                        rightStr -> {
+                            rightListener?.onClick()
+                        }
+                    }
+                }
+            }, cancelable)
+        } else if (null != rightStr) {
+            DialogFragmentHelper().showInsertDialog(fragmentManager, title,message, rightStr, object : IDialogResultListener<String> {
+                override fun onDataResult(result: String) {
+                    Log.d(TAG, "onClick $result")
+                    when (result) {
+                        leftStr -> {
+                            leftListener?.onClick()
+                        }
+                        rightStr -> {
+                            rightListener?.onClick()
+                        }
+                    }
+                }
+            }, cancelable)
+        }
+
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {

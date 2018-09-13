@@ -7,20 +7,24 @@ import android.app.DialogFragment
 import android.app.ProgressDialog
 import android.content.Context
 import android.content.DialogInterface
+import android.content.res.Configuration
 import android.graphics.Color
+import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.view.WindowManager
+import android.view.*
+import com.qxj.conclusion.AppConfig
+import com.qxj.conclusion.ConclusionUtils.LogTool
+import com.qxj.conclusion.R
 
 class CustomDialogFragment: DialogFragment(){
 
     private lateinit var mCancelListener: OnDialogCancelListener
 
     fun isCancelListener(): Boolean= ::mCancelListener.isInitialized
+
+    private val INSERT_ANI = R.style.Base_Animation
     
     interface OnDialogCancelListener {
         fun onCancel()
@@ -60,17 +64,30 @@ class CustomDialogFragment: DialogFragment(){
     @SuppressLint("ObsoleteSdkInt")
     override fun onStart() {
         super.onStart()
-        val dialog: Dialog = dialog
-        //在5.0以下的版本会出现白色背景边框，若在5.0以上设置则会造成文字部分的背景也变成透明
-        if(Build.VERSION.SDK_INT <= Build.VERSION_CODES.KITKAT) {
-            //目前只有这两个dialog会出现边框
-            if(dialog is ProgressDialog || dialog is DatePickerDialog) {
-                getDialog().window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            }
-        }
-        val window = getDialog().window
+
+        val dm = context.resources.displayMetrics
+        val height = dm.heightPixels
+        val width = dm.widthPixels
+
+        val configuration: Configuration = context.resources.configuration
+        val ori: Int = configuration.orientation //屏幕状态
+
+        val window = dialog.window
+
+        window.setWindowAnimations(INSERT_ANI)
+        //消除白边
+        window.setBackgroundDrawable(BitmapDrawable())
+        window.setBackgroundDrawableResource(android.R.color.transparent)
+
         val windowParams: WindowManager.LayoutParams = window.attributes
-        windowParams.dimAmount = 0.0f
+
+        when(ori) {
+            Configuration.ORIENTATION_LANDSCAPE -> windowParams.width = (height * 0.9).toInt()
+            Configuration.ORIENTATION_PORTRAIT -> windowParams.width = (width * 0.9).toInt()
+        }
+
+        windowParams.height = WindowManager.LayoutParams.WRAP_CONTENT
+        windowParams.dimAmount = 0.5f //遮罩透明度
         window.attributes = windowParams
     }
 

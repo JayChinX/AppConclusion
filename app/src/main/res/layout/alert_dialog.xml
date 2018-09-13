@@ -1,48 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/tv_alert_message"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:gravity="center"
-        android:text="应用需要"
-        android:textColor="@android:color/black"
-        app:layout_constraintDimensionRatio="H,3:1"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        />
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_dialog"
+        android:layout_margin="5dp"
+        android:elevation="3dp">
 
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        app:layout_constraintDimensionRatio="H,5:1"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_alert_message">
+        <TextView
+            android:id="@+id/tv_alert_title"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:textColor="@android:color/black"
+            android:visibility="gone"
+            app:layout_constraintDimensionRatio="H,8:1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/cut_off_line"
+            app:layout_constraintTop_toBottomOf="@+id/tv_alert_title" />
+
+        <TextView
+            android:id="@+id/tv_alert_message"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:textColor="@android:color/black"
+            android:visibility="gone"
+            app:layout_constraintDimensionRatio="H,4:1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_alert_title" />
+
+        <ViewStub
+            android:id="@+id/tv_alert_message_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:visibility="gone"
+            app:layout_constraintDimensionRatio="H,4:1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_alert_title" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/cut_off_line"
+            app:layout_constraintTop_toBottomOf="@+id/tv_alert_message" />
+
 
         <TextView
             android:id="@+id/tv_alert_negative"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_height="0dp"
+            android:foreground="?android:attr/selectableItemBackground"
             android:gravity="center"
-            android:text="取消"
-            android:textColor="@android:color/holo_red_light" />
+            android:visibility="gone"
+            app:layout_constraintDimensionRatio="H,4:1"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/tv_alert_positive"
+            app:layout_constraintTop_toBottomOf="@+id/tv_alert_message" />
 
         <TextView
             android:id="@+id/tv_alert_positive"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_height="0dp"
+            android:foreground="?android:attr/selectableItemBackground"
             android:gravity="center"
-            android:text="确定"
-            android:textColor="@android:color/holo_green_light" />
-    </LinearLayout>
+            android:textColor="@android:color/holo_green_dark"
+            android:visibility="gone"
+            app:layout_constraintDimensionRatio="H,4:1"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/tv_alert_negative"
+            app:layout_constraintTop_toBottomOf="@+id/tv_alert_message" />
+
+        <TextView
+            android:id="@+id/tv_alert_positive_only"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:gravity="center"
+            android:textColor="@android:color/holo_green_dark"
+            android:visibility="gone"
+            app:layout_constraintDimensionRatio="H,8:1"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_alert_message" />
+
+    </android.support.constraint.ConstraintLayout>
 
 
-</android.support.constraint.ConstraintLayout>
+</FrameLayout>
