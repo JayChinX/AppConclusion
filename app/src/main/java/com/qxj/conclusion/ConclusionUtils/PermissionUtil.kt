@@ -1,18 +1,10 @@
 package com.qxj.conclusion.ConclusionUtils
 
 import android.Manifest
-import android.app.Activity
-import android.app.Dialog
-import android.content.Intent
 import android.content.pm.PackageManager
-import android.net.Uri
-import android.provider.Settings
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
-import android.support.v4.content.PermissionChecker.checkPermission
-import android.view.View
 import com.qxj.conclusion.AppConclusionActivity
-import com.qxj.conclusion.R
 
 class PermissionUtil(private val context: AppConclusionActivity) {
     private var mHasPermissionRunnable: Runnable? = null

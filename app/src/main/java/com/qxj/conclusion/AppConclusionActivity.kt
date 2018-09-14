@@ -17,6 +17,8 @@ import com.qxj.conclusion.AppConfig.win_height
 import com.qxj.conclusion.AppConfig.win_width
 import com.qxj.conclusion.CustomView.CustomDialog.DialogFragmentHelper
 import com.qxj.conclusion.CustomView.CustomDialog.IDialogResultListener
+import org.jetbrains.anko.longToast
+import org.jetbrains.anko.toast
 
 
 open class AppConclusionActivity : AppCompatActivity() {
@@ -43,6 +45,8 @@ open class AppConclusionActivity : AppCompatActivity() {
 
         permissionUtil.checkStoragePermission(Runnable{
             LogTool.d(TAG, "有权限")
+            toast("有权限")
+            longToast("有权限")
         })
 
     }

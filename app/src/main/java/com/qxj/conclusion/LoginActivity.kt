@@ -1,22 +1,16 @@
 package com.qxj.conclusion
 
-import android.app.AlertDialog
-import android.graphics.drawable.BitmapDrawable
+import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.Window
-import android.view.WindowManager
 import com.qxj.conclusion.ConclusionUtils.LogTool
-import com.qxj.conclusion.CustomView.CustomDialog.CustomDialogFragment
-import com.qxj.conclusion.CustomView.CustomDialog.DialogFragmentHelper
-import com.qxj.conclusion.CustomView.CustomDialog.IDialogResultListener
+import com.qxj.conclusion.MVPDevelop.View.MainActivity
 import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.alert_dialog.view.*
 
 class LoginActivity : AppConclusionActivity(), View.OnClickListener {
 
     private val TAG: String = LoginActivity::class.java.name
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,12 +20,18 @@ class LoginActivity : AppConclusionActivity(), View.OnClickListener {
         dialog1.setOnClickListener(this)
     }
 
+
+
+
     override fun onClick(v: View?) {
         when (v!!.id) {
             R.id.dialog -> {
                 this.showAlertDialog("警告", "网络连接失败！", "取消", "重新连接", null, object : OnClickListener{
                     override fun onClick() {
                         LogTool.d(TAG, "重新连接")
+                        val intent = Intent()
+                        intent.setClass(applicationContext, MainActivity::class.java)
+                        startActivity(intent)
                     }
                 }, true)
             }
