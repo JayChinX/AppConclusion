@@ -1,9 +1,15 @@
 package com.qxj.conclusion.MVPDevelop.MVP
 
 import android.app.Activity
+import android.content.Context
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
+import android.util.AttributeSet
+import android.view.View
+import com.qxj.conclusion.AppConclusionActivity
+import com.qxj.conclusion.MVPDevelop.View.IView
 
-abstract class BaseActivity : Activity(), IView{
+abstract class BaseActivity : AppConclusionActivity(), IView {
 
     private val mAllPresenter = HashSet<IPresenter<*>>()
 
@@ -17,12 +23,13 @@ abstract class BaseActivity : Activity(), IView{
 
     }
 
-    open fun getPresenters(): MutableList<IPresenter<*>>{
-        return mutableListOf(mPresenter)
-    }
 
     private fun addPresenters() {
         getPresenters().forEach { mAllPresenter.add(it) }
+    }
+
+    open fun getPresenters(): MutableList<IPresenter<*>>{
+        return mutableListOf(mPresenter)
     }
 
     override fun onStart() {
@@ -52,6 +59,7 @@ abstract class BaseActivity : Activity(), IView{
 
     abstract fun getLayoutId() : Int
 
+
     override fun showProgressDialog() {
         super.showProgressDialog()
     }
@@ -59,4 +67,6 @@ abstract class BaseActivity : Activity(), IView{
     override fun dismissProgressDialog() {
         super.dismissProgressDialog()
     }
+
+
 }

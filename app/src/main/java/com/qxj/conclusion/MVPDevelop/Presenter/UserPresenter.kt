@@ -5,7 +5,8 @@ import com.qxj.conclusion.ConclusionUtils.LogTool
 import com.qxj.conclusion.MVPDevelop.MVP.IPresenter
 import com.qxj.conclusion.MVPDevelop.Model.UserModel
 
-class UserPresenter(view: UserContract.IUserView) : UserContract.IUserPresenter, IPresenter<UserContract.IUserView>(view) {
+class UserPresenter(view: UserContract.IUserView) : UserContract.IUserPresenter, IPresenter<UserContract.IUserView>(view){
+    //P 层的实现
 
     private val TAG: String = UserPresenter::class.java.name
 

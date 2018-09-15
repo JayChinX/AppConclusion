@@ -13,6 +13,10 @@ class PermissionUtil(private val context: AppConclusionActivity) {
 
     private val READ_EXTERNAL_STORAGE = Manifest.permission.READ_EXTERNAL_STORAGE
 
+    interface OnClickListener {
+        fun onClick()
+    }
+
     fun checkStoragePermission(hasPermissionDo: Runnable) {
         var permission = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE)
         checkPermission(permission, hasPermissionDo, Runnable {

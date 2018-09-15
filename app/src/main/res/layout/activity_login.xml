@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".LoginActivity">
+    tools:context=".MVPDevelop.View.LoginActivity">
 
     <TextView
         android:layout_width="wrap_content"
@@ -26,5 +26,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="dialog1"/>
+
+    <EditText
+        android:id="@+id/name_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="请输入账号名"/>
+
+    <EditText
+        android:id="@+id/paw_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="请输入密码"/>
+
+    <Button
+        android:id="@+id/login_user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="登录"/>
 
 </LinearLayout>
