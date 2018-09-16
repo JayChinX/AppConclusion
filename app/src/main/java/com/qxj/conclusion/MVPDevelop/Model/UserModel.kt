@@ -23,4 +23,14 @@ object UserModel {
     fun toLoginUser(name: String, password: String, url: String, listener: (Boolean, String) -> Unit) {
         listener(true, "登录成功")
     }
+
+    fun toSortList(list: MutableList<String>, sortAsc: Boolean, listener: (MutableList<String>) -> Unit) {
+
+        if (sortAsc) {
+            list.sortBy { it.length } //正序排列
+        } else {
+            list.sortByDescending { it.length }  //反序排列
+        }
+        listener(list)
+    }
 }
