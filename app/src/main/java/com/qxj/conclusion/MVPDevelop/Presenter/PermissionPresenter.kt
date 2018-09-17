@@ -1,6 +1,5 @@
 package com.qxj.conclusion.MVPDevelop.Presenter
 
-import android.text.TextUtils
 import com.qxj.conclusion.ConclusionUtils.PermissionUtil
 import com.qxj.conclusion.MVPDevelop.MVP.IPresenter
 import com.qxj.conclusion.MVPDevelop.Model.UserModel

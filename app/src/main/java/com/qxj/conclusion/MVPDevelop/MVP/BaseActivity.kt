@@ -1,11 +1,6 @@
 package com.qxj.conclusion.MVPDevelop.MVP
 
-import android.app.Activity
-import android.content.Context
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.util.AttributeSet
-import android.view.View
 import com.qxj.conclusion.AppConclusionActivity
 import com.qxj.conclusion.MVPDevelop.View.IView
 

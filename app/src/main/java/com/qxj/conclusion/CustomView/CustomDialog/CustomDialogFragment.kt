@@ -1,30 +1,24 @@
 package com.qxj.conclusion.CustomView.CustomDialog
 
 import android.annotation.SuppressLint
-import android.app.DatePickerDialog
 import android.app.Dialog
 import android.app.DialogFragment
-import android.app.ProgressDialog
 import android.content.Context
 import android.content.DialogInterface
 import android.content.res.Configuration
-import android.graphics.Color
 import android.graphics.drawable.BitmapDrawable
-import android.graphics.drawable.ColorDrawable
-import android.os.Build
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.*
-import com.qxj.conclusion.AppConfig
-import com.qxj.conclusion.ConclusionUtils.LogTool
 import com.qxj.conclusion.R
 
 class CustomDialogFragment: DialogFragment(){
 
     private lateinit var mCancelListener: OnDialogCancelListener
 
-    fun isCancelListener(): Boolean= ::mCancelListener.isInitialized
+    private fun isCancelListener(): Boolean= ::mCancelListener.isInitialized
 
-    private val INSERT_ANI = R.style.Base_Animation
+    private var INSERT_ANI = R.style.Base_Animation
     
     interface OnDialogCancelListener {
         fun onCancel()
@@ -35,19 +29,17 @@ class CustomDialogFragment: DialogFragment(){
     }
 
     companion object {
-//        var mCancelListener: OnDialogCancelListener? = null
         var mOnCallDialog: OnCallDialog? = null
 
-        fun newInstance(call: OnCallDialog, cancelable: Boolean) : CustomDialogFragment {
-            return newInstance(call, cancelable, null)
+        fun newInstance(resId: Int, call: OnCallDialog, cancelable: Boolean) : CustomDialogFragment {
+            return newInstance(resId, call, cancelable, null)
         }
 
-        fun newInstance(call: OnCallDialog, cancelable: Boolean, cancelListener: OnDialogCancelListener?) : CustomDialogFragment {
-            var instance = CustomDialogFragment()
+        fun newInstance(resId: Int?, call: OnCallDialog, cancelable: Boolean, cancelListener: OnDialogCancelListener?) : CustomDialogFragment {
+            val instance = CustomDialogFragment()
+            if (null != resId) instance.INSERT_ANI = resId
             instance.isCancelable = cancelable
-            if (cancelListener != null) {
-                instance.mCancelListener = cancelListener
-            }
+            if (null != cancelListener) instance.mCancelListener = cancelListener
             this.mOnCallDialog = call
             return instance
         }
@@ -93,6 +85,6 @@ class CustomDialogFragment: DialogFragment(){
 
     override fun onCancel(dialog: DialogInterface?) {
         super.onCancel(dialog)
-        if (isCancelListener()) mCancelListener!!.onCancel()
+        if (isCancelListener()) mCancelListener.onCancel()
     }
 }

@@ -6,16 +6,15 @@ import android.app.Dialog
 import android.app.FragmentManager
 import android.app.ProgressDialog
 import android.content.Context
-import android.graphics.Color
-import android.graphics.drawable.BitmapDrawable
-import android.opengl.Visibility
+import android.text.TextUtils
 import android.view.LayoutInflater
-import android.view.View
-import android.view.WindowManager
-import com.qxj.conclusion.AppConfig
 import com.qxj.conclusion.CustomView.CustomDialog.CustomDialogFragment.Companion.newInstance
 import com.qxj.conclusion.R
 import kotlinx.android.synthetic.main.alert_dialog.view.*
+import kotlinx.android.synthetic.main.alert_dialog_message_text.view.*
+import kotlinx.android.synthetic.main.alert_dialog_select_only.view.*
+import kotlinx.android.synthetic.main.alert_dialog_select_two.view.*
+import kotlinx.android.synthetic.main.alert_dialog_title_text.view.*
 
 class DialogFragmentHelper {
     private val TAG: String = DialogFragmentHelper::class.java.name
@@ -23,6 +22,10 @@ class DialogFragmentHelper {
     private val PROGRESS_THEME = R.style.Base_AlertDialog
 
     private val PROGRESS_TAG = TAG + ":progress"
+
+    companion object {
+        var INSERT_ANIMATION_01 = R.style.Base_Animation
+    }
 
     fun showProgress(fragmentManager: FragmentManager, msg: String): CustomDialogFragment {
         return showProgress(fragmentManager, msg, true, null)
@@ -34,9 +37,9 @@ class DialogFragmentHelper {
 
     fun showProgress(fragmentManager: FragmentManager, msg: String, cancelable: Boolean, cancelListener: CustomDialogFragment.OnDialogCancelListener?): CustomDialogFragment {
 
-        val dialogFragment: CustomDialogFragment = newInstance(object : CustomDialogFragment.OnCallDialog {
+        val dialogFragment: CustomDialogFragment = newInstance(INSERT_ANIMATION_01, object : CustomDialogFragment.OnCallDialog {
             override fun getDialog(context: Context): Dialog {
-                var progressDialog = ProgressDialog(context, PROGRESS_THEME)
+                val progressDialog = ProgressDialog(context, PROGRESS_THEME)
                 progressDialog.setMessage(msg)
                 return progressDialog
             }
@@ -50,47 +53,53 @@ class DialogFragmentHelper {
 
     private val INSERT_TAG = TAG + ":insert"
 
-    fun showInsertDialog(fragmentManager: FragmentManager, title: String, msg: String, leftString: String, rightString: String, resultListener: IDialogResultListener<String>, cancelable: Boolean) {
-        val dialogFragment: CustomDialogFragment = newInstance(object : CustomDialogFragment.OnCallDialog {
+    fun showInsertDialog(fragmentManager: FragmentManager, animation: Int?, title: String, msg: String, leftString: String?, rightString: String?, resultListener: IDialogResultListener<String>, cancelable: Boolean) {
+        val dialogFragment: CustomDialogFragment = newInstance(animation, object: CustomDialogFragment.OnCallDialog {
+            @SuppressLint("InflateParams")
             override fun getDialog(context: Context): Dialog {
 
                 /**自定义**/
                 val builder: AlertDialog.Builder = AlertDialog.Builder(context)
                 val view = LayoutInflater.from(context).inflate(R.layout.alert_dialog, null)
 
-                view.tv_alert_title.text = title
-                view.tv_alert_negative.text = leftString
-                view.tv_alert_positive.text = rightString
-                view.tv_alert_message.text = msg
-
-                view.tv_alert_negative.setBackgroundColor(context.resources.getColor(R.color.switch_thumb_material))
-                view.tv_alert_negative.setTextColor(context.resources.getColor(R.color.switch_thumb_disabled))
-
-//                view.tv_alert_positive.setBackgroundColor(context.resources.getColor(R.color.switch_thumb_material))
-//                view.tv_alert_positive.setTextColor(context.resources.getColor(R.color.switch_thumb_disabled))
-
-                view.tv_alert_message.textSize = 16F
-
-                view.tv_alert_title.visibility = View.VISIBLE
-                view.tv_alert_message.visibility = View.VISIBLE
-                view.tv_alert_negative.visibility = View.VISIBLE
-                view.tv_alert_positive.visibility = View.VISIBLE
-
-
                 val dialog = builder.create()
                 dialog.show()
+                //标题
+                view.tv_alert_title.layoutResource = R.layout.alert_dialog_title_text
+                view.tv_alert_title.inflate()
+                view.tv_dialog_title.text = title
+                //信息
+                view.tv_alert_message.layoutResource = R.layout.alert_dialog_message_text
+                view.tv_alert_message.inflate()
+                view.tv_dialog_message.text = msg
+                //选项
+                if (!TextUtils.isEmpty(leftString) && !TextUtils.isEmpty(rightString)) {
+                    view.tv_alert_select.layoutResource = R.layout.alert_dialog_select_two
+                    view.tv_alert_select.inflate()
+                    view.tv_alert_negative.text = leftString
+                    view.tv_alert_positive.text = rightString
+
+                    view.tv_alert_negative.setOnClickListener {
+                        dialog.dismiss()
+                        resultListener.onDataResult(leftString!!)
+                    }
+                    view.tv_alert_positive.setOnClickListener {
+                        dialog.dismiss()
+                        resultListener.onDataResult(rightString!!)
+                    }
+
+                } else if (!TextUtils.isEmpty(rightString)){
+                    view.tv_alert_select.layoutResource = R.layout.alert_dialog_select_only
+                    view.tv_alert_select.inflate()
+                    view.tv_alert_positive_only.text = rightString
+
+                    view.tv_alert_positive_only.setOnClickListener {
+                        dialog.dismiss()
+                        resultListener.onDataResult(rightString!!)
+                    }
+                }
+
                 dialog.setContentView(view)
-
-                view.tv_alert_negative.setOnClickListener {
-                    dialog.dismiss()
-                    resultListener.onDataResult(leftString)
-
-                }
-                view.tv_alert_positive.setOnClickListener {
-                    dialog.dismiss()
-                    resultListener.onDataResult(rightString)
-
-                }
 
                 return dialog
 
@@ -107,42 +116,6 @@ class DialogFragmentHelper {
 //                    resultListener.onDataResult(leftString)
 //                }
 //                return builder.create()
-            }
-        }, cancelable, null)
-        dialogFragment.show(fragmentManager, INSERT_TAG)
-    }
-
-    fun showInsertDialog(fragmentManager: FragmentManager, title: String, msg: String, rightString: String, resultListener: IDialogResultListener<String>, cancelable: Boolean) {
-        val dialogFragment: CustomDialogFragment = newInstance(object : CustomDialogFragment.OnCallDialog {
-            override fun getDialog(context: Context): Dialog {
-
-                /**自定义**/
-                val builder: AlertDialog.Builder = AlertDialog.Builder(context)
-
-                val view = LayoutInflater.from(context).inflate(R.layout.alert_dialog, null)
-                view.tv_alert_title.text = title
-                view.tv_alert_positive_only.text = rightString
-                view.tv_alert_message.text = msg
-
-//                view.tv_alert_positive_only.setTextColor(context.resources.getColor(R.color.switch_thumb_disabled))
-
-                view.tv_alert_message.textSize = 16F
-
-                view.tv_alert_title.visibility = View.VISIBLE
-                view.tv_alert_message.visibility = View.VISIBLE
-                view.tv_alert_positive_only.visibility = View.VISIBLE
-
-                val dialog = builder.create()
-                dialog.show()
-                dialog.setContentView(view)
-
-                view.tv_alert_positive_only.setOnClickListener {
-                    dialog.dismiss()
-                    resultListener.onDataResult(rightString)
-
-                }
-
-                return dialog
             }
         }, cancelable, null)
         dialogFragment.show(fragmentManager, INSERT_TAG)

@@ -1,13 +1,9 @@
 package com.qxj.conclusion.MVPDevelop.View
 
-import android.support.v7.app.AppCompatActivity
-import android.os.Bundle
 import com.qxj.conclusion.ConclusionUtils.PermissionUtil
 import com.qxj.conclusion.MVPDevelop.MVP.BaseActivity
-import com.qxj.conclusion.MVPDevelop.MVP.IPresenter
 import com.qxj.conclusion.MVPDevelop.Presenter.PermissionContract
 import com.qxj.conclusion.MVPDevelop.Presenter.PermissionPresenter
-import com.qxj.conclusion.MVPDevelop.Presenter.UserPresenter
 import com.qxj.conclusion.R
 import org.jetbrains.anko.toast
 
@@ -23,7 +19,7 @@ class PermissionActivity : BaseActivity(), PermissionContract.IPermissionView {
 
     override fun initView() {
 
-        var id = intent.getIntExtra("id", 0)
+        val id = intent.getIntExtra("id", 0)
         toast("获取id为$id")
     }
 

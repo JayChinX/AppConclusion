@@ -13,19 +13,15 @@ class PermissionUtil(private val context: AppConclusionActivity) {
 
     private val READ_EXTERNAL_STORAGE = Manifest.permission.READ_EXTERNAL_STORAGE
 
-    interface OnClickListener {
-        fun onClick()
-    }
-
     fun checkStoragePermission(hasPermissionDo: Runnable) {
-        var permission = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE)
+        val permission = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE)
         checkPermission(permission, hasPermissionDo, Runnable {
             context.showPermissionDialog("不开启存储权限，无法访问相册哦~")
         })
     }
 
     fun checkCameraPermission(hasPermissionDo: Runnable) {
-        var permission = arrayOf(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+        val permission = arrayOf(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE)
         checkPermission(permission, hasPermissionDo, Runnable {
             context.showPermissionDialog("不开启相机权限，无法拍照哦~")
         })
@@ -34,13 +30,14 @@ class PermissionUtil(private val context: AppConclusionActivity) {
     private fun checkPermission(permissions: Array<out String>, hasPermissionDo: Runnable, noPermissionDo: Runnable) {
         mHasPermissionRunnable = null
         mNoPermissionRunnable = null
-        if (isPermissionsGranted(permissions)) hasPermissionDo.run()
-        else if (ActivityCompat.shouldShowRequestPermissionRationale(context, permissions.get(0))) {
-            noPermissionDo.run()
-        } else {
-            mHasPermissionRunnable = hasPermissionDo
-            mNoPermissionRunnable = noPermissionDo
-            ActivityCompat.requestPermissions(context, permissions, REQUEST_CODE_PERMISSION)
+        when {
+            isPermissionsGranted(permissions) -> hasPermissionDo.run()
+            ActivityCompat.shouldShowRequestPermissionRationale(context, permissions[0]) -> noPermissionDo.run()
+            else -> {
+                mHasPermissionRunnable = hasPermissionDo
+                mNoPermissionRunnable = noPermissionDo
+                ActivityCompat.requestPermissions(context, permissions, REQUEST_CODE_PERMISSION)
+            }
         }
     }
 
@@ -62,8 +59,7 @@ class PermissionUtil(private val context: AppConclusionActivity) {
 
     fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         if (requestCode == REQUEST_CODE_PERMISSION) {
-            if (isAllGranted(grantResults))
-                mHasPermissionRunnable?.run()
+            if (isAllGranted(grantResults)) mHasPermissionRunnable?.run()
             else mNoPermissionRunnable?.run()
         }
     }

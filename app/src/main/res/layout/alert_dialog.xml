@@ -12,13 +12,12 @@
         android:layout_margin="5dp"
         android:elevation="3dp">
 
-        <TextView
+        <!--title为Text-->
+        <ViewStub
             android:id="@+id/tv_alert_title"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:gravity="center"
-            android:textColor="@android:color/black"
-            android:visibility="gone"
+            android:inflatedId="@id/tv_alert_title"
             app:layout_constraintDimensionRatio="H,8:1"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent" />
@@ -29,24 +28,12 @@
             android:background="@color/cut_off_line"
             app:layout_constraintTop_toBottomOf="@+id/tv_alert_title" />
 
-        <TextView
+        <!--message为Text-->
+        <ViewStub
             android:id="@+id/tv_alert_message"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:gravity="center"
-            android:textColor="@android:color/black"
-            android:visibility="gone"
-            app:layout_constraintDimensionRatio="H,4:1"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_alert_title" />
-
-        <ViewStub
-            android:id="@+id/tv_alert_message_view"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:gravity="center"
-            android:visibility="gone"
+            android:inflatedId="@id/tv_alert_message"
             app:layout_constraintDimensionRatio="H,4:1"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -58,42 +45,12 @@
             android:background="@color/cut_off_line"
             app:layout_constraintTop_toBottomOf="@+id/tv_alert_message" />
 
-
-        <TextView
-            android:id="@+id/tv_alert_negative"
+        <!--select的布局设置layout属性-->
+        <ViewStub
+            android:id="@+id/tv_alert_select"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:foreground="?android:attr/selectableItemBackground"
-            android:gravity="center"
-            android:visibility="gone"
-            app:layout_constraintDimensionRatio="H,4:1"
-            app:layout_constraintHorizontal_weight="1"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toLeftOf="@+id/tv_alert_positive"
-            app:layout_constraintTop_toBottomOf="@+id/tv_alert_message" />
-
-        <TextView
-            android:id="@+id/tv_alert_positive"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:foreground="?android:attr/selectableItemBackground"
-            android:gravity="center"
-            android:textColor="@android:color/holo_green_dark"
-            android:visibility="gone"
-            app:layout_constraintDimensionRatio="H,4:1"
-            app:layout_constraintHorizontal_weight="1"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintLeft_toRightOf="@+id/tv_alert_negative"
-            app:layout_constraintTop_toBottomOf="@+id/tv_alert_message" />
-
-        <TextView
-            android:id="@+id/tv_alert_positive_only"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:foreground="?android:attr/selectableItemBackground"
-            android:gravity="center"
-            android:textColor="@android:color/holo_green_dark"
-            android:visibility="gone"
+            android:inflatedId="@id/tv_alert_select"
             app:layout_constraintDimensionRatio="H,8:1"
             app:layout_constraintHorizontal_weight="1"
             app:layout_constraintRight_toRightOf="parent"
@@ -101,6 +58,4 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_alert_message" />
 
     </android.support.constraint.ConstraintLayout>
-
-
 </FrameLayout>

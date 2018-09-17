@@ -46,14 +46,16 @@ class LoginActivity : BaseActivity(), LoginContract.ILoginView, View.OnClickList
                 mPresenter.toLoginUser(userName, userPassword, "")
             }
             R.id.dialog -> {
-                this.showAlertDialog("警告", "网络连接失败！", "取消", "重新连接", null, object : PermissionUtil.OnClickListener{
-                    override fun onClick() {
-                        LogTool.d(TAG, "重新连接")
-                        val intent = Intent()
-                        intent.setClass(applicationContext, MainActivity::class.java)
-                        startActivity(intent)
-                    }
-                }, true)
+                this.showAlertDialog("警告", "网络连接失败！", "取消", "重新连接", true,
+                        {
+                            LogTool.d(TAG, "点击了取消")
+
+                        }, {
+                    LogTool.d(TAG, "点击了重新连接")
+                    val intent = Intent()
+                    intent.setClass(applicationContext, MainActivity::class.java)
+                    startActivity(intent)
+                })
             }
             R.id.dialog1 -> {
                 //trimMargin()//删除前置空格  trimMargin("..")删除字符
@@ -61,15 +63,14 @@ class LoginActivity : BaseActivity(), LoginContract.ILoginView, View.OnClickList
                     |更新内容：
                     |   1.修复BUG。
                     |   2.更新新特性
-                    """.trimMargin(), null, "现在更新", null, object : PermissionUtil.OnClickListener{
-                    override fun onClick() {
-                        LogTool.d(TAG, "现在更新")
-                        val intent = Intent()
-                        intent.setClass(applicationContext, PermissionActivity::class.java)
-                        intent.putExtra("id", 1234)
-                        startActivity(intent)
-                    }
-                }, false)
+                    """.trimMargin(), null, "现在更新", false, null) {
+                    LogTool.d(TAG, "现在更新")
+                    val intent = Intent()
+                    intent.setClass(applicationContext, PermissionActivity::class.java)
+                    intent.putExtra("id", 1234)
+                    startActivity(intent)
+
+                }
             }
         }
     }
