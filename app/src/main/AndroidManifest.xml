@@ -22,13 +22,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MVPDevelop.View.MainActivity">
-
-        </activity>
-        <activity android:name=".MVPDevelop.View.PermissionActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize">
-
-        </activity>
+        <activity android:name=".MVPDevelop.View.MainActivity"></activity>
+        <activity
+            android:name=".MVPDevelop.View.PermissionActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"></activity>
+        <activity android:name=".MVPDevelop.View.WelcomeActivity"></activity>
     </application>
 
 </manifest>

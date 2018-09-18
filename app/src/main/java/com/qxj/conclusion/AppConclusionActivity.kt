@@ -14,6 +14,7 @@ open class AppConclusionActivity : Activity() {
 
     private val TAG = AppConclusionActivity::class.java.name
 
+    protected var welcome by ConfigPreference("welcomeStatus", false)
     protected var variable by ConfigPreference("wakeupStatus", true)
     protected var userId by ConfigPreference("userId", "ID-unKnown")
     protected var userName by ConfigPreference("userName", "Name-unKnown")
