@@ -68,7 +68,7 @@ class CustomDialogFragment: DialogFragment(){
 
         window.setWindowAnimations(INSERT_ANI)
         //消除白边
-        window.setBackgroundDrawable(BitmapDrawable())
+//        window.setBackgroundDrawable(BitmapDrawable())
         window.setBackgroundDrawableResource(android.R.color.transparent)
 
         val windowParams: WindowManager.LayoutParams = window.attributes

@@ -180,7 +180,7 @@ object FileUtils {
     /** * 文件转byte数组 * file 文件路径 */
     @Throws(IOException::class)
     fun file2byte(file: File): ByteArray? {
-        var bytes: ByteArray? = null
+        var bytes: ByteArray?
         val inp = FileInputStream(file)
         val length = file.length().toInt()
         if (length > Integer.MAX_VALUE) {// 当文件的长度超过了int的最大值

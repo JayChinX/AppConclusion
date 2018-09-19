@@ -12,7 +12,7 @@ object UserUtils {
 
     fun splitString(str: String, char: String) : String {
         var a = ""
-        str.split(".").forEach { a = "$it" }
+        str.split(".").forEach { a = it }
         return a
     }
 }
