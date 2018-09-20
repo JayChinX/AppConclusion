@@ -31,7 +31,8 @@
         android:id="@+id/name_user"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="请输入账号名"/>
+        android:hint="请输入账号名"
+        />
 
     <EditText
         android:id="@+id/paw_user"

@@ -3,8 +3,8 @@ package com.qxj.conclusion.MVPDevelop.View
 import android.content.Intent
 import android.util.Log
 import android.view.View
+import com.qxj.conclusion.AppConfig
 import com.qxj.conclusion.ConclusionUtils.LogTool
-import com.qxj.conclusion.ConclusionUtils.PermissionUtil
 import com.qxj.conclusion.MVPDevelop.MVP.BaseActivity
 import com.qxj.conclusion.MVPDevelop.Presenter.LoginContract
 import com.qxj.conclusion.MVPDevelop.Presenter.LoginPresenter
@@ -26,6 +26,9 @@ class LoginActivity : BaseActivity(), LoginContract.ILoginView, View.OnClickList
         login_user.setOnClickListener(this)
 
     }
+    override fun startCheckPermission() {
+        Log.d(TAG, "这里不需要检查权限")
+    }
 
     override fun showLoginUserResult(boolean: Boolean, msg: String) {
         if (boolean) {
@@ -33,6 +36,7 @@ class LoginActivity : BaseActivity(), LoginContract.ILoginView, View.OnClickList
             val intent = Intent()
             intent.setClass(applicationContext, MainActivity::class.java)
             startActivity(intent)
+            finish()
         } else {
             toast(msg)
         }
@@ -41,9 +45,9 @@ class LoginActivity : BaseActivity(), LoginContract.ILoginView, View.OnClickList
     override fun onClick(v: View?) {
         when (v!!.id) {
             R.id.login_user -> {
-                userName = name_user.text.toString()
-                userPassword = paw_user.text.toString()
-                mPresenter.toLoginUser(userName, userPassword, "")
+                AppConfig.userName = name_user.text.toString()
+                AppConfig.userPassword = paw_user.text.toString()
+                mPresenter.toLoginUser(AppConfig.userName, AppConfig.userPassword, "")
             }
             R.id.dialog -> {
                 this.showAlertDialog("警告", "网络连接失败！", "取消", "重新连接", true,
@@ -55,6 +59,7 @@ class LoginActivity : BaseActivity(), LoginContract.ILoginView, View.OnClickList
                     val intent = Intent()
                     intent.setClass(applicationContext, MainActivity::class.java)
                     startActivity(intent)
+                    finish()
                 })
             }
             R.id.dialog1 -> {
@@ -69,13 +74,11 @@ class LoginActivity : BaseActivity(), LoginContract.ILoginView, View.OnClickList
                     intent.setClass(applicationContext, PermissionActivity::class.java)
                     intent.putExtra("id", 1234)
                     startActivity(intent)
+                    finish()
 
                 }
             }
         }
     }
 
-    override fun startCheckPermission() {
-        Log.d(TAG, "这里不需要检查权限")
-    }
 }

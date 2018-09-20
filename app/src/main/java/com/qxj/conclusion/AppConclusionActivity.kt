@@ -14,13 +14,6 @@ open class AppConclusionActivity : Activity() {
 
     private val TAG = AppConclusionActivity::class.java.name
 
-    protected var welcome by ConfigPreference("welcomeStatus", false)
-    protected var variable by ConfigPreference("wakeupStatus", true)
-    protected var userId by ConfigPreference("userId", "ID-unKnown")
-    protected var userName by ConfigPreference("userName", "Name-unKnown")
-    protected var userAccount by ConfigPreference("account", "A-unKnown")
-    protected var userPassword by ConfigPreference("password", "P-unKnown")
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         window.setBackgroundDrawable(null)

@@ -30,7 +30,6 @@ class PermissionActivity : BaseActivity(), PermissionContract.IPermissionView {
 
 
     override fun showCheckPermissionResult(boolean: Boolean) {
-        userId
         if (boolean) {
             toast("APP有权限")
         }

@@ -13,14 +13,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".MVPDevelop.View.LoginActivity"
-            android:configChanges="orientation|keyboardHidden">
+        <activity android:name=".MVPDevelop.View.WelcomeActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:launchMode="singleInstance">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".MVPDevelop.View.LoginActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:launchMode="singleInstance">
         </activity>
         <activity android:name=".MVPDevelop.View.MainActivity">
 
@@ -28,9 +33,6 @@
         <activity
             android:name=".MVPDevelop.View.PermissionActivity"
             android:configChanges="orientation|keyboardHidden|screenSize">
-
-        </activity>
-        <activity android:name=".MVPDevelop.View.WelcomeActivity">
 
         </activity>
     </application>

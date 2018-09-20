@@ -10,6 +10,8 @@ class LoginPresenter(view: LoginContract.ILoginView) : LoginContract.ILoginPrese
     override fun toLoginUser(name: String, password: String, url: String) {
         //用户名和密码检查合法性
 
+
+
         if (TextUtils.isEmpty(name)) {
             mView.get()?.showLoginUserResult(false, "账户名不能为空")
             return

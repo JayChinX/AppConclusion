@@ -14,6 +14,7 @@
     <ViewStub
         android:id="@+id/start_page"
         android:inflatedId="@id/start_page"
+        android:layout="@layout/welcome_start_page"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

@@ -2,6 +2,7 @@ package com.qxj.conclusion.MVPDevelop.View
 
 import android.annotation.SuppressLint
 import android.util.Log
+import com.qxj.conclusion.AppConfig
 import com.qxj.conclusion.ConclusionUtils.LogTool
 import com.qxj.conclusion.MVPDevelop.MVP.BaseActivity
 import com.qxj.conclusion.MVPDevelop.Presenter.UserContract
@@ -21,14 +22,17 @@ class MainActivity: BaseActivity(), UserContract.IUserView {
     @SuppressLint("SetTextI18n")
     override fun initView() {
         tvMsg.text = """
-            用户名：$userName
-            密码：    $userPassword
+            用户名：${AppConfig.userName}
+            密码：    ${AppConfig.userPassword}
         """.trimIndent()
         tvUser.setOnClickListener{
             LogTool.d(TAG, "开始添加名字")
             mPresenter.addUser("秦小杰")
 
         }
+    }
+    override fun startCheckPermission() {
+        Log.d(TAG, "这里不需要检查权限")
     }
 
     override fun showAddUserResult(boolean: Boolean) {
@@ -40,10 +44,6 @@ class MainActivity: BaseActivity(), UserContract.IUserView {
             tvMsg.text = "添加失败"
             toast("添加名字失败")
         }
-    }
-
-    override fun startCheckPermission() {
-        Log.d(TAG, "这里不需要检查权限")
     }
 
 }
