@@ -6,9 +6,8 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
-import com.qxj.conclusion.ConclusionUtils.ConfigPreference
-import com.qxj.conclusion.CustomView.CustomDialog.DialogFragmentHelper
-import com.qxj.conclusion.CustomView.CustomDialog.IDialogResultListener
+import com.qxj.conclusion.view.CustomDialog.DialogFragmentHelper
+import com.qxj.conclusion.view.CustomDialog.IDialogResultListener
 
 open class AppConclusionActivity : Activity() {
 
@@ -17,13 +16,6 @@ open class AppConclusionActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         window.setBackgroundDrawable(null)
-
-//        permissionUtil.checkStoragePermission(Runnable{
-//            LogTool.d(TAG, "有权限")
-//            toast("有权限")
-//            longToast("有权限")
-//        })
-
     }
 
     fun showPermissionDialog(message: String) {

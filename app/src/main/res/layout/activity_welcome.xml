@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MVPDevelop.View.WelcomeActivity">
+    tools:context=".mvp.view.WelcomeActivity">
     <ViewStub
         android:id="@+id/welcome_page"
         android:inflatedId="@id/welcome_page"

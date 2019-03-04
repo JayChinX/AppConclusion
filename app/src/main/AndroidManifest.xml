@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:name=".App"
@@ -13,7 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MVPDevelop.View.WelcomeActivity"
+        <activity
+            android:name=".mvp.view.WelcomeActivity"
             android:configChanges="orientation|keyboardHidden"
             android:launchMode="singleInstance">
             <intent-filter>
@@ -23,15 +26,14 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MVPDevelop.View.LoginActivity"
+            android:name=".mvp.view.LoginActivity"
             android:configChanges="orientation|keyboardHidden"
-            android:launchMode="singleInstance">
-        </activity>
-        <activity android:name=".MVPDevelop.View.MainActivity">
+            android:launchMode="singleInstance"></activity>
+        <activity android:name=".mvp.view.MainActivity">
 
         </activity>
         <activity
-            android:name=".MVPDevelop.View.PermissionActivity"
+            android:name=".mvp.view.PermissionActivity"
             android:configChanges="orientation|keyboardHidden|screenSize">
 
         </activity>
