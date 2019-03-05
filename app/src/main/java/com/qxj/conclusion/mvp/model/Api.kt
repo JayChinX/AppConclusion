@@ -13,6 +13,7 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import okhttp3.OkHttpClient
 import okhttp3.RequestBody
+import okhttp3.ResponseBody
 import retrofit2.http.*
 import java.io.IOException
 import java.io.InputStream
@@ -37,7 +38,7 @@ interface Api {
      * get
      */
     @GET("User")//  User?userId="..."
-    fun getUser(@Query("userId") userId: String): Observable<Result<UserBean>>
+    fun addUser(@Query("userId") userId: String): Observable<Result<UserBean>>
 
     @GET("changePwd")//  changePwd?{..., ...}
     fun toChangePassword(@QueryMap options: Map<String, String>): Observable<Result<UserBean>>
@@ -66,6 +67,17 @@ interface Api {
 
     @GET("")
     fun getPassword(@Header("Author") header: String): Observable<Result<UserBean>>
+
+    /**
+     * 下载
+     */
+
+    /**
+     * 断点续传下载接口
+     */
+    @Streaming//大文件需要加入这个判断，防止下载过程中写入到内存中
+    @GET
+    fun download(@Header("RANGE") start: String, @Url url: String): Observable<ResponseBody>
 
 }
 
@@ -202,7 +214,7 @@ fun <T> Observable<T>.bindLifecycle(owner: LifecycleOwner): ObservableSubscribeP
 fun Gson.toRequestBody(map: HashMap<String, String>): RequestBody =
         RequestBody.create(okhttp3.MediaType.parse("Content-Type:application/json"),Gson().toJson(map))
 
-fun OkHttpClient.Builder.getCertificates(vararg input: InputStream): OkHttpClient.Builder{
+fun OkHttpClient.Builder.addCertificates(vararg input: InputStream): OkHttpClient.Builder{
     try {
         val certificateFactory = CertificateFactory.getInstance("X.509")
         val keyStore = KeyStore.getInstance(KeyStore.getDefaultType())

@@ -53,4 +53,6 @@ dependencies {
     //    implementation 'com.trello.rxlifecycle2:rxlifecycle-components:latest.integration'
     implementation 'com.uber.autodispose:autodispose:0.6.1'
     implementation 'com.uber.autodispose:autodispose-android-archcomponents:0.6.1'
+
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
 }
