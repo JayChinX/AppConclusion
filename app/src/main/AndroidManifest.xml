@@ -37,6 +37,10 @@
             android:configChanges="orientation|keyboardHidden|screenSize">
 
         </activity>
+
+        <activity android:name=".mvvm.view.MLoginActivity">
+
+        </activity>
     </application>
 
 </manifest>
