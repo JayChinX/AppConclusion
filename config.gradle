@@ -1,8 +1,8 @@
 ext {
-    apply plugin: 'com.android.application'
-    apply plugin: 'kotlin-android'
-    apply plugin: 'kotlin-android-extensions'
-
+    apply plugin: 'kotlin'
+//    apply plugin: 'com.android.application'
+//    apply plugin: 'kotlin-android'
+//    apply plugin: 'kotlin-android-extensions'
 
     compileSdkVersion = 28
     applicationId = "com.qxj.conclusion"
@@ -55,7 +55,9 @@ ext {
                     'com.uber.autodispose:autodispose:0.6.1',
                     'com.uber.autodispose:autodispose-android-archcomponents:0.6.1'
             ],
-            gilde      : 'com.github.bumptech.glide:glide:4.9.0'
+            gilde      : [
+                    'com.github.bumptech.glide:glide:4.9.0'
+            ],
 
 
     ]
