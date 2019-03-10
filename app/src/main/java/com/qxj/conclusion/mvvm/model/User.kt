@@ -14,3 +14,4 @@ class User constructor(var name: ObservableField<String>, var age: ObservableInt
         this.msg.set(msg)
     }
 }
+class UserBean constructor (var name: String, var age: Int, var sex: String)

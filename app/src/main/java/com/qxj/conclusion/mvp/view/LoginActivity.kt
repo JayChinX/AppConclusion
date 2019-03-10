@@ -2,9 +2,7 @@ package com.qxj.conclusion.mvp.view
 
 import android.content.Intent
 import android.view.View
-import com.qxj.conclusion.AppConfig
-import com.qxj.conclusion.util.LogTool
-import com.qxj.conclusion.mvp.base.BaseActivity
+import com.qxj.commonbase.mvpbase.BaseActivity
 import com.qxj.conclusion.mvp.presenter.LoginContract
 import com.qxj.conclusion.mvp.presenter.LoginPresenter
 import com.qxj.conclusion.R

@@ -1,0 +1,4 @@
+include ':app', ':commonbase', ':commondata', ':commonsdk'
+project(':commonbase').projectDir = new File('lib/commonbase')
+project(':commondata').projectDir = new File('lib/commondata')
+project(':commonsdk').projectDir = new File('lib/commonsdk')

@@ -1,6 +1,6 @@
 package com.qxj.conclusion.mvp.view
 
-import com.qxj.conclusion.mvp.base.BaseActivity
+import com.qxj.commonbase.mvpbase.BaseActivity
 import com.qxj.conclusion.mvp.presenter.PermissionContract
 import com.qxj.conclusion.mvp.presenter.PermissionPresenter
 import com.qxj.conclusion.R

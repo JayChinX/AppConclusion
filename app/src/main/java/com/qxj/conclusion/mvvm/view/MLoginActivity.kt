@@ -3,6 +3,7 @@ package com.qxj.conclusion.mvvm.view
 import android.databinding.Observable
 import android.util.Log
 import android.view.View
+import com.qxj.commonbase.mvvm.BaseActivity
 import com.qxj.conclusion.R
 import com.qxj.conclusion.databinding.ActivityMloginBinding
 import com.qxj.conclusion.mvvm.viewmodel.VMLoginViewModel

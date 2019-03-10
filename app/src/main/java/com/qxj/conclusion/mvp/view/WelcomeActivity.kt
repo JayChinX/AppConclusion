@@ -5,7 +5,7 @@ import android.content.Intent
 import android.support.v4.view.PagerAdapter
 import android.support.v4.view.ViewPager
 import android.view.View
-import com.qxj.conclusion.mvp.base.BaseActivity
+import com.qxj.commonbase.mvpbase.BaseActivity
 import com.qxj.conclusion.mvp.presenter.WelcomeContract
 import com.qxj.conclusion.mvp.presenter.WelcomePresenter
 import com.qxj.conclusion.R

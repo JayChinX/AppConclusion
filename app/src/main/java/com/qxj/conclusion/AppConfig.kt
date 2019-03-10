@@ -1,6 +1,6 @@
 package com.qxj.conclusion
 
-import com.qxj.conclusion.util.ConfigPreference
+import com.qxj.commondata.content.ConfigPreference
 
 object AppConfig {
 

@@ -9,7 +9,7 @@ import android.widget.ImageView
 import com.qxj.conclusion.AppConclusionActivity
 import com.qxj.conclusion.AppConfig
 import com.qxj.conclusion.util.PermissionUtil
-import com.qxj.conclusion.mvp.base.IPresenter
+import com.qxj.commonbase.mvpbase.IPresenter
 import com.qxj.conclusion.mvp.model.UserModel
 import com.qxj.conclusion.mvp.view.LoginActivity
 import com.qxj.conclusion.mvp.view.MainActivity

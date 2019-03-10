@@ -1,7 +1,7 @@
 package com.qxj.conclusion.mvp.presenter
 
 import android.content.Context
-import com.qxj.conclusion.mvp.base.IView
+import com.qxj.commonbase.mvpbase.IView
 
 interface PermissionContract {
     //成对出现   View层 Presenter层

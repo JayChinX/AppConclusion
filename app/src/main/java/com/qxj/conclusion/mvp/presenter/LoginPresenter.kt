@@ -4,9 +4,10 @@ import android.annotation.SuppressLint
 import android.arch.lifecycle.LifecycleOwner
 import android.content.Intent
 import android.util.Log
-import com.google.gson.Gson
-import com.qxj.conclusion.mvp.base.IPresenter
+import com.qxj.commonsdk.network.*
+import com.qxj.commonbase.mvpbase.IPresenter
 import com.qxj.conclusion.mvp.model.*
+import com.qxj.conclusion.mvvm.model.UserBean
 
 class LoginPresenter(view: LoginContract.LoginView) :
         LoginContract.LoginPresenter,
@@ -36,7 +37,7 @@ class LoginPresenter(view: LoginContract.LoginView) :
 
         val map = HashMap<String, String>()
         map["userId"] = "H2409761"
-        ApiService.getUserLocation(Gson().toRequestBody(map))
+        ApiService.getUserLocation<UserBean>(GsonUtils.toRequestBody(map))
                 .async(100)//扩展函数
                 .doOnSubscribe {
                     //开始网络请求
@@ -50,14 +51,14 @@ class LoginPresenter(view: LoginContract.LoginView) :
                 .subscribe({ data ->
                     data?.let {
                         it.message.let {
-                            Log.d(TAG, "请求成功${it!![0].userId}")
+                            Log.d(TAG, "请求成功${it!![0].name}")
                         }
                     }
                 }, {
                     e: Throwable ->
 
                 })
-        ApiService.login(name, password)
+        ApiService.login<UserBean>(name, password)
                 .async(100)//扩展函数
                 .doOnSubscribe {
                     //开始网络请求

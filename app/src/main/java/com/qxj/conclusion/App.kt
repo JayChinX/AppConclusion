@@ -1,8 +1,8 @@
 package com.qxj.conclusion
 
-import android.app.Application
+import com.qxj.commonbase.BaseApplication
 
-class App : Application() {
+class App : BaseApplication() {
 
     companion object {
         lateinit var instance: App

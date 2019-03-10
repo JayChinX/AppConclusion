@@ -2,8 +2,8 @@ package com.qxj.conclusion.mvp.presenter
 
 import android.arch.lifecycle.LifecycleOwner
 import android.text.TextUtils
-import com.qxj.conclusion.util.LogTool
-import com.qxj.conclusion.mvp.base.IPresenter
+import com.qxj.commonsdk.LogTool
+import com.qxj.commonbase.mvpbase.IPresenter
 import com.qxj.conclusion.mvp.model.UserModel
 
 class UserPresenter(view: UserContract.IUserView) :

@@ -11,7 +11,7 @@ import android.util.AttributeSet
 import android.util.Log
 import android.view.MotionEvent
 import android.widget.EditText
-import com.qxj.conclusion.util.LogTool
+import com.qxj.commonsdk.LogTool
 import com.qxj.conclusion.R
 
 class CustomEditText : EditText {

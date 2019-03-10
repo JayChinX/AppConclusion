@@ -2,10 +2,9 @@ package com.qxj.conclusion.mvp.presenter
 
 import android.arch.lifecycle.LifecycleOwner
 import android.content.Context
-import android.content.Intent
 import com.qxj.conclusion.AppConclusionActivity
 import com.qxj.conclusion.util.PermissionUtil
-import com.qxj.conclusion.mvp.base.IPresenter
+import com.qxj.commonbase.mvpbase.IPresenter
 import com.qxj.conclusion.mvp.model.UserModel
 
 class PermissionPresenter(view: PermissionContract.IPermissionView) :

@@ -2,8 +2,8 @@ package com.qxj.conclusion.mvp.view
 
 import android.annotation.SuppressLint
 import com.qxj.conclusion.AppConfig
-import com.qxj.conclusion.util.LogTool
-import com.qxj.conclusion.mvp.base.BaseActivity
+import com.qxj.commonsdk.LogTool
+import com.qxj.commonbase.mvpbase.BaseActivity
 import com.qxj.conclusion.mvp.presenter.UserContract
 import com.qxj.conclusion.mvp.presenter.UserPresenter
 import com.qxj.conclusion.R

@@ -10,7 +10,7 @@
             type="com.qxj.conclusion.mvvm.model.User"/>
         <variable
             name="presenter"
-            type="com.qxj.conclusion.mvvm.view.Presenter"/>
+            type="com.qxj.commonbase.mvvm.Presenter"/>
         <variable
             name="vm"
             type="com.qxj.conclusion.mvvm.viewmodel.VMLoginViewModel"/>

@@ -1,6 +1,6 @@
 package com.qxj.conclusion.mvp.presenter
 
-import com.qxj.conclusion.mvp.base.IView
+import com.qxj.commonbase.mvpbase.IView
 
 interface UserContract {
     //成对出现   View层 Presenter层

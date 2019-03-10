@@ -3,7 +3,7 @@ package com.qxj.conclusion.mvp.presenter
 import android.app.Activity
 import android.content.Context
 import android.support.v4.view.PagerAdapter
-import com.qxj.conclusion.mvp.base.IView
+import com.qxj.commonbase.mvpbase.IView
 
 interface WelcomeContract {
 
