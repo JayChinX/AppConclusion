@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">HCE</string>
+    <string name="tip_nfc_notfound">tip_nfc_not_found</string>
+    <string name="tip_nfc_enabled">tip_nfc_enabled</string>
+    <string name="tip_nfc_disabled">tip_nfc_disabled</string>
+    <string name="service_name">HCE</string>
+    <string name="card_name">HCECard</string>
+    <string name="support">支持HCE功能</string>
+</resources>
