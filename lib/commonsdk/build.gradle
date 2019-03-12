@@ -8,14 +8,16 @@ def library = rootProject.ext.dep
 android {
     compileSdkVersion config.compileSdkVersion
 
-
-
     defaultConfig {
         minSdkVersion config.minSdkVersion
         targetSdkVersion config.targetSdkVersion
         versionCode 1
         versionName "1.0"
-
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+            }
+        }
     }
 
     buildTypes {
@@ -30,12 +32,14 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation library.support
+    implementation library.supportv7
     implementation library.kotlin
-    implementation library.retrofit2
-    implementation library.rxjava2
-    implementation library.autodispose
-    implementation library.gilde
+
+    api library.retrofit2
+    api library.rxjava2
+    api library.gilde
+    api library.alibaba.arouter
+    annotationProcessor library.alibaba.arouterA
 
     implementation project(path: ':commonbase')
 }

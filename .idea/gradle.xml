@@ -8,11 +8,13 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/arouter" />
             <option value="$PROJECT_DIR$/conclusion" />
             <option value="$PROJECT_DIR$/hce" />
             <option value="$PROJECT_DIR$/lib/commonbase" />
             <option value="$PROJECT_DIR$/lib/commondata" />
             <option value="$PROJECT_DIR$/lib/commonsdk" />
+            <option value="$PROJECT_DIR$/multichannel" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

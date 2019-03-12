@@ -1,0 +1,104 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+def config = rootProject.ext.android
+def library = rootProject.ext.dep
+android {
+    compileSdkVersion config.compileSdkVersion
+
+    defaultConfig {
+        applicationId "com.qxj.multichannel"
+        minSdkVersion config.minSdkVersion
+        targetSdkVersion config.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
+    }
+
+    //产品特性3.0之前
+//    productFlavors {
+//        xiaomi {}
+//        qh360 {}
+//        baidu {}
+//        wandoujia {}
+//        kuan {}
+//    }
+    flavorDimensions "default"
+    productFlavors {
+        xiaomi {
+            dimension "default"
+        }
+        qh360 {
+            dimension "default"
+        }
+        baidu {
+            dimension "default"
+        }
+        wandoujia {
+            dimension "default"
+        }
+        kuan {
+            dimension "default"
+        }
+    }
+    productFlavors.all {
+        flavor -> flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+
+            //自定义输出配置3.0之前
+//            applicationVariants.all {variant ->
+//                variant.outputs.each {output ->
+//                    def outputFile = output.outputFile
+//                    if (outputFile != null && outputFile.name.endsWith('.apk')) {
+//                        //输出apk名称
+//                        def fileName = "DaBaoTest_v${defaultConfig.versionName}_${variant.productFlavors.get(0).name}.apk"
+//                        output.outputFile = new File(outputFile.parent, fileName)
+//                    }
+//                }
+//            }
+            //3.0
+            applicationVariants.all { variant ->
+                variant.outputs.all {output ->
+                    def buildTime = new Date().format("yyyyMMdd")
+                    outputFileName = "${output.outputFile.name}_${variant.versionCode}-${variant.versionName}-${buildTime}.apk"
+                }
+
+
+//                variant.outputs.all { output ->
+//                    if (!variant.buildType.isDebuggable()) {
+//                        //获取签名的名字
+//                        //要被替换的源字符串
+//                        def buildTime = new Date().format("yyyyMMdd")
+//                        def sourceFile = "-${variant.flavorName}-${variant.buildType.name}"
+//                        //替换的字符串
+//                        def replaceFile = "_v${variant.mergedFlavor.versionName}_${variant.flavorName}_${variant.buildType.name}_${buildTime}"
+//                        outputFileName = output.outputFile.name.replace(sourceFile, replaceFile)
+//
+//
+//                    }
+//                }
+
+            }
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    implementation library.supportv7
+    implementation library.constraint
+    implementation library.kotlin
+}

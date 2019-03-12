@@ -32,15 +32,13 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     testImplementation 'junit:junit:4.12'
+    //noinspection GradleCompatible
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
-    implementation library.support
+    implementation library.supportv7
+    implementation library.constraint
     implementation library.kotlin
-    implementation library.retrofit2
-    implementation library.rxjava2
-    implementation library.autodispose
-    implementation library.gilde
 
     implementation project(path: ':commonbase')
     implementation project(path: ':commonsdk')

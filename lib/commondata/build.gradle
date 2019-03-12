@@ -28,7 +28,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation library.support
+    implementation library.supportv7
     implementation library.kotlin
 
     implementation project(path: ':commonbase')
