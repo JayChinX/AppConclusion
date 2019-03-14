@@ -14,6 +14,7 @@
             <option value="$PROJECT_DIR$/lib/commonbase" />
             <option value="$PROJECT_DIR$/lib/commondata" />
             <option value="$PROJECT_DIR$/lib/commonsdk" />
+            <option value="$PROJECT_DIR$/lib/flutter_module/.android/Flutter" />
             <option value="$PROJECT_DIR$/multichannel" />
           </set>
         </option>

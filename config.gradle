@@ -64,7 +64,7 @@ ext {
                     //implementation
                     arouterA: 'com.alibaba:arouter-compiler:1.2.2',
                     //annotationProcessor
-                    arouter: 'com.alibaba:arouter-api:1.4.1',
+                    arouter : 'com.alibaba:arouter-api:1.4.1',
                     json    : 'com.alibaba:fastjson:1.2.48'
             ],
 

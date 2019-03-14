@@ -1,0 +1,16 @@
+要加载依赖包中的图像，必须给AssetImage提供package参数。
+
+例如，假设您的应用程序依赖于一个名为“my_icons”的包，它具有如下目录结构：
+
+…/pubspec.yaml
+…/icons/heart.png
+…/icons/1.5x/heart.png
+…/icons/2.0x/heart.png
+…etc.
+然后加载图像，使用:
+
+ new AssetImage('icons/heart.png', package: 'my_icons')
+或
+
+new Image.asset('icons/heart.png', package: 'my_icons')
+注意：包在使用本身的资源时也应该加上package参数来获取。
