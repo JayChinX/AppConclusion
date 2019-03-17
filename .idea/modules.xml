@@ -3,11 +3,15 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/AppConclusion.iml" filepath="$PROJECT_DIR$/.idea/AppConclusion.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lib/flutter_module/.android/Flutter/Flutter-flutter.iml" filepath="$PROJECT_DIR$/lib/flutter_module/.android/Flutter/Flutter-flutter.iml" />
       <module fileurl="file://$PROJECT_DIR$/arouter/arouter.iml" filepath="$PROJECT_DIR$/arouter/arouter.iml" />
+      <module fileurl="file://$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.flutter-io.cn/cloud_firestore-0.8.2+3/android/cloud_firestore.iml" filepath="$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.flutter-io.cn/cloud_firestore-0.8.2+3/android/cloud_firestore.iml" />
       <module fileurl="file://$PROJECT_DIR$/lib/commonbase/commonbase.iml" filepath="$PROJECT_DIR$/lib/commonbase/commonbase.iml" />
       <module fileurl="file://$PROJECT_DIR$/lib/commondata/commondata.iml" filepath="$PROJECT_DIR$/lib/commondata/commondata.iml" />
       <module fileurl="file://$PROJECT_DIR$/lib/commonsdk/commonsdk.iml" filepath="$PROJECT_DIR$/lib/commonsdk/commonsdk.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lib/commonview/commonview.iml" filepath="$PROJECT_DIR$/lib/commonview/commonview.iml" />
       <module fileurl="file://$PROJECT_DIR$/conclusion/conclusion.iml" filepath="$PROJECT_DIR$/conclusion/conclusion.iml" />
+      <module fileurl="file://$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.flutter-io.cn/firebase_core-0.2.5+1/android/firebase_core.iml" filepath="$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.flutter-io.cn/firebase_core-0.2.5+1/android/firebase_core.iml" />
       <module fileurl="file://$PROJECT_DIR$/lib/flutter_module/.android/Flutter/flutter.iml" filepath="$PROJECT_DIR$/lib/flutter_module/.android/Flutter/flutter.iml" />
       <module fileurl="file://$PROJECT_DIR$/hce/hce.iml" filepath="$PROJECT_DIR$/hce/hce.iml" />
       <module fileurl="file://$PROJECT_DIR$/multichannel/multichannel.iml" filepath="$PROJECT_DIR$/multichannel/multichannel.iml" />

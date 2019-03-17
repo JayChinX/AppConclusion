@@ -27,13 +27,14 @@ apply plugin: 'com.android.library'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 28
 
     defaultConfig {
         minSdkVersion 16
-        targetSdkVersion 27
+        targetSdkVersion 28
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+        multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 }
@@ -44,6 +45,6 @@ flutter {
 
 dependencies {
     testImplementation 'junit:junit:4.12'
-    implementation 'com.android.support:support-v13:27.1.1'
-    implementation 'com.android.support:support-annotations:27.1.1'
+    implementation 'com.android.support:support-v13:28.0.0'
+    implementation 'com.android.support:support-annotations:28.0.0'
 }

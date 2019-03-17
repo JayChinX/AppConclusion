@@ -1,165 +1,42 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_module/login/login.dart'; //导入ui组件包
-import 'package:english_words/english_words.dart';
+import 'dart:async';
 import 'dart:ui';
+import 'package:english_words/english_words.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_module/other/save.dart';
 
-void collectLog(String line) {
-  //收集日志
-}
-
-void reportErrorAndLog(FlutterErrorDetails details) {
-  //上报错误和日志的逻辑
-}
-
-// ignore: missing_return
-FlutterErrorDetails makeDetails(Object obj, StackTrace stack) {
-  //构建错误信息
-}
-
-void main() => runApp(_widgetForRoute(window.defaultRouteName));
-//{
-//  FlutterError.onError = (FlutterErrorDetails details) {
-//    reportErrorAndLog(details);
-//  };
-//  runZoned(() => runApp(MyApp()),
-//
-//  );
-//} //应用入口main函数
-
-Widget _widgetForRoute(String route) {
-  switch (route) {
-    case 'route1':
-      return MyApp();
-    default:
-      return MyApp();
-  }
-}
+Color white = const Color(0xFFFFFFFF);//16进制的ARGB
+//Color c = const Color.fromARGB(0xFF, 0x42, 0xA5, 0xF5);
+//Color c = const Color.fromARGB(255, 66, 165, 245);
+//Color c = const Color.fromRGBO(66, 165, 245, 1.0);//opacity：不透明度
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.grey,
+        primaryColor: Colors.white
       ),
-      home: MyHomePage(title: 'Home Page'),
+      home: MyHomePage(title: 'Home'),
+      //      home: new RandomWords(),
+//      home: new LoginPage(),
+//      home: new HomePage(),
       //注册路由表
       routes: {
-        "new_page": (context) => TwoApp("内容被固定"),
+//        "new_page": (context) => TwoApp("内容被固定"),
       },
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
   final String title;
+
+  MyHomePage({Key key, this.title}) : super(key: key);
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
-            ),
-            FlatButton(
-              child: Text("open new router"),
-              textColor: Colors.blue,
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  new MaterialPageRoute(builder: (context) {
-                    return new TwoApp("灵活的传递参数");
-                  }),
-                );
-//                //通过路由表跳转 传递的参数必须在路由表中固定
-//                Navigator.pushNamed(context, "new_page");
-              },
-            ),
-            RandomWordsWidget(),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
-  }
 }
 
 class RandomWordsWidget extends StatelessWidget {
@@ -172,3 +49,99 @@ class RandomWordsWidget extends StatelessWidget {
     );
   }
 }
+
+class _MyHomePageState extends State<MyHomePage> {
+  int _counter = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Flex(direction: Axis.vertical,
+            children: <Widget>[
+              Text(
+                'You have pushed the button this many times:',
+              ),
+              Text(
+                '$_counter',
+                style: Theme.of(context).textTheme.display1,
+              ),
+              FlatButton(
+                child: Text("open new router"),
+                textColor: Colors.blue,
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return new RandomWords();
+                  }),);
+
+//                //通过路由表跳转 传递的参数必须在路由表中固定
+//                Navigator.pushNamed(context, "new_page");
+                },
+              ),
+              RandomWordsWidget(),
+            ],)
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _incrementCounter,
+        tooltip: 'Increment',
+        child: Icon(Icons.add),
+      ), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+
+  void _incrementCounter() {
+    setState(() {
+      _counter++;
+    });
+  }
+}
+
+//接收android 原生传递过来的参数  window.defaultRouteName
+void main() => runApp(_widgetForRoute(window.defaultRouteName));
+
+void collectLog(String line) {
+  //收集日志
+  print("main-collectLog: $line");
+}
+
+void reportErrorAndLog(FlutterErrorDetails details) {
+  //上报错误和日志的逻辑
+  print("main-reportErrorAndLog: ${details.toString()}");
+}
+
+// ignore: missing_return
+FlutterErrorDetails makeDetails(Object obj, StackTrace stack) {
+  //构建错误信息
+  return FlutterErrorDetails(stack: stack, exception: obj);
+}
+
+Widget _widgetForRoute(String route) {
+  switch (route) {
+    case 'route1':
+      return MyApp();
+    default:
+      return MyApp();
+  }
+}
+
+//void main() {
+//  FlutterError.onError = (FlutterErrorDetails details) {
+//    reportErrorAndLog(details);
+//  };
+//  runZoned(() => runApp(_widgetForRoute(window.defaultRouteName)),
+//      zoneSpecification: ZoneSpecification(
+//          print: (Zone self, ZoneDelegate parent, Zone zone, String line) {
+//    collectLog(line);
+//  }), onError: (Object obj, StackTrace stack) {
+//    var details = makeDetails(obj, stack);
+//    reportErrorAndLog(details);
+//  });
+//} //应用入口main函数

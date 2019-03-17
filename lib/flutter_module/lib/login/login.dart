@@ -1,51 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart' show rootBundle;
-import 'dart:developer';
 import 'package:flutter_module/login/firstPage.dart';
-
-//void main() => runApp(new MyApp()); //=>单行函数方法的缩写
-
-//Stateless不可变
-class TwoApp extends StatelessWidget {
-  //获取参数
-  final String tip;
-
-  const TwoApp(this.tip);
-
-  @override
-  Widget build(BuildContext context) {
-    return new MaterialApp(
-      title: "我的Flutter" + tip,
-      theme: new ThemeData(
-        //主题
-        primarySwatch: Colors.grey,
-      ),
-      //首页
-      home: new MyHomePage(title: "我的Flutter" + tip),
-      routes: {
-        "login": (context) => Echo(
-              text: "通过路由进入",
-            ),
-      },
-    );
-  }
-}
 
 //stateful 由StatefulWidget和State两个类组成
 //StatefulWidget本身不可变，由State类来保存和改变它的状态
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title, this.initValue: 1}) : super(key: key);
+class SearchPage extends StatefulWidget {
+  SearchPage({Key key, this.title, this.initValue = 1}) : super(key: key);
   final String title;
   final int initValue;
 
   @override
-  State<StatefulWidget> createState() {
-    return new _MyHomePageState();
-  }
+  State<StatefulWidget> createState() => _SearchPageState();
 }
 
-//MyHomePage的状态类
-class _MyHomePageState extends State<MyHomePage> {
+class _SearchPageState extends State<SearchPage> {
   int _counter;
   bool _userState = false;
 
@@ -105,7 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   @override
-  void didUpdateWidget(MyHomePage oldWidget) {
+  void didUpdateWidget(SearchPage oldWidget) {
     super.didUpdateWidget(oldWidget);
     print("didUpdateWidget");
   }
