@@ -16,9 +16,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".LauncherFlutterActivity"
+        <activity
+            android:name=".mvp.view.WelcomeActivity"
             android:configChanges="orientation|keyboardHidden"
-            android:launchMode="singleInstance">
+            android:launchMode="singleInstance"
+            android:theme="@style/AppTheme.Start">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,24 +28,18 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".mvp.view.WelcomeActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:launchMode="singleInstance">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
-
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
-        </activity>
-        <activity
             android:name=".mvp.view.LoginActivity"
             android:configChanges="orientation|keyboardHidden"
             android:launchMode="singleInstance" />
-        <activity android:name=".mvp.view.MainActivity"></activity>
+        <activity android:name=".mvp.view.MainActivity" />
         <activity
             android:name=".mvp.view.PermissionActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"></activity>
-        <activity android:name=".mvvm.view.MLoginActivity"></activity>
+            android:configChanges="orientation|keyboardHidden|screenSize" />
+        <activity android:name=".mvvm.view.MLoginActivity" />
+        <activity
+            android:name=".LauncherFlutterActivity"
+            android:theme="@style/AppTheme.Flutter"></activity>
+        <activity android:name=".dagger.FactoryActivity"></activity>
     </application>
 
 </manifest>

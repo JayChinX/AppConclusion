@@ -72,11 +72,12 @@ class WelcomePresenter(view: WelcomeContract.IWelcomeView) : WelcomeContract.IWe
     }
 
     override fun checkTargetActivity() {
-        if (AppConfig.userName != "Name-unKnown") {
-            mView.get()?.toTargetActivity(cls = MainActivity::class.java)
-        } else {
-            mView.get()?.toTargetActivity(cls = LoginActivity::class.java)
-        }
+        mView.get()?.toTargetActivity(cls = MainActivity::class.java)
+//        if (AppConfig.userName != "Name-unKnown") {
+//            mView.get()?.toTargetActivity(cls = MainActivity::class.java)
+//        } else {
+//            mView.get()?.toTargetActivity(cls = LoginActivity::class.java)
+//        }
     }
 
 

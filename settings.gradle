@@ -2,9 +2,8 @@ include ':conclusion', ':commonbase', ':commondata', ':commonsdk', ':hce', ':aro
 project(':commonbase').projectDir = new File('lib/commonbase')
 project(':commondata').projectDir = new File('lib/commondata')
 project(':commonsdk').projectDir = new File('lib/commonsdk')
-
-setBinding(new Binding([gradle: this]))                                 // new
-evaluate(new File(                                                      // new
-        settingsDir.parentFile,                                           // new
+setBinding(new Binding([gradle: this]))
+evaluate(new File(
+        settingsDir.parentFile,
         'AppConclusion/lib/flutter_module/.android/include_flutter.groovy'                          // new
 ))

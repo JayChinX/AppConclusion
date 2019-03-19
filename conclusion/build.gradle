@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'//kapt3
 
 def config = rootProject.ext.android
 def library = rootProject.ext.dep
@@ -15,9 +16,13 @@ android {
         versionName config.versionName
         multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        
+
     }
     dataBinding.enabled = true
+    kapt {
+        generateStubs = true
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -25,8 +30,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
     }
 }
 
@@ -36,16 +41,17 @@ dependencies {
     //noinspection GradleCompatible
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-
     implementation library.supportv7
     implementation library.constraint
     implementation library.kotlin
-
+    implementation library.dagger.dagger
+//    implementation library.dagger.support
+//    implementation library.dagger.android
+    kapt library.dagger.compiler
+//    kapt library.dagger.processor
+//    kapt library.databinding
     implementation project(path: ':commonbase')
     implementation project(path: ':commonsdk')
     implementation project(path: ':commondata')
-
     implementation project(':flutter')
-
-
 }

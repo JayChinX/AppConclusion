@@ -6,7 +6,11 @@ description: A new Flutter module.
 # followed by an optional build number separated by a +.
 # Both the version and the builder number may be overridden in flutter
 # build by specifying --build-name and --build-number, respectively.
-# Read more about versioning at semver.org.
+# In Android, build-name is used as versionName while build-number used as versionCode.
+# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
+# In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
+# Read more about iOS versioning at
+# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 #
 # This version is used _only_ for the Runner app, which is used if you just do
 # a `flutter run` or a `flutter make-host-app-editable`. It has no impact
@@ -14,7 +18,7 @@ description: A new Flutter module.
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.0.0-dev.68.0 <3.0.0"
+  sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -24,7 +28,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
   english_words: ^3.1.3   #
-  cloud_firestore: ^0.8.2     # firestore
+#  cloud_firestore: ^0.8.2     # firestore
   dio: ^2.1.0 #
 
 dev_dependencies:
@@ -44,6 +48,11 @@ flutter:
   - assets/images/
   - assets/icons/
   - assets/fonts/
+
+  fonts:
+  - family: myIcon
+    fonts:
+    - asset: assets/fonts/Flamante-Roma-Medium.ttf
 
   # To add Flutter specific assets to your application, add an assets section, 
   # like this:
@@ -85,5 +94,5 @@ flutter:
   # They also do not have any bearing on your native host application's
   # identifiers, which may be completely independent or the same as these.
   module:
-    androidPackage: com.qxj.fluttermodule
-    iosBundleIdentifier: com.qxj.flutterModule
+    androidPackage: com.example.flutter_module
+    iosBundleIdentifier: com.example.flutterModule

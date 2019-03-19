@@ -8,6 +8,14 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppTheme.Start" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/ic_launcher_background_start</item>
+    </style>
+
+    <style name="AppTheme.Flutter" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/ic_launcher_background_start</item>
+    </style>
+
     <style name="Base_AlertDialog" parent="Base.Theme.AppCompat.Light.Dialog">
         <!--不设置在6.0以上会出现，宽度不充满屏幕的情况-->
         <item name="windowMinWidthMinor">90%</item>

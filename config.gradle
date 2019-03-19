@@ -61,14 +61,23 @@ ext {
             ],
 
             alibaba   : [
-                    //implementation
-                    arouterA: 'com.alibaba:arouter-compiler:1.2.2',
                     //annotationProcessor
-                    arouter : 'com.alibaba:arouter-api:1.4.1',
-                    json    : 'com.alibaba:fastjson:1.2.48'
+                    aroutercompiler: 'com.alibaba:arouter-compiler:1.2.2',
+                    //implementation
+                    arouter  : 'com.alibaba:arouter-api:1.4.1',
+                    json     : 'com.alibaba:fastjson:1.2.48'
             ],
+            dagger    : [
+                    //implementation
+                    android  : 'com.google.dagger:dagger-android:2.21',
+                    support  : 'com.google.dagger:dagger-android-support:2.21',
+                    dagger   : 'com.google.dagger:dagger:2.21',
+                    //annotationProcessor
+                    compiler : 'com.google.dagger:dagger-compiler:2.21',
+                    processor: 'com.google.dagger:dagger-android-processor:2.21'
 
-
+            ],
+            databinding  : 'com.android.databinding:compiler:2.3.0',
     ]
 }
 

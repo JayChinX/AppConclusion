@@ -17,9 +17,9 @@ class InitializeService : IntentService("InitializeService") {
     override fun onHandleIntent(intent: Intent?) {
         when (intent?.action) {
             ACTION_INIT -> {
-                val param1 = intent.getStringExtra(EXTRA_PARAM1)
-                val param2 = intent.getStringExtra(EXTRA_PARAM2)
-                handleActionInit(param1, param2)
+//                val param1 = intent.getStringExtra(EXTRA_PARAM1)
+//                val param2 = intent.getStringExtra(EXTRA_PARAM2)
+                handleActionInit()
             }
             ACTION_BAZ -> {
                 val param1 = intent.getStringExtra(EXTRA_PARAM1)
@@ -30,7 +30,7 @@ class InitializeService : IntentService("InitializeService") {
     }
 
 
-    private fun handleActionInit(param1: String?, param2: String?) {
+    private fun handleActionInit() {
         performInitialize()
     }
 

@@ -1,12 +1,16 @@
 package com.qxj.conclusion.mvp.view
 
 import android.annotation.SuppressLint
+import android.content.Intent
+import android.util.Log
 import com.qxj.conclusion.AppConfig
 import com.qxj.commonsdk.LogTool
 import com.qxj.commonbase.mvpbase.BaseActivity
+import com.qxj.conclusion.LauncherFlutterActivity
 import com.qxj.conclusion.mvp.presenter.UserContract
 import com.qxj.conclusion.mvp.presenter.UserPresenter
 import com.qxj.conclusion.R
+import com.qxj.conclusion.dagger.FactoryActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.toast
 
@@ -28,6 +32,16 @@ class MainActivity: BaseActivity(), UserContract.IUserView {
             LogTool.d(TAG, "开始添加名字")
             mPresenter.addUser("秦小杰")
 
+        }
+
+        to_flutter.setOnClickListener {
+            Log.d(TAG, "点击进入Flutter_module模块")
+            startActivity(Intent(this, LauncherFlutterActivity::class.java))
+        }
+
+        to_dagger.setOnClickListener {
+            Log.d(TAG, "点击进入Flutter_module模块")
+            startActivity(Intent(this, FactoryActivity::class.java))
         }
     }
 
