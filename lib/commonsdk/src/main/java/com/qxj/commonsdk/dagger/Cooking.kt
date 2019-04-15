@@ -1,5 +1,5 @@
-package com.qxj.commonsdk.dagger
-
-interface Cooking {
-    fun cook(): String
-}
+//package com.qxj.commonsdk.dagger
+//
+//interface Cooking {
+//    fun cook(): String
+//}

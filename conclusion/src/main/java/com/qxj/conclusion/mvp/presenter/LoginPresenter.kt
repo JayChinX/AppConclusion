@@ -3,14 +3,20 @@ package com.qxj.conclusion.mvp.presenter
 import android.annotation.SuppressLint
 import android.arch.lifecycle.LifecycleOwner
 import android.content.Intent
+import android.os.AsyncTask
 import android.util.Log
+import android.widget.TextView
+import com.google.gson.Gson
 import com.qxj.commonsdk.network.*
 import com.qxj.commonbase.mvpbase.IPresenter
 import com.qxj.conclusion.mvp.model.*
 import com.qxj.conclusion.mvvm.model.UserBean
 import io.reactivex.Observable
+import kotlinx.coroutines.*
+import org.jetbrains.anko.custom.async
 import java.util.*
 import java.util.concurrent.TimeUnit
+import kotlin.coroutines.CoroutineContext
 
 class LoginPresenter(view: LoginContract.LoginView) :
         LoginContract.LoginPresenter,
@@ -40,7 +46,7 @@ class LoginPresenter(view: LoginContract.LoginView) :
 
         val map = HashMap<String, String>()
         map["userId"] = "H2409761"
-        ApiService.getUserLocation<UserBean>(GsonUtils.toRequestBody(map))
+        ApiService.getUserLocation<UserBean>(Gson().toRequestBody(map))
                 .async(100)//扩展函数
                 .doOnSubscribe {
                     //开始网络请求
@@ -87,7 +93,7 @@ class LoginPresenter(view: LoginContract.LoginView) :
         }
 
         Observable.range(0, 10).map {
-            String()[it]
+            it.toString()
         }.forEach {
             Log.d(TAG, "  $it")
         }
@@ -174,9 +180,31 @@ class LoginPresenter(view: LoginContract.LoginView) :
          *          flatMap将一个发送事件的上游Observable变换为多个发送事件的Observables，然后将它们
          *          发射的事件合并后放进一个单独的Observable里。需要注意的是, flatMap并不保证事件的顺序，
          *          也就是说转换之后的Observables的顺序不必与转换之前的序列的顺序一致。
+         *      3）flatMapIterable
+         *          将上流的任意一个元素转换成一个Iterable对象
+         *          1. public final <U> Observable<U> flatMapIterable(Function<? super T, ? extends Iterable<? extends U>> mapper)
+         *          2. public final <U, V> Observable<V> flatMapIterable(Function<? super T, ? extends Iterable<? extends U>> mapper,
+         *              BiFunction<? super T, ? super U, ? extends V> resultSelector)
+         *      4）buffer
+         *          用于将整个流进行分组
+         *          1. public final Observable<List<T>> buffer(int count)
+         *          2. public final Observable<List<T>> buffer(int count, int skip)
+         *      5）groupBy
+         *          用于分组元素
+         *      6）scan
+         *          对原始Observable发送的第一个数据应用一个函数，然后将函数的结果作为第一项数据发送。将函数的结果同第二项数据
+         *          一起填充给这个函数产生第二项数据。
+         *      7）window
+         *          window 和 buffer 类似，但不是发射原始observable的数据包，它发射的是Observable，这些observable的每一个都
+         *          发射原始observable数据的一个子集，最后发射一个onCompleted通知
+         *          1. public final Observable<Observable<T>> window(long count)
+         *          2. public final Observable<Observable<T>> window(long timespan, long timeskip, TimeUnit unit)
+         *          3. public final <B> Observable<Observable<T>> window(ObservableSource<B> boundary)
+         *          4. public final <B> Observable<Observable<T>> window(Callable<? extends ObservableSource<B>> boundary)
+         *
          */
 
-        Observable.range(1, 5).map { String()[it] }.subscribe {
+        Observable.range(1, 5).map { it.toString() }.subscribe {
 
         }
 
@@ -188,10 +216,159 @@ class LoginPresenter(view: LoginContract.LoginView) :
         //          输出的顺序不保证
         //contactMap 保证了输出的顺序
         Observable.range(1, 5).flatMap {
-            Observable.just(String()[it])
+            Observable.just(it.toString())
         }.subscribe {
 
         }
+
+        //flatMapIterable
+        Observable.range(1, 5).flatMapIterable {
+            Collections.singletonList(it.toString())
+        }.subscribe {
+            Log.d(TAG, ".....$it")
+        }
+
+        //buffer  从1开始的7个数，buffer 之后数据会 3 个一组输出
+        Observable.range(1, 7).buffer(3).subscribe {
+            Log.d(TAG, "...${Arrays.toString(it.toIntArray())}")
+        }
+
+        //groupBy 分组
+        Observable.concat(
+                Observable.concat(Observable.range(1, 4), Observable.range(1, 6))
+                        .groupBy {
+                            it
+                        }
+        ).subscribe {
+            Log.d(TAG, "groupBy....$it")
+        }
+
+        //scan
+        Observable.range(2, 5).scan { t1: Int, t2: Int ->
+            t1 * t2
+        }.subscribe {
+            Log.d(TAG, "scan:  $it")
+        }
+
+        Observable.range(2, 5).scan(3) { t1: Int, t2: Int ->
+            t1 * t2
+        }.subscribe {
+            Log.d(TAG, "scan:  $it")
+        }
+
+        //window  10个数3个一组，每组组成observable，再发射
+        Observable.range(1, 10).window(3)
+                .subscribe { it ->
+                    it.subscribe {
+                        Log.d(TAG, "....$it")
+                    }
+                }
+
+        /**
+         * 3.过滤操作符
+         *      1）filter
+         *          根据指定规则对源数据进行过滤
+         *      2）elementAt  firstElement  lastElement
+         *          elementAt 获取源数据中指定位置的数据
+         *          firstElement 获取第一个元素
+         *          lastElement 获取最后一个元素
+         *      3）distinct 去重 distinctUntilChanged 去掉相邻重复
+         *      4）skip skipLast skipUnit skipWhile
+         *          skip 过滤掉数据的前n项
+         *
+         *
+         */
+
+        //filter
+        Observable.range(1, 10).filter {
+            it > 5
+        }.subscribe {
+
+        }
+
+        //elementAt
+        Observable.range(0, 10).elementAt(0)
+                .subscribe {
+
+                }
+
+
     }
+
+    /**
+     * kotlin 协程
+     */
+    private fun getUser() = runBlocking {
+        launch(Dispatchers.Main) {
+            val user = async(Dispatchers.IO) {
+                "main"
+            }.await()
+
+            println(user)
+        }
+    }
+
+    //runBlocking
+    private fun getUser(textView: TextView) {
+        //launch
+        GlobalScope.launch(Dispatchers.Main) {
+            //async
+            textView.text = async(AndroidCommonPool) {
+                return@async "main"
+            }.await()
+
+
+        }
+    }
+
 }
+
+/**
+ * kotlin 协程
+ */
+private fun coroutines() {
+
+    GlobalScope.launch {
+        delay(1000L)
+        println("good")
+    }
+    println("Hello,")
+    Thread.sleep(2000L)
+}
+
+fun main() = runBlocking {
+//    coroutines()
+//    getUser()
+}
+
+
+
+
+object AndroidCommonPool: CoroutineDispatcher() {
+    override fun dispatch(context: CoroutineContext, block: Runnable) {
+        AsyncTask.THREAD_POOL_EXECUTOR.execute(block)
+    }
+
+}
+//
+//fun main() = runBlocking {
+//    //    launch {
+////        delay(1000L)
+////        println("good")
+////        doWorld()
+////    }
+////    println("hello")
+//
+//    repeat(10_000) {
+//        launch {
+//            delay(1000L)
+//            print(".")
+//        }
+//    }
+//}
+//
+//suspend fun doWorld() {
+//    delay(1000L)
+//    println("world")
+//}
 

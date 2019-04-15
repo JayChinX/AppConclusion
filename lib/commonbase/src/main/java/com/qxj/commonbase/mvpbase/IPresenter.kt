@@ -6,7 +6,7 @@ import java.lang.ref.SoftReference
 
 abstract class IPresenter<T : IView>(v: T) {
 
-    open var mView: SoftReference<T> = SoftReference(v)
+    open var mView: SoftReference<T> = SoftReference(v)//弱引用
 
     open fun onCreate(intent: Intent) {
         mView.get()?.initView()

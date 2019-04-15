@@ -10,7 +10,7 @@ import com.qxj.conclusion.LauncherFlutterActivity
 import com.qxj.conclusion.mvp.presenter.UserContract
 import com.qxj.conclusion.mvp.presenter.UserPresenter
 import com.qxj.conclusion.R
-import com.qxj.conclusion.dagger.FactoryActivity
+//import com.qxj.conclusion.dagger.FactoryActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.toast
 
@@ -39,10 +39,10 @@ class MainActivity: BaseActivity(), UserContract.IUserView {
             startActivity(Intent(this, LauncherFlutterActivity::class.java))
         }
 
-        to_dagger.setOnClickListener {
-            Log.d(TAG, "点击进入Flutter_module模块")
-            startActivity(Intent(this, FactoryActivity::class.java))
-        }
+//        to_dagger.setOnClickListener {
+//            Log.d(TAG, "点击进入Flutter_module模块")
+//            startActivity(Intent(this, FactoryActivity::class.java))
+//        }
     }
 
     override fun showAddUserResult(boolean: Boolean) {

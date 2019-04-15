@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@android:color/white</color>
+    <color name="colorPrimaryDark">@android:color/holo_green_dark</color>
+    <color name="colorAccent">@android:color/holo_green_light</color>
+    <color name="themeBarColor">@android:color/white</color>
+
+    <color name="gainsboro">#DCDCDC</color>
+    <color name="cut_off_line">#22000000</color>
+
+    <color name="switch_thumb_material">#fff1f1f1</color>
+    <color name="switch_thumb_disabled">#ffbdbdbd</color>
+</resources>

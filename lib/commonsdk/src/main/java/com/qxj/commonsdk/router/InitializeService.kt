@@ -1,10 +1,8 @@
 package com.qxj.commonsdk.router
 
 import android.app.IntentService
-import android.content.Intent
 import android.content.Context
-import com.alibaba.android.arouter.launcher.ARouter
-import com.qxj.commonsdk.CommonSDKApp
+import android.content.Intent
 
 private const val ACTION_INIT = "com.qxj.commonsdk.router.action.INIT"
 private const val ACTION_BAZ = "com.qxj.commonsdk.router.action.BAZ"
@@ -61,12 +59,12 @@ class InitializeService : IntentService("InitializeService") {
     }
 
     private fun performInitialize() {
-        initARouter()
+//        initARouter()
     }
 
     private fun initARouter() {
-        ARouter.openLog()//打印日志
-        ARouter.openDebug()//开启调试模式
-        ARouter.init(CommonSDKApp.instance)
+//        ARouter.openLog()//打印日志
+//        ARouter.openDebug()//开启调试模式
+//        ARouter.init(CommonSDKApp.instance)
     }
 }

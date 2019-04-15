@@ -9,6 +9,7 @@ import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.facade.callback.NavCallback
 import com.alibaba.android.arouter.launcher.ARouter
+import com.qxj.arouter.service.CustomService
 import com.qxj.arouter.service.IService
 import com.qxj.arouter.utils.Author
 
@@ -75,7 +76,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     /**
-     * ARouter框架是分组管理，按需加载。解释起来就是，在编译期框架扫描了所有的注册页面／服务／字段／拦截器等，
+     * ARouter框架是分组管理，按需加载。
+     * 解释起来就是，在编译期框架扫描了所有的注册页面／服务／字段／拦截器等，
      * 那么很明显运行期不可能一股脑全部加载进来，这样就太不和谐了。所以就分组来管理，
      * ARouter在初始化的时候只会一次性地加载所有的root结点，而不会加载任何一个Group结点，
      * 这样就会极大地降低初始化时加载结点的数量。
@@ -151,12 +153,22 @@ class MainActivity : AppCompatActivity() {
      * 发现服务这个功能的特点在于，我们只需要知道接口，不需要关心接口的实现类，很好了实现了解耦
      */
     @Autowired(name = "/service/hello")//CustomService的路由
-    var service: IService? = null
+    lateinit var service1: IService
+
+    var service2: IService? = null
+
+    var service3: IService? = null
 
     //添加注解初始化自动赋值
     private fun initService() {
+        //1.自动注入
         ARouter.getInstance().inject(this)
-        service!!.sayHello(this)
+        service1.sayHello(this)
+        //获取服务的方式
+        //2.by name
+        service2 = ARouter.getInstance().navigation(IService::class.java)
+        //3.by path
+        service3 = ARouter.getInstance().build("/service/hello").navigation() as IService
     }
 
     /**

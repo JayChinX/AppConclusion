@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">WorkPolicy</string>
+    <string name="download_on_cell_description">download_on_cell_description</string>
+    <string name="download_on_cell_title">download_on_cell_title</string>
+</resources>

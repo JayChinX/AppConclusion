@@ -1,22 +1,33 @@
 package com.qxj.commonsdk
 
 import android.app.Application
+import android.util.Log
 import com.alibaba.android.arouter.launcher.ARouter
 import com.qxj.commonbase.ApplicationImpl
-import com.qxj.commonbase.BaseApplication
-import com.qxj.commonsdk.router.InitializeService
 
 class CommonSDKApp : ApplicationImpl {
+
+    private val TAG = CommonSDKApp::class.java.simpleName
+
     companion object {
         lateinit var instance: Application
             private set
     }
 
-    override fun onCreate(application: BaseApplication) {
+    override fun onCreate(application: Application) {
         instance = application
-        ARouter.openLog()//打印日志
-        ARouter.openDebug()//开启调试模式
+        if (BuildConfig.DEBUG) {
+            Log.d(TAG, "ARouter open Log and Debug")
+            ARouter.openLog()//打印日志
+            ARouter.openDebug()//开启调试模式
+        }
+        Log.d(TAG, "ARouter init ")
         ARouter.init(application)
-//        InitializeService.startActionInit(application.applicationContext, null, null)
     }
+
+    override fun onDestroy() {
+        Log.d(TAG, "ARouter destroy ")
+        ARouter.getInstance().destroy()
+    }
+
 }

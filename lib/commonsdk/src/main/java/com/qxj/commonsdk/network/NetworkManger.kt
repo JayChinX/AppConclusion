@@ -14,22 +14,23 @@ class NetworkManger private constructor() {
     private var isLogging = true
 
     companion object {
-        val instance: NetworkManger by lazy { NetworkManger() }
+        val instance: NetworkManger by lazy { NetworkManger() }//lazy 懒加载
     }
 
     init {
         val okHttpClient: OkHttpClient = if (isLogging) {
             val logging = HttpLoggingInterceptor()
             logging.level = HttpLoggingInterceptor.Level.BASIC
+            //建造者模式
             OkHttpClient.Builder()
-                    .connectTimeout(5, TimeUnit.SECONDS)
-                    .writeTimeout(10, TimeUnit.SECONDS)
-                    .readTimeout(10, TimeUnit.SECONDS)
+                    .connectTimeout(5, TimeUnit.SECONDS)//连接超时 5s
+                    .writeTimeout(10, TimeUnit.SECONDS)//写
+                    .readTimeout(10, TimeUnit.SECONDS)//读
                     /**
                      * 还有很多的用法，比如：封装一些公共的参数等等。
                      * 参考如下博客：http://blog.csdn.net/jdsjlzx/article/details/52063950
                      */
-                    .addInterceptor(logging)
+                    .addInterceptor(logging)//添加拦截器 log拦截
 //                    /**
 //                     * 统一通用header
 //                     */
@@ -62,7 +63,7 @@ class NetworkManger private constructor() {
         } else {
             OkHttpClient()
         }
-        retrofit = Retrofit.Builder()
+        retrofit = Retrofit.Builder()//建造者模式
                 .client(okHttpClient)
                 .baseUrl(Api.HOST)
                 /**
@@ -70,7 +71,7 @@ class NetworkManger private constructor() {
                  * // 使用call的情况  Call<String> checkLogin();
                  * // 使用Observable的情况  Observable<String> checkLogin();
                  */
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())//适配器模式
                 /**
                  * 这个配置是将服务器返回的json字符串转化为对象。
                  * 这个是可以自定义Converter来应对服务器返回的不同的数据的
@@ -81,7 +82,7 @@ class NetworkManger private constructor() {
     }
 
     val apiService: Api
-        get() = retrofit.create(Api::class.java)
+        get() = retrofit.create(Api::class.java)//动态代理创建请求
 
 }
 

@@ -20,7 +20,6 @@ buildscript {
     }
 }
 apply plugin: 'kotlin'
-
 allprojects {
     repositories {
         maven { url "https://jitpack.io" }
@@ -28,10 +27,7 @@ allprojects {
         google()
         mavenCentral()
     }
-    afterEvaluate {
-        tasks.withType(JavaCompile.class) {
-            options.compilerArgs << "-Xmaxerrs" << "500"
-        }
-    }
 }
 
+dependencies {
+}

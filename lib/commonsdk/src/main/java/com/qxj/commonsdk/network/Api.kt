@@ -3,6 +3,7 @@ package com.qxj.commonsdk.network
 import io.reactivex.Observable
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
+import retrofit2.Call
 import retrofit2.http.*
 
 interface Api {
@@ -40,6 +41,9 @@ interface Api {
             "User-Agent: Retrofit-Sample-App")
     @GET("user")
     fun <T> getUser(): Observable<Result<T>>
+
+    @GET("")
+    fun <T> getStudent(): Call<Result<T>>
 
     @GET("")
     fun <T> getPassword(@Header("Author") header: String): Observable<Result<T>>

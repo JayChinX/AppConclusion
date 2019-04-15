@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Modify this file to customize your launch splash screen -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@android:color/white" />
+
+    <!-- You can insert your own image assets here -->
+    <item>
+        <bitmap
+            android:gravity="center"
+            android:src="@drawable/nothing" />
+    </item>
+    <!--
+    1. layer-list 图形层叠
+        layer-list 一级属性  item 为子属性
+        PaddingTop：层叠图形距离上个图形上边的距离。
+        layer-list：
+            paddingLeft：层叠图形距离上个图形左边的距离。
+            paddingBottom：层叠图形距离上个图形下边的距离。
+            paddingRight：层叠图形距离上个图形右边的距离。
+            autoMirrored：设置图片是否需要镜像反转，当布局方向是RTL，即从右到左布局时才有用。
+            opacity：透明性，["translucent " | " opaque "| " transparent "]，分别为半透明、不透明、透明。
+            paddingMode：暂未试出效果，["stack" | " nest "]。
+            paddingStart：层叠图形距离上个图形开始位置的距离。
+            paddingEnd：层叠图形距离上个图形结束位置的距离。
+
+        item:
+            Id：item名字。
+            Drawable：指向图片资源。
+            Start：开始位置偏移距离。
+            End：结束位置偏移距离。
+            Height：图形高度。
+            Width：图形宽度。
+            Left：距离左边距离。
+            Right：距离右边距离。
+            Top：距离上边距离。
+            Bottom：距离下边距离。
+            其中animated-rotate、animated-selector、animation-list、bitmap、clip、color、inset、
+            layer-list、level-list、nine-patch、ripple、rotate、scale、selector、shape、transition为下级属性：
+            Bitmap: 详情Bitmap图形。
+            Shape:详情自定义图形。
+            Selector:详情图形选择。
+
+            <layer-list> //一级属性
+                <item> //子属性
+                    <layer-list>//下级属性
+                        <item>
+
+                        </item>
+                    </layer-list>
+                </item>
+            </layer-list>
+
+    -->
+</layer-list>

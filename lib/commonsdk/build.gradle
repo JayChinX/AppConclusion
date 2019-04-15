@@ -19,10 +19,12 @@ android {
 //                arguments = [AROUTER_MODULE_NAME: project.getName()]
 //            }
 //        }
-        kapt {
-            arguments {
-                arg("AROUTER_MODULE_NAME", project.getName())
-            }
+    }
+    kapt {
+        arguments {
+            arg("AROUTER_MODULE_NAME", project.getName())
+            arg("AROUTER_GENERATE_DOC", "enable")
+//            generateStubs = true
         }
     }
 
@@ -33,10 +35,6 @@ android {
         }
     }
 
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_7
-        targetCompatibility JavaVersion.VERSION_1_7
-    }
 }
 
 dependencies {
@@ -46,12 +44,11 @@ dependencies {
     api library.retrofit2
     api library.rxjava2
     api library.gilde
+
     api library.alibaba.arouter
     kapt library.alibaba.aroutercompiler
-    api library.dagger.dagger
-//    api library.dagger.support
-//    api library.dagger.android
-    kapt library.dagger.compiler
-//    kapt library.dagger.processor
+    //    api library.dagger.dagger
+    ////    annotationProcessor library.dagger.daggerA
+    //    kapt library.dagger.daggerC
     implementation project(path: ':commonbase')
 }

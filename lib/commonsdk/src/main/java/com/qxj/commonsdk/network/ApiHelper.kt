@@ -51,8 +51,7 @@ fun <T> ObservableSubscribeProxy<T>.subscribes(success: (T) -> Unit, failure: (I
             //失败
             failure(0)
         }
-    }
-    )
+    })
 }
 
 abstract class Response<T> : Observer<Result<T>> {
@@ -101,14 +100,14 @@ abstract class Response<T> : Observer<Result<T>> {
 
 fun <T> Observable<T>.async(withDelay: Long = 0): Observable<T> =
         this.subscribeOn(Schedulers.io())
-                .delay(withDelay, TimeUnit.MILLISECONDS)
-                .observeOn(AndroidSchedulers.mainThread())
+                .delay(withDelay, TimeUnit.MILLISECONDS)//超时参数设置
+                .observeOn(AndroidSchedulers.mainThread())//线程切换
 
 //`as`(AutoDispose.autoDisposable(AndroidLifecycleScopeProvider.from(this, Lifecycle.Event.ON_DESTROY)))
 fun <T> Observable<T>.bindLifecycle(owner: LifecycleOwner): ObservableSubscribeProxy<T> =
         this.`as`(AutoDispose
                 .autoDisposable(AndroidLifecycleScopeProvider
-                        .from(owner, Lifecycle.Event.ON_DESTROY)))
+                        .from(owner, Lifecycle.Event.ON_DESTROY)))//生命周期绑定
 
 //endregion
 

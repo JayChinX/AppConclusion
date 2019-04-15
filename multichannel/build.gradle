@@ -1,11 +1,12 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 def config = rootProject.ext.android
 def library = rootProject.ext.dep
 android {
-    compileSdkVersion config.compileSdkVersion
+    compileSdkVersion 28
 
     defaultConfig {
         applicationId "com.qxj.multichannel"
@@ -93,12 +94,18 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     testImplementation 'junit:junit:4.12'
+    //noinspection GradleCompatible
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-
     implementation library.supportv7
     implementation library.constraint
     implementation library.kotlin
+    implementation library.navigation
+    implementation library.lifecycle.lifecycle
+    kapt library.lifecycle.compiler
+    implementation library.work.work
+    implementation project(path: ':commonbase')
+    implementation project(path: ':commondata')
 }
