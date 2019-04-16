@@ -2,8 +2,8 @@ package com.qxj.conclusion.mvp.view
 
 import android.app.Activity
 import android.content.Intent
-import android.support.v4.view.PagerAdapter
-import android.support.v4.view.ViewPager
+import androidx.viewpager.widget.PagerAdapter
+import androidx.viewpager.widget.ViewPager
 import android.view.View
 import com.qxj.commonbase.mvpbase.BaseActivity
 import com.qxj.conclusion.mvp.presenter.WelcomeContract

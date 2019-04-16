@@ -3,55 +3,42 @@ package com.qxj.commonbase
 import android.app.Application
 import android.util.Log
 
-open class BaseApplication : Application() {
+abstract class BaseApplication : Application() {
     private val TAG = BaseApplication::class.java.simpleName
     override fun onCreate() {
         super.onCreate()
-        modulesApplicationInit()
+        val modulesApplicationImplPackage = registerModule()
+        modulesApplicationInit(modulesApplicationImplPackage)
     }
 
-    private fun modulesApplicationInit() {
-        for (appImpl in CommonConfig.COMMONSLIST) {
-            try {
+    abstract fun registerModule() : List<String>
+
+    private fun modulesApplicationInit(packageName: List<String>) {
+        Log.d(TAG, "modules Application Init start")
+        try {
+            for (appImpl in packageName) {
                 val appClass = Class.forName(appImpl)
                 val obj = appClass.newInstance()
                 if (obj is ApplicationImpl) {
                     obj.onCreate(this)
                 }
-            } catch (e: ClassNotFoundException) {
-                e.printStackTrace()
-            } catch (e: IllegalAccessException) {
-                e.printStackTrace()
-            } catch (e: InstantiationException) {
-                e.printStackTrace()
-            } finally {
-                Log.d(TAG, "modulesApplicationInit")
             }
-
+        } catch (e: ClassNotFoundException) {
+            e.printStackTrace()
+            Log.e(TAG, " ${e.message}")
+        } catch (e: IllegalAccessException) {
+            e.printStackTrace()
+        } catch (e: InstantiationException) {
+            e.printStackTrace()
+        } finally {
+            Log.d(TAG, "modules Application Init end")
         }
+
+
     }
 
     override fun onTerminate() {
         super.onTerminate()
-        for (appImpl in CommonConfig.COMMONSLIST) {
-            try {
-                val appClass = Class.forName(appImpl)
-                val obj = appClass.newInstance()
-                if (obj is ApplicationImpl) {
-                    obj.onDestroy()
-                }
-            } catch (e: ClassNotFoundException) {
-                e.printStackTrace()
-            } catch (e: IllegalAccessException) {
-                e.printStackTrace()
-            } catch (e: InstantiationException) {
-                e.printStackTrace()
-            } finally {
-                Log.d(TAG, "modulesApplicationInit")
-            }
 
-        }
     }
-
-
 }

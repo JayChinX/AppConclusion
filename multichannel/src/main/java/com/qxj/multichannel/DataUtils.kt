@@ -1,7 +1,6 @@
 package com.qxj.multichannel
 
-import com.qxj.commondata.paging.Student
-import com.qxj.commondata.room.User
+import com.qxj.multichannel.paging.Student
 import java.time.LocalDate
 
 object DataUtils {

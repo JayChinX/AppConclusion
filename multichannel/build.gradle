@@ -14,7 +14,7 @@ android {
         targetSdkVersion config.targetSdkVersion
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
     }
 
@@ -91,14 +91,18 @@ android {
         }
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     testImplementation 'junit:junit:4.12'
     //noinspection GradleCompatible
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
     implementation library.supportv7
     implementation library.constraint
     implementation library.kotlin
@@ -106,6 +110,10 @@ dependencies {
     implementation library.lifecycle.lifecycle
     kapt library.lifecycle.compiler
     implementation library.work.work
+    implementation library.room.room
+    kapt library.room.compiler
+    implementation library.paging
     implementation project(path: ':commonbase')
     implementation project(path: ':commondata')
+    implementation project(path: ':commonsdk')
 }

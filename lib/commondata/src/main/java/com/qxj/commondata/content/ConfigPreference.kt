@@ -12,7 +12,7 @@ class ConfigPreference<T> (val name: String, private val default: T) {
     private val TAG = ConfigPreference::class.java.simpleName
 
     private val prefs: SharedPreferences by lazy {
-        CommonDataApp.instance.applicationContext.getSharedPreferences(name, Context.MODE_PRIVATE)
+        CommonDataApp.INSTANCE.applicationContext.getSharedPreferences(name, Context.MODE_PRIVATE)
     }
     
     operator fun getValue(thisRef: Any?, property: KProperty<*>): T {

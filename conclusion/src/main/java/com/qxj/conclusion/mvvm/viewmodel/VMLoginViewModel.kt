@@ -1,7 +1,7 @@
 package com.qxj.conclusion.mvvm.viewmodel
 
-import android.arch.lifecycle.LifecycleOwner
-import android.databinding.ObservableBoolean
+import androidx.lifecycle.LifecycleOwner
+import androidx.databinding.ObservableBoolean
 import com.qxj.conclusion.mvvm.model.User
 import com.qxj.conclusion.mvvm.model.VMLoginModel
 

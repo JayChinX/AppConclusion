@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'//kapt3
+apply plugin: 'kotlin-kapt'
 
 def config = rootProject.ext.android
 def library = rootProject.ext.dep
@@ -14,7 +14,7 @@ android {
         applicationId 'com.qxj.live'
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 //        javaCompileOptions {
 //            annotationProcessorOptions {
 //                arguments = [AROUTER_MODULE_NAME: project.getName()]
@@ -25,9 +25,7 @@ android {
     kapt {
         arguments {
             arg("AROUTER_MODULE_NAME", project.getName())
-            arg("AROUTER_GENERATE_DOC", "enable")
         }
-//        generateStubs = true
     }
 
     buildTypes {
@@ -38,8 +36,8 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_7
-        targetCompatibility JavaVersion.VERSION_1_7
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
@@ -49,12 +47,13 @@ dependencies {
     implementation library.constraint
     implementation library.kotlin
     implementation library.kotlinx.coroutines
+    implementation library.alibaba.arouter
     kapt library.alibaba.aroutercompiler
     implementation project(path: ':commonbase')
     implementation project(path: ':commonsdk')
     implementation project(path: ':commondata')
     testImplementation 'junit:junit:4.12'
     //noinspection GradleCompatible
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
 }

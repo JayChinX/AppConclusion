@@ -31,7 +31,7 @@ import android.os.PersistableBundle;
 import android.os.Process;
 import android.os.UserHandle;
 import android.os.UserManager;
-import android.support.v4.os.BuildCompat;
+import androidx.core.os.BuildCompat;
 import android.util.Log;
 import android.widget.Toast;
 import java.io.BufferedReader;

@@ -1,6 +1,6 @@
 package com.qxj.conclusion.mvp.presenter
 
-import android.arch.lifecycle.LifecycleOwner
+import androidx.lifecycle.LifecycleOwner
 import android.text.TextUtils
 import com.qxj.commonsdk.LogTool
 import com.qxj.commonbase.mvpbase.IPresenter

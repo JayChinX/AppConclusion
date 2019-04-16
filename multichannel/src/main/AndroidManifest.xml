@@ -2,9 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.qxj.multichannel">
 
-    <!-- ��洢дȨ�ޣ������﷨��Ҫ�õ���Ȩ�� -->
+    <!-- 外存储写权限，构建语法需要用到此权限 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <!-- ��洢��Ȩ�ޣ������﷨��Ҫ�õ���Ȩ�� -->
+    <!-- 外存储读权限，构建语法需要用到此权限 -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application

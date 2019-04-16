@@ -1,6 +1,6 @@
 package com.qxj.conclusion.mvvm.view
 
-import android.databinding.Observable
+import androidx.databinding.Observable
 import android.util.Log
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route

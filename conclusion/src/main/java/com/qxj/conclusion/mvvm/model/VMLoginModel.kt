@@ -1,6 +1,6 @@
 package com.qxj.conclusion.mvvm.model
 
-import android.arch.lifecycle.LifecycleOwner
+import androidx.lifecycle.LifecycleOwner
 import com.google.gson.Gson
 import com.qxj.commonsdk.network.*
 

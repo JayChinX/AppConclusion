@@ -1,19 +1,19 @@
 package com.qxj.multichannel.navigation
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModel
-import android.arch.lifecycle.ViewModelProvider
-import android.arch.lifecycle.ViewModelProviders
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import android.graphics.Color
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
-import com.qxj.commondata.paging.*
 import com.qxj.multichannel.R
+import com.qxj.multichannel.paging.*
 import kotlinx.android.synthetic.main.fragment_plus_one.*
 
 class PlusOneFragment : Fragment() {

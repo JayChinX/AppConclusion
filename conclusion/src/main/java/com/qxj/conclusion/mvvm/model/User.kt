@@ -1,7 +1,7 @@
 package com.qxj.conclusion.mvvm.model
 
-import android.databinding.ObservableField
-import android.databinding.ObservableInt
+import androidx.databinding.ObservableField
+import androidx.databinding.ObservableInt
 
 class User constructor(var name: ObservableField<String>, var age: ObservableInt, var sex: ObservableInt, var msg: ObservableField<String>) {
     constructor(name: String = "qxj", age: Int = 0, sex: Int = 1, msg: String = "good")

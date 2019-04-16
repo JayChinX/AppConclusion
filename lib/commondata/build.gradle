@@ -14,22 +14,13 @@ android {
         targetSdkVersion config.targetSdkVersion
         versionCode 1
         versionName "1.0"
-//        javaCompileOptions {
-//            annotationProcessorOptions {
-//                arguments = ["room.schemaLocation":
-//                                     "$projectDir/schemas".toString()]
+//        kapt {
+//            arguments {
+//                arg("room.schemaLocation", "$projectDir/schemas".toString())
 //            }
 //        }
 
-    }
 
-    kapt {
-        arguments {
-//            arg("AROUTER_MODULE_NAME", project.getName())
-//            arg("AROUTER_GENERATE_DOC", "enable")
-            arg("room.schemaLocation", "$projectDir/schemas")
-        }
-//        generateStubs = true
     }
 
     buildTypes {
@@ -45,14 +36,7 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation library.supportv7
     implementation library.kotlin
-    implementation library.room.room
-    kapt library.room.compiler
-    implementation library.room.rxjava
-    implementation library.room.guava
-    testImplementation library.room.test
-    api library.paging
     implementation project(path: ':commonbase')
-    implementation project(path: ':commonsdk')
 }
 repositories {
     mavenCentral()

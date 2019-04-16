@@ -1,6 +1,6 @@
 package com.qxj.commonbase.mvpbase
 
-import android.arch.lifecycle.LifecycleOwner
+import androidx.lifecycle.LifecycleOwner
 import android.content.Intent
 import java.lang.ref.SoftReference
 

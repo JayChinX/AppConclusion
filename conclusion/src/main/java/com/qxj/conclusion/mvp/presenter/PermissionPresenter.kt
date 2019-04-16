@@ -1,6 +1,6 @@
 package com.qxj.conclusion.mvp.presenter
 
-import android.arch.lifecycle.LifecycleOwner
+import androidx.lifecycle.LifecycleOwner
 import android.content.Context
 import com.qxj.conclusion.AppConclusionActivity
 import com.qxj.conclusion.util.PermissionUtil

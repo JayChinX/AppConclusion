@@ -1,4 +1,4 @@
-include ':app', ':conclusion', ':commonbase', ':commondata', ':commonsdk', ':hce', ':arouter', ':multichannel'
+include ':app', ':conclusion', ':commonbase', ':commondata', ':commonsdk', ':welcome', ':multichannel'
 project(':commonbase').projectDir = new File('lib/commonbase')
 project(':commondata').projectDir = new File('lib/commondata')
 project(':commonsdk').projectDir = new File('lib/commonsdk')

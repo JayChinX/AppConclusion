@@ -13,4 +13,8 @@ class App : BaseApplication() {
         super.onCreate()
         instance = this
     }
+
+    override fun registerModule(): List<String> {
+        return emptyList()
+    }
 }

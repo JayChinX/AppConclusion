@@ -29,7 +29,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.PermissionInfo;
 import android.os.Build;
 import android.os.PersistableBundle;
-import android.support.v4.os.BuildCompat;
+import androidx.core.os.BuildCompat;
 import android.util.Log;
 import java.util.ArrayList;
 import java.util.Collections;

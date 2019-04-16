@@ -30,7 +30,7 @@ import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
 import android.os.UserHandle;
 import android.os.UserManager;
-import android.support.v4.os.BuildCompat;
+import androidx.core.os.BuildCompat;
 import android.text.format.DateUtils;
 import android.util.Log;
 import android.widget.ImageView;

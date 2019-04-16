@@ -1,13 +1,12 @@
 package com.qxj.multichannel
 
-import android.arch.lifecycle.Observer
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.navigation.Navigation.findNavController
 import androidx.work.*
 import com.qxj.multichannel.work.*
-import java.time.LocalDate
 import java.util.concurrent.TimeUnit
 
 class MainActivity : AppCompatActivity() {

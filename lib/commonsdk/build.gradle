@@ -1,7 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-kapt'//kapt3
+apply plugin: 'kotlin-kapt'
 
 def config = rootProject.ext.android
 def library = rootProject.ext.dep
@@ -14,18 +14,6 @@ android {
         targetSdkVersion config.targetSdkVersion
         versionCode 1
         versionName "1.0"
-//        javaCompileOptions {
-//            annotationProcessorOptions {
-//                arguments = [AROUTER_MODULE_NAME: project.getName()]
-//            }
-//        }
-    }
-    kapt {
-        arguments {
-            arg("AROUTER_MODULE_NAME", project.getName())
-            arg("AROUTER_GENERATE_DOC", "enable")
-//            generateStubs = true
-        }
     }
 
     buildTypes {
@@ -44,11 +32,5 @@ dependencies {
     api library.retrofit2
     api library.rxjava2
     api library.gilde
-
-    api library.alibaba.arouter
-    kapt library.alibaba.aroutercompiler
-    //    api library.dagger.dagger
-    ////    annotationProcessor library.dagger.daggerA
-    //    kapt library.dagger.daggerC
     implementation project(path: ':commonbase')
 }

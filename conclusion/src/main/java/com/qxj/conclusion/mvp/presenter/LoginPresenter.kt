@@ -1,7 +1,7 @@
 package com.qxj.conclusion.mvp.presenter
 
 import android.annotation.SuppressLint
-import android.arch.lifecycle.LifecycleOwner
+import androidx.lifecycle.LifecycleOwner
 import android.content.Intent
 import android.os.AsyncTask
 import android.util.Log

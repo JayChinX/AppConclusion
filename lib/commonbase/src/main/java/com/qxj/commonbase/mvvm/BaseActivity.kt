@@ -1,9 +1,9 @@
 package com.qxj.commonbase.mvvm
 
-import android.databinding.DataBindingUtil
-import android.databinding.ViewDataBinding
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.view.View
 
 abstract class BaseActivity<VB: ViewDataBinding>: AppCompatActivity(), Presenter {
@@ -12,7 +12,7 @@ abstract class BaseActivity<VB: ViewDataBinding>: AppCompatActivity(), Presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView<VB>(this, getLayoutId())
+        binding = DataBindingUtil.setContentView(this, getLayoutId())
         initView()
     }
 

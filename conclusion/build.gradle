@@ -15,7 +15,7 @@ android {
         versionCode config.versionCode
         versionName config.versionName
         multiDexEnabled true
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         //ARouter 在宿主 和 module 模块中分别声明
 //        javaCompileOptions {
 //            annotationProcessorOptions {
@@ -24,13 +24,11 @@ android {
 //        }
 
     }
-    kapt {
-        arguments {
-            arg("AROUTER_MODULE_NAME", project.getName())
-            arg("AROUTER_GENERATE_DOC", "enable")
-        }
-//        generateStubs = true
-    }
+//    kapt {
+//        arguments {
+//            arg("AROUTER_MODULE_NAME", project.getName())
+//        }
+//    }
     dataBinding.enabled = true
     buildTypes {
         release {
@@ -38,36 +36,35 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+}
 
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     testImplementation 'junit:junit:4.12'
     //noinspection GradleCompatible
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
     implementation library.supportv7
     implementation library.constraint
     implementation library.kotlin
     implementation library.kotlinx.coroutines
-
     /**
      * ARouter
      * ARouter 在宿主 app 和 module 模块中分别声明
-     *         javaCompileOptions {
-     *              annotationProcessorOptions {
-     *                  arguments = [AROUTER_MODULE_NAME: project.getName()]
-     *                  }
-     *         }
-     * 在宿主 app 和 module 模块中分别依赖
+     *         javaCompileOptions {*              annotationProcessorOptions {*                  arguments = [AROUTER_MODULE_NAME: project.getName()]
+     *}*}* 在宿主 app 和 module 模块中分别依赖
      * arouter-api的作用是引入arouter，只需要在app和baselibrary中引入，
      * 而arouter-compiler是通过arouter依赖注入生成一些额外的的代码，
      * 必须在每个gradle中引入，否则没法生成依赖的代码，导致跳转失败；
      * javaCompileOptions也是每个必须的，否则编译失败
      */
     kapt library.alibaba.aroutercompiler
-
     implementation project(path: ':commonbase')
     implementation project(path: ':commonsdk')
     implementation project(path: ':commondata')
