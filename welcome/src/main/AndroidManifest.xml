@@ -1,14 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.qxj.welcome" >
     <!-- To access Google+ APIs: -->
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application>
+        <activity
+            android:name=".activity.Home2Activity"
+            android:label="@string/title_activity_home2">
 
-    <activity android:name=".activity.SecondActivity" />
-    <activity android:name=".activity.CustomGroupActivity" />
-    <activity android:name=".web.URLReceiveActivity">
-        <intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.HomeActivity"
+            android:label="@string/title_activity_home"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity android:name=".activity.SecondActivity" />
+        <activity android:name=".activity.CustomGroupActivity" />
+        <activity android:name=".web.URLReceiveActivity">
+            <intent-filter>
 
             <!-- host、scheme 字段，点击url会根据这两个字段调起本地的Activity -->
             <data
