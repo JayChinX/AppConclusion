@@ -7,14 +7,14 @@ import androidx.lifecycle.ViewModelProvider
 import com.qxj.welcome.data.HomeRepository
 
 class HomeViewModel internal constructor(
-        homeRepository: HomeRepository
+        repository: HomeRepository
 ) : ViewModel() {
 
     private val TAG = HomeViewModel::class.java.simpleName
 
-    private val defaultPager = homeRepository.getDefaultFragment()
-    val fragments = homeRepository.getFragments()
-    private val fragmentNames = homeRepository.getFragmentNames()
+    private val defaultPager = repository.getDefaultFragment()
+    val fragments = repository.getFragments()
+    private val fragmentNames = repository.getFragmentNames()
 
     var pagerItem: MutableLiveData<Int> = MutableLiveData(defaultPager)
     var title = fragmentNames[defaultPager]

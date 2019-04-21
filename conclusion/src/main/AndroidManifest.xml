@@ -35,7 +35,7 @@
         <activity
             android:name=".mvp.view.PermissionActivity"
             android:configChanges="orientation|keyboardHidden|screenSize" />
-        <activity android:name=".mvvm.view.MLoginActivity" />
+        <!--<activity android:name=".mvvm.view.MLoginActivity" />-->
         <activity
             android:name=".LauncherFlutterActivity"
             android:theme="@style/AppTheme.Flutter"></activity>

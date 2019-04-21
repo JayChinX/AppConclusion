@@ -1,9 +1,4 @@
 ext {
-    apply plugin: 'kotlin'
-//    apply plugin: 'com.android.application'
-//    apply plugin: 'kotlin-android'
-//    apply plugin: 'kotlin-android-extensions'
-
     android = [
             compileSdkVersion: 28,
             applicationId    : "com.qxj.conclusion",
@@ -118,8 +113,7 @@ ext {
                     compiler : 'com.google.dagger:dagger-compiler:2.21',
                     processor: 'com.google.dagger:dagger-android-processor:2.21'
 
-            ],
-            databinding  : 'com.android.databinding:compiler:2.3.0',
+            ]
     ]
 }
 

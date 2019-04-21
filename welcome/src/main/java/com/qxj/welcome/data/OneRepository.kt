@@ -2,7 +2,7 @@ package com.qxj.welcome.data
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations.switchMap
+import androidx.lifecycle.Transformations
 import androidx.paging.DataSource
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
@@ -12,7 +12,7 @@ class OneRepository(private val executor: Executor) : Repository {
 
     private val TAG = OneRepository::class.java.simpleName
 
-    override fun <T> getDataList(pageSize: Int): PageListing<T> {
+    override fun <T> getDataList(pageSize: Int): Listing<T> {
         /**
          * 数据工厂
          */
@@ -46,19 +46,16 @@ class OneRepository(private val executor: Executor) : Repository {
                 .build()
 
         /**
-         * pagedList
+         * dataList
          */
         Log.d(TAG, "初始化数据观察者")
         val pagedList = LivePagedListBuilder(sourceFactory, pagedListConfig)
                 .setFetchExecutor(executor)
                 .build()
-        Log.d(TAG, "初始化刷新状态观察者")
-        val refreshState = switchMap(sourceLiveData) {
-            it.initialLoad
-        }
 
-        return PageListing<T>(pagedList = pagedList,
-                networkState = switchMap(sourceLiveData) {
+        return Listing(dataList = pagedList,
+                networkState = Transformations.switchMap(sourceLiveData) {
+                    //网络状态观察者
                     it.networkState
                 },
                 retry = {
@@ -68,7 +65,10 @@ class OneRepository(private val executor: Executor) : Repository {
                     //刷新方法的传递和执行者
                     sourceLiveData.value?.invalidate()
                 },
-                refreshState = refreshState
+                refreshState = Transformations.switchMap(sourceLiveData) {
+                    Log.d(TAG, "刷新状态观察者 刷新时重新初始化")
+                    it.initialLoad
+                }
         )
     }
 }

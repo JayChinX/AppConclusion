@@ -1,10 +1,13 @@
 apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
-def config = rootProject.ext.android
-def library = rootProject.ext.dep
+apply {
+    from "${rootDir.path}/config.gradle"
+}
+def config = android
+def library = dep
 
 android {
     compileSdkVersion config.compileSdkVersion
@@ -14,13 +17,6 @@ android {
         targetSdkVersion config.targetSdkVersion
         versionCode 1
         versionName "1.0"
-//        kapt {
-//            arguments {
-//                arg("room.schemaLocation", "$projectDir/schemas".toString())
-//            }
-//        }
-
-
     }
 
     buildTypes {

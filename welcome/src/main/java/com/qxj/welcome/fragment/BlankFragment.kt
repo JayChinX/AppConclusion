@@ -9,15 +9,10 @@ import android.view.ViewGroup
 import com.alibaba.android.arouter.facade.annotation.Route
 
 import com.qxj.welcome.R
+import com.qxj.welcome.viewmodels.BlankViewModel
 
 @Route(path = "/home/fragment/BlankFragment")
 class BlankFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = BlankFragment()
-    }
-
-    private lateinit var viewModel: BlankViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -26,8 +21,11 @@ class BlankFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(BlankViewModel::class.java)
-        // TODO: Use the ViewModel
+
+    }
+
+    private val viewModel by lazy(LazyThreadSafetyMode.NONE) {
+        ViewModelProviders.of(this).get(BlankViewModel::class.java)
     }
 
 }

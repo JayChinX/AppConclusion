@@ -29,7 +29,7 @@ android {
 //            arg("AROUTER_MODULE_NAME", project.getName())
 //        }
 //    }
-    dataBinding.enabled = true
+//    dataBinding.enabled = true
     buildTypes {
         release {
             minifyEnabled false

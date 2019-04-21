@@ -1,10 +1,13 @@
 apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
-def config = rootProject.ext.android
-def library = rootProject.ext.dep
+apply {
+    from "${rootDir.path}/config.gradle"
+}
+def config = android
+def library = dep
 
 android {
     compileSdkVersion config.compileSdkVersion
@@ -15,9 +18,7 @@ android {
         versionCode 1
         versionName "1.0"
     }
-    dataBinding {
-        enabled = true
-    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -29,7 +30,6 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation library.supportv4
     implementation library.supportv7
     implementation library.kotlin
 }

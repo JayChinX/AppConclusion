@@ -1,4 +1,4 @@
-package com.qxj.welcome.fragment
+package com.qxj.welcome.viewmodels
 
 import androidx.lifecycle.ViewModel;
 
