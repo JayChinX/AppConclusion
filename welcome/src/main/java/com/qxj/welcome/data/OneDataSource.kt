@@ -3,7 +3,7 @@ package com.qxj.welcome.data
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.ItemKeyedDataSource
-import com.qxj.welcome.viewmodels.OneData
+import com.qxj.commonbase.data.Resource
 import java.util.concurrent.Executor
 
 /**
@@ -73,6 +73,7 @@ class OneDataSource<T>(private val retryExecutor: Executor) : ItemKeyedDataSourc
             val position = startPosition + i
             dataList.add(OneData(position, "数据$position") as T)
         }
+        Thread.sleep(1000)//模拟延时
         return dataList
     }
 
@@ -84,7 +85,7 @@ class OneDataSource<T>(private val retryExecutor: Executor) : ItemKeyedDataSourc
         //状态变化 正在请求网络
         networkState.postValue(Resource.loading(null))
 
-        var list = emptyList<T>()
+        val list: List<T>
         if (startPosition < 40) {
             Log.d(TAG, "loadAfter 正在 loadData")
             list = loadData(startPosition, params.requestedLoadSize)

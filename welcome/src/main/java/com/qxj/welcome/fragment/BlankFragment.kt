@@ -9,23 +9,28 @@ import android.view.ViewGroup
 import com.alibaba.android.arouter.facade.annotation.Route
 
 import com.qxj.welcome.R
+import com.qxj.welcome.base.BaseFragment
+import com.qxj.welcome.utilities.InjectorUtils
 import com.qxj.welcome.viewmodels.BlankViewModel
 
 @Route(path = "/home/fragment/BlankFragment")
-class BlankFragment : Fragment() {
+class BlankFragment : BaseFragment() {
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.blank_fragment, container, false)
-    }
+    override fun getLayoutId(): Int = R.layout.blank_fragment
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun initView() {
 
     }
 
     private val viewModel by lazy(LazyThreadSafetyMode.NONE) {
-        ViewModelProviders.of(this).get(BlankViewModel::class.java)
+        val factory = InjectorUtils.provideBlankViewModelFactory()
+        ViewModelProviders.of(this, factory)
+                .get(BlankViewModel::class.java)
+    }
+
+    override fun subscribeUi() {
+
+
     }
 
 }

@@ -8,8 +8,9 @@ import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.facade.callback.NavCallback
 import com.alibaba.android.arouter.launcher.ARouter
+import com.qxj.welcome.base.BaseActivity
 import com.qxj.welcome.service.IService
-import com.qxj.welcome.utils.Author
+import com.qxj.welcome.data.Author
 
 /**
  * 参考文献
@@ -43,13 +44,16 @@ import com.qxj.welcome.utils.Author
 //path 路径至少需要两级 /xx/xx 其中com为分组标识  后面的为类标识
 @Route(path = "/home/activity/MainActivity")
 class MainActivity : BaseActivity() {
+    override fun subscribeUi() {
+
+    }
 
     private val TAG = MainActivity::class.java.simpleName
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+    override fun initView() {
     }
+
+    override fun getLayoutId(): Int = R.layout.activity_main
 
 
     private fun toSecondActivity() {
@@ -109,7 +113,7 @@ class MainActivity : BaseActivity() {
 
     //自定义分组
     private fun toCustomGroupActivity() {
-        ARouter.getInstance().build("/arouter/activity/CustomGroupActivity", "customGroup").navigation()
+        ARouter.getInstance().build("/arouter/activity/CustomGroupActivity").navigation()
     }
 
     /**
@@ -168,7 +172,7 @@ class MainActivity : BaseActivity() {
     }
 
     /**
-     * 拦截器 ShareInterceptor
+     * 拦截器 InterceptorImpl
      *
      * ARouter自带的拦截器功能，每个组件都需要定义一个拦截器，当组件卸载之后需要拦截住该组件的跳转入口。
      *

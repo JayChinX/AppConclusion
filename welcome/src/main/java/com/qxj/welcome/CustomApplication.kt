@@ -6,6 +6,7 @@ import com.qxj.commonbase.BaseApplication
 import com.qxj.commonbase.CommonBaseApp
 import com.qxj.commondata.CommonDataApp
 import com.qxj.commonsdk.CommonSDKApp
+import com.qxj.welcome.base.AppWelcome
 
 class CustomApplication : BaseApplication() {
 

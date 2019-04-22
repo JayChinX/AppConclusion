@@ -1,11 +1,9 @@
 package com.qxj.welcome.activity
 
-import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -19,7 +17,9 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
+import com.qxj.welcome.base.BaseActivity
 import com.qxj.welcome.R
+import com.qxj.welcome.data.Garden
 import com.qxj.welcome.utilities.InjectorUtils
 import com.qxj.welcome.viewmodels.HomeViewModel
 import kotlinx.android.synthetic.main.activity_home.*
@@ -27,62 +27,62 @@ import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.content_home.*
 
 @Route(path = "/home/activity/HomeActivity", group = "home")
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : BaseActivity() {
 
     private val TAG = HomeActivity::class.java.simpleName
 
-    private val onNavigationItemSelectedListener
-            = NavigationView.OnNavigationItemSelectedListener { item ->
-        when (item.itemId) {
-            R.id.nav_camera -> {
-                // Handle the camera action
-            }
-            R.id.nav_gallery -> {
+    //侧滑菜单
+    private val onNavigationItemSelectedListener = NavigationView
+            .OnNavigationItemSelectedListener { item ->
+                when (item.itemId) {
+                    R.id.nav_camera -> {
+                        // Handle the camera action
+                    }
+                    R.id.nav_gallery -> {
 
-            }
-            R.id.nav_slideshow -> {
+                    }
+                    R.id.nav_slideshow -> {
 
-            }
-            R.id.nav_manage -> {
+                    }
+                    R.id.nav_manage -> {
 
-            }
-            R.id.nav_share -> {
+                    }
+                    R.id.nav_share -> {
 
-            }
-            R.id.nav_send -> {
+                    }
+                    R.id.nav_send -> {
 
+                    }
+                }
+                drawer_layout.closeDrawer(GravityCompat.START)
+                true
             }
-        }
 
-        drawer_layout.closeDrawer(GravityCompat.START)
-         true
-    }
+    //底部导航
+    private val mOnNavigationItemSelectedListener = BottomNavigationView
+            .OnNavigationItemSelectedListener { item ->
+                when (item.itemId) {
+                    R.id.navigation_home -> {
+                        pagerChange(0)
+                        true
+                    }
+                    R.id.navigation_dashboard -> {
+                        pagerChange(1)
+                        true
+                    }
+                    R.id.navigation_notifications -> {
+                        pagerChange(2)
+                        true
+                    }
+                    R.id.navigation_find -> {
+                        pagerChange(3)
+                        true
+                    }
+                    else -> false
+                }
+            }
 
-    private val mOnNavigationItemSelectedListener
-            = BottomNavigationView.OnNavigationItemSelectedListener { item ->
-        when (item.itemId) {
-            R.id.navigation_home -> {
-                viewModel.pagerChange(0)
-                return@OnNavigationItemSelectedListener true
-            }
-            R.id.navigation_dashboard -> {
-                viewModel.pagerChange( 1)
-                return@OnNavigationItemSelectedListener true
-            }
-            R.id.navigation_notifications -> {
-                viewModel.pagerChange( 2)
-                return@OnNavigationItemSelectedListener true
-            }
-            R.id.navigation_find -> {
-                viewModel.pagerChange( 3)
-                return@OnNavigationItemSelectedListener true
-            }
-        }
-        false
-    }
-
-    private val mOnPageChangeListener
-            = object : ViewPager.OnPageChangeListener {
+    private val mOnPageChangeListener = object : ViewPager.OnPageChangeListener {
         override fun onPageScrollStateChanged(state: Int) {
         }
 
@@ -90,49 +90,48 @@ class HomeActivity : AppCompatActivity() {
         }
 
         override fun onPageSelected(position: Int) {
-            viewModel.pagerChange(position)
+            pagerChange(position)
         }
 
     }
 
-    private lateinit var viewModel: HomeViewModel
+    override fun getLayoutId(): Int = R.layout.activity_home
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
+    override fun initView() {
         setSupportActionBar(toolbar)
-
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
-        }
-        nav_view.setNavigationItemSelectedListener(onNavigationItemSelectedListener)
-        viewPager.addOnPageChangeListener(mOnPageChangeListener)
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
-
-        subscribeUi()
+        supportActionBar?.setDisplayShowTitleEnabled(false)
     }
 
-    private fun subscribeUi() {
-        val factory = InjectorUtils.provideHomeViewModelFactory(this)
-        viewModel = ViewModelProviders.of(this, factory).get(HomeViewModel::class.java)
+    private val viewModel by lazy(LazyThreadSafetyMode.NONE) {
+        val factory = InjectorUtils.provideHomeViewModelFactory()
+        ViewModelProviders.of(this, factory)
+                .get(HomeViewModel::class.java)
+    }
+
+    override fun subscribeUi() {
 
         drawer_layout.let {
-            val toggle = ActionBarDrawerToggle(
-                    this,
-                    it,
-                    toolbar,
+            val toggle = ActionBarDrawerToggle(this, it, toolbar,
                     R.string.navigation_drawer_open,
                     R.string.navigation_drawer_close)
             it.addDrawerListener(toggle)
             toggle.syncState()
         }
-        viewPager.adapter = FragmentPagerAdapter(supportFragmentManager,
-                *viewModel.fragments.toTypedArray())
 
-        viewModel.pagerItem.observe(this, Observer { position ->
+        viewModel.posts.observe(this, Observer {
+            viewPager.adapter = FragmentPagerAdapter(supportFragmentManager,
+                    *it.toTypedArray())
+        })
+
+
+        viewModel.title.observe(this, Observer {
+            Log.d(TAG, "当前在$it 页面")
+            title_name.text = it
+        })
+
+        viewModel.pager.observe(this, Observer { position ->
             if (this.lifecycle.currentState == Lifecycle.State.STARTED) {
-                Log.d(TAG, "正在初始化 pagerItem" + this.lifecycle.currentState)
+                Log.d(TAG, "viewPager pagerItem 默认页 $position")
                 viewPager.currentItem = position
                 navigation.selectedItemId = navigation.menu.getItem(position).itemId
             } else {
@@ -144,12 +143,23 @@ class HomeActivity : AppCompatActivity() {
                     navigation.menu.getItem(position).isChecked = true
                 }
             }
-            toolbar.title = viewModel.title
-            Log.d(TAG, "当前在$position -> ${viewModel.title} 页面")
 
         })
 
+        viewModel.showData()
 
+
+        fab.setOnClickListener { view ->
+            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                    .setAction("Action", null).show()
+        }
+        nav_view.setNavigationItemSelectedListener(onNavigationItemSelectedListener)
+        viewPager.addOnPageChangeListener(mOnPageChangeListener)
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+    }
+
+    private fun pagerChange(position: Int) {
+        viewModel.pagerChange(position)
     }
 
     override fun onBackPressed() {
@@ -171,15 +181,18 @@ class HomeActivity : AppCompatActivity() {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
-            R.id.action_settings -> true
+            R.id.action_settings -> {
+                viewModel.toOtherActivity()
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }
 
     internal class FragmentPagerAdapter(fm: FragmentManager,
-                                        private vararg var fragments: Fragment)
+                                        private vararg var fragments: Garden)
         : FragmentStatePagerAdapter(fm) {
-        override fun getItem(position: Int): Fragment = fragments[position]
+        override fun getItem(position: Int): Fragment = fragments[position].fragment
 
         override fun getItemPosition(`object`: Any): Int = PagerAdapter.POSITION_NONE
 

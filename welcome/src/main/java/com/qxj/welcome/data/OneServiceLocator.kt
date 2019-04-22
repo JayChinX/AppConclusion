@@ -1,5 +1,7 @@
 package com.qxj.welcome.data
 
+import com.qxj.commonbase.mvvm.Repository
+import com.qxj.commonbase.mvvm.ServiceLocator
 import java.util.concurrent.Executor
 import java.util.concurrent.Executors
 

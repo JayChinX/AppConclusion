@@ -6,6 +6,8 @@ import androidx.lifecycle.Transformations
 import androidx.paging.DataSource
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
+import com.qxj.commonbase.data.Listing
+import com.qxj.commonbase.mvvm.Repository
 import java.util.concurrent.Executor
 
 class OneRepository(private val executor: Executor) : Repository {

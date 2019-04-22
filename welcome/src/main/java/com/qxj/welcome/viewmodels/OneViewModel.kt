@@ -4,7 +4,8 @@ import android.app.Application
 import android.util.Log
 import androidx.lifecycle.*
 import androidx.paging.PagedList
-import com.qxj.welcome.data.Repository
+import com.qxj.commonbase.mvvm.Repository
+import com.qxj.welcome.data.OneData
 
 class OneViewModel(app: Application, repository: Repository) : AndroidViewModel(app) {
 
@@ -33,7 +34,7 @@ class OneViewModel(app: Application, repository: Repository) : AndroidViewModel(
     //            @NonNull final Function<X, Y> mapFunction)//装换的函数
     private val repoResult = Transformations.map(data) {
         Log.d(TAG, "repository.getDataList")
-        repository.getDataList<Data>(20)
+        repository.getDataList<OneData>(20)
     }
 
 
@@ -42,7 +43,7 @@ class OneViewModel(app: Application, repository: Repository) : AndroidViewModel(
     //***不同的是，传递给它的函数必须返回一个LiveData对象
     @Suppress("UNCHECKED_CAST")
     val posts = Transformations.switchMap(repoResult) {
-        it.dataList as LiveData<PagedList<Data>>
+        it.dataList as LiveData<PagedList<OneData>>
     }
     //从 Listing 中分离出 具体的网络请求状态 数据观察者
     val networkState = Transformations.switchMap(repoResult) {
@@ -60,10 +61,8 @@ class OneViewModel(app: Application, repository: Repository) : AndroidViewModel(
     }
 
     fun showData(subreddit: String): Boolean {
-        //只加载一次某一板块
-        Log.d(TAG, "加载 ${data.value} $subreddit")
         if (data.value == subreddit) return false
-        Log.d(TAG, "开始加载 ${data.value} $subreddit")
+        Log.d(TAG, "开始加载 $subreddit 的数据")
         //通知data 数据变化 从这里出发 repoResult的一系列活动
         data.value = subreddit
         return true
@@ -78,20 +77,3 @@ class OneViewModel(app: Application, repository: Repository) : AndroidViewModel(
 
 }
 
-class OneViewModelFactory constructor(
-        private val app: Application,
-        private val repository: Repository
-) : ViewModelProvider.NewInstanceFactory() {
-
-    @Suppress("UNCHECKED_CAST")
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-
-        return OneViewModel(app, repository) as T
-    }
-}
-
-data class OneData(override var id: Int, var name: String) : Data()
-
-abstract class Data {
-    abstract var id: Int
-}

@@ -187,7 +187,7 @@ object FileUtils {
             inp.close()
             return null
         }
-        bytes = inp.readBytes(length)
+        bytes = inp.readBytes()
 
         inp.close()
         return bytes

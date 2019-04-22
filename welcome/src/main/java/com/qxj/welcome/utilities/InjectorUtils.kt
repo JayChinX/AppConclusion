@@ -1,33 +1,46 @@
 package com.qxj.welcome.utilities
 
-import android.content.Context
-import com.qxj.welcome.AppWelcome
-import com.qxj.welcome.CustomApplication
+import com.qxj.commonbase.mvvm.Repository
+import com.qxj.commonbase.mvvm.ViewModelFactory
+import com.qxj.welcome.data.BlankRepository
 import com.qxj.welcome.data.HomeRepository
 import com.qxj.welcome.data.OneServiceLocator
-import com.qxj.welcome.data.Repository
+import com.qxj.welcome.viewmodels.BlankViewModelFactory
 import com.qxj.welcome.viewmodels.HomeViewModelFactory
 import com.qxj.welcome.viewmodels.OneViewModelFactory
 
+//viewModel 的 repository 注入类
 object InjectorUtils {
 
-    private fun getHomeRepository(context: Context): HomeRepository {
-        return HomeRepository.getInstance()
-    }
-
-    fun provideHomeViewModelFactory(context: Context): HomeViewModelFactory {
-        val repository = getHomeRepository(context)
+    fun provideHomeViewModelFactory(): ViewModelFactory {
+        val repository = getHomeRepository()
         return HomeViewModelFactory(repository)
     }
 
-    private fun getOneRepository(context: Context): Repository {
+    fun provideOneViewModelFactory(): ViewModelFactory {
+        val repository = getOneRepository()
+        return OneViewModelFactory(repository)
+    }
+
+    fun provideBlankViewModelFactory(): ViewModelFactory {
+        val repository = getBlankRepository()
+        return BlankViewModelFactory(repository)
+    }
+
+    //home
+    private fun getHomeRepository(): Repository {
+        return HomeRepository.getInstance()
+    }
+
+    //one
+    private fun getOneRepository(): Repository {
         return OneServiceLocator.getInstance()
                 .getRepository(Repository.Type.IN_MEMORY_BY_ITEM)
     }
 
-    fun provideOneViewModelFactory(context: Context): OneViewModelFactory {
-        val repository = getOneRepository(context)
-        return OneViewModelFactory(AppWelcome.INSTANCE, repository)
+    //B
+    private fun getBlankRepository(): Repository {
+        return BlankRepository()
     }
 
 }

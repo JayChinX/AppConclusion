@@ -1,9 +1,11 @@
 package com.qxj.welcome.data
 
-import androidx.fragment.app.Fragment
-import com.alibaba.android.arouter.launcher.ARouter
+import androidx.lifecycle.MutableLiveData
+import com.qxj.commonbase.data.Listing
+import com.qxj.commonbase.mvvm.Repository
+import com.qxj.welcome.utilities.Navigation
 
-class HomeRepository private constructor() {
+class HomeRepository private constructor() : Repository {
 
     private val TAG = HomeRepository::class.java.simpleName
 
@@ -19,29 +21,25 @@ class HomeRepository private constructor() {
                 }
     }
 
-    private val default = 0
+    @Suppress("UNCHECKED_CAST")
+    override fun <T> getDataList(pageSize: Int): Listing<T> {
+         val fragments = arrayListOf(
+                getGarden("Home", "/home/fragment/OneFragment") as T,
+                 getGarden("Dashboard", "/home/fragment/BlankFragment") as T,
+                 getGarden("Notification", "/home/fragment/BlankFragment") as T,
+                 getGarden("Find", "/home/fragment/BlankFragment") as T)
 
-    private val fragments = arrayListOf(
-            getFragment("/home/fragment/OneFragment"),
-            getFragment("/home/fragment/BlankFragment"),
-            getFragment("/home/fragment/BlankFragment"),
-            getFragment("/home/fragment/BlankFragment"))
+        val da = MutableLiveData<ArrayList<T>>(fragments)
+        return Listing(dataList = da,
+                networkState = null,
+                refreshState = null,
+                refresh = {},
+                retry = {})
+    }
 
-    private val nameList = arrayListOf(
-            "Home",
-            "Dashboard",
-            "Notification",
-            "Find"
-    )
+    private fun getGarden(name: String, fragmentPath: String) =
+            Garden(name, Navigation.getInstance()
+                    .getFragment(fragmentPath))
 
-    fun getDefaultFragment(): Int = default
-
-    fun getFragments(): List<Fragment> = fragments
-
-    fun getFragmentNames(): List<String> = nameList
-
-    private fun getFragment(path: String) = ARouter.getInstance()
-            .build(path)
-            .navigation() as Fragment
 }
 

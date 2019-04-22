@@ -1,6 +1,5 @@
 package com.qxj.welcome.data
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
@@ -8,10 +7,8 @@ import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.qxj.welcome.R
-import com.qxj.welcome.viewmodels.Data
-import com.qxj.welcome.viewmodels.OneData
 
-class PagedAdapter : PagedListAdapter<Data, PagedAdapter.PagedViewHolder>(DataDiffCallback<Data>()) {
+class PagedAdapter : PagedListAdapter<OneData, PagedAdapter.PagedViewHolder>(diffCallback) {
 
     private val TAG = PagedAdapter::class.java.simpleName
 
@@ -21,19 +18,17 @@ class PagedAdapter : PagedListAdapter<Data, PagedAdapter.PagedViewHolder>(DataDi
     override fun onBindViewHolder(holder: PagedViewHolder, position: Int) =
             holder.bindTo(getItem(position))
 
+    companion object {
+        private val diffCallback = object : DiffUtil.ItemCallback<OneData>() {
 
-    private class DataDiffCallback<T : Data> : DiffUtil.ItemCallback<T>() {
-        private val TAG = DataDiffCallback::class.java.simpleName
+            override fun areItemsTheSame(oldItem: OneData, newItem: OneData): Boolean =
+                    oldItem.id == newItem.id
 
-        override fun areItemsTheSame(oldItem: T, newItem: T): Boolean {
-            Log.d(TAG, "")
-            return oldItem.id == newItem.id
+
+            override fun areContentsTheSame(oldItem: OneData, newItem: OneData): Boolean =
+                    oldItem == newItem
+
         }
-
-
-        override fun areContentsTheSame(oldItem: T, newItem: T): Boolean =
-                oldItem == newItem
-
     }
 
     class PagedViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(
@@ -41,8 +36,8 @@ class PagedAdapter : PagedListAdapter<Data, PagedAdapter.PagedViewHolder>(DataDi
     ) {
         private val nameView = itemView.findViewById<TextView>(R.id.name_one)
         private var data: OneData? = null
-        fun bindTo(data: Data?) {
-            this.data = data as OneData?
+        fun bindTo(data: OneData?) {
+            this.data = data
             nameView.text = data?.name
         }
     }

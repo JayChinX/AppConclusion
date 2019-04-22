@@ -6,7 +6,7 @@ apply plugin: 'kotlin-kapt'
 def config = rootProject.ext.android
 def library = rootProject.ext.dep
 android {
-    compileSdkVersion 28
+    compileSdkVersion config.compileSdkVersion
 
     defaultConfig {
         applicationId "com.qxj.multichannel"
