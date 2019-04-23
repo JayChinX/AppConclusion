@@ -6,6 +6,7 @@ class StudentProxy(private var target: Any) {
 
     private val TAG = StudentProxy::class.java.simpleName
 
+    @Suppress("UNCHECKED_CAST")
     fun <T> create(service: Class<T>, before: () -> Unit, after: () -> Unit): T {
         return Proxy.newProxyInstance(service.classLoader,//选用的类加载器。因为代理的是T，所以一般都会用加载T的类加载器。
                 //被代理的类所实现的接口，这个接口可以是多个

@@ -1,8 +1,7 @@
 package com.qxj.welcome
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.util.Log
+import androidx.fragment.app.Fragment
 import com.alibaba.android.arouter.facade.Postcard
 import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.facade.annotation.Route

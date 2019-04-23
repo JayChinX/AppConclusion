@@ -25,7 +25,8 @@ import javax.net.ssl.TrustManagerFactory
 import javax.net.ssl.X509TrustManager
 
 //region api service
-object ApiService : Api by NetworkManger.instance.apiService
+object ApiService : Api by NetworkManger.getInstance().getApiService()
+
 //endregion
 //region 拦截器
 /**

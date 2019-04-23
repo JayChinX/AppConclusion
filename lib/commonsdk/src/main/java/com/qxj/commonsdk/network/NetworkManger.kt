@@ -1,5 +1,7 @@
 package com.qxj.commonsdk.network
 
+import android.util.Log
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -7,17 +9,32 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-class NetworkManger private constructor() {
+class NetworkManger private constructor(private vararg val interceptor: Interceptor) {
 
     private val TAG = NetworkManger::class.java.simpleName
-    private var retrofit: Retrofit
+
+    var retrofit: Retrofit
     private var isLogging = true
 
     companion object {
-        val instance: NetworkManger by lazy { NetworkManger() }//lazy 懒加载
+        @Volatile
+        private var instance: NetworkManger? = null
+
+        fun getInstance(vararg interceptor: Interceptor) =
+                instance ?: synchronized(this) {
+                    instance ?: NetworkManger(*interceptor)
+                            .also {
+                        instance = it
+                    }
+                }
+
+        fun init() {
+
+        }
     }
 
     init {
+        Log.d(TAG, "NetworkManger 正在初始化")
         val okHttpClient: OkHttpClient = if (isLogging) {
             val logging = HttpLoggingInterceptor()
             logging.level = HttpLoggingInterceptor.Level.BASIC
@@ -31,6 +48,12 @@ class NetworkManger private constructor() {
                      * 参考如下博客：http://blog.csdn.net/jdsjlzx/article/details/52063950
                      */
                     .addInterceptor(logging)//添加拦截器 log拦截
+                    .let { builder ->
+                        interceptor.forEach {
+                            builder.addInterceptor(it)
+                        }
+                        builder
+                    }
 //                    /**
 //                     * 统一通用header
 //                     */
@@ -81,8 +104,8 @@ class NetworkManger private constructor() {
                 .build()
     }
 
-    val apiService: Api
-        get() = retrofit.create(Api::class.java)//动态代理创建请求
+    //动态代理创建请求
+    inline fun <reified T> getApiService() : T =  retrofit.create(T::class.java)
 
 }
 

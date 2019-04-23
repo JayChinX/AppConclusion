@@ -6,6 +6,7 @@ import com.qxj.commonbase.BaseApplication
 import com.qxj.commonbase.CommonBaseApp
 import com.qxj.commondata.CommonDataApp
 import com.qxj.commonsdk.CommonSDKApp
+import com.qxj.commonsdk.network.NetworkManger
 import com.qxj.welcome.base.AppWelcome
 
 class CustomApplication : BaseApplication() {
@@ -20,6 +21,7 @@ class CustomApplication : BaseApplication() {
             Log.d(TAG, "ARouter open Log and Debug")
         }
         ARouter.init(this)
+        NetworkManger.init()
         Log.d(TAG, "ARouter init")
     }
 

@@ -32,6 +32,7 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation library.supportv7
     implementation library.kotlin
+    implementation library.kotlinx.coroutines
     api library.retrofit2
     api library.rxjava2
     api library.gilde

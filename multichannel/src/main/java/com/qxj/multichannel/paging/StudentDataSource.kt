@@ -71,12 +71,12 @@ open class StudentDataSource(private val api: Api, private val retryExecutor: Ex
 
 
         api.getStudent<Student>().enqueue(object : retrofit2.Callback<Result<Student>> {
-            override fun onFailure(call: Call<com.qxj.commonsdk.network.Result<Student>>, t: Throwable) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            override fun onFailure(call: Call<Result<Student>>, t: Throwable) {
+
             }
 
             override fun onResponse(call: Call<Result<Student>>, response: Response<Result<Student>>) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
             }
         })
 
