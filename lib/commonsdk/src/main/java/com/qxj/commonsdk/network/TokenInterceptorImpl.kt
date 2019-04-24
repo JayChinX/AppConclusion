@@ -1,13 +1,11 @@
-package com.qxj.welcome.api
+package com.qxj.commonsdk.network
 
 import android.util.Log
 import com.google.gson.Gson
-import com.qxj.commonsdk.network.Result
-import com.qxj.commonsdk.network.TokenInterceptor
 import okhttp3.Request
 import okhttp3.Response
 
-class TokenInterceptor : TokenInterceptor() {
+class TokenInterceptorImpl : TokenInterceptor() {
 
     private val TAG = TokenInterceptor::class.java.simpleName
     private val gson = Gson()

@@ -16,7 +16,6 @@ abstract class TokenInterceptor(private var charset: Charset = UTF8) : Intercept
         private val UTF8 = Charset.forName("UTF-8")
     }
 
-    private var responseBodyBuilder = StringBuilder()
 
     @Throws(IOException::class)
     override fun intercept(chain: Interceptor.Chain): Response {
@@ -55,21 +54,22 @@ abstract class TokenInterceptor(private var charset: Charset = UTF8) : Intercept
         }
     }
 
-    @Throws(IOException::class)
     private fun getResponseBodyString(response: Response?): String {
         if (response == null) {
             return ""
         }
-        responseBodyBuilder.delete(0, responseBodyBuilder.length)
-
+        val responseBodyBuilder = StringBuilder()
         val responseBody = response.body()
         if (responseBody?.contentType() != null && responseBody.contentLength() > 0) {
 
-            val source = responseBody.source()
-            source.request(java.lang.Long.MAX_VALUE)
-            val buffer = source.buffer
+            responseBody.use {
+                val source = it.source()
+                source.request(java.lang.Long.MAX_VALUE)
+                val buffer = source.buffer
 
-            responseBodyBuilder.append(buffer.clone().readString(charset))
+                responseBodyBuilder.append(buffer.clone().readString(charset))
+            }
+
         }
 
         return responseBodyBuilder.toString()

@@ -1,93 +1,36 @@
 package com.qxj.commonsdk.network
 
 import android.util.Log
-import okhttp3.Interceptor
-import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
-import java.util.concurrent.TimeUnit
 
-class NetworkManger private constructor(private vararg val interceptor: Interceptor) {
+class NetworkManger private constructor() {
 
     private val TAG = NetworkManger::class.java.simpleName
 
     var retrofit: Retrofit
-    private var isLogging = true
 
     companion object {
         @Volatile
         private var instance: NetworkManger? = null
 
-        fun getInstance(vararg interceptor: Interceptor) =
+        fun getInstance() =
                 instance ?: synchronized(this) {
-                    instance ?: NetworkManger(*interceptor)
+                    instance ?: NetworkManger()
                             .also {
                         instance = it
                     }
                 }
 
-        fun init() {
 
-        }
     }
 
     init {
         Log.d(TAG, "NetworkManger 正在初始化")
-        val okHttpClient: OkHttpClient = if (isLogging) {
-            val logging = HttpLoggingInterceptor()
-            logging.level = HttpLoggingInterceptor.Level.BASIC
-            //建造者模式
-            OkHttpClient.Builder()
-                    .connectTimeout(5, TimeUnit.SECONDS)//连接超时 5s
-                    .writeTimeout(10, TimeUnit.SECONDS)//写
-                    .readTimeout(10, TimeUnit.SECONDS)//读
-                    /**
-                     * 还有很多的用法，比如：封装一些公共的参数等等。
-                     * 参考如下博客：http://blog.csdn.net/jdsjlzx/article/details/52063950
-                     */
-                    .addInterceptor(logging)//添加拦截器 log拦截
-                    .let { builder ->
-                        interceptor.forEach {
-                            builder.addInterceptor(it)
-                        }
-                        builder
-                    }
-//                    /**
-//                     * 统一通用header
-//                     */
-//                    .addInterceptor {
-//                        val data = it.request()
-//                                .newBuilder()
-//                                .addHeader("mac", "")
-//                                .addHeader("uuid", "")
-//                                .addHeader("", "")
-//                                .build()
-//                        it.proceed(data)
-//                    }
-                    /**
-                     * 添加证书pinning
-                     */
-//                    .certificatePinner(
-//                            CertificatePinner.Builder()
-//                            .add("YOU API.com", "sha1/DmxUShsZuNiqPQsX2Oi9uv2sCnw=")
-//                            .build()
-//                    )
-                    /**
-                     * 添加https支持
-                     * 1.找后台要证书 保存在assets目录下
-                     */
-//                    .getCertificates()
-//                    .hostnameVerifier { hostname, session ->
-//                        true
-//                    }
-                    .build()
-        } else {
-            OkHttpClient()
-        }
+
         retrofit = Retrofit.Builder()//建造者模式
-                .client(okHttpClient)
+                .client(OkHttpManager.okHttpClient)
                 .baseUrl(Api.HOST)
                 /**
                  * 这个是用来决定你的返回值是Observable还是Call。

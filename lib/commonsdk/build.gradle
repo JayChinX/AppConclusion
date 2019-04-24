@@ -37,4 +37,5 @@ dependencies {
     api library.rxjava2
     api library.gilde
     implementation project(path: ':commonbase')
+    implementation project(path: ':commondata')
 }
