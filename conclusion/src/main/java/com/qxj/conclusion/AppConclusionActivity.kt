@@ -6,8 +6,8 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
-import com.qxj.conclusion.view.CustomDialog.DialogFragmentHelper
-import com.qxj.conclusion.view.CustomDialog.IDialogResultListener
+import com.qxj.conclusion.view.dialog.DialogFragmentHelper
+import com.qxj.conclusion.view.dialog.IDialogResultListener
 
 open class AppConclusionActivity : Activity() {
 

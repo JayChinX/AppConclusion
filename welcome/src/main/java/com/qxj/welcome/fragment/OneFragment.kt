@@ -5,11 +5,13 @@ import android.util.Log
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.paging.PagedList
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.qxj.welcome.base.BaseFragment
 import com.qxj.welcome.R
 import com.qxj.welcome.data.PagedAdapter
 import com.qxj.commonbase.data.Resource.Status.*
+import com.qxj.welcome.data.OneData
 import com.qxj.welcome.utilities.InjectorUtils
 import com.qxj.welcome.viewmodels.OneViewModel
 import kotlinx.android.synthetic.main.fragment_one.*
@@ -35,7 +37,7 @@ class OneFragment : BaseFragment() {
     override fun subscribeUi() {
         val adapter = PagedAdapter()
         recycler_view.adapter = adapter
-        viewModel.posts.observe(this, Observer(adapter::submitList))
+        viewModel.posts.observe(this, Observer(adapter::submitList) as Observer<in PagedList<OneData>>)
 
         initSwipeToRefresh()
 

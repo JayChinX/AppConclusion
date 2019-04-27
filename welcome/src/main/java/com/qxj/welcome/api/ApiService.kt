@@ -1,5 +1,5 @@
 package com.qxj.welcome.api
 
-import com.qxj.commonsdk.network.NetworkManger
+import com.qxj.commonbase.network.NetworkManger
 
-object ApiService: HttpApi by NetworkManger.getInstance().getApiService()
+object ApiService: WelcomeApi by NetworkManger.getInstance().getApiService()

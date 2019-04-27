@@ -4,5 +4,17 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowBackground">@drawable/launcher_background</item>
+        <!--<item name="android:windowIsTranslucent">true</item>//±³¾°Í¸Ã÷-->
+    </style>
+
+    <style name="AppTheme.Fragment">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@android:color/darker_gray</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:background">@android:color/white</item>
+        <!--<item name="android:windowBackground">@android:color/white</item>//ÉèÖÃ±³¾°Í¼Æ¬-->
     </style>
 </resources>

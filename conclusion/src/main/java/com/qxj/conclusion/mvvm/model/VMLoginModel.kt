@@ -2,7 +2,7 @@
 //
 //import androidx.lifecycle.LifecycleOwner
 //import com.google.gson.Gson
-//import com.qxj.commonsdk.network.*
+//import com.qxj.commonbase.network.*
 //
 //class VMLoginModel {
 //

@@ -10,8 +10,8 @@ import androidx.paging.ItemKeyedDataSource
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import android.util.Log
-import com.qxj.commonsdk.network.Api
-import com.qxj.commonsdk.network.Result
+import com.qxj.commonbase.network.Api
+import com.qxj.commonbase.network.Result
 import retrofit2.Call
 import retrofit2.Response
 import java.util.concurrent.Executor

@@ -4,5 +4,11 @@
 
     <!-- To access Google+ APIs: -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <application>
+        <meta-data
+            android:name="com.qxj.commonbase.image.OkHttpLibraryGlideModule"
+            android:value="GlideModule" />
+    </application>
+
 
 </manifest>

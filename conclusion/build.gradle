@@ -48,12 +48,14 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     testImplementation 'junit:junit:4.12'
     //noinspection GradleCompatible
-    androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
-    implementation library.supportv7
+    androidTestImplementation 'androidx.test:runner:1.2.0-alpha04'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0-alpha04'
+    implementation library.support
     implementation library.constraint
     implementation library.kotlin
     implementation library.kotlinx.coroutines
+
+    implementation library.rxjava2
     /**
      * ARouter
      * ARouter 在宿主 app 和 module 模块中分别声明
@@ -66,7 +68,5 @@ dependencies {
      */
     kapt library.alibaba.aroutercompiler
     implementation project(path: ':commonbase')
-    implementation project(path: ':commonsdk')
-    implementation project(path: ':commondata')
     implementation project(':flutter')
 }

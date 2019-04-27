@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.util.Log
 import com.qxj.conclusion.AppConfig
-import com.qxj.commonsdk.LogTool
+import com.qxj.commonbase.util.LogTool
 import com.qxj.commonbase.mvpbase.BaseActivity
 import com.qxj.conclusion.LauncherFlutterActivity
 import com.qxj.conclusion.mvp.presenter.UserContract

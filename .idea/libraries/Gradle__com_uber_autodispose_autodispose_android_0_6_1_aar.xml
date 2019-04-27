@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="Gradle: com.uber.autodispose:autodispose-android:0.6.1@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b0ac8710666ea6b28a84d27e52bcb09a/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b0ac8710666ea6b28a84d27e52bcb09a/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/2fb9bbc01c45b98633c0f7c13405cc8e/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/2fb9bbc01c45b98633c0f7c13405cc8e/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

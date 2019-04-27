@@ -8,8 +8,8 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.facade.callback.NavCallback
 import com.alibaba.android.arouter.launcher.ARouter
 import com.qxj.welcome.base.BaseActivity
-import com.qxj.welcome.service.IService
 import com.qxj.welcome.data.Author
+import com.qxj.welcome.service.IService
 
 /**
  * 参考文献
@@ -50,6 +50,17 @@ class MainActivity : BaseActivity() {
     private val TAG = MainActivity::class.java.simpleName
 
     override fun initView() {
+        /**
+         * 启动时间查看
+         *
+         */
+        //4.4 以前 adb shell am start -W packName/activity(全路径) 查看
+        //4.4 以后 Displayed 关键字查看
+        //Debug.startMethodTracing()
+        //运行时间
+        //trace 文件在adb pull /storage/emulated/0/appcation_launcher_time.trace
+        //Debug.stopMethodTracing()
+        //IntentService onHandleIntent() 方法进行初始化一些比较耗时的操作
     }
 
     override fun getLayoutId(): Int = R.layout.activity_main

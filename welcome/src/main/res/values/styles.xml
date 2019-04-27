@@ -14,7 +14,20 @@
         <item name="colorPrimary">@android:color/darker_gray</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@drawable/launcher_background</item>//…Ë÷√±≥æ∞Õº∆¨
+        <!--<item name="android:windowIsTranslucent">true</item>//±≥æ∞Õ∏√˜-->
     </style>
+
+    <style name="AppTheme.Fragment">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@android:color/darker_gray</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:background">@android:color/white</item>
+        <!--<item name="android:windowBackground">@android:color/white</item>//…Ë÷√±≥æ∞Õº∆¨-->
+    </style>
+
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 

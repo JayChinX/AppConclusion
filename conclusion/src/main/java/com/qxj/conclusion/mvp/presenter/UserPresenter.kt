@@ -2,7 +2,7 @@ package com.qxj.conclusion.mvp.presenter
 
 import androidx.lifecycle.LifecycleOwner
 import android.text.TextUtils
-import com.qxj.commonsdk.LogTool
+import com.qxj.commonbase.util.LogTool
 import com.qxj.commonbase.mvpbase.IPresenter
 import com.qxj.conclusion.mvp.model.UserModel
 

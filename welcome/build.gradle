@@ -29,6 +29,10 @@ android {
 
         vectorDrawables.useSupportLibrary = true
 
+        ndk {
+            abiFilters "armeabi-v7a", "x86"
+        }
+
     }
 
     kapt {
@@ -50,7 +54,7 @@ android {
     buildTypes {
         release {
             buildConfigField("boolean", "api", "true")
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         debug {
@@ -59,33 +63,31 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-//    dataBinding {
-//        enabled = true
-//    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    packagingOptions {
+        exclude 'META-INF/atomicfu.kotlin_module'
+        exclude 'META-INF/xxx'
     }
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation library.supportv7
+    implementation library.support
     implementation library.constraint
     implementation library.kotlin
     implementation library.alibaba.json
     implementation library.alibaba.arouter
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'com.google.android.material:material:1.1.0-alpha05'
-    implementation 'androidx.appcompat:appcompat:1.1.0-alpha04'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    implementation 'androidx.vectordrawable:vectordrawable:1.1.0-alpha01'
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0-alpha04'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.1.0-alpha04'
+
+    implementation library.vector
+    implementation library.lifecycle.lifecycle
+    implementation library.lifecycle.viewmodel
     kapt library.alibaba.aroutercompiler
     implementation library.paging
     implementation library.kotlinx.coroutines
     implementation project(path: ':commonbase')
-    implementation project(path: ':commonsdk')
-    implementation project(path: ':commondata')
 }

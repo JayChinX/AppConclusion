@@ -11,7 +11,6 @@ import com.qxj.conclusion.AppConfig
 import com.qxj.conclusion.util.PermissionUtil
 import com.qxj.commonbase.mvpbase.IPresenter
 import com.qxj.conclusion.mvp.model.UserModel
-import com.qxj.conclusion.mvp.view.LoginActivity
 import com.qxj.conclusion.mvp.view.MainActivity
 import com.qxj.conclusion.R
 

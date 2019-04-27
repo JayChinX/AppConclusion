@@ -3,9 +3,9 @@ package com.qxj.multichannel.paging
 import android.app.Application
 import android.content.Context
 import androidx.annotation.VisibleForTesting
+import com.qxj.commonbase.network.Api
+import com.qxj.multichannel.ApiService
 import com.qxj.multichannel.paging.StudentRepository.Type.*
-import com.qxj.commonsdk.network.Api
-import com.qxj.commonsdk.network.ApiService
 import java.util.concurrent.Executor
 import java.util.concurrent.Executors
 

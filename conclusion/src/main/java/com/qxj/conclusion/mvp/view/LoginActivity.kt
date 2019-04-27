@@ -1,10 +1,8 @@
 package com.qxj.conclusion.mvp.view
 
 import android.content.Intent
-import android.util.Log
 import android.view.View
 import com.qxj.commonbase.mvpbase.BaseActivity
-import com.qxj.conclusion.LauncherFlutterActivity
 import com.qxj.conclusion.mvp.presenter.LoginContract
 import com.qxj.conclusion.mvp.presenter.LoginPresenter
 import com.qxj.conclusion.R

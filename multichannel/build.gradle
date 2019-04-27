@@ -99,11 +99,8 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    testImplementation 'junit:junit:4.12'
-    //noinspection GradleCompatible
-    androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
-    implementation library.supportv7
+
+    implementation library.support
     implementation library.constraint
     implementation library.kotlin
     implementation library.navigation
@@ -114,6 +111,4 @@ dependencies {
     kapt library.room.compiler
     implementation library.paging
     implementation project(path: ':commonbase')
-    implementation project(path: ':commondata')
-    implementation project(path: ':commonsdk')
 }
