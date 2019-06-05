@@ -8,14 +8,15 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="colorPrimary">@android:color/darker_gray</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:windowBackground">@drawable/launcher_background</item>//ÉèÖÃ±³¾°Í¼Æ¬
-        <!--<item name="android:windowIsTranslucent">true</item>//±³¾°Í¸Ã÷-->
+        <item name="android:windowBackground">@drawable/launcher_background</item>//ï¿½ï¿½ï¿½Ã±ï¿½ï¿½ï¿½Í¼Æ¬
+        <!--<item name="android:windowIsTranslucent">true</item>//ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ï¿½-->
     </style>
 
     <style name="AppTheme.Fragment">
@@ -25,7 +26,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:background">@android:color/white</item>
-        <!--<item name="android:windowBackground">@android:color/white</item>//ÉèÖÃ±³¾°Í¼Æ¬-->
+        <!--<item name="android:windowBackground">@android:color/white</item>//ï¿½ï¿½ï¿½Ã±ï¿½ï¿½ï¿½Í¼Æ¬-->
     </style>
 
 

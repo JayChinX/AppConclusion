@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         val workRequest = OneTimeWorkRequest.Builder(TestWorker::class.java).build()
         WorkManager.getInstance().enqueue(workRequest)
 
-        WorkManager.getInstance().getStatusByIdLiveData(workRequest.id)
+        WorkManager.getInstance().getWorkInfoByIdLiveData(workRequest.id)
                 .observe(this, Observer {
                     Log.e("qxj", it?.state?.name)
 
@@ -136,7 +136,7 @@ class MainActivity : AppCompatActivity() {
                 .setInputData(data)
                 .build()
 
-        WorkManager.getInstance().getStatusByIdLiveData(mathWork.id)
+        WorkManager.getInstance().getWorkInfoByIdLiveData(mathWork.id)
                 .observe(this, Observer {
                     if (it?.state!!.isFinished) {
                         //获取返回的结果
