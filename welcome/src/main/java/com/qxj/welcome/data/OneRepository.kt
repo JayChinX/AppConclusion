@@ -14,7 +14,7 @@ class OneRepository(private val executor: Executor) : Repository {
 
     private val TAG = OneRepository::class.java.simpleName
 
-    override fun <T> getDataList(pageSize: Int): Listing<T> {
+    fun <T> getDataList(pageSize: Int): Listing<T> {
         /**
          * 数据工厂
          */

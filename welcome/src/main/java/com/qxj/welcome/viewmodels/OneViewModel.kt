@@ -5,9 +5,12 @@ import android.util.Log
 import androidx.lifecycle.*
 import androidx.paging.PagedList
 import com.qxj.commonbase.mvvm.Repository
+import com.qxj.commonbase.mvvm.ViewModelFactory
+import com.qxj.welcome.base.AppWelcome
 import com.qxj.welcome.data.OneData
+import com.qxj.welcome.data.OneRepository
 
-class OneViewModel(app: Application, repository: Repository) : AndroidViewModel(app) {
+class OneViewModel(app: Application, repository: OneRepository) : AndroidViewModel(app) {
 
     private val TAG = OneViewModel::class.java.simpleName
 
@@ -75,5 +78,10 @@ class OneViewModel(app: Application, repository: Repository) : AndroidViewModel(
 
     fun currentData() = data.value
 
+    internal class OneViewModelFactory(private val repository: Repository) : ViewModelFactory() {
+
+        override fun getViewModel(): ViewModel = OneViewModel(AppWelcome.INSTANCE, repository as OneRepository)
+
+    }
 }
 

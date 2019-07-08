@@ -5,26 +5,26 @@ import com.qxj.commonbase.mvvm.ViewModelFactory
 import com.qxj.welcome.data.BlankRepository
 import com.qxj.welcome.data.HomeRepository
 import com.qxj.welcome.data.OneServiceLocator
-import com.qxj.welcome.viewmodels.BlankViewModelFactory
-import com.qxj.welcome.viewmodels.HomeViewModelFactory
-import com.qxj.welcome.viewmodels.OneViewModelFactory
+import com.qxj.welcome.viewmodels.BlankViewModel
+import com.qxj.welcome.viewmodels.HomeViewModel
+import com.qxj.welcome.viewmodels.OneViewModel
 
 //viewModel 的 repository 注入类
 object InjectorUtils {
 
     fun provideHomeViewModelFactory(): ViewModelFactory {
         val repository = getHomeRepository()
-        return HomeViewModelFactory(repository)
+        return HomeViewModel.HomeViewModelFactory(repository)
     }
 
     fun provideOneViewModelFactory(): ViewModelFactory {
         val repository = getOneRepository()
-        return OneViewModelFactory(repository)
+        return OneViewModel.OneViewModelFactory(repository)
     }
 
     fun provideBlankViewModelFactory(): ViewModelFactory {
         val repository = getBlankRepository()
-        return BlankViewModelFactory(repository)
+        return BlankViewModel.BlankViewModelFactory(repository)
     }
 
     //home

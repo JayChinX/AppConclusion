@@ -1,8 +1,7 @@
 package com.qxj.welcome.data
 
-import com.qxj.commonbase.data.Listing
-import com.qxj.commonbase.mvvm.Repository
 import com.qxj.commonbase.coroutine.Callback
+import com.qxj.commonbase.mvvm.Repository
 import com.qxj.welcome.api.ApiService
 import com.qxj.welcome.proxy.Student
 import kotlinx.coroutines.Dispatchers
@@ -12,13 +11,6 @@ import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
 
 class BlankRepository : Repository {
-    override fun <T> getDataList(pageSize: Int): Listing<T> {
-        return Listing(null,
-                null,
-                null,
-                {},
-                {})
-    }
 
     suspend fun getUserName() = suspendCoroutine<String> {
         getUser(object : Callback<String> {

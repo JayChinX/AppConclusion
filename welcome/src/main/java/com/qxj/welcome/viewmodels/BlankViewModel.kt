@@ -3,6 +3,8 @@ package com.qxj.welcome.viewmodels
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.qxj.commonbase.mvvm.Repository
+import com.qxj.commonbase.mvvm.ViewModelFactory
 import com.qxj.welcome.data.BlankRepository
 import kotlinx.coroutines.*
 import java.lang.Exception
@@ -38,5 +40,9 @@ class BlankViewModel internal constructor (private val repository: BlankReposito
     override fun onCleared() {
         super.onCleared()
         viewModelScope.cancel()
+    }
+
+    internal class BlankViewModelFactory(private val repository: Repository) : ViewModelFactory() {
+        override fun getViewModel(): ViewModel = BlankViewModel(repository as BlankRepository)
     }
 }
