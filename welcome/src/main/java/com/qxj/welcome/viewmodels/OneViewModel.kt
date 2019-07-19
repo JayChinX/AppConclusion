@@ -36,7 +36,6 @@ class OneViewModel(app: Application, repository: OneRepository) : AndroidViewMod
     //            @NonNull LiveData<X> source,//转换前的数据源
     //            @NonNull final Function<X, Y> mapFunction)//装换的函数
     private val repoResult = Transformations.map(data) {
-        Log.d(TAG, "repository.getDataList")
         repository.getDataList<OneData>(20)
     }
 

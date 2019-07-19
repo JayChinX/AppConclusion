@@ -31,7 +31,8 @@ ext {
             constraint: 'androidx.constraintlayout:constraintlayout:2.0.0-alpha4',
             kotlin    : [
                     "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version",
-                    "org.jetbrains.anko:anko-common:$anko_version"
+                    "org.jetbrains.anko:anko-common:$anko_version",
+                    "org.jetbrains.anko:anko:$anko_version"
             ],
             kotlinx   : [
                     //协程

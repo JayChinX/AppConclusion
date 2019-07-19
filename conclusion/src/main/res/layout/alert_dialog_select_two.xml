@@ -10,6 +10,7 @@
         android:layout_height="match_parent"
         android:foreground="?android:attr/selectableItemBackground"
         android:gravity="center"
+
         android:textColor="@color/switch_thumb_disabled"
         android:background="@color/switch_thumb_material"
         android:layout_weight="1"/>

@@ -44,7 +44,7 @@ class BlankRepository : Repository {
 
             }
 
-    var count = 0
+    private var count = 0
     private fun getUser(callback: Callback<String>) {
         count++
         if (count < 4) {

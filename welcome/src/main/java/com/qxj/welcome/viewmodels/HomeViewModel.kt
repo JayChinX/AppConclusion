@@ -12,20 +12,15 @@ class HomeViewModel internal constructor(repository: HomeRepository) : ViewModel
     private val TAG = HomeViewModel::class.java.simpleName
 
     private val data = MutableLiveData<String>()
+
     private val repoResult = Transformations.map(data) {
         repository.getDataList()
     }
-    val posts = Transformations.switchMap(repoResult) {
-        it
-    }
+    val posts = Transformations.switchMap(repoResult) { it }
 
-    private val gardenList by lazy { posts.value }
-    private val defaultPager = 0
-    val pager = MutableLiveData<Int>(defaultPager)
+    val pager = repository.getPagerNum()
 
-    val title = Transformations.map(pager) {
-        gardenList?.get(it)?.name
-    }
+    val title = Transformations.map(pager) { posts.value?.get(it)?.name }
 
 
     fun showData() {

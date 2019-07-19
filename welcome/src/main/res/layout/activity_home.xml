@@ -20,6 +20,9 @@
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_home"
-        app:menu="@menu/activity_home_drawer" />
+        app:menu="@menu/activity_home_drawer"
+        app:insetForeground="@null"/>
+    <!--app:insetForeground="@null" 决定弹出的抽屉是否有状态栏阴影-->
+
 
 </androidx.drawerlayout.widget.DrawerLayout>

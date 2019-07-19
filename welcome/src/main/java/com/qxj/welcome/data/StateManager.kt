@@ -131,7 +131,3 @@ fun main() {
 //bytes[2] = (a1 shr 16 and 0xFF).toByte()
 //bytes[3] = (a1 shr 24 and 0xFF).toByte()
 //
-//作者：皮球二二
-//链接：https://www.jianshu.com/p/8d1bc648a4a0
-//来源：简书
-//简书著作权归作者所有，任何形式的转载都请联系作者获得授权并注明出处。

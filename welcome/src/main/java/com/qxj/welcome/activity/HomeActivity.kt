@@ -14,9 +14,12 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.alibaba.android.arouter.facade.annotation.Route
+import com.geely.gic.hmi.ui.main.checkPermission
+import com.geely.gic.hmi.ui.main.permissionsResult
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
+import com.qxj.dialog.showDialog
 import com.qxj.welcome.base.BaseActivity
 import com.qxj.welcome.R
 import com.qxj.welcome.data.Garden
@@ -148,14 +151,28 @@ class HomeActivity : BaseActivity() {
 
         viewModel.showData()
 
+        checkPermission {
+            if (it) {
+                //有权限
+            } else {
+                //没有权限
+            }
+        }
+
 
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
+            showDialog("提示", "信息")
         }
         nav_view.setNavigationItemSelectedListener(onNavigationItemSelectedListener)
         viewPager.addOnPageChangeListener(mOnPageChangeListener)
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        permissionsResult(requestCode, permissions, grantResults)
     }
 
     private fun pagerChange(position: Int) {

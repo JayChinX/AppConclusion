@@ -36,5 +36,7 @@ class HomeRepository private constructor() : Repository {
             Garden(name, Navigation.getInstance()
                     .getFragment(fragmentPath))
 
+    fun getPagerNum() = MutableLiveData(0)
+
 }
 

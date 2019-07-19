@@ -50,9 +50,11 @@ dependencies {
     //noinspection GradleCompatible
     androidTestImplementation 'androidx.test:runner:1.2.0-alpha04'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0-alpha04'
+    
     implementation library.support
     implementation library.constraint
     implementation library.kotlin
+
     implementation library.kotlinx.coroutines
 
     implementation library.rxjava2

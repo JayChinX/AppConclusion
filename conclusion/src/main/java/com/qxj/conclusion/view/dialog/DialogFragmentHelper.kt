@@ -3,11 +3,12 @@ package com.qxj.conclusion.view.dialog
 import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.app.Dialog
-import android.app.FragmentManager
 import android.app.ProgressDialog
 import android.content.Context
 import android.text.TextUtils
+import android.view.Gravity
 import android.view.LayoutInflater
+import androidx.fragment.app.FragmentManager
 import com.qxj.conclusion.view.dialog.CustomDialogFragment.Companion.newInstance
 import com.qxj.conclusion.R
 import kotlinx.android.synthetic.main.alert_dialog.view.*
@@ -15,6 +16,10 @@ import kotlinx.android.synthetic.main.alert_dialog_message_text.view.*
 import kotlinx.android.synthetic.main.alert_dialog_select_only.view.*
 import kotlinx.android.synthetic.main.alert_dialog_select_two.view.*
 import kotlinx.android.synthetic.main.alert_dialog_title_text.view.*
+import org.jetbrains.anko.imageView
+import org.jetbrains.anko.textView
+import org.jetbrains.anko.verticalLayout
+import org.jetbrains.anko.wrapContent
 
 class DialogFragmentHelper {
     private val TAG: String = DialogFragmentHelper::class.java.name
@@ -65,9 +70,17 @@ class DialogFragmentHelper {
                 val dialog = builder.create()
                 dialog.show()
                 //标题
+
                 view.tv_alert_title.layoutResource = R.layout.alert_dialog_title_text
                 view.tv_alert_title.inflate()
                 view.tv_dialog_title.text = title
+                
+
+                val displayView = context.verticalLayout {
+                    val alertImage = textView().lparams(width = wrapContent, height = wrapContent) {
+                        gravity = Gravity.CENTER
+                    }
+                }
                 //信息
                 view.tv_alert_message.layoutResource = R.layout.alert_dialog_message_text
                 view.tv_alert_message.inflate()

@@ -1,7 +1,5 @@
 package com.qxj.commonbase.mvvm
 
-import com.qxj.commonbase.data.Listing
-
 interface Repository {
 
     //状态保存

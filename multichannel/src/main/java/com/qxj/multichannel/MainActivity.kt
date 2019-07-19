@@ -1,10 +1,12 @@
 package com.qxj.multichannel
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation.findNavController
+import androidx.navigation.ui.NavigationUI
 import androidx.work.*
 import com.qxj.multichannel.work.*
 import java.util.concurrent.TimeUnit
@@ -19,6 +21,7 @@ class MainActivity : AppCompatActivity() {
     //onSupportNavigateUp()方法的重写，意味着Activity将它的 back键点击事件的委托出去，
     // 如果当前并非栈中顶部的Fragment, 那么点击back键，返回上一个Fragment
     override fun onSupportNavigateUp(): Boolean {
+//        NavigationUI.setupWithNavController()
         return findNavController(this, R.id.nav_host).navigateUp()
     }
 
@@ -26,6 +29,7 @@ class MainActivity : AppCompatActivity() {
      * 1.OneTimeWorkRequest.Builder
      * 创建一个单次执行的WorkQuest
      */
+    @SuppressLint("NewApi")
     private fun doOther() {
         val workRequest = OneTimeWorkRequest.Builder(TestWorker::class.java).build()
         WorkManager.getInstance().enqueue(workRequest)
