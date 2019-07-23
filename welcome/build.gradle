@@ -1,4 +1,4 @@
-if(isModule.toBoolean()) {
+if (isModule.toBoolean()) {
     apply plugin: 'com.android.library'
 } else {
     apply plugin: 'com.android.application'
@@ -26,13 +26,13 @@ android {
 //            }
 //        }
 
-
+        multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
 
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
-
+        packagingOptions { exclude 'META-INF/DEPENDENCIES' }
     }
 
     kapt {

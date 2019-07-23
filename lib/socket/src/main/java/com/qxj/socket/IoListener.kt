@@ -1,15 +1,15 @@
 package com.qxj.socket
 
-import android.util.Log
-
 import org.apache.mina.core.service.IoService
 import org.apache.mina.core.service.IoServiceListener
 import org.apache.mina.core.session.IdleStatus
 import org.apache.mina.core.session.IoSession
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 
-internal class IoListener : IoServiceListener {
+internal open class IoListener : IoServiceListener {
     private val TAG = IoListener::class.java.simpleName
-
+    private val logger: Logger by lazy { LoggerFactory.getLogger(IoListener::class.java) }
 
     @Throws(Exception::class)
     override fun serviceActivated(arg0: IoService) {
@@ -26,28 +26,28 @@ internal class IoListener : IoServiceListener {
     @Throws(Exception::class)
     override fun serviceIdle(arg0: IoService, arg1: IdleStatus) {
         //一个服务闲置
-        Log.d(TAG, "链接闲置")
+        logger.info("服务闲置")
 
     }
 
     @Throws(Exception::class)
     override fun sessionClosed(arg0: IoSession) {
         //关闭
-        Log.d(TAG, "链接关闭")
+        logger.info("连接关闭")
 
     }
 
     @Throws(Exception::class)
     override fun sessionCreated(arg0: IoSession) {
         //IoService创建服务
-        Log.d(TAG, "创建一个新链接")
+        logger.info("连接创建")
 
     }
 
     @Throws(Exception::class)
     override fun sessionDestroyed(arg0: IoSession) {
         //IoService销毁服务
-        Log.d(TAG, "链接销毁")
+        logger.info("连接销毁")
 
     }
 }

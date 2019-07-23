@@ -19,7 +19,6 @@ import com.geely.gic.hmi.ui.main.permissionsResult
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
-import com.qxj.dialog.showDialog
 import com.qxj.welcome.base.BaseActivity
 import com.qxj.welcome.R
 import com.qxj.welcome.data.Garden
@@ -28,6 +27,7 @@ import com.qxj.welcome.viewmodels.HomeViewModel
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.app_bar_home.*
 import kotlinx.android.synthetic.main.content_home.*
+import kotlinx.android.synthetic.main.floating_button.*
 
 @Route(path = "/home/activity/HomeActivity", group = "home")
 class HomeActivity : BaseActivity() {
@@ -163,7 +163,8 @@ class HomeActivity : BaseActivity() {
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
-            showDialog("提示", "信息")
+//            showDialog("提示", "信息")
+            viewModel.startSocket()
         }
         nav_view.setNavigationItemSelectedListener(onNavigationItemSelectedListener)
         viewPager.addOnPageChangeListener(mOnPageChangeListener)

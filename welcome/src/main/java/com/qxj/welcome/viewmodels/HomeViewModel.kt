@@ -6,8 +6,10 @@ import com.qxj.commonbase.mvvm.Repository
 import com.qxj.commonbase.mvvm.ViewModelFactory
 import com.qxj.welcome.data.HomeRepository
 import com.qxj.welcome.utilities.Navigation
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.launch
 
-class HomeViewModel internal constructor(repository: HomeRepository) : ViewModel() {
+class HomeViewModel internal constructor(private val repository: HomeRepository) : ViewModel() {
 
     private val TAG = HomeViewModel::class.java.simpleName
 
@@ -37,6 +39,19 @@ class HomeViewModel internal constructor(repository: HomeRepository) : ViewModel
     fun toOtherActivity() {
         Navigation.getInstance().toOtherActivity("/home/activity/SecondActivity")
     }
+
+    fun startSocket() {
+        viewModelScope.launch {
+            repository.send()
+        }
+    }
+
+    override fun onCleared() {
+        super.onCleared()
+        viewModelScope.cancel()
+    }
+
+
 
     internal class HomeViewModelFactory(private val repository: Repository) : ViewModelFactory() {
 

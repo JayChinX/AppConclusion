@@ -1,9 +1,8 @@
-include ':app', ':conclusion', ':commonbase', ':welcome', ':multichannel', ':dialog', ':socket'
+include ':app', ':conclusion', ':commonbase', ':welcome', ':multichannel', ':dialog', ':socket', ':logger'
 project(':commonbase').projectDir = new File('lib/commonbase')
-//project(':commondata').projectDir = new File('lib/commondata')
-//project(':commonsdk').projectDir = new File('lib/commonsdk')
 project(':dialog').projectDir = new File('lib/dialog')
 project(':socket').projectDir = new File('lib/socket')
+project(':logger').projectDir = new File('lib/logger')
 setBinding(new Binding([gradle: this]))
 evaluate(new File(
         settingsDir.parentFile,

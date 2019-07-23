@@ -24,4 +24,6 @@ public class ExampleInstrumentedTest {
 
         assertEquals("com.qxj.tcp.test", appContext.getPackageName());
     }
+
+
 }
