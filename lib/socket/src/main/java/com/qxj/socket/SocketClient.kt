@@ -42,6 +42,8 @@ class SocketClient private constructor(
 
     var running = false
 
+    private var initing = false
+
     class Builder {
 
         companion object {
@@ -115,8 +117,6 @@ class SocketClient private constructor(
                 protocolCodecIoFilterAdapter = createCodec()
             }
 
-
-
             return if (!long) {
                 SocketClient(name,
                         ip!!, port!!,
@@ -126,7 +126,6 @@ class SocketClient private constructor(
                         createIoHandler(),
                         false
                 ).apply {
-
                     start()
                 }
             } else SocketClient(name,
@@ -186,7 +185,7 @@ class SocketClient private constructor(
     private fun conntection() {
 
         with(createConnector()) {
-
+            initing = true
             try {
                 future = initFuture(this)
 
@@ -198,9 +197,10 @@ class SocketClient private constructor(
                 if (session == null) {
                     throw Exception("socket 连接创建失败, session获取null")
                 }
+                initing = false
                 running = true
-                if (!long) {
-                    sendShortData(shortMsg)
+                if (!long && shortMsg != null) {
+                    sendShortData(shortMsg!!)
                 }
             } catch (e: Exception) {
                 running = false
@@ -240,8 +240,7 @@ class SocketClient private constructor(
 
                     // 设置缓冲区大小
                     sessionConfig.readBufferSize = 1024
-                    // 设置空闲时间 sessionConfig.setIdleTime(IdleStatus.BOTH_IDLE, 10)
-                    // 读写超时时间
+                    // 设置空闲时间
                     sessionConfig.setIdleTime(IdleStatus.BOTH_IDLE, Builder.BOTH_IDLE)
 
                     //设置链接超时时间
@@ -318,7 +317,7 @@ class SocketClient private constructor(
         }
     }
 
-    private var shortMsg = ""
+    private var shortMsg: String? = null
 
     @Throws
     fun sendShortData(msg: String) {
@@ -327,12 +326,14 @@ class SocketClient private constructor(
         }
         this.shortMsg = msg
         session?.let {
+
             val pack = Pack(1, msg)
-            if (!it.isConnected) {
+            if (!it.isConnected && !initing) {
                 conntection()
             } else {
                 it.write(pack)
             }
+            return@let
         }
 
     }
