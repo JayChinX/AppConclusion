@@ -2,6 +2,7 @@ package com.qxj.welcome.utilities
 
 import com.qxj.commonbase.mvvm.Repository
 import com.qxj.commonbase.mvvm.ViewModelFactory
+import com.qxj.welcome.base.AppWelcome
 import com.qxj.welcome.data.BlankRepository
 import com.qxj.welcome.data.HomeRepository
 import com.qxj.welcome.data.OneServiceLocator
@@ -14,7 +15,7 @@ object InjectorUtils {
 
     fun provideHomeViewModelFactory(): ViewModelFactory {
         val repository = getHomeRepository()
-        return HomeViewModel.HomeViewModelFactory(repository)
+        return HomeViewModel.HomeViewModelFactory(AppWelcome.INSTANCE, repository)
     }
 
     fun provideOneViewModelFactory(): ViewModelFactory {

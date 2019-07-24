@@ -6,7 +6,7 @@ import org.apache.mina.core.session.IoSession
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
-internal class MinaClientHandler(private val received: Received?) : IoHandlerAdapter() {
+internal class MinaClientHandler(private val received: Received?, private val long: Boolean = true) : IoHandlerAdapter() {
 
     private val logger: Logger by lazy { LoggerFactory.getLogger(MinaClientHandler::class.java) }
 
@@ -19,8 +19,8 @@ internal class MinaClientHandler(private val received: Received?) : IoHandlerAda
     @Throws(Exception::class)
     override fun messageReceived(session: IoSession?, message: Any?) {
         //数据交互 接收到的信息
-        logger.info("RECEIVED: {}" , message)
-        val msg = message.toString()
+        logger.info("RECEIVED: {}", message)
+        val msg = (message as Pack).content
         received?.parseData(msg)
         super.messageReceived(session, message)
     }
@@ -28,7 +28,7 @@ internal class MinaClientHandler(private val received: Received?) : IoHandlerAda
     @Throws(Exception::class)
     override fun messageSent(session: IoSession?, message: Any?) {
         logger.info("SEND: {}", message)
-        //        session.close(false);//true为短连接
+        if (!long) session?.close(true)//true为短连接
         super.messageSent(session, message)
     }
 

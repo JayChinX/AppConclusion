@@ -43,7 +43,7 @@ class SimpleLoggerConfiguration {
         private val CACHE_OUTPUT_STREAM_DEFAULT = false
         private val WARN_LEVELS_STRING_DEFAULT = "WARN"
 
-        private val DATE_TIME_FORMAT_STR_DEFAULT: String = "yyyy-MM-dd  hh:mm:ss"
+        private val DATE_TIME_FORMAT_STR_DEFAULT: String = "hh:mm:ss"
         var dateTimeFormatStr: String = DATE_TIME_FORMAT_STR_DEFAULT
         var LOG_FILE_DEFAULT: String = "System.out"
 

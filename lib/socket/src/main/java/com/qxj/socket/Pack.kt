@@ -1,6 +1,6 @@
 package com.qxj.socket
 
-data class Pack(
+internal data class Pack(
         var flag: Byte,
         var content: String?,
         var len: Int = 1 + 4 + (content?.toByteArray()?.size ?: 0)) {

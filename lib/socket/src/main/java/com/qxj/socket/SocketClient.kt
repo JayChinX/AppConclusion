@@ -18,14 +18,15 @@ import java.net.InetSocketAddress
 import java.nio.charset.Charset
 
 
-class Socket private constructor(
+class SocketClient private constructor(
         tag: String,
         private val ip: String,
         private val port: Int,
         private val loggerIoFilterAdapter: IoFilter,
-        private val heartBeat: IoFilter,
+        private val heartBeat: IoFilter?,
         private val protocolCodecIoFilterAdapter: IoFilter,
-        private val ioHandler: IoHandler
+        private val ioHandler: IoHandler,
+        private val long: Boolean = true
 ) : Thread(tag) {
 
     private var connector: IoConnector? = null
@@ -49,10 +50,11 @@ class Socket private constructor(
             internal var BOTH_IDLE = 10
         }
 
-        private var name: String = "Socket"
+        private var name: String = "SocketClient"
         private var ip: String? = null
         private var port: Int? = null
 
+        private var long: Boolean = true
 
         private var charsetName = "UTF-8"
 
@@ -62,6 +64,11 @@ class Socket private constructor(
 
         private var received: Received? = null
 
+
+        fun setTag(tag: String): Builder {
+            this.name = tag
+            return this
+        }
 
         fun setIp(ip: String, port: Int): Builder {
             this.ip = ip
@@ -85,13 +92,17 @@ class Socket private constructor(
             return this
         }
 
+        fun setType(long: Boolean): Builder {
+            this.long = long
+            return this
+        }
+
         fun setReceived(received: Received): Builder {
             this.received = received
             return this
         }
 
-
-        fun builder(): Socket {
+        fun builder(): SocketClient {
             if (ip == null || port == null) {
                 throw Exception("ip 和 端口号 不能为空")
             }
@@ -104,7 +115,21 @@ class Socket private constructor(
                 protocolCodecIoFilterAdapter = createCodec()
             }
 
-            return Socket(name,
+
+
+            return if (!long) {
+                SocketClient(name,
+                        ip!!, port!!,
+                        loggerIoFilterAdapter,
+                        null,
+                        protocolCodecIoFilterAdapter,
+                        createIoHandler(),
+                        false
+                ).apply {
+
+                    start()
+                }
+            } else SocketClient(name,
                     ip!!, port!!,
                     loggerIoFilterAdapter,
                     createHearBeat(),
@@ -147,7 +172,7 @@ class Socket private constructor(
         }
 
         private fun createIoHandler(): IoHandler {
-            return MinaClientHandler(received)
+            return MinaClientHandler(received, long)
         }
     }
 
@@ -174,6 +199,9 @@ class Socket private constructor(
                     throw Exception("socket 连接创建失败, session获取null")
                 }
                 running = true
+                if (!long) {
+                    sendShortData(shortMsg)
+                }
             } catch (e: Exception) {
                 running = false
                 failCount++
@@ -203,10 +231,13 @@ class Socket private constructor(
                     val codec = protocolCodecIoFilterAdapter
                     filterChain.addLast("codec", codec)
                     //心跳包
-                    val heartBeat = heartBeat
-                    filterChain.addLast("heartbeat", heartBeat)
+                    if (heartBeat != null) {
+                        val heartBeat = heartBeat
+                        filterChain.addLast("heartbeat", heartBeat)
 
-                    sessionConfig.isKeepAlive = true
+                        sessionConfig.isKeepAlive = true
+                    }
+
                     // 设置缓冲区大小
                     sessionConfig.readBufferSize = 1024
                     // 设置空闲时间 sessionConfig.setIdleTime(IdleStatus.BOTH_IDLE, 10)
@@ -271,19 +302,39 @@ class Socket private constructor(
         connector.addListener(object : IoListener() {
             override fun sessionDestroyed(arg0: IoSession) {
                 super.sessionDestroyed(arg0)
-
-                conntection()
+                if (long) {
+                    logger.info("尝试重连: {}", "ip: $ip, port: $port")
+                    conntection()
+                }
 
             }
         })
     }
 
-    fun sendData(msg: String) {
+    fun send(msg: String) {
         session?.let {
-            val content = "测试数据：$msg"
-            val pack = Pack(1, content)
+            val pack = Pack(1, msg)
             if (it.isConnected) it.write(pack)
         }
+    }
+
+    private var shortMsg = ""
+
+    @Throws
+    fun sendShortData(msg: String) {
+        if (long) {
+            throw Exception("不是短链接")
+        }
+        this.shortMsg = msg
+        session?.let {
+            val pack = Pack(1, msg)
+            if (!it.isConnected) {
+                conntection()
+            } else {
+                it.write(pack)
+            }
+        }
+
     }
 
     /**

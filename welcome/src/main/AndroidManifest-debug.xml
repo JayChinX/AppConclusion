@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.qxj.welcome" >
+    package="com.qxj.welcome">
     <!-- To access Google+ APIs: -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -51,9 +51,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-    <activity android:name="com.qxj.welcome.MainActivity">
+        <activity android:name="com.qxj.welcome.MainActivity">
 
-    </activity>
+        </activity>
 
         <activity
             android:name=".activity.Home2Activity"
@@ -66,29 +66,38 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-    </activity>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
-    <activity android:name="com.qxj.welcome.activity.SecondActivity" />
-    <activity android:name="com.qxj.welcome.activity.CustomGroupActivity" />
-    <activity android:name="com.qxj.welcome.web.URLReceiveActivity">
-        <intent-filter>
+        <activity android:name="com.qxj.welcome.activity.SecondActivity" />
+        <activity android:name="com.qxj.welcome.activity.CustomGroupActivity" />
+        <activity android:name="com.qxj.welcome.web.URLReceiveActivity">
+            <intent-filter>
 
-            <!-- host、scheme 字段，点击url会根据这两个字段调起本地的Activity -->
-            <data
-                android:host="111"
-                android:scheme="arouter" />
+                <!-- host、scheme 字段，点击url会根据这两个字段调起本地的Activity -->
+                <data
+                    android:host="111"
+                    android:scheme="arouter" />
 
-            <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.VIEW" />
 
-            <category android:name="android.intent.category.DEFAULT" />
-            <category android:name="android.intent.category.BROWSABLE" />
-        </intent-filter>
-    </activity>
-    <activity android:name="com.qxj.welcome.web.URLWebActivity" />
-    <activity android:name="com.qxj.welcome.web.URLWebTwoActivity"></activity>
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.qxj.welcome.web.URLWebActivity" />
+        <activity android:name="com.qxj.welcome.web.URLWebTwoActivity">
 
-        <service android:name=".init.InitIntentService"/>
+        </activity>
+
+        <service android:name=".init.InitIntentService" />
+
+        <service
+            android:name=".service.SocketService"
+            android:enabled="true"
+            android:exported="true">
+
+        </service>
     </application>
 </manifest>

@@ -164,7 +164,7 @@ class HomeActivity : BaseActivity() {
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show()
 //            showDialog("提示", "信息")
-            viewModel.startSocket()
+            viewModel.sendMsg()
         }
         nav_view.setNavigationItemSelectedListener(onNavigationItemSelectedListener)
         viewPager.addOnPageChangeListener(mOnPageChangeListener)
