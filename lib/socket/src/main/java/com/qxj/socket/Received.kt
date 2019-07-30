@@ -2,8 +2,8 @@ package com.qxj.socket
 
 import org.json.JSONException
 
-interface Received {
+interface Received  {
 
     @Throws(JSONException::class)
-    fun parseData(msg: String?)
+    fun parseData(result: Result<String>)
 }

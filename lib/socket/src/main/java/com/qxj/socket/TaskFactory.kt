@@ -21,7 +21,15 @@ class TaskFactory private constructor() {
         }
     }
 
-    fun getTask(ip: String, port: Int, name: String, received: Received, delay: Long, period: Long, run: (SocketClient) -> Unit): Task {
+    fun getTask(
+        ip: String,
+        port: Int,
+        name: String,
+        delay: Long,
+        period: Long,
+        received: Received,
+        run: (SocketClient) -> Unit
+    ): Task {
         val name = if (name.equals(ROOT_LOGGER_NAME, ignoreCase = true)) {
             ""
         } else {
@@ -30,50 +38,57 @@ class TaskFactory private constructor() {
 
         val task = taskMap[name]
         return if (task != null) {
-            logger.error("task 已存在")
+            logger.error("更新 CycleTask")
             task.update(run)
             task
         } else {
-            logger.info("task 创建成功")
-            val newInstance = CycleTask(name,
-                    SocketClient.Builder()
-                            .setTag(name)
-                            .setIp(ip = ip, port = port)
-                            .setTime(15 * 1000)
-                            .setReceived(received)
-                            .builder(),
-                    delay,
-                    period
+            logger.info("创建 CycleTask")
+            val newInstance = CycleTask(
+                name,
+                SocketClient.Builder()
+                    .setTag(name)
+                    .setIp(ip = ip, port = port)
+                    .setTime(15 * 1000)
+                    .setReceived(received)
+                    .builder(),
+                delay,
+                period
             )
-                    .create(run)
-                    .start()
+                .create(run)
+                .start()
             val oldInstance = taskMap.putIfAbsent(name, newInstance)
             oldInstance ?: newInstance
         }
     }
 
-    fun getTask(ip: String, port: Int, received: Received, msg: String): Task {
+    fun getTask(ip: String, port: Int, msg: String, received: Received): Task {
         val name = "SocketSingle"
 
         val task = taskMap[name]
-        return if (task != null) {
+
+        return if (task != null && (task as SingleTask).socketClient.isAlive) {
             task.update {
+                logger.info("更新 SocketSingle")
                 it.sendShortData(msg)
             }.start()
             task
         } else {
-            logger.info("task 创建成功")
-            val newInstance = SingleTask(SocketClient.Builder()
+            logger.info("创建 SocketSingle")
+            val newInstance = SingleTask(
+                SocketClient.Builder()
                     .setTag(name)
                     .setIp(ip = ip, port = port)
                     .setTime(15 * 1000)
                     .setType(false)
                     .setReceived(received)
-                    .builder()
+                    .builder().apply {
+                        start()
+                    }
             )
-            newInstance.create {
-                it.sendShortData(msg)
-            }.start()
+                .create {
+                    logger.info("启动 SocketSingle")
+                    it.sendShortData(msg)
+                }.start()
             val oldInstance = taskMap.putIfAbsent(name, newInstance)
             oldInstance ?: newInstance
         }
@@ -92,7 +107,7 @@ class TaskFactory private constructor() {
         fun stop()
     }
 
-    class SingleTask(private val socketClient: SocketClient) : Task {
+    class SingleTask(val socketClient: SocketClient) : Task {
 
         private var run: ((SocketClient) -> Unit)? = null
 
@@ -127,7 +142,12 @@ class TaskFactory private constructor() {
     }
 
 
-    class CycleTask internal constructor(private val tag: String, private val socketClient: SocketClient, private val delay: Long, private val period: Long) : Task {
+    class CycleTask internal constructor(
+        private val tag: String,
+        private val socketClient: SocketClient,
+        private val delay: Long,
+        private val period: Long
+    ) : Task {
 
         private var run: ((SocketClient) -> Unit)? = null
         private val semaphore = Semaphore(1)

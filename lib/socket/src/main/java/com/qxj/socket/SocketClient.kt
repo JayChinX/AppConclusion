@@ -14,19 +14,14 @@ import org.apache.mina.filter.logging.LoggingFilter
 import org.apache.mina.transport.socket.nio.NioSocketConnector
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import java.io.IOException
 import java.net.InetSocketAddress
 import java.nio.charset.Charset
 
 
 class SocketClient private constructor(
-        tag: String,
-        private val ip: String,
-        private val port: Int,
-        private val loggerIoFilterAdapter: IoFilter,
-        private val heartBeat: IoFilter?,
-        private val protocolCodecIoFilterAdapter: IoFilter,
-        private val ioHandler: IoHandler,
-        private val long: Boolean = true
+    tag: String,
+    private val config: SocketConfiguration
 ) : Thread(tag) {
 
     private var connector: IoConnector? = null
@@ -117,23 +112,28 @@ class SocketClient private constructor(
                 protocolCodecIoFilterAdapter = createCodec()
             }
 
-            return if (!long) {
-                SocketClient(name,
-                        ip!!, port!!,
-                        loggerIoFilterAdapter,
-                        null,
-                        protocolCodecIoFilterAdapter,
-                        createIoHandler(),
-                        false
-                ).apply {
-                    start()
-                }
-            } else SocketClient(name,
+            val configuration = if (!long) {
+                SocketConfiguration(
+                    ip!!, port!!,
+                    loggerIoFilterAdapter,
+                    null,
+                    protocolCodecIoFilterAdapter,
+                    createIoHandler(),
+                    received,
+                    false
+                )
+            } else {
+                SocketConfiguration(
                     ip!!, port!!,
                     loggerIoFilterAdapter,
                     createHearBeat(),
                     protocolCodecIoFilterAdapter,
-                    createIoHandler())
+                    createIoHandler(),
+                    received
+                )
+            }
+
+            return SocketClient(name, configuration)
         }
 
 
@@ -142,13 +142,13 @@ class SocketClient private constructor(
         }
 
         private fun createCodec(): IoFilter {
-//        val factory = TextLineCodecFactory(
+//            val factory = TextLineCodecFactory(
 //                Charset.forName("UTF-8"),
 //                LineDelimiter.WINDOWS.value,
 //                LineDelimiter.WINDOWS.value
-//        )
-//        factory.decoderMaxLineLength = 1024 * 1024
-//        factory.encoderMaxLineLength = 1024 * 1024
+//            )
+//            factory.decoderMaxLineLength = 1024 * 1024
+//            factory.encoderMaxLineLength = 1024 * 1024
 
             val factory = ProtocolCodecImplFactory(Charset.forName(charsetName))
             return ProtocolCodecFilter(factory)
@@ -175,6 +175,17 @@ class SocketClient private constructor(
         }
     }
 
+    internal data class SocketConfiguration(
+        val ip: String,
+        val port: Int,
+        val loggerIoFilterAdapter: IoFilter,
+        val heartBeat: IoFilter?,
+        val protocolCodecIoFilterAdapter: IoFilter,
+        val ioHandler: IoHandler,
+        val received: Received?,
+        val long: Boolean = true
+    )
+
 
     override fun run() {
         super.run()
@@ -199,13 +210,20 @@ class SocketClient private constructor(
                 }
                 initing = false
                 running = true
-                if (!long && shortMsg != null) {
+                if (!config.long && shortMsg != null) {
                     sendShortData(shortMsg!!)
                 }
             } catch (e: Exception) {
                 running = false
-                failCount++
+
                 logger.error("连接出错: {}", e.toString())
+                //如果是短链接抛出异常 不进行重试操作
+                if (!config.long) {
+                    config.received?.parseData(Result.failure(IOException("socket error", e)))
+                    return@with this
+                }
+
+                failCount++
                 val time = (if (failCount > 10) 5000L else 3000L)
                 sleep(time)
                 logger.error("正在重试： {}", "第${failCount}次重试，时间间隔${time / 1000}s")
@@ -222,41 +240,41 @@ class SocketClient private constructor(
 
     private fun createConnector(): IoConnector {
         return connector ?: NioSocketConnector()
-                .apply {
-                    logger.info("初始化 connector : {}", "ip: $ip, port: $port 初始化 connector")
-                    //添加过滤器
-                    val loggingFilter = loggerIoFilterAdapter
-                    filterChain.addLast("logger", loggingFilter)
-                    //编码解码格式
-                    val codec = protocolCodecIoFilterAdapter
-                    filterChain.addLast("codec", codec)
-                    //心跳包
-                    if (heartBeat != null) {
-                        val heartBeat = heartBeat
-                        filterChain.addLast("heartbeat", heartBeat)
+            .apply {
+                logger.info("初始化 connector : {}", "ip: ${config.ip}, port: ${config.port} 初始化 connector")
+                //添加过滤器
+                val loggingFilter = config.loggerIoFilterAdapter
+                filterChain.addLast("logger", loggingFilter)
+                //编码解码格式
+                val codec = config.protocolCodecIoFilterAdapter
+                filterChain.addLast("codec", codec)
+                //心跳包
+                if (config.heartBeat != null) {
+                    val heartBeat = config.heartBeat
+                    filterChain.addLast("heartbeat", heartBeat)
 
-                        sessionConfig.isKeepAlive = true
-                    }
-
-                    // 设置缓冲区大小
-                    sessionConfig.readBufferSize = 1024
-                    // 设置空闲时间
-                    sessionConfig.setIdleTime(IdleStatus.BOTH_IDLE, Builder.BOTH_IDLE)
-
-                    //设置链接超时时间
-                    connectTimeoutMillis = (Builder.TIMEOUT).toLong()
-
-                    //设置消息拦截器
-                    val ioHandler = ioHandler
-                    handler = ioHandler
-
-                    val socketAddress = InetSocketAddress(ip, port)
-
-                    setDefaultRemoteAddress(socketAddress)
-
-                    addListener(this)
-                    connector = this
+                    sessionConfig.isKeepAlive = true
                 }
+
+                // 设置缓冲区大小
+                sessionConfig.readBufferSize = 1024
+                // 设置空闲时间
+                sessionConfig.setIdleTime(IdleStatus.BOTH_IDLE, Builder.BOTH_IDLE)
+
+                //设置链接超时时间
+                connectTimeoutMillis = (Builder.TIMEOUT).toLong()
+
+                //设置消息拦截器
+                val ioHandler = config.ioHandler
+                handler = ioHandler
+
+                val socketAddress = InetSocketAddress(config.ip, config.port)
+
+                setDefaultRemoteAddress(socketAddress)
+
+                addListener(this)
+                connector = this
+            }
 
     }
 
@@ -277,11 +295,11 @@ class SocketClient private constructor(
             val session = future.session// 获得session
             if (session != null && session.isConnected) {
                 //连接成功
-                logger.info("连接成功: {}", "ip: $ip, port: $port")
+                logger.info("连接成功: {}", "ip: ${config.ip}, port: ${config.port}")
                 return@let session
             } else {
                 //连接失败
-                logger.error("连接失败: {}", "ip: $ip, port: $port")
+                logger.error("连接失败: {}", "ip: ${config.ip}, port: ${config.port}")
                 return@let null
             }
         }
@@ -301,8 +319,8 @@ class SocketClient private constructor(
         connector.addListener(object : IoListener() {
             override fun sessionDestroyed(arg0: IoSession) {
                 super.sessionDestroyed(arg0)
-                if (long) {
-                    logger.info("尝试重连: {}", "ip: $ip, port: $port")
+                if (config.long) {
+                    logger.info("尝试重连: {}", "ip: ${config.ip}, port: ${config.port}")
                     conntection()
                 }
 
@@ -312,7 +330,7 @@ class SocketClient private constructor(
 
     fun send(msg: String) {
         session?.let {
-            val pack = Pack(1, msg)
+            val pack = Pack(content = msg)
             if (it.isConnected) it.write(pack)
         }
     }
@@ -321,13 +339,13 @@ class SocketClient private constructor(
 
     @Throws
     fun sendShortData(msg: String) {
-        if (long) {
+        if (config.long) {
             throw Exception("不是短链接")
         }
         this.shortMsg = msg
         session?.let {
 
-            val pack = Pack(1, msg)
+            val pack = Pack(content = msg)
             if (!it.isConnected && !initing) {
                 conntection()
             } else {

@@ -21,14 +21,14 @@ internal class MinaClientHandler(private val received: Received?, private val lo
         //数据交互 接收到的信息
         logger.info("RECEIVED: {}", message)
         val msg = (message as Pack).content
-        received?.parseData(msg)
+        received?.parseData(Result.success(msg.toString()))
+        if (!long) session?.close(true)//true为短连接
         super.messageReceived(session, message)
     }
 
     @Throws(Exception::class)
     override fun messageSent(session: IoSession?, message: Any?) {
         logger.info("SEND: {}", message)
-        if (!long) session?.close(true)//true为短连接
         super.messageSent(session, message)
     }
 

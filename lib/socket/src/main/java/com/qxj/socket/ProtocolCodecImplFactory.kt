@@ -6,18 +6,26 @@ import org.apache.mina.filter.codec.ProtocolDecoder
 import org.apache.mina.filter.codec.ProtocolEncoder
 import java.nio.charset.Charset
 
-class ProtocolCodecImplFactory(charset: Charset) : ProtocolCodecFactory {
+class ProtocolCodecImplFactory() : ProtocolCodecFactory {
 
-    private val encoder = ProtocolEncoderImpl(charset)
-    private val decoder = ProtocolDecoderImpl(charset)
+    private var encoder: ProtocolEncoder? = null
+    private var decoder: ProtocolDecoder? = null
 
-    constructor() : this(Charset.forName("UTF-8"))
+    constructor(charset: Charset) : this() {
+        this.encoder = ProtocolEncoderImpl(charset)
+        this.decoder = ProtocolDecoderImpl(charset)
+    }
 
-    override fun getDecoder(p0: IoSession?): ProtocolDecoder {
+    constructor(encoder: ProtocolEncoder, decoder: ProtocolDecoder) : this() {
+        this.encoder = encoder
+        this.decoder = decoder
+    }
+
+    override fun getDecoder(p0: IoSession?): ProtocolDecoder? {
         return decoder
     }
 
-    override fun getEncoder(p0: IoSession?): ProtocolEncoder {
+    override fun getEncoder(p0: IoSession?): ProtocolEncoder? {
         return encoder
     }
 }
