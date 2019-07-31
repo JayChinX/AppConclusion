@@ -7,152 +7,150 @@ import android.content.Context
 import android.content.DialogInterface
 import android.content.res.Configuration
 import android.os.Bundle
-import com.qxj.dialog.DialogFragmentHelper.Type.*
 import android.text.TextUtils
-import android.view.Gravity
-import android.view.ViewGroup
+import android.util.Log
+import android.view.*
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
-import android.view.WindowManager
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
+import com.qxj.dialog.Type.*
 import org.jetbrains.anko.*
+import org.jetbrains.anko.support.v4.UI
 
 
-fun Fragment.showDialog(title: String, msg: String) {
-
-    val dialog = DialogFragmentHelper.Builder()
-            .title(title)
-            .msg(msg)
-            .left("取消")
-            .right("确定")
-            .builder()
-    dialog.show(fragmentManager = fragmentManager!!)
+fun Fragment.showDialog(title: String, msg: String, resultListener: ((Boolean) -> Unit)? = null) {
+    val builder = Builder()
+    builder.title(title)
+    builder.msg(msg)
+    builder.left("取消")
+    builder.right("确定")
+    if (resultListener != null) builder.setOnListener(resultListener)
+    val dialog = builder.builder()
+    dialog.show(fragmentManager!!, "NORMAL")
 }
 
-fun Fragment.showDialog(title: String, msg: String, resultListener: (Boolean) -> Unit) {
-
-    val dialog = DialogFragmentHelper.Builder()
-            .title(title)
-            .msg(msg)
-            .left("取消")
-            .right("确定")
-            .setOnListener(resultListener)
-            .builder()
-    dialog.show(fragmentManager = fragmentManager!!)
+fun Fragment.showCustomDialog(title: String, msg: View, resultListener: ((Boolean) -> Unit)? = null) {
+    val builder = Builder()
+    builder.type(CUSTOM)
+    builder.title(title)
+    builder.msg(msg)
+    builder.left("取消")
+    builder.right("确定")
+    builder.cancelable(true)
+    if (resultListener != null) builder.setOnListener(resultListener)
+    val dialog = builder.builder()
+    dialog.show(fragmentManager!!, "CUSTOM")
 }
 
 fun AppCompatActivity.showProgress() {
-
-    val dialog = DialogFragmentHelper.Builder()
+    val dialog = Builder()
             .type(PROGRESS)
             .builder()
-    dialog.show(fragmentManager = supportFragmentManager)
+    dialog.show(supportFragmentManager, "PROGRESS")
 }
 
-fun AppCompatActivity.showDialog(title: String, msg: String) {
-
-    val dialog = DialogFragmentHelper.Builder()
-            .title(title)
-            .msg(msg)
-            .left("取消")
-            .right("确定")
-            .builder()
-    dialog.show(fragmentManager = supportFragmentManager)
+fun AppCompatActivity.showCustomDialog(title: String, msg: View, resultListener: ((Boolean) -> Unit)? = null) {
+    val builder = Builder()
+    builder.type(CUSTOM)
+    builder.title(title)
+    builder.msg(msg)
+    builder.left("取消")
+    builder.right("确定")
+    builder.cancelable(true)
+    if (resultListener != null) builder.setOnListener(resultListener)
+    val dialog = builder.builder()
+    dialog.show(supportFragmentManager, "CUSTOM")
 }
 
-fun AppCompatActivity.showDialog(title: String, msg: String, resultListener: (Boolean) -> Unit) {
-
-    val dialog = DialogFragmentHelper.Builder()
-            .title(title)
-            .msg(msg)
-            .left("取消")
-            .right("确定")
-            .setOnListener(resultListener)
-            .builder()
-    dialog.show(fragmentManager = supportFragmentManager)
+fun AppCompatActivity.showDialog(title: String, msg: String, resultListener: ((Boolean) -> Unit)? = null) {
+    val builder = Builder()
+    builder.title(title)
+    builder.msg(msg)
+    builder.left("取消")
+    builder.right("确定")
+    if (resultListener != null) builder.setOnListener(resultListener)
+    val dialog = builder.builder()
+    dialog.show(supportFragmentManager, "NORMAL")
 }
 
-private class DialogFragmentHelper private constructor() {
 
-    companion object {
-        private const val INSERT_TAG = "AlertDialogHelper"
+internal class Builder {
+    private var title: String = "提示"
+    private var msg: String = ""
+    private var cancelable = true
+    private var leftString = "取消"
+    private var rightString = "确定"
+    private var view: View? = null
+    private var run: ((View) -> Unit)? = null
+    private var type = NORMAL
+
+    private var resultListener: ((Boolean) -> Unit)? = null
+
+    fun type(type: Type): Builder {
+        this.type = type
+        return this
     }
 
-    internal class Builder {
-        private var title: String = "提示"
-        private var msg: String = ""
-        private var cancelable = true
-        private var leftString = "取消"
-        private var rightString = "确定"
+    fun title(title: String): Builder {
+        this.title = title
+        return this
+    }
 
-        private var type = NORMAL
+    fun msg(msg: String): Builder {
+        this.msg = msg
+        return this
+    }
 
-        private var resultListener: ((Boolean) -> Unit)? = null
+    fun msg(view: View): Builder {
+        this.view = view
+        return this
+    }
 
-        fun type(type: Type): Builder {
-            this.type = type
-            return this
-        }
+    fun run(run: (View) -> Unit): Builder {
+        this.run = run
+        return this
+    }
 
-        fun title(title: String): Builder {
-            this.title = title
-            return this
-        }
+    fun left(leftString: String): Builder {
+        this.leftString = leftString
+        return this
+    }
 
-        fun msg(msg: String): Builder {
-            this.msg = msg
-            return this
-        }
+    fun right(rightString: String): Builder {
+        this.rightString = rightString
+        return this
+    }
 
-        fun left(leftString: String): Builder {
-            this.leftString = leftString
-            return this
-        }
+    fun cancelable(cancelable: Boolean): Builder {
+        this.cancelable = cancelable
+        return this
+    }
 
-        fun right(rightString: String): Builder {
-            this.rightString = rightString
-            return this
-        }
+    fun setOnListener(resultListener: (Boolean) -> Unit): Builder {
+        this.resultListener = resultListener
+        return this
+    }
 
-        fun cancelable(cancelable: Boolean): Builder {
-            this.cancelable = cancelable
-            return this
-        }
-
-        fun setOnListener(resultListener: (Boolean) -> Unit): Builder {
-            this.resultListener = resultListener
-            return this
-        }
-
-        fun builder(): DialogFragmentHelper {
-            val dialogFragmentHelper = DialogFragmentHelper()
-            when (type) {
-                SUCCESS -> TODO()
-                ERROR -> TODO()
-                WARNING -> TODO()
-                IMAGE -> TODO()
-                PROGRESS -> dialogFragmentHelper.createProgressDialog()
-                NORMAL -> dialogFragmentHelper.createInsertDialog(
-                        title, msg, leftString, rightString, resultListener, cancelable)
-            }
-
-            return dialogFragmentHelper
+    fun builder(): DialogFragment {
+        return when (type) {
+            SUCCESS -> TODO()
+            ERROR -> TODO()
+            WARNING -> TODO()
+            IMAGE -> TODO()
+            PROGRESS -> createProgressDialog()
+            CUSTOM -> createCustomDialog(
+                    title, view, leftString, rightString, run, resultListener, cancelable)
+            NORMAL -> createInsertDialog(
+                    title, msg, leftString, rightString, resultListener, cancelable)
         }
     }
 
-    private lateinit var dialogFragment: CustomDialogFragment
-
-    private fun createInsertDialog(
-            title: String,
-            msg: String,
-            leftString: String?,
-            rightString: String?,
-            resultListener: ((Boolean) -> Unit)?,
-            cancelable: Boolean) {
-        dialogFragment = CustomDialogFragment.newInstance(object : CustomDialogFragment.OnCallDialog {
+    private fun createInsertDialog(title: String, msg: String,
+                                   leftString: String?, rightString: String?,
+                                   resultListener: ((Boolean) -> Unit)?, cancelable: Boolean): DialogFragment {
+        return NormalDialogFragment.newInstance(object : NormalDialogFragment.OnCallDialog {
             @SuppressLint("NewApi")
             override fun getDialog(context: Context): Dialog {
 
@@ -227,7 +225,7 @@ private class DialogFragmentHelper private constructor() {
                         }.lparams(width = matchParent, height = width / 8, weight = 1f)
                     }
                 }.apply {
-                    layoutParams = ViewGroup.LayoutParams(MATCH_PARENT, MATCH_PARENT)
+                    layoutParams = ViewGroup.LayoutParams(matchParent, wrapContent)
                     background = getContext().getDrawable(R.drawable.bg_dialog)
                 }
 
@@ -238,109 +236,228 @@ private class DialogFragmentHelper private constructor() {
         }, cancelable)
     }
 
-    fun show(fragmentManager: FragmentManager) {
-        dialogFragment.show(fragmentManager, INSERT_TAG)
+    private fun createCustomDialog(title: String, view: View?,
+                                   leftString: String?, rightString: String?,
+                                   run: ((View) -> Unit)?,
+                                   resultListener: ((Boolean) -> Unit)?, cancelable: Boolean): DialogFragment {
+        return CustomDialogFragment.newInstance(title, view, leftString, rightString, run, resultListener, cancelable)
     }
 
-    fun createProgressDialog() {
-        dialogFragment = CustomDialogFragment.newInstance(object : CustomDialogFragment.OnCallDialog {
-            @SuppressLint("NewApi")
-            override fun getDialog(context: Context): Dialog {
-                val builder: AlertDialog.Builder = AlertDialog.Builder(context)
-                val dialog = builder.create()
-                dialog.show()
+    private fun createProgressDialog() = NormalDialogFragment.newInstance(object : NormalDialogFragment.OnCallDialog {
+        @SuppressLint("NewApi")
+        override fun getDialog(context: Context): Dialog {
+            val builder: AlertDialog.Builder = AlertDialog.Builder(context)
+            val dialog = builder.create()
+            dialog.show()
 
-                val view = context.verticalLayout {
+            val view = context.verticalLayout {
 
-                    progressBar()
+                progressBar()
 
-                }.apply {
-                    layoutParams = ViewGroup.LayoutParams(MATCH_PARENT, MATCH_PARENT)
+            }.apply {
+                layoutParams = ViewGroup.LayoutParams(MATCH_PARENT, MATCH_PARENT)
 //                    background = getContext().getDrawable(R.drawable.bg_dialog)
-                }
-
-                dialog.setContentView(view)
-                return dialog
             }
-        }, 0f)
+
+            dialog.setContentView(view)
+            return dialog
+        }
+    }, 0f)
+}
+
+internal enum class Type {
+    SUCCESS,
+    ERROR,
+    WARNING,
+    IMAGE,
+    PROGRESS,
+    CUSTOM,
+    NORMAL
+
+}
+
+internal class NormalDialogFragment : DialogFragment() {
+
+    interface OnCancelListener {
+        fun onCancel()
     }
 
-    internal enum class Type {
-        SUCCESS,
-        ERROR,
-        WARNING,
-        IMAGE,
-        PROGRESS,
-        NORMAL
-
+    interface OnCallDialog {
+        fun getDialog(context: Context): Dialog
     }
 
-    internal class CustomDialogFragment : DialogFragment() {
+    private lateinit var mCancelListener: OnCancelListener
+    private lateinit var mOnCallDialog: OnCallDialog
 
-        interface OnCancelListener {
-            fun onCancel()
+    companion object {
+        private var INSERT_ANI = R.style.AlertDialog_AppCompat
+
+        private var dimAmount = 0.5f
+
+        internal fun newInstance(call: OnCallDialog, dim: Float): NormalDialogFragment {
+            dimAmount = dim
+            return newInstance(call, true, null)
         }
 
-        interface OnCallDialog {
-            fun getDialog(context: Context): Dialog
+        internal fun newInstance(call: OnCallDialog, cancelable: Boolean): NormalDialogFragment {
+            return newInstance(call, cancelable, null)
         }
 
-        private lateinit var mCancelListener: OnCancelListener
-        private lateinit var mOnCallDialog: OnCallDialog
+        private fun newInstance(call: OnCallDialog, cancelable: Boolean, cancelListener: OnCancelListener?): NormalDialogFragment {
+            val instance = NormalDialogFragment()
+            instance.isCancelable = cancelable
+            if (null != cancelListener) instance.mCancelListener = cancelListener
+            instance.mOnCallDialog = call
+            return instance
+        }
+    }
 
-        companion object {
-            private var INSERT_ANI = R.style.AlertDialog_AppCompat
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        super.onCreateDialog(savedInstanceState)
 
-            private var dimAmount = 0.5f
+        return mOnCallDialog.getDialog(activity!!)
+    }
 
-            internal fun newInstance(call: OnCallDialog, dim: Float): CustomDialogFragment {
-                dimAmount = dim
-                return newInstance(call, true, null)
+    override fun onStart() {
+        super.onStart()
+        dialog?.window?.apply {
+            setWindowAnimations(INSERT_ANI)
+            //消除白边window.setBackgroundDrawable(BitmapDrawable())
+
+            setBackgroundDrawableResource(android.R.color.transparent)
+            val windowParams: WindowManager.LayoutParams = attributes
+            val dm = context!!.resources.displayMetrics
+            //屏幕状态
+            when (context!!.resources.configuration.orientation) {
+                Configuration.ORIENTATION_LANDSCAPE -> windowParams.width = (dm.heightPixels * 0.8).toInt()
+                Configuration.ORIENTATION_PORTRAIT -> windowParams.width = (dm.widthPixels * 0.8).toInt()
             }
 
-            internal fun newInstance(call: OnCallDialog, cancelable: Boolean): CustomDialogFragment {
-                return newInstance(call, cancelable, null)
-            }
-
-            internal fun newInstance(call: OnCallDialog, cancelable: Boolean, cancelListener: OnCancelListener?): CustomDialogFragment {
-                val instance = CustomDialogFragment()
-                instance.isCancelable = cancelable
-                if (null != cancelListener) instance.mCancelListener = cancelListener
-                instance.mOnCallDialog = call
-                return instance
-            }
+            windowParams.height = WindowManager.LayoutParams.WRAP_CONTENT
+            windowParams.dimAmount = dimAmount //遮罩透明度
+            attributes = windowParams
         }
+    }
 
-        override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-            super.onCreateDialog(savedInstanceState)
-            return mOnCallDialog.getDialog(activity!!)
+    override fun onCancel(dialog: DialogInterface) {
+        super.onCancel(dialog)
+        if (::mCancelListener.isInitialized) mCancelListener.onCancel()
+    }
+}
+
+internal class CustomDialogFragment : DialogFragment() {
+
+    companion object {
+        private var INSERT_ANI = R.style.AlertDialog_AppCompat
+        fun newInstance(title: String, view: View?,
+                        leftString: String?, rightString: String?,
+                        run: ((View) -> Unit)?,
+                        resultListener: ((Boolean) -> Unit)?, cancelable: Boolean): CustomDialogFragment {
+            val dialogFragment = CustomDialogFragment()
+            dialogFragment.run = run
+            dialogFragment.title = title
+            dialogFragment.viewCustom = view!!
+            dialogFragment.leftString = leftString ?: "取消"
+            dialogFragment.rightString = rightString ?: "确定"
+            dialogFragment.resultListener = resultListener
+            dialogFragment.isCancelable = cancelable
+            return dialogFragment
         }
+    }
+    private var run: ((View) -> Unit)? = null
+    private lateinit var title: String
+    private lateinit var viewCustom: View
+    private lateinit var leftString: String
+    private lateinit var rightString: String
+    private var resultListener: ((Boolean) -> Unit)? = null
 
-        override fun onStart() {
-            super.onStart()
-            dialog?.window?.apply {
-                setWindowAnimations(INSERT_ANI)
-                //消除白边window.setBackgroundDrawable(BitmapDrawable())
-
-                setBackgroundDrawableResource(android.R.color.transparent)
-
-                val windowParams: WindowManager.LayoutParams = attributes
-                val dm = context!!.resources.displayMetrics
-                //屏幕状态
-                when (context!!.resources.configuration.orientation) {
-                    Configuration.ORIENTATION_LANDSCAPE -> windowParams.width = (dm.heightPixels * 0.8).toInt()
-                    Configuration.ORIENTATION_PORTRAIT -> windowParams.width = (dm.widthPixels * 0.8).toInt()
+    @SuppressLint("NewApi")
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+//        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        val dm = context!!.resources.displayMetrics
+        val width = (dm.widthPixels * 0.8).toInt()
+        Log.d("qxj", "初始化完成${dm.widthPixels},${dm.heightPixels},${container?.width}")
+        return UI {
+            verticalLayout {
+                textView {
+                    gravity = Gravity.CENTER
+                    background = context.getDrawable(R.drawable.line_bottom)
+                    text = title
+                    textSize = 16f
+                    textColor = context.getColor(R.color.text_block)
+                }.lparams(width = matchParent, height = width / 8) {
+                    marginStart = 20
+                    marginEnd = 20
                 }
+                verticalLayout {
+                    gravity = Gravity.CENTER
+                    addView(viewCustom)
+                    background = context.getDrawable(R.drawable.line_bottom)
+                }.lparams(width = matchParent, height = width / 4) {
+                    marginStart = 20
+                    marginEnd = 20
+                }
+                verticalLayout {
+                    orientation = LinearLayout.HORIZONTAL
+                    if (!TextUtils.isEmpty(leftString) && !TextUtils.isEmpty(rightString)) {
+                        textView {
+                            foreground = context.getDrawable(R.drawable.item_select)
+                            gravity = Gravity.CENTER
+                            setOnClickListener {
+                                dismiss()
+                                resultListener?.invoke(false)
+                            }
 
-                windowParams.height = WindowManager.LayoutParams.WRAP_CONTENT
-                windowParams.dimAmount = dimAmount //遮罩透明度
-                attributes = windowParams
+                            text = leftString
+                        }.lparams(width = matchParent, height = width / 8, weight = 1f)
+
+                        view {
+                            background = context.getDrawable(R.drawable.line_ver)
+                        }.lparams(width = 1, height = width / 8 - 40) {
+                            gravity = Gravity.CENTER
+                        }
+                    }
+                    textView {
+                        gravity = Gravity.CENTER
+                        foreground = context.getDrawable(R.drawable.item_select)
+                        setOnClickListener {
+                            dismiss()
+                            resultListener?.invoke(true)
+                        }
+                        text = rightString
+                        textColor = context.getColor(R.color.baseAccent)
+                    }.lparams(width = matchParent, height = width / 8, weight = 1f)
+                }
+            }.apply {
+                layoutParams = ViewGroup.LayoutParams(width, wrapContent)
+                background = context.getDrawable(R.drawable.bg_dialog)
             }
-        }
 
-        override fun onCancel(dialog: DialogInterface) {
-            super.onCancel(dialog)
-            if (::mCancelListener.isInitialized) mCancelListener.onCancel()
+        }.view
+    }
+
+    override fun onStart() {
+        super.onStart()
+        dialog?.window?.apply {
+            setWindowAnimations(INSERT_ANI)
+            //消除白边window.setBackgroundDrawable(BitmapDrawable())
+            setBackgroundDrawableResource(android.R.color.transparent)
+            val windowParams: WindowManager.LayoutParams = attributes
+            val dm = context!!.resources.displayMetrics
+            //屏幕状态
+            when (context!!.resources.configuration.orientation) {
+                Configuration.ORIENTATION_LANDSCAPE -> windowParams.width = (dm.heightPixels * 0.8).toInt()
+                Configuration.ORIENTATION_PORTRAIT -> windowParams.width = (dm.widthPixels * 0.8).toInt()
+            }
+
+            windowParams.height = WindowManager.LayoutParams.WRAP_CONTENT
+            windowParams.dimAmount = 0.5f //遮罩透明度
+            attributes = windowParams
         }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        run?.invoke(view)
     }
 }

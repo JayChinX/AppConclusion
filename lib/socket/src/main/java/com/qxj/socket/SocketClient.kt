@@ -5,51 +5,84 @@ import org.apache.mina.core.future.ConnectFuture
 import org.apache.mina.core.future.IoFuture
 import org.apache.mina.core.service.IoConnector
 import org.apache.mina.core.service.IoHandler
-import org.apache.mina.core.session.IdleStatus
 import org.apache.mina.core.session.IoSession
 import org.apache.mina.filter.codec.ProtocolCodecFilter
 import org.apache.mina.filter.keepalive.KeepAliveFilter
 import org.apache.mina.filter.keepalive.KeepAliveRequestTimeoutHandler
 import org.apache.mina.filter.logging.LoggingFilter
-import org.apache.mina.transport.socket.nio.NioSocketConnector
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
-import java.io.IOException
-import java.net.InetSocketAddress
 import java.nio.charset.Charset
 
+interface SocketClient {
 
-class SocketClient private constructor(
-    tag: String,
-    private val config: SocketConfiguration
-) : Thread(tag) {
+    fun conntection()
 
-    private var connector: IoConnector? = null
+    fun init()
 
-    private var future: ConnectFuture? = null
+    fun createConnector(): IoConnector
 
-    private var session: IoSession? = null
+    @Throws
+    fun initFuture(connector: IoConnector): ConnectFuture {
+        return connector.let {
+            val future = it.connect()
+            // 等待连接创建完成
+            future.awaitUninterruptibly()
+        }
+    }
 
-    private var failCount = 0
+    @Throws
+    fun initSession(future: IoFuture?): IoSession? {
+        return future?.let {
+            //开始连接
+            val session = future.session// 获得session
+            if (session != null && session.isConnected) {
+                return@let session
+            } else {
+                return@let null
+            }
+        }
+    }
 
-    private val logger: Logger by lazy { LoggerFactory.getLogger(tag) }
+    fun stopSession()
 
+    fun addListener(connector: IoConnector) {
+        // 监听客户端是否断线
+        connector.addListener(object : IoListener() {
+            override fun sessionDestroyed(arg0: IoSession) {
+                super.sessionDestroyed(arg0)
+                conntection()
+            }
+        })
+    }
 
-    var running = false
+    fun send(msg: String)
 
-    private var initing = false
+    @Throws
+    fun sendShortData(msg: String)
+
+    fun getIsAliveThread(): Boolean
+    fun startThread()
+
+    /**
+     * 关闭Mina长连接 **
+     */
+    fun close()
+
+    enum class Type {
+        TCP,
+        UDP
+    }
 
     class Builder {
 
-        companion object {
-            internal var HEART_TIME = 3000
-            internal var TIMEOUT = 15 * 1000
-            internal var BOTH_IDLE = 10
-        }
+        private var type: Type = Type.TCP
 
-        private var name: String = "SocketClient"
-        private var ip: String? = null
-        private var port: Int? = null
+        private var HEART_TIME = 3000
+        private var TIMEOUT = 15 * 1000
+        private var BOTH_IDLE = 10
+
+        private var tag: String = "SocketClient"
+        private lateinit var ip: String
+        private var port: Int = 0
 
         private var long: Boolean = true
 
@@ -57,13 +90,23 @@ class SocketClient private constructor(
 
         private lateinit var loggerIoFilterAdapter: IoFilter
 
+        private var hearBeat: IoFilter? = null
+
         private lateinit var protocolCodecIoFilterAdapter: IoFilter
+
+        private lateinit var ioHandler: IoHandler
 
         private var received: Received? = null
 
 
+        fun setType(type: Type, long: Boolean = true): Builder {
+            this.type = type
+            this.long = long
+            return this
+        }
+
         fun setTag(tag: String): Builder {
-            this.name = tag
+            this.tag = tag
             return this
         }
 
@@ -89,51 +132,47 @@ class SocketClient private constructor(
             return this
         }
 
-        fun setType(long: Boolean): Builder {
-            this.long = long
-            return this
-        }
-
         fun setReceived(received: Received): Builder {
             this.received = received
             return this
         }
 
         fun builder(): SocketClient {
-            if (ip == null || port == null) {
-                throw Exception("ip 和 端口号 不能为空")
+            if (!::ip.isInitialized) {
+                throw Exception("IP和端口号为必填项")
             }
 
             if (!::loggerIoFilterAdapter.isInitialized) {
-                loggerIoFilterAdapter = createLogger()
+                this.loggerIoFilterAdapter = createLogger()
             }
+
+            if (long) hearBeat = createHearBeat()
 
             if (!::protocolCodecIoFilterAdapter.isInitialized) {
-                protocolCodecIoFilterAdapter = createCodec()
+                this.protocolCodecIoFilterAdapter = createCodec()
             }
 
-            val configuration = if (!long) {
-                SocketConfiguration(
-                    ip!!, port!!,
-                    loggerIoFilterAdapter,
-                    null,
-                    protocolCodecIoFilterAdapter,
-                    createIoHandler(),
-                    received,
-                    false
-                )
-            } else {
-                SocketConfiguration(
-                    ip!!, port!!,
-                    loggerIoFilterAdapter,
-                    createHearBeat(),
-                    protocolCodecIoFilterAdapter,
-                    createIoHandler(),
-                    received
-                )
+            if (!::ioHandler.isInitialized) {
+                this.ioHandler = createIoHandler()
             }
 
-            return SocketClient(name, configuration)
+            val configuration = SocketConfiguration(
+                ip, port,
+                loggerIoFilterAdapter,
+                hearBeat,
+                protocolCodecIoFilterAdapter,
+                ioHandler,
+                received,
+                long
+            ).apply {
+                TIMEOUT = 15 * 1000
+                BOTH_IDLE = 10
+            }
+
+            return when(type) {
+                Type.TCP -> SocketTcpClient(tag, configuration)
+                Type.UDP -> SocketUdpClient(tag, configuration)
+            }
         }
 
 
@@ -174,206 +213,4 @@ class SocketClient private constructor(
             return MinaClientHandler(received, long)
         }
     }
-
-    internal data class SocketConfiguration(
-        val ip: String,
-        val port: Int,
-        val loggerIoFilterAdapter: IoFilter,
-        val heartBeat: IoFilter?,
-        val protocolCodecIoFilterAdapter: IoFilter,
-        val ioHandler: IoHandler,
-        val received: Received?,
-        val long: Boolean = true
-    )
-
-
-    override fun run() {
-        super.run()
-        conntection()
-    }
-
-    @Throws
-    private fun conntection() {
-
-        with(createConnector()) {
-            initing = true
-            try {
-                future = initFuture(this)
-
-                if (future == null) {
-                    throw Exception("socket 连接创建失败, future获取null")
-                }
-                session = initSession(future)
-
-                if (session == null) {
-                    throw Exception("socket 连接创建失败, session获取null")
-                }
-                initing = false
-                running = true
-                if (!config.long && shortMsg != null) {
-                    sendShortData(shortMsg!!)
-                }
-            } catch (e: Exception) {
-                running = false
-
-                logger.error("连接出错: {}", e.toString())
-                //如果是短链接抛出异常 不进行重试操作
-                if (!config.long) {
-                    config.received?.parseData(Result.failure(IOException("socket error", e)))
-                    return@with this
-                }
-
-                failCount++
-                val time = (if (failCount > 10) 5000L else 3000L)
-                sleep(time)
-                logger.error("正在重试： {}", "第${failCount}次重试，时间间隔${time / 1000}s")
-                conntection()
-            }
-
-            return@with this
-        }
-    }
-
-    fun init() {
-
-    }
-
-    private fun createConnector(): IoConnector {
-        return connector ?: NioSocketConnector()
-            .apply {
-                logger.info("初始化 connector : {}", "ip: ${config.ip}, port: ${config.port} 初始化 connector")
-                //添加过滤器
-                val loggingFilter = config.loggerIoFilterAdapter
-                filterChain.addLast("logger", loggingFilter)
-                //编码解码格式
-                val codec = config.protocolCodecIoFilterAdapter
-                filterChain.addLast("codec", codec)
-                //心跳包
-                if (config.heartBeat != null) {
-                    val heartBeat = config.heartBeat
-                    filterChain.addLast("heartbeat", heartBeat)
-
-                    sessionConfig.isKeepAlive = true
-                }
-
-                // 设置缓冲区大小
-                sessionConfig.readBufferSize = 1024
-                // 设置空闲时间
-                sessionConfig.setIdleTime(IdleStatus.BOTH_IDLE, Builder.BOTH_IDLE)
-
-                //设置链接超时时间
-                connectTimeoutMillis = (Builder.TIMEOUT).toLong()
-
-                //设置消息拦截器
-                val ioHandler = config.ioHandler
-                handler = ioHandler
-
-                val socketAddress = InetSocketAddress(config.ip, config.port)
-
-                setDefaultRemoteAddress(socketAddress)
-
-                addListener(this)
-                connector = this
-            }
-
-    }
-
-    @Throws
-    private fun initFuture(connector: IoConnector): ConnectFuture {
-        return connector.let {
-            val future = it.connect()
-            // 等待连接创建完成
-            future.awaitUninterruptibly()
-        }
-
-    }
-
-    @Throws
-    private fun initSession(future: IoFuture?): IoSession? {
-        return future?.let {
-            //开始连接
-            val session = future.session// 获得session
-            if (session != null && session.isConnected) {
-                //连接成功
-                logger.info("连接成功: {}", "ip: ${config.ip}, port: ${config.port}")
-                return@let session
-            } else {
-                //连接失败
-                logger.error("连接失败: {}", "ip: ${config.ip}, port: ${config.port}")
-                return@let null
-            }
-        }
-    }
-
-    fun stopSession() {
-
-        if (session != null && session!!.isConnected) {
-            session!!.closeFuture.awaitUninterruptibly()// 等待连接断开
-            connector?.dispose()//彻底释放Session,退出程序时调用不需要重连的可以调用这句话，也就是短连接不需要重连。长连接不要调用这句话，注释掉就OK。
-        }
-    }
-
-
-    private fun addListener(connector: IoConnector) {
-        // 监听客户端是否断线
-        connector.addListener(object : IoListener() {
-            override fun sessionDestroyed(arg0: IoSession) {
-                super.sessionDestroyed(arg0)
-                if (config.long) {
-                    logger.info("尝试重连: {}", "ip: ${config.ip}, port: ${config.port}")
-                    conntection()
-                }
-
-            }
-        })
-    }
-
-    fun send(msg: String) {
-        session?.let {
-            val pack = Pack(content = msg)
-            if (it.isConnected) it.write(pack)
-        }
-    }
-
-    private var shortMsg: String? = null
-
-    @Throws
-    fun sendShortData(msg: String) {
-        if (config.long) {
-            throw Exception("不是短链接")
-        }
-        this.shortMsg = msg
-        session?.let {
-
-            val pack = Pack(content = msg)
-            if (!it.isConnected && !initing) {
-                conntection()
-            } else {
-                it.write(pack)
-            }
-            return@let
-        }
-
-    }
-
-    /**
-     * 关闭Mina长连接 **
-     */
-    fun close() {
-        logger.info("关闭重连: {}", "close()")
-        session?.close(false)
-
-        future?.cancel()
-        connector?.let {
-            if (!it.isDisposed) {
-                //清空里面注册的所以过滤器
-                it.filterChain.clear()
-                it.dispose()
-            }
-        }
-
-        logger.info("连接已关闭: {}")
-    }
-
-
 }

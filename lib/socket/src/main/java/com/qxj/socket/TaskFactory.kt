@@ -6,10 +6,9 @@ import org.slf4j.LoggerFactory
 import java.util.concurrent.*
 
 class TaskFactory private constructor() {
+    private val logger: Logger by lazy { LoggerFactory.getLogger(TaskFactory::class.java) }
 
     companion object {
-        private val logger: Logger by lazy { LoggerFactory.getLogger(TaskFactory::class.java) }
-        private const val ROOT_LOGGER_NAME = "root"
         private var taskMap: ConcurrentMap<String, Task> = ConcurrentHashMap()
 
         @Volatile
@@ -21,20 +20,13 @@ class TaskFactory private constructor() {
         }
     }
 
-    fun getTask(
-        ip: String,
-        port: Int,
-        name: String,
-        delay: Long,
-        period: Long,
-        received: Received,
-        run: (SocketClient) -> Unit
+    fun getTcpTask(ip: String, port: Int, name: String, period: Long, received: Received, run: (SocketClient) -> Unit) {
+        getTcpTask(ip, port, name, 1000, period, received, run)
+    }
+
+    private fun getTcpTask(
+        ip: String, port: Int, name: String, delay: Long, period: Long, received: Received, run: (SocketClient) -> Unit
     ): Task {
-        val name = if (name.equals(ROOT_LOGGER_NAME, ignoreCase = true)) {
-            ""
-        } else {
-            name
-        }
 
         val task = taskMap[name]
         return if (task != null) {
@@ -43,17 +35,15 @@ class TaskFactory private constructor() {
             task
         } else {
             logger.info("创建 CycleTask")
-            val newInstance = CycleTask(
-                name,
-                SocketClient.Builder()
-                    .setTag(name)
-                    .setIp(ip = ip, port = port)
-                    .setTime(15 * 1000)
-                    .setReceived(received)
-                    .builder(),
-                delay,
-                period
-            )
+            val socketClient = SocketClient.Builder()
+                .setType(SocketClient.Type.TCP)
+                .setTag(name)
+                .setIp(ip = ip, port = port)
+                .setTime(15 * 1000)
+                .setReceived(received)
+                .builder()
+
+            val newInstance = CycleTask(socketClient, delay, period)
                 .create(run)
                 .start()
             val oldInstance = taskMap.putIfAbsent(name, newInstance)
@@ -61,12 +51,12 @@ class TaskFactory private constructor() {
         }
     }
 
-    fun getTask(ip: String, port: Int, msg: String, received: Received): Task {
+    fun getTcpTask(ip: String, port: Int, msg: String, received: Received): Task {
         val name = "SocketSingle"
 
         val task = taskMap[name]
 
-        return if (task != null && (task as SingleTask).socketClient.isAlive) {
+        return if (task != null && (task as SingleTask).socketClient.getIsAliveThread()) {
             task.update {
                 logger.info("更新 SocketSingle")
                 it.sendShortData(msg)
@@ -74,21 +64,58 @@ class TaskFactory private constructor() {
             task
         } else {
             logger.info("创建 SocketSingle")
-            val newInstance = SingleTask(
-                SocketClient.Builder()
-                    .setTag(name)
-                    .setIp(ip = ip, port = port)
-                    .setTime(15 * 1000)
-                    .setType(false)
-                    .setReceived(received)
-                    .builder().apply {
-                        start()
-                    }
-            )
+            val socketClient = SocketClient.Builder()
+                .setType(SocketClient.Type.TCP, false)
+                .setTag(name)
+                .setIp(ip = ip, port = port)
+                .setTime(15 * 1000)
+                .setReceived(received)
+                .builder()
+                .apply {
+                    startThread()
+                }
+            val newInstance = SingleTask(socketClient)
                 .create {
                     logger.info("启动 SocketSingle")
                     it.sendShortData(msg)
-                }.start()
+                }
+                .start()
+            val oldInstance = taskMap.putIfAbsent(name, newInstance)
+            oldInstance ?: newInstance
+        }
+
+    }
+
+    fun getUdpTask(ip: String, port: Int, msg: String, received: Received): Task {
+        val name = "UdpSocketSingle"
+        val task = taskMap[name]
+
+        return if (task != null && (task as SingleTask).socketClient.getIsAliveThread()) {
+            task
+                .update {
+                    logger.info("更新 UdpSocketSingle")
+                    it.sendShortData(msg)
+                }
+                .start()
+            task
+        } else {
+            logger.info("创建 UdpSocketSingle")
+            val socketClient = SocketClient.Builder()
+                .setType(SocketClient.Type.UDP, false)
+                .setTag(name)
+                .setIp(ip = ip, port = port)
+                .setTime(15 * 1000)
+                .setReceived(received)
+                .builder()
+                .apply {
+                    startThread()
+                }
+            val newInstance = SingleTask(socketClient)
+                .create {
+                    logger.info("启动 UdpSocketSingle")
+                    it.sendShortData(msg)
+                }
+                .start()
             val oldInstance = taskMap.putIfAbsent(name, newInstance)
             oldInstance ?: newInstance
         }
@@ -107,7 +134,7 @@ class TaskFactory private constructor() {
         fun stop()
     }
 
-    class SingleTask(val socketClient: SocketClient) : Task {
+    internal class SingleTask(val socketClient: SocketClient) : Task {
 
         private var run: ((SocketClient) -> Unit)? = null
 
@@ -142,8 +169,7 @@ class TaskFactory private constructor() {
     }
 
 
-    class CycleTask internal constructor(
-        private val tag: String,
+    internal class CycleTask internal constructor(
         private val socketClient: SocketClient,
         private val delay: Long,
         private val period: Long
@@ -175,7 +201,7 @@ class TaskFactory private constructor() {
         private lateinit var scheduler: ScheduledExecutorService
         override fun start(): Task {
             try {
-                socketClient.start()
+                socketClient.startThread()
                 if (::scheduler.isInitialized) scheduler.shutdown()
 
                 val scheduler = Executors.newScheduledThreadPool(1)

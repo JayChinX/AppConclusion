@@ -22,7 +22,7 @@ internal class MinaClientHandler(private val received: Received?, private val lo
         logger.info("RECEIVED: {}", message)
         val msg = (message as Pack).content
         received?.parseData(Result.success(msg.toString()))
-        if (!long) session?.close(true)//true为短连接
+        if (!long) session?.closeNow()//短连接
         super.messageReceived(session, message)
     }
 
