@@ -1,0 +1,1111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+  </component>
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+  </component>
+  <component name="AvailableLibraryUpdateStorage">
+    <library-updates>
+      <library-update>
+        <group-id>androidx.legacy</group-id>
+        <name>legacy-support-v4</name>
+        <version>1.0.0</version>
+        <repository>Google</repository>
+      </library-update>
+      <library-update>
+        <group-id>org.jetbrains.kotlin</group-id>
+        <name>kotlin-stdlib-jdk8</name>
+        <version>1.3.31</version>
+        <repository>JCenter</repository>
+      </library-update>
+      <library-update>
+        <group-id>com.alibaba</group-id>
+        <name>arouter-api</name>
+        <version>1.4.0</version>
+        <repository>Maven Central</repository>
+      </library-update>
+      <library-update>
+        <group-id>com.google.android.material</group-id>
+        <name>material</name>
+        <version>1.1.0-alpha06</version>
+        <repository>Google</repository>
+      </library-update>
+      <library-update>
+        <group-id>androidx.constraintlayout</group-id>
+        <name>constraintlayout</name>
+        <version>2.0.0-beta1</version>
+        <repository>Google</repository>
+      </library-update>
+      <library-update>
+        <group-id>androidx.appcompat</group-id>
+        <name>appcompat</name>
+        <version>1.1.0-alpha05</version>
+        <repository>Google</repository>
+      </library-update>
+      <library-update>
+        <group-id>androidx.test.espresso</group-id>
+        <name>espresso-core</name>
+        <version>3.2.0</version>
+        <repository>Google</repository>
+      </library-update>
+      <library-update>
+        <group-id>androidx.test</group-id>
+        <name>runner</name>
+        <version>1.2.0-beta01</version>
+        <repository>Google</repository>
+      </library-update>
+      <library-update>
+        <group-id>io.reactivex.rxjava2</group-id>
+        <name>rxkotlin</name>
+        <version>2.3.0</version>
+        <repository>Maven Central</repository>
+      </library-update>
+      <library-update>
+        <group-id>com.uber.autodispose</group-id>
+        <name>autodispose</name>
+        <version>1.3.0</version>
+        <repository>JCenter</repository>
+      </library-update>
+      <library-update>
+        <group-id>com.uber.autodispose</group-id>
+        <name>autodispose-android-archcomponents</name>
+        <version>1.3.0</version>
+        <repository>JCenter</repository>
+      </library-update>
+      <library-update>
+        <group-id>junit</group-id>
+        <name>junit</name>
+        <version>4.13-beta-3</version>
+        <repository>JCenter</repository>
+      </library-update>
+      <library-update>
+        <group-id>androidx.paging</group-id>
+        <name>paging-runtime</name>
+        <version>2.1.0</version>
+        <repository>Google</repository>
+      </library-update>
+      <library-update>
+        <group-id>android.arch.navigation</group-id>
+        <name>navigation-ui</name>
+        <version>1.0.0</version>
+        <repository>Google</repository>
+      </library-update>
+      <library-update>
+        <group-id>android.arch.paging</group-id>
+        <name>rxjava2</name>
+        <version>1.0.1</version>
+        <repository>Google</repository>
+      </library-update>
+      <library-update>
+        <group-id>androidx.lifecycle</group-id>
+        <name>lifecycle-extensions</name>
+        <version>2.2.0-alpha01</version>
+        <repository>Google</repository>
+      </library-update>
+      <library-update>
+        <group-id>android.arch.navigation</group-id>
+        <name>navigation-fragment</name>
+        <version>1.0.0</version>
+        <repository>Google</repository>
+      </library-update>
+      <library-update>
+        <group-id>android.arch.work</group-id>
+        <name>work-runtime</name>
+        <version>1.0.1</version>
+        <repository>Google</repository>
+      </library-update>
+      <library-update>
+        <group-id>androidx.room</group-id>
+        <name>room-compiler</name>
+        <version>2.1.0-rc01</version>
+        <repository>Google</repository>
+      </library-update>
+      <library-update>
+        <group-id>androidx.room</group-id>
+        <name>room-runtime</name>
+        <version>2.1.0-rc01</version>
+        <repository>Google</repository>
+      </library-update>
+    </library-updates>
+    <last-search-timestamp>1559638460494</last-search-timestamp>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="aacb55a9-5b93-400c-9c0f-ebfa7ae5ac4b" name="Default Changelist" comment="feat(create branch): flutter branch">
+      <change afterPath="$PROJECT_DIR$/.idea/AppConclusion.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/lib/flutter_module/.android/Flutter/build/generated/not_namespaced_r_class_sources/" />
+    <ignored path="$PROJECT_DIR$/lib/flutter_module/.android/Flutter/build/generated/source/r/" />
+    <ignored path="$PROJECT_DIR$/lib/flutter_module/.android/Flutter/build/intermediates/aapt_friendly_merged_manifests/" />
+    <ignored path="$PROJECT_DIR$/lib/flutter_module/.android/Flutter/build/intermediates/check_manifest_result/" />
+    <ignored path="$PROJECT_DIR$/lib/flutter_module/.android/Flutter/build/intermediates/flutter/" />
+    <ignored path="$PROJECT_DIR$/lib/flutter_module/.android/Flutter/build/intermediates/library_manifest/" />
+    <ignored path="$PROJECT_DIR$/lib/flutter_module/.android/Flutter/build/intermediates/merged_manifests/" />
+    <ignored path="$PROJECT_DIR$/lib/flutter_module/.android/Flutter/build/intermediates/rs/" />
+    <ignored path="$PROJECT_DIR$/lib/flutter_module/.android/Flutter/build/outputs/" />
+    <ignored path="$PROJECT_DIR$/lib/flutter_module/.android/Flutter/build/tmp/" />
+    <ignored path="$PROJECT_DIR$/lib/flutter_module/.android/Flutter/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/" />
+    <ignored path="$PROJECT_DIR$/lib/flutter_module/.android/Flutter/build/intermediates/javac/debugUnitTest/compileDebugUnitTestJavaWithJavac/classes/" />
+    <ignored path="$PROJECT_DIR$/.gradle/" />
+    <ignored path="$PROJECT_DIR$/build/" />
+    <ignored path="$PROJECT_DIR$/lib/flutter_module/.pub/" />
+    <ignored path="$PROJECT_DIR$/lib/flutter_module/build/" />
+    <ignored path="$PROJECT_DIR$/app/build/generated/not_namespaced_r_class_sources/" />
+    <ignored path="$PROJECT_DIR$/app/build/generated/source/r/" />
+    <ignored path="$PROJECT_DIR$/app/build/intermediates/check_manifest_result/" />
+    <ignored path="$PROJECT_DIR$/app/build/intermediates/prebuild/" />
+    <ignored path="$PROJECT_DIR$/app/build/intermediates/rs/" />
+    <ignored path="$PROJECT_DIR$/app/build/tmp/" />
+    <ignored path="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/" />
+    <ignored path="$PROJECT_DIR$/app/build/intermediates/javac/debugUnitTest/compileDebugUnitTestJavaWithJavac/classes/" />
+    <ignored path="$PROJECT_DIR$/conclusion/build/generated/not_namespaced_r_class_sources/" />
+    <ignored path="$PROJECT_DIR$/conclusion/build/generated/source/r/" />
+    <ignored path="$PROJECT_DIR$/conclusion/build/intermediates/check_manifest_result/" />
+    <ignored path="$PROJECT_DIR$/conclusion/build/intermediates/prebuild/" />
+    <ignored path="$PROJECT_DIR$/conclusion/build/intermediates/rs/" />
+    <ignored path="$PROJECT_DIR$/conclusion/build/tmp/" />
+    <ignored path="$PROJECT_DIR$/conclusion/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/" />
+    <ignored path="$PROJECT_DIR$/conclusion/build/intermediates/javac/debugUnitTest/compileDebugUnitTestJavaWithJavac/classes/" />
+    <ignored path="$PROJECT_DIR$/lib/commonbase/build/generated/not_namespaced_r_class_sources/" />
+    <ignored path="$PROJECT_DIR$/lib/commonbase/build/generated/source/r/" />
+    <ignored path="$PROJECT_DIR$/lib/commonbase/build/intermediates/aapt_friendly_merged_manifests/" />
+    <ignored path="$PROJECT_DIR$/lib/commonbase/build/intermediates/annotation_processor_list/" />
+    <ignored path="$PROJECT_DIR$/lib/commonbase/build/intermediates/blame/" />
+    <ignored path="$PROJECT_DIR$/lib/commonbase/build/intermediates/check_manifest_result/" />
+    <ignored path="$PROJECT_DIR$/lib/commonbase/build/intermediates/compile_only_not_namespaced_r_class_jar/" />
+    <ignored path="$PROJECT_DIR$/lib/commonbase/build/intermediates/data-binding/" />
+    <ignored path="$PROJECT_DIR$/lib/commonbase/build/intermediates/data_binding_base_class_log_artifact/" />
+    <ignored path="$PROJECT_DIR$/lib/commonbase/build/intermediates/data_binding_base_class_logs_dependency_artifacts/" />
+    <ignored path="$PROJECT_DIR$/lib/commonbase/build/intermediates/data_binding_dependency_artifacts/" />
+    <ignored path="$PROJECT_DIR$/lib/commonbase/build/intermediates/data_binding_layout_info_type_merge/" />
+    <ignored path="$PROJECT_DIR$/lib/commonbase/build/intermediates/data_binding_layout_info_type_package/" />
+    <ignored path="$PROJECT_DIR$/lib/commonbase/build/intermediates/incremental/" />
+    <ignored path="$PROJECT_DIR$/lib/commonbase/build/intermediates/intermediate-jars/" />
+    <ignored path="$PROJECT_DIR$/lib/commonbase/build/intermediates/javac/" />
+    <ignored path="$PROJECT_DIR$/lib/commonbase/build/intermediates/jniLibs/" />
+    <ignored path="$PROJECT_DIR$/lib/commonbase/build/intermediates/library_assets/" />
+    <ignored path="$PROJECT_DIR$/lib/commonbase/build/intermediates/library_manifest/" />
+    <ignored path="$PROJECT_DIR$/lib/commonbase/build/intermediates/merged_manifests/" />
+    <ignored path="$PROJECT_DIR$/lib/commonbase/build/intermediates/packaged_res/" />
+    <ignored path="$PROJECT_DIR$/lib/commonbase/build/intermediates/public_res/" />
+    <ignored path="$PROJECT_DIR$/lib/commonbase/build/intermediates/res/" />
+    <ignored path="$PROJECT_DIR$/lib/commonbase/build/intermediates/rs/" />
+    <ignored path="$PROJECT_DIR$/lib/commonbase/build/intermediates/shader_assets/" />
+    <ignored path="$PROJECT_DIR$/lib/commonbase/build/intermediates/shaders/" />
+    <ignored path="$PROJECT_DIR$/lib/commonbase/build/intermediates/symbols/" />
+    <ignored path="$PROJECT_DIR$/lib/commonbase/build/intermediates/transforms/" />
+    <ignored path="$PROJECT_DIR$/lib/commonbase/build/kotlin/" />
+    <ignored path="$PROJECT_DIR$/lib/commonbase/build/outputs/" />
+    <ignored path="$PROJECT_DIR$/lib/commonbase/build/tmp/" />
+    <ignored path="$PROJECT_DIR$/lib/commondata/build/generated/not_namespaced_r_class_sources/" />
+    <ignored path="$PROJECT_DIR$/lib/commondata/build/generated/source/r/" />
+    <ignored path="$PROJECT_DIR$/lib/commondata/build/intermediates/aapt_friendly_merged_manifests/" />
+    <ignored path="$PROJECT_DIR$/lib/commondata/build/intermediates/annotation_processor_list/" />
+    <ignored path="$PROJECT_DIR$/lib/commondata/build/intermediates/check_manifest_result/" />
+    <ignored path="$PROJECT_DIR$/lib/commondata/build/intermediates/compile_only_not_namespaced_r_class_jar/" />
+    <ignored path="$PROJECT_DIR$/lib/commondata/build/intermediates/incremental/" />
+    <ignored path="$PROJECT_DIR$/lib/commondata/build/intermediates/intermediate-jars/" />
+    <ignored path="$PROJECT_DIR$/lib/commondata/build/intermediates/javac/" />
+    <ignored path="$PROJECT_DIR$/lib/commondata/build/intermediates/jniLibs/" />
+    <ignored path="$PROJECT_DIR$/lib/commondata/build/intermediates/library_assets/" />
+    <ignored path="$PROJECT_DIR$/lib/commondata/build/intermediates/library_manifest/" />
+    <ignored path="$PROJECT_DIR$/lib/commondata/build/intermediates/merged_manifests/" />
+    <ignored path="$PROJECT_DIR$/lib/commondata/build/intermediates/packaged_res/" />
+    <ignored path="$PROJECT_DIR$/lib/commondata/build/intermediates/public_res/" />
+    <ignored path="$PROJECT_DIR$/lib/commondata/build/intermediates/res/" />
+    <ignored path="$PROJECT_DIR$/lib/commondata/build/intermediates/rs/" />
+    <ignored path="$PROJECT_DIR$/lib/commondata/build/intermediates/shader_assets/" />
+    <ignored path="$PROJECT_DIR$/lib/commondata/build/intermediates/shaders/" />
+    <ignored path="$PROJECT_DIR$/lib/commondata/build/intermediates/symbols/" />
+    <ignored path="$PROJECT_DIR$/lib/commondata/build/intermediates/transforms/" />
+    <ignored path="$PROJECT_DIR$/lib/commondata/build/kotlin/" />
+    <ignored path="$PROJECT_DIR$/lib/commondata/build/outputs/" />
+    <ignored path="$PROJECT_DIR$/lib/commondata/build/tmp/" />
+    <ignored path="$PROJECT_DIR$/multichannel/build/generated/not_namespaced_r_class_sources/" />
+    <ignored path="$PROJECT_DIR$/multichannel/build/generated/source/r/" />
+    <ignored path="$PROJECT_DIR$/multichannel/build/intermediates/check_manifest_result/" />
+    <ignored path="$PROJECT_DIR$/multichannel/build/intermediates/prebuild/" />
+    <ignored path="$PROJECT_DIR$/multichannel/build/intermediates/rs/" />
+    <ignored path="$PROJECT_DIR$/multichannel/build/tmp/" />
+    <ignored path="$PROJECT_DIR$/multichannel/build/intermediates/javac/baiduDebug/compileBaiduDebugJavaWithJavac/classes/" />
+    <ignored path="$PROJECT_DIR$/multichannel/build/intermediates/javac/baiduDebugUnitTest/compileBaiduDebugUnitTestJavaWithJavac/classes/" />
+    <ignored path="$PROJECT_DIR$/welcome/build/generated/not_namespaced_r_class_sources/" />
+    <ignored path="$PROJECT_DIR$/welcome/build/generated/source/r/" />
+    <ignored path="$PROJECT_DIR$/welcome/build/intermediates/annotation_processor_list/" />
+    <ignored path="$PROJECT_DIR$/welcome/build/intermediates/apk_list/" />
+    <ignored path="$PROJECT_DIR$/welcome/build/intermediates/blame/" />
+    <ignored path="$PROJECT_DIR$/welcome/build/intermediates/bundle_manifest/" />
+    <ignored path="$PROJECT_DIR$/welcome/build/intermediates/check_manifest_result/" />
+    <ignored path="$PROJECT_DIR$/welcome/build/intermediates/compatible_screen_manifest/" />
+    <ignored path="$PROJECT_DIR$/welcome/build/intermediates/data-binding/" />
+    <ignored path="$PROJECT_DIR$/welcome/build/intermediates/data_binding_base_class_log_artifact/" />
+    <ignored path="$PROJECT_DIR$/welcome/build/intermediates/data_binding_base_class_logs_dependency_artifacts/" />
+    <ignored path="$PROJECT_DIR$/welcome/build/intermediates/data_binding_dependency_artifacts/" />
+    <ignored path="$PROJECT_DIR$/welcome/build/intermediates/data_binding_layout_info_type_merge/" />
+    <ignored path="$PROJECT_DIR$/welcome/build/intermediates/feature_data_binding_base_feature_info/" />
+    <ignored path="$PROJECT_DIR$/welcome/build/intermediates/incremental/" />
+    <ignored path="$PROJECT_DIR$/welcome/build/intermediates/instant_app_manifest/" />
+    <ignored path="$PROJECT_DIR$/welcome/build/intermediates/instant_run_merged_manifests/" />
+    <ignored path="$PROJECT_DIR$/welcome/build/intermediates/javac/" />
+    <ignored path="$PROJECT_DIR$/welcome/build/intermediates/jniLibs/" />
+    <ignored path="$PROJECT_DIR$/welcome/build/intermediates/merged_assets/" />
+    <ignored path="$PROJECT_DIR$/welcome/build/intermediates/merged_manifests/" />
+    <ignored path="$PROJECT_DIR$/welcome/build/intermediates/metadata_feature_manifest/" />
+    <ignored path="$PROJECT_DIR$/welcome/build/intermediates/prebuild/" />
+    <ignored path="$PROJECT_DIR$/welcome/build/intermediates/processed_res/" />
+    <ignored path="$PROJECT_DIR$/welcome/build/intermediates/res/" />
+    <ignored path="$PROJECT_DIR$/welcome/build/intermediates/rs/" />
+    <ignored path="$PROJECT_DIR$/welcome/build/intermediates/shader_assets/" />
+    <ignored path="$PROJECT_DIR$/welcome/build/intermediates/shaders/" />
+    <ignored path="$PROJECT_DIR$/welcome/build/intermediates/signing_config/" />
+    <ignored path="$PROJECT_DIR$/welcome/build/intermediates/symbols/" />
+    <ignored path="$PROJECT_DIR$/welcome/build/intermediates/transforms/" />
+    <ignored path="$PROJECT_DIR$/welcome/build/intermediates/validate_signing_config/" />
+    <ignored path="$PROJECT_DIR$/welcome/build/kotlin/" />
+    <ignored path="$PROJECT_DIR$/welcome/build/outputs/" />
+    <ignored path="$PROJECT_DIR$/welcome/build/tmp/" />
+    <ignored path="$PROJECT_DIR$/lib/commonsdk/build/generated/not_namespaced_r_class_sources/" />
+    <ignored path="$PROJECT_DIR$/lib/commonsdk/build/generated/source/r/" />
+    <ignored path="$PROJECT_DIR$/lib/commonsdk/build/intermediates/aapt_friendly_merged_manifests/" />
+    <ignored path="$PROJECT_DIR$/lib/commonsdk/build/intermediates/annotation_processor_list/" />
+    <ignored path="$PROJECT_DIR$/lib/commonsdk/build/intermediates/check_manifest_result/" />
+    <ignored path="$PROJECT_DIR$/lib/commonsdk/build/intermediates/compile_only_not_namespaced_r_class_jar/" />
+    <ignored path="$PROJECT_DIR$/lib/commonsdk/build/intermediates/incremental/" />
+    <ignored path="$PROJECT_DIR$/lib/commonsdk/build/intermediates/intermediate-jars/" />
+    <ignored path="$PROJECT_DIR$/lib/commonsdk/build/intermediates/javac/" />
+    <ignored path="$PROJECT_DIR$/lib/commonsdk/build/intermediates/jniLibs/" />
+    <ignored path="$PROJECT_DIR$/lib/commonsdk/build/intermediates/library_assets/" />
+    <ignored path="$PROJECT_DIR$/lib/commonsdk/build/intermediates/library_manifest/" />
+    <ignored path="$PROJECT_DIR$/lib/commonsdk/build/intermediates/merged_manifests/" />
+    <ignored path="$PROJECT_DIR$/lib/commonsdk/build/intermediates/packaged_res/" />
+    <ignored path="$PROJECT_DIR$/lib/commonsdk/build/intermediates/public_res/" />
+    <ignored path="$PROJECT_DIR$/lib/commonsdk/build/intermediates/res/" />
+    <ignored path="$PROJECT_DIR$/lib/commonsdk/build/intermediates/rs/" />
+    <ignored path="$PROJECT_DIR$/lib/commonsdk/build/intermediates/shader_assets/" />
+    <ignored path="$PROJECT_DIR$/lib/commonsdk/build/intermediates/shaders/" />
+    <ignored path="$PROJECT_DIR$/lib/commonsdk/build/intermediates/symbols/" />
+    <ignored path="$PROJECT_DIR$/lib/commonsdk/build/intermediates/transforms/" />
+    <ignored path="$PROJECT_DIR$/lib/commonsdk/build/kotlin/" />
+    <ignored path="$PROJECT_DIR$/lib/commonsdk/build/outputs/" />
+    <ignored path="$PROJECT_DIR$/lib/commonsdk/build/tmp/" />
+    <ignored path=".gradle/" />
+    <ignored path=".idea/" />
+    <ignored mask="*.iml" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/app">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/welcome">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/lib/commonbase">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="AppConclusion" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="AppConclusion" type="f1a62948:ProjectNode" />
+                <item name=":app" type="2d1252cf:ModuleNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="AppConclusion" type="f1a62948:ProjectNode" />
+                <item name=":app" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="AppConclusion" type="f1a62948:ProjectNode" />
+                <item name=":commonbase" type="2d1252cf:ModuleNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="AppConclusion" type="f1a62948:ProjectNode" />
+                <item name=":commonbase" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="AppConclusion" type="f1a62948:ProjectNode" />
+                <item name=":commonbase" type="2d1252cf:ModuleNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="18" column="9" lean-forward="true" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Gradle Kotlin DSL Build Script" />
+        <option value="Gradle Kotlin DSL Settings" />
+        <option value="Class" />
+        <option value="Kotlin Class" />
+        <option value="Kotlin Interface" />
+        <option value="Kotlin Object" />
+        <option value="Kotlin File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>Lifecycle</find>
+      <find>LifecycleOwner</find>
+      <find>LiveData</find>
+      <find>appbar_scrolling_view_behavior</find>
+      <find>lifecycle</find>
+      <find>coroutines</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/welcome/src/main/java/com/qxj/welcome/net/LiveDataBus.kt" />
+        <option value="$PROJECT_DIR$/welcome/src/main/java/com/qxj/welcome/net/NetworkState.kt" />
+        <option value="$PROJECT_DIR$/multichannel/src/main/java/com/qxj/multichannel/MainActivity.kt" />
+        <option value="$PROJECT_DIR$/app/app.iml" />
+        <option value="$PROJECT_DIR$/local.properties" />
+        <option value="$PROJECT_DIR$/welcome/src/main/java/com/qxj/welcome/data/HomeRepository.kt" />
+        <option value="$PROJECT_DIR$/welcome/src/main/java/com/qxj/welcome/viewmodels/HomeViewModel.kt" />
+        <option value="$PROJECT_DIR$/welcome/src/main/java/com/qxj/welcome/data/BlankRepository.kt" />
+        <option value="$PROJECT_DIR$/welcome/src/main/java/com/qxj/welcome/viewmodels/OneViewModel.kt" />
+        <option value="$PROJECT_DIR$/lib/commonbase/src/main/java/com/qxj/commonbase/mvvm/Repository.kt" />
+        <option value="$PROJECT_DIR$/conclusion/src/main/res/layout/alert_dialog.xml" />
+        <option value="$PROJECT_DIR$/flutter_module/.android/local.properties" />
+        <option value="$PROJECT_DIR$/config.gradle" />
+        <option value="$PROJECT_DIR$/conclusion/build.gradle" />
+        <option value="$PROJECT_DIR$/conclusion/src/main/java/com/qxj/conclusion/AppConclusionActivity.kt" />
+        <option value="$PROJECT_DIR$/conclusion/src/main/java/com/qxj/conclusion/view/dialog/DialogFragmentHelper.kt" />
+        <option value="$PROJECT_DIR$/conclusion/src/main/res/layout/alert_dialog_select_two.xml" />
+        <option value="$PROJECT_DIR$/welcome/src/main/java/com/qxj/welcome/data/StateManager.kt" />
+        <option value="$PROJECT_DIR$/lib/dialog/src/main/java/com/qxj/dialog/AlertDialogHelper.kt" />
+        <option value="$PROJECT_DIR$/welcome/src/main/java/com/qxj/welcome/utilities/Utils.kt" />
+        <option value="$PROJECT_DIR$/welcome/src/main/java/com/qxj/welcome/utilities/Permission.kt" />
+        <option value="$PROJECT_DIR$/welcome/src/main/java/com/qxj/welcome/utilities/Navigation.kt" />
+        <option value="$PROJECT_DIR$/welcome/src/main/java/com/qxj/welcome/init/InitIntentService.kt" />
+        <option value="$PROJECT_DIR$/welcome/src/main/java/com/qxj/welcome/base/BaseActivity.kt" />
+        <option value="$PROJECT_DIR$/welcome/src/main/java/com/qxj/welcome/base/BaseFragment.kt" />
+        <option value="$PROJECT_DIR$/lib/dialog/build.gradle" />
+        <option value="$PROJECT_DIR$/welcome/src/main/res/values-v21/styles.xml" />
+        <option value="$PROJECT_DIR$/welcome/src/main/java/com/qxj/welcome/activity/HomeActivity.kt" />
+        <option value="$PROJECT_DIR$/welcome/src/main/AndroidManifest-debug.xml" />
+        <option value="$PROJECT_DIR$/welcome/src/main/res/values/styles.xml" />
+        <option value="$PROJECT_DIR$/welcome/src/main/res/values/colors.xml" />
+        <option value="$PROJECT_DIR$/welcome/build.gradle" />
+        <option value="$PROJECT_DIR$/lib/tcp/build.gradle" />
+        <option value="$PROJECT_DIR$/settings.gradle" />
+        <option value="$PROJECT_DIR$/welcome/src/main/res/layout/floating_button.xml" />
+        <option value="$PROJECT_DIR$/welcome/src/main/res/layout/activity_home.xml" />
+        <option value="$PROJECT_DIR$/welcome/src/main/res/layout/app_bar_home.xml" />
+        <option value="$PROJECT_DIR$/lib/socket/src/main/java/com/qxj/socket/MinaThread.java" />
+        <option value="$PROJECT_DIR$/lib/socket/src/main/java/com/qxj/socket/ReceiveData.java" />
+        <option value="$PROJECT_DIR$/lib/socket/src/main/java/com/qxj/socket/MinaClientHandler.java" />
+        <option value="$PROJECT_DIR$/lib/socket/src/main/java/com/qxj/socket/MinaThread.kt" />
+        <option value="$PROJECT_DIR$/lib/socket/src/main/java/com/qxj/socket/MinaClientHandler.kt" />
+        <option value="$PROJECT_DIR$/lib/socket/src/main/java/com/qxj/socket/KeepAliveMessageFactoryImpl.kt" />
+        <option value="$PROJECT_DIR$/lib/socket/src/main/java/com/qxj/socket/MinaSocket.kt" />
+        <option value="$PROJECT_DIR$/lib/socket/src/main/java/com/qxj/socket/ReceiveData.kt" />
+        <option value="$PROJECT_DIR$/lib/socket/src/main/java/com/qxj/socket/Receive.kt" />
+        <option value="$PROJECT_DIR$/lib/socket/src/main/java/com/qxj/socket/Received.kt" />
+        <option value="$PROJECT_DIR$/lib/socket/src/main/java/com/qxj/socket/ClientHandler.kt" />
+        <option value="$PROJECT_DIR$/lib/socket/src/main/java/com/qxj/socket/IoListener.kt" />
+        <option value="$PROJECT_DIR$/lib/socket/src/main/java/com/qxj/socket/SocketThread.kt" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="980" />
+    <option name="height" value="1040" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="AppConclusion" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AppConclusion" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope">
+        <subPane subId="Scope 'Changed Files'; set:Changed Files; ALL; class com.intellij.packageDependencies.ChangeListScope">
+          <expand>
+            <path>
+              <item name="AppConclusion" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
+          <expand>
+            <path>
+              <item name="AppConclusion" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="KEY_COMPOSED_FOLDERS" value="{&quot;DecomposedFolders&quot;:[&quot;E:/Projects/AppConclusion/workpolicy&quot;,&quot;E:/Projects/AppConclusion/hce&quot;,&quot;E:/Projects/AppConclusion/cndk&quot;]}" />
+    <property name="android.project.structure.last.selected" value="Ads" />
+    <property name="android.project.structure.proportion" value="0.15" />
+    <property name="android.sdk.path" value="$USER_HOME$/Android/Sdk" />
+    <property name="dart.analysis.tool.window.force.activate" value="false" />
+    <property name="device.picker.selection" value="CMR6R18B07002335" />
+    <property name="last_opened_file_path" value="D:/ABBManagerservice" />
+    <property name="not.eligible.for.single.variant.sync" value="true" />
+    <property name="project.structure.last.edited" value="SDK Location" />
+    <property name="project.structure.proportion" value="0.17" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="PsdUISettings">
+    <option name="MODULE_TAB" value="Properties" />
+    <option name="BUILD_VARIANTS_TAB" value="Flavors" />
+    <option name="LAST_EDITED_BUILD_TYPE" value="release" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="com.qxj.welcome.bus" />
+      <recent name="com.qxj.welcome.net.state" />
+      <recent name="com.qxj.commonbase.util" />
+      <recent name="com.qxj.commonsdk.coroutine" />
+      <recent name="com.qxj.welcome.viewmodels" />
+    </key>
+    <key name="CreateKotlinClassDialog.RecentsKey">
+      <recent name="com.qxj.welcome" />
+    </key>
+    <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
+      <recent name="com.qxj.welcome.init" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lib" />
+      <recent name="E:\Projects\AppConclusion\lib" />
+      <recent name="E:\Projects\AppConclusion\lib\commonsdk\src\main\java\com\qxj\commonsdk\coroutine" />
+      <recent name="E:\Projects\AppConclusion\conclusion\src\main\java\com\qxj\conclusion\api" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.qxj.commonbase" />
+      <recent name="" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lib/socket/src/main/java/com/qxj/socket" />
+      <recent name="$PROJECT_DIR$/welcome/src/main/res/mipmap-xhdpi" />
+      <recent name="$PROJECT_DIR$/welcome/src/main/res/layout" />
+      <recent name="$PROJECT_DIR$/tcp/libs" />
+      <recent name="$PROJECT_DIR$/welcome/src/main/res/values-v21" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Flutter.main.dart">
+    <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App">
+      <module name="app" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="conclusion" type="AndroidRunConfigurationType" factoryName="Android App">
+      <module name="conclusion" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="multichannel" type="AndroidRunConfigurationType" factoryName="Android App">
+      <module name="multichannel" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="welcome" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
+      <module name="welcome" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="main.dart" type="FlutterRunConfigurationType" factoryName="Flutter">
+      <option name="filePath" value="$PROJECT_DIR$/lib/main.dart" />
+      <method v="2" />
+    </configuration>
+    <configuration name="AppConclusion:lib:commonbase [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/lib/commonbase" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Android App.multichannel" />
+      <item itemvalue="Android App.welcome" />
+      <item itemvalue="Android App.app" />
+      <item itemvalue="Android App.conclusion" />
+      <item itemvalue="Flutter.main.dart" />
+      <item itemvalue="Gradle.AppConclusion:lib:commonbase [build]" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.AppConclusion:lib:commonbase [build]" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="aacb55a9-5b93-400c-9c0f-ebfa7ae5ac4b" name="Default Changelist" comment="" />
+      <created>1536627595316</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1536627595316</updated>
+    </task>
+    <task id="LOCAL-00001" summary="add paging">
+      <created>1555679761099</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1555679761099</updated>
+    </task>
+    <task id="LOCAL-00002" summary="add viewModel about mvvm">
+      <created>1555936995673</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1555936995674</updated>
+    </task>
+    <task id="LOCAL-00003" summary="retrofit change">
+      <created>1556025518244</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1556025518244</updated>
+    </task>
+    <task id="LOCAL-00004" summary="kotlin version 1.3.31 导致 gradle warning">
+      <created>1559696680266</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1559696680266</updated>
+    </task>
+    <task id="LOCAL-00005" summary="module for project">
+      <created>1552230999094</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1552230999094</updated>
+    </task>
+    <task id="LOCAL-00006" summary="module for project1">
+      <created>1552260257931</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1552260257931</updated>
+    </task>
+    <task id="LOCAL-00007" summary="add module for hce">
+      <created>1552346586923</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1552346586923</updated>
+    </task>
+    <task id="LOCAL-00008" summary="add module for Multi and ARouter">
+      <created>1552401207690</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1552401207690</updated>
+    </task>
+    <task id="LOCAL-00009" summary="add module for flutter">
+      <created>1552574148653</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1552574148653</updated>
+    </task>
+    <task id="LOCAL-00010" summary="add module for flutter">
+      <created>1552863718271</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1552863718271</updated>
+    </task>
+    <task id="LOCAL-00011" summary="add dagger2">
+      <created>1553006415176</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1553006415176</updated>
+    </task>
+    <task id="LOCAL-00012" summary="add RxJava">
+      <created>1553090486977</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1553090486977</updated>
+    </task>
+    <task id="LOCAL-00013" summary="add">
+      <created>1555370666162</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1555370666162</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
+    <servers />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.2533512" />
+      <window_info id="Structure" order="2" side_tool="true" />
+      <window_info id="Build Variants" order="3" side_tool="true" />
+      <window_info id="Image Layers" order="4" />
+      <window_info id="Designer" order="5" />
+      <window_info id="Capture Tool" order="6" />
+      <window_info id="Favorites" order="7" side_tool="true" />
+      <window_info id="Resources Explorer" order="8" weight="0.28424016" />
+      <window_info id="DB Browser" order="9" />
+      <window_info anchor="bottom" id="Dart Analysis" />
+      <window_info anchor="bottom" id="Run" order="0" weight="0.5562988" />
+      <window_info anchor="bottom" id="Logcat" order="1" weight="0.6978818" />
+      <window_info anchor="bottom" id="TODO" order="2" weight="0.32998884" />
+      <window_info anchor="bottom" id="Android Profiler" order="3" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Debug" order="4" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="5" visible="true" weight="0.3286119" />
+      <window_info anchor="bottom" id="Event Log" order="6" sideWeight="0.50159913" side_tool="true" weight="0.21492206" />
+      <window_info anchor="bottom" id="Flutter Performance" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.44978783" />
+      <window_info anchor="bottom" id="Build" order="9" sideWeight="0.49840087" weight="0.23371105" />
+      <window_info anchor="bottom" id="Find" order="10" weight="0.32900944" />
+      <window_info anchor="bottom" id="DB Execution Console" order="11" />
+      <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
+      <window_info anchor="right" id="Capture Analysis" order="1" />
+      <window_info anchor="right" id="Gradle" order="2" weight="0.32995737" />
+      <window_info anchor="right" id="Anko Layout Preview" order="3" weight="0.16025642" />
+      <window_info anchor="right" id="Flutter Inspector" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="right" id="Flutter Outline" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Preview" order="8" weight="0.32959402" />
+      <window_info anchor="right" id="Assistant" order="9" weight="0.32995737" />
+    </layout>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/AppConclusion" />
+    </ignored-roots>
+    <MESSAGE value="add retrofit2.0 + ..." />
+    <MESSAGE value="add glide" />
+    <MESSAGE value="add mvvm DataBinding" />
+    <MESSAGE value="module for project" />
+    <MESSAGE value="module for project1" />
+    <MESSAGE value="add module for hce" />
+    <MESSAGE value="add module for Multi and ARouter" />
+    <MESSAGE value="add module for flutter" />
+    <MESSAGE value="add dagger2" />
+    <MESSAGE value="add RxJava" />
+    <MESSAGE value="add" />
+    <MESSAGE value="add paging" />
+    <MESSAGE value="add viewModel about mvvm" />
+    <MESSAGE value="retrofit change" />
+    <MESSAGE value="kotlin version 1.3.31 导致 gradle warning" />
+    <option name="LAST_COMMIT_MESSAGE" value="kotlin version 1.3.31 导致 gradle warning" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/lib/commonbase/src/main/java/com/qxj/commonbase/mvvm/BaseFragment.kt" />
+    <entry file="file://$PROJECT_DIR$/welcome/src/main/java/com/qxj/welcome/base/BaseFragment.kt" />
+    <entry file="file://$PROJECT_DIR$/welcome/src/main/java/com/qxj/welcome/init/InitIntentService.kt" />
+    <entry file="file://$PROJECT_DIR$/lib/commonbase/src/main/java/com/qxj/commonbase/coroutine/Coroutine.kt" />
+    <entry file="file://$PROJECT_DIR$/app/build.gradle" />
+    <entry file="file://$PROJECT_DIR$/lib/commonbase/build.gradle" />
+    <entry file="file://$PROJECT_DIR$/welcome/src/main/res/values-v21/styles.xml" />
+    <entry file="file://$PROJECT_DIR$/welcome/src/main/res/anim/slide_in_right.xml" />
+    <entry file="file://$PROJECT_DIR$/welcome/src/main/res/values-v21/anim.xml" />
+    <entry file="file://$PROJECT_DIR$/welcome/src/main/res/anim/slide_in_left.xml" />
+    <entry file="file://$PROJECT_DIR$/welcome/src/main/java/com/qxj/welcome/MainActivity.kt" />
+    <entry file="file://$PROJECT_DIR$/welcome/src/main/java/com/qxj/welcome/activity/Home2Activity.kt" />
+    <entry file="file://$PROJECT_DIR$/welcome/src/main/java/com/qxj/welcome/utilities/Permission.kt" />
+    <entry file="file://$PROJECT_DIR$/welcome/src/main/AndroidManifest-debug.xml" />
+    <entry file="file://$USER_HOME$/Android/Sdk/platforms/android-28/data/res/values/colors.xml" />
+    <entry file="file://$PROJECT_DIR$/welcome/src/main/res/values/styles.xml" />
+    <entry file="file://$PROJECT_DIR$/welcome/src/main/res/values/colors.xml" />
+    <entry file="file://$PROJECT_DIR$/welcome/src/main/java/com/qxj/welcome/activity/HomeActivity.kt" />
+    <entry file="file://$PROJECT_DIR$/welcome/build.gradle" />
+    <entry file="file://$PROJECT_DIR$/lib/dialog/build.gradle" />
+    <entry file="file://$PROJECT_DIR$/settings.gradle" />
+    <entry file="file://$PROJECT_DIR$/lib/socket/src/main/AndroidManifest.xml" />
+    <entry file="file://$PROJECT_DIR$/welcome/src/main/res/layout/activity_home.xml" />
+    <entry file="file://$PROJECT_DIR$/welcome/src/main/res/layout/floating_button.xml" />
+    <entry file="file://$PROJECT_DIR$/welcome/src/main/res/layout/app_bar_home.xml" />
+    <entry file="file://$PROJECT_DIR$/lib/socket/src/main/java/com/qxj/socket/HttpDataApi.java" />
+    <entry file="file://$PROJECT_DIR$/lib/socket/src/main/java/com/qxj/socket/HttpCallBack.java" />
+    <entry file="file://$PROJECT_DIR$/lib/socket/src/main/java/com/qxj/socket/AlertConfigBean.java" />
+    <entry file="jar://$PROJECT_DIR$/lib/socket/libs/mina-core-2.0.17.jar!/org/apache/mina/filter/codec/ProtocolCodecFilter.class" />
+    <entry file="jar://$PROJECT_DIR$/lib/socket/libs/mina-core-2.0.17.jar!/org/apache/mina/core/filterchain/DefaultIoFilterChainBuilder.class" />
+    <entry file="jar://$PROJECT_DIR$/lib/socket/libs/mina-core-2.0.17.jar!/org/apache/mina/core/service/IoConnector.class" />
+    <entry file="jar://$PROJECT_DIR$/lib/socket/libs/mina-core-2.0.17.jar!/org/apache/mina/filter/logging/LoggingFilter.class" />
+    <entry file="jar://$PROJECT_DIR$/lib/socket/libs/mina-core-2.0.17.jar!/org/apache/mina/core/service/IoHandler.class" />
+    <entry file="file://$USER_HOME$/Android/Sdk/sources/android-28/java/net/InetSocketAddress.java" />
+    <entry file="jar://$PROJECT_DIR$/lib/socket/libs/mina-core-2.0.17.jar!/org/apache/mina/core/future/ConnectFuture.class" />
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-common/1.3.40/682cd7821872d1a3c1e8a3e6bdaabd17f2b71004/kotlin-stdlib-common-1.3.40-sources.jar!/kotlin/util/Standard.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="376">
+          <caret line="93" column="24" selection-start-line="93" selection-start-column="24" selection-end-line="93" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/socket/libs/mina-core-2.0.17.jar!/org/apache/mina/core/service/IoServiceListener.class" />
+    <entry file="jar://$PROJECT_DIR$/lib/socket/libs/mina-core-2.0.17.jar!/org/apache/mina/core/service/IoHandlerAdapter.class" />
+    <entry file="jar://$PROJECT_DIR$/lib/socket/libs/mina-core-2.0.17.jar!/org/apache/mina/core/service/IoService.class" />
+    <entry file="jar://$PROJECT_DIR$/lib/socket/libs/mina-core-2.0.17.jar!/org/apache/mina/transport/socket/DefaultSocketSessionConfig.class" />
+    <entry file="jar://$PROJECT_DIR$/lib/socket/libs/mina-core-2.0.17.jar!/org/apache/mina/transport/socket/nio/NioSocketConnector.class" />
+    <entry file="jar://$PROJECT_DIR$/lib/socket/libs/slf4j-api-1.7.25.jar!/org/slf4j/event/EventConstants.class" />
+    <entry file="jar://$PROJECT_DIR$/lib/socket/libs/mina-core-2.0.17.jar!/org/apache/mina/filter/codec/textline/TextLineCodecFactory.class" />
+    <entry file="file://$PROJECT_DIR$/lib/socket/src/main/java/com/qxj/socket/ClientHandler.kt" />
+    <entry file="file://$PROJECT_DIR$/lib/socket/src/main/java/com/qxj/socket/SocketThread.kt" />
+    <entry file="file://$PROJECT_DIR$/lib/socket/src/main/java/com/qxj/socket/SocketService.kt" />
+    <entry file="file://$PROJECT_DIR$/lib/socket/src/main/java/com/qxj/socket/Received.kt" />
+    <entry file="file://$PROJECT_DIR$/lib/socket/src/main/java/com/qxj/socket/KeepAliveMessageFactoryImpl.kt" />
+    <entry file="file://$PROJECT_DIR$/lib/socket/src/main/java/com/qxj/socket/IoListener.kt" />
+    <entry file="file://$PROJECT_DIR$/lib/socket/build.gradle" />
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="18" column="9" lean-forward="true" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
