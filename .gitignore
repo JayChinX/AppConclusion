@@ -1,3 +1,10 @@
 /buil
 .idea
 .gradle
+build/
+flutter_module/.android/Flutter/flutter.iml
+welcome/build/
+
+lib/dialog/dialog.iml
+lib/socket/socket.iml
+/.idea/

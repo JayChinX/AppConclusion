@@ -5,7 +5,7 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.Home2Activity">
+    tools:context=".ui.home.Home2Activity">
 
     <TextView
         android:id="@+id/message"

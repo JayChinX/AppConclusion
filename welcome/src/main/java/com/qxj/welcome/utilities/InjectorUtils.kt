@@ -2,20 +2,20 @@ package com.qxj.welcome.utilities
 
 import com.qxj.commonbase.mvvm.Repository
 import com.qxj.commonbase.mvvm.ViewModelFactory
-import com.qxj.welcome.base.AppWelcome
-import com.qxj.welcome.data.BlankRepository
-import com.qxj.welcome.data.HomeRepository
-import com.qxj.welcome.data.OneServiceLocator
-import com.qxj.welcome.viewmodels.BlankViewModel
-import com.qxj.welcome.viewmodels.HomeViewModel
-import com.qxj.welcome.viewmodels.OneViewModel
+import com.qxj.welcome.base.App
+import com.qxj.welcome.ui.home.data.BlankRepository
+import com.qxj.welcome.ui.home.data.HomeRepository
+import com.qxj.welcome.ui.home.data.OneServiceLocator
+import com.qxj.welcome.ui.home.fragment.BlankViewModel
+import com.qxj.welcome.ui.home.HomeViewModel
+import com.qxj.welcome.ui.home.fragment.OneViewModel
 
 //viewModel 的 repository 注入类
 object InjectorUtils {
 
     fun provideHomeViewModelFactory(): ViewModelFactory {
         val repository = getHomeRepository()
-        return HomeViewModel.HomeViewModelFactory(AppWelcome.INSTANCE, repository)
+        return HomeViewModel.HomeViewModelFactory(App.INSTANCE, repository)
     }
 
     fun provideOneViewModelFactory(): ViewModelFactory {

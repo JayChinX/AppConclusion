@@ -2,9 +2,8 @@ package com.qxj.welcome.base
 
 import android.os.Bundle
 import com.qxj.commonbase.mvvm.BaseActivity
-import com.qxj.welcome.activity.setStatusBarColor
-import com.qxj.welcome.init.startInit
-import com.qxj.welcome.utilities.Navigation
+import com.qxj.welcome.ui.setStatusBarColor
+import com.qxj.welcome.utilities.injectARouter
 
 abstract class BaseActivity : BaseActivity() {
 
@@ -14,6 +13,6 @@ abstract class BaseActivity : BaseActivity() {
     }
 
     override fun initView() {
-        startInit(this)
+        injectARouter()
     }
 }

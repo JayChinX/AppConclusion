@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".fragment.BlankFragment"
+    tools:context=".ui.home.fragment.BlankFragment"
     style="@style/AppTheme.Fragment"
     android:id="@+id/my_gr">
 

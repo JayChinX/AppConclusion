@@ -26,19 +26,17 @@ class SocketService : Service(), Received {
     private fun startPushData() {
         var count = 0
         val task = TaskFactory.getInstance()
-                .getTask("10.202.91.95",
+                .getTcpTask("10.202.91.95",
                         7083,
                         "CyclePush",
-                        this,
-                        1000,
-                        5000) {
+                        5000,
+                        this) {
                     count++
                     it.send("消息$count")
 
                 }
     }
 
-    override fun parseData(msg: String?) {
-        Log.d("SocketService", msg)
+    override fun parseData(result: Result<String>) {
     }
 }

@@ -44,24 +44,24 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
-        android:name="com.qxj.welcome.CustomApplication"
+        android:name="com.qxj.welcome.debug.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.qxj.welcome.MainActivity">
+        <activity android:name="com.qxj.welcome.ui.MainActivity">
 
         </activity>
 
         <activity
-            android:name=".activity.Home2Activity"
+            android:name=".ui.home.Home2Activity"
             android:label="@string/title_activity_home2">
 
         </activity>
         <activity
-            android:name=".activity.HomeActivity"
+            android:name=".ui.home.HomeActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -70,9 +70,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.qxj.welcome.activity.SecondActivity" />
-        <activity android:name="com.qxj.welcome.activity.CustomGroupActivity" />
-        <activity android:name="com.qxj.welcome.web.URLReceiveActivity">
+        <activity android:name="com.qxj.welcome.ui.second.SecondActivity" />
+        <activity android:name="com.qxj.welcome.ui.CustomGroupActivity" />
+        <activity android:name="com.qxj.welcome.ui.web.URLReceiveActivity">
             <intent-filter>
 
                 <!-- host、scheme 字段，点击url会根据这两个字段调起本地的Activity -->
@@ -86,12 +86,12 @@
                 <category android:name="android.intent.category.BROWSABLE" />
             </intent-filter>
         </activity>
-        <activity android:name="com.qxj.welcome.web.URLWebActivity" />
-        <activity android:name="com.qxj.welcome.web.URLWebTwoActivity">
+        <activity android:name="com.qxj.welcome.ui.web.URLWebActivity" />
+        <activity android:name="com.qxj.welcome.ui.web.URLWebTwoActivity">
 
         </activity>
 
-        <service android:name=".init.InitIntentService" />
+        <service android:name=".service.InitIntentService" />
 
         <service
             android:name=".service.SocketService"

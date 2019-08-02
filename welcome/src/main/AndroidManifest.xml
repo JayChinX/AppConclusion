@@ -12,15 +12,15 @@
             android:exported="true"></service>
 
         <activity
-            android:name=".activity.Home2Activity"
+            android:name=".ui.home.Home2Activity"
             android:label="@string/title_activity_home2"></activity>
         <activity
-            android:name=".activity.HomeActivity"
+            android:name=".ui.home.HomeActivity"
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".activity.SecondActivity" />
-        <activity android:name=".activity.CustomGroupActivity" />
-        <activity android:name=".web.URLReceiveActivity">
+        <activity android:name=".ui.second.SecondActivity" />
+        <activity android:name=".ui.CustomGroupActivity" />
+        <activity android:name="com.qxj.welcome.ui.web.URLReceiveActivity">
             <intent-filter>
 
                 <!-- host、scheme 字段，点击url会根据这两个字段调起本地的Activity -->
@@ -34,8 +34,8 @@
                 <category android:name="android.intent.category.BROWSABLE" />
             </intent-filter>
         </activity>
-        <activity android:name=".web.URLWebActivity" />
-        <activity android:name=".web.URLWebTwoActivity"></activity>
+        <activity android:name="com.qxj.welcome.ui.web.URLWebActivity" />
+        <activity android:name="com.qxj.welcome.ui.web.URLWebTwoActivity"></activity>
     </application>
 
 </manifest>
