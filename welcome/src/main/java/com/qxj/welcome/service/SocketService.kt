@@ -5,13 +5,28 @@ import android.content.Intent
 import android.os.IBinder
 import android.util.Log
 import com.qxj.socket.Received
+import com.qxj.socket.Response
+import com.qxj.socket.SocketClient
 import com.qxj.socket.TaskFactory
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
-class SocketService : Service(), Received {
+class SocketService : Service(), Response {
 
-    private val logger: Logger by lazy { LoggerFactory.getLogger(SocketService::class.java) }
+    private val logger by lazy { LoggerFactory.getLogger(SocketService::class.java) }
+
+    private val client by lazy {
+        SocketClient.Builder()
+                .setType(SocketClient.Type.TCP, true)
+                .setTag("SocketService")
+                .setIp(ip = IP, port = PORT)
+                .setResponse(this)
+                .builder()
+    }
+    companion object {
+        private const val IP = "106.12.184.238"
+        private const val PORT = 9999
+    }
 
     override fun onBind(intent: Intent): IBinder {
         throw UnsupportedOperationException("Not yet implemented")
@@ -24,19 +39,9 @@ class SocketService : Service(), Received {
     }
 
     private fun startPushData() {
-        var count = 0
-        val task = TaskFactory.getInstance()
-                .getTcpTask("10.202.91.95",
-                        7083,
-                        "CyclePush",
-                        5000,
-                        this) {
-                    count++
-                    it.send("消息$count")
-
-                }
+        client.send("")
     }
 
-    override fun parseData(result: Result<String>) {
+    override fun response(p0: Result<String>?) {
     }
 }

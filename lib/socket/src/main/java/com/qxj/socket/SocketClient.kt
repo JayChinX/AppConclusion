@@ -4,7 +4,6 @@ import org.apache.mina.core.filterchain.IoFilter
 import org.apache.mina.core.future.ConnectFuture
 import org.apache.mina.core.future.IoFuture
 import org.apache.mina.core.service.IoConnector
-import org.apache.mina.core.service.IoHandler
 import org.apache.mina.core.session.IoSession
 import org.apache.mina.filter.codec.ProtocolCodecFilter
 import org.apache.mina.filter.keepalive.KeepAliveFilter
@@ -42,7 +41,9 @@ interface SocketClient {
         }
     }
 
-    fun stopSession()
+    fun stopConnector()
+
+    fun connectorState(): Boolean
 
     fun addListener(connector: IoConnector) {
         // 监听客户端是否断线
@@ -54,12 +55,10 @@ interface SocketClient {
         })
     }
 
-    fun send(msg: String)
-
-    @Throws
-    fun sendShortData(msg: String)
+    fun send(msg: String?)
 
     fun getIsAliveThread(): Boolean
+
     fun startThread()
 
     /**
@@ -94,9 +93,9 @@ interface SocketClient {
 
         private lateinit var protocolCodecIoFilterAdapter: IoFilter
 
-        private lateinit var ioHandler: IoHandler
+        private var response: Response? = null
 
-        private var received: Received? = null
+        private var message: String? = null
 
 
         fun setType(type: Type, long: Boolean = true): Builder {
@@ -116,6 +115,11 @@ interface SocketClient {
             return this
         }
 
+        fun send(message: String): Builder {
+            this.message = message
+            return this
+        }
+
         fun setTime(timeout: Int, idle: Int = 10): Builder {
             TIMEOUT = timeout
             BOTH_IDLE = idle
@@ -132,8 +136,8 @@ interface SocketClient {
             return this
         }
 
-        fun setReceived(received: Received): Builder {
-            this.received = received
+        fun setResponse(response: Response): Builder {
+            this.response = response
             return this
         }
 
@@ -152,26 +156,27 @@ interface SocketClient {
                 this.protocolCodecIoFilterAdapter = createCodec()
             }
 
-            if (!::ioHandler.isInitialized) {
-                this.ioHandler = createIoHandler()
-            }
-
             val configuration = SocketConfiguration(
                 ip, port,
                 loggerIoFilterAdapter,
                 hearBeat,
                 protocolCodecIoFilterAdapter,
-                ioHandler,
-                received,
+                response,
                 long
             ).apply {
                 TIMEOUT = 15 * 1000
                 BOTH_IDLE = 10
             }
 
-            return when(type) {
-                Type.TCP -> SocketTcpClient(tag, configuration)
-                Type.UDP -> SocketUdpClient(tag, configuration)
+            return when (type) {
+                Type.TCP -> SocketTcpClient(tag, configuration).apply {
+                    startThread()
+                    if (!long) send(message)
+                }
+                Type.UDP -> SocketUdpClient(tag, configuration).apply {
+                    startThread()
+                    if (!long) send(message)
+                }
             }
         }
 
@@ -207,10 +212,6 @@ interface SocketClient {
             //设置心跳包请求后 等待反馈超时时间。 超过该时间后则调用KeepAliveRequestTimeoutHandler.CLOSE */
             heartBeat.requestTimeout = TIMEOUT
             return heartBeat
-        }
-
-        private fun createIoHandler(): IoHandler {
-            return MinaClientHandler(received, long)
         }
     }
 }

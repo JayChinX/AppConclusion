@@ -1,7 +1,6 @@
 package com.qxj.socket
 
 import org.apache.mina.core.filterchain.IoFilter
-import org.apache.mina.core.service.IoHandler
 
 data class SocketConfiguration(
     val ip: String,
@@ -9,8 +8,7 @@ data class SocketConfiguration(
     val loggerIoFilterAdapter: IoFilter,
     val heartBeat: IoFilter?,
     val protocolCodecIoFilterAdapter: IoFilter,
-    val ioHandler: IoHandler,
-    val received: Received?,
+    val response: Response?,
     val long: Boolean = true
 ) {
 

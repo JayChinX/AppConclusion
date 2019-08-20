@@ -17,7 +17,7 @@ class SimpleLoggerConfiguration {
     //时间格式
     internal var dateFormatter: DateFormat? = null
     //是否显示线程名字
-    internal var showThreadName: Boolean = false
+    internal var showThreadName: Boolean = true
     //长名字
     internal var showLogName: Boolean = false
     //短名字
@@ -97,7 +97,7 @@ class SimpleLoggerConfiguration {
         this.showLogName = false
         this.showShortLogName = true
         this.showDateTime = true
-        this.showThreadName = false
+        this.showThreadName = true
         dateTimeFormatStr = DATE_TIME_FORMAT_STR_DEFAULT
         this.levelInBrackets = true
         this.warnLevelString = "WARN"

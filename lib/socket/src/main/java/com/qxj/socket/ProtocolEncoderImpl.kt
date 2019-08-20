@@ -12,8 +12,6 @@ import java.nio.charset.Charset
  */
 class ProtocolEncoderImpl(private val charset: Charset) : ProtocolEncoder {
 
-    private val logger by lazy { LoggerFactory.getLogger("Encoder") }
-
     constructor() : this(Charset.defaultCharset())
 
 
@@ -35,7 +33,6 @@ class ProtocolEncoderImpl(private val charset: Charset) : ProtocolEncoder {
         if (pack.content != null) buffer.putString(pack.content, charset.newEncoder())
         //发送的消息体为： header + length + content
         // 重置mask，发送buffer
-        logger.info("发送消息体： {}", String(buffer.array()))
         buffer.flip()
         p2?.write(buffer)
     }

@@ -11,7 +11,6 @@ import java.nio.charset.Charset
  * 自定义解码器
  */
 class ProtocolDecoderImpl(private val charset: Charset) : CumulativeProtocolDecoder() {
-    private val logger by lazy { LoggerFactory.getLogger("Decoder") }
 
     constructor() : this(Charset.defaultCharset())
 
@@ -19,7 +18,6 @@ class ProtocolDecoderImpl(private val charset: Charset) : CumulativeProtocolDeco
     override fun doDecode(p0: IoSession, p1: IoBuffer, p2: ProtocolDecoderOutput): Boolean {
         // 包头的长度
         val PACK_HEAD_LEN = Pack.HEADER + Pack.LENGTH
-        logger.info("接受的消息体：{}", String(p1.array()) + p1.array().size)
 
         // 拆包时，如果可读数据的长度小于包头的长度，就不进行读取
         if (p1.remaining() > 1 && p1.remaining() > PACK_HEAD_LEN) {
@@ -38,7 +36,6 @@ class ProtocolDecoderImpl(private val charset: Charset) : CumulativeProtocolDeco
                     p1.limit()
                 }
 
-            logger.info("接受的消息体包头：{}", "${p1.remaining()},$length,$header")
             // 如果可读取数据的长度 小于 总长度 - 包头的长度 ，则结束拆包，等待下一次
             if (p1.remaining() < (length - PACK_HEAD_LEN)) {
                 p1.reset()

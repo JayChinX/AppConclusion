@@ -26,7 +26,7 @@ package org.slf4j.impl
 
 import org.slf4j.ILoggerFactory
 import org.slf4j.Logger
-
+import java.lang.Thread.currentThread
 import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.ConcurrentMap
 
@@ -42,7 +42,7 @@ class SimpleLoggerFactory : ILoggerFactory {
     private var loggerMap: ConcurrentMap<String, Logger> = ConcurrentHashMap()
 
     init {
-        SimpleLogger.lazyInit()
+//        SimpleLogger.lazyInit()
     }
 
     /*
@@ -61,11 +61,21 @@ class SimpleLoggerFactory : ILoggerFactory {
         return if (slf4jLogger != null)
             slf4jLogger
         else {
-//            val julLogger = java.util.logging.Logger.getLogger(name)
-//            val newInstance = SimpleLoggerAdapter(julLogger)
-            val newInstance = SimpleLogger(name)
+            val julLogger = java.util.logging.Logger.getLogger(name)
+            val newInstance = if (!isAndroid()) SimpleLoggerAdapter(julLogger)
+            else
+                AndroidLogger(name)
+//            val newInstance = SimpleLogger(name)
             val oldInstance = loggerMap.putIfAbsent(name, newInstance)
             oldInstance ?: newInstance
         }
+    }
+
+    private fun isAndroid() = try {
+        val stuClass3 = Class.forName("android.util.Log")
+        val conArray = stuClass3.constructors
+        conArray.isNotEmpty()
+    } catch (e: ClassNotFoundException) {
+        false
     }
 }

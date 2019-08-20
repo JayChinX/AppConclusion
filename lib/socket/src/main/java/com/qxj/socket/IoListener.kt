@@ -8,7 +8,6 @@ import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
 internal open class IoListener : IoServiceListener {
-    private val TAG = IoListener::class.java.simpleName
     private val logger: Logger by lazy { LoggerFactory.getLogger(IoListener::class.java) }
 
     @Throws(Exception::class)

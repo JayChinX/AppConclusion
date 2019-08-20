@@ -7,7 +7,6 @@ import org.apache.mina.core.session.IoSession
 import org.apache.mina.transport.socket.nio.NioDatagramConnector
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-import java.io.IOException
 import java.net.InetSocketAddress
 
 
@@ -22,8 +21,6 @@ internal class SocketUdpClient(tag: String, private val config: SocketConfigurat
 
     private var failCount = 0
 
-    private var initing = false
-
     override fun run() {
         super.run()
         conntection()
@@ -33,34 +30,31 @@ internal class SocketUdpClient(tag: String, private val config: SocketConfigurat
     override fun conntection() {
 
         with(createConnector()) {
-            initing = true
             try {
                 future = initFuture(this)
 
                 if (future == null) {
-                    throw Exception("socket 连接创建失败, future获取null")
+                    throw ConnectorException("Connector error future is null")
                 }
                 session = initSession(future)
 
                 if (session == null) {
-                    throw Exception("socket 连接创建失败, session获取null")
+                    throw ConnectorException("Connector error session is null")
                 }
-                initing = false
-                if (!config.long && shortMsg != null) {
-                    sendShortData(shortMsg!!)
-                }
-            } catch (e: Exception) {
-                logger.error("连接出错: {}", e.toString())
-                //如果是短链接抛出异常 不进行重试操作
-                if (!config.long) {
-                    config.received?.parseData(Result.failure(IOException("socket error", e)))
-                    return@with this
-                }
+                send(message)
+            } catch (e: RuntimeException) {
+                logger.error("Connector error: {}", e.toString())
 
                 failCount++
-                val time = (if (failCount > 10) 5000L else 3000L)
+
+                //如果是短链接或者重试次数过多抛出异常 不进行重试操作
+                if (failCount > 10 || !config.long) {
+                    config.response?.response(Result.failure(SocketException("Socket error, $e")))
+                    return@with this
+                }
+                val time = 1500L
                 sleep(time)
-                logger.error("正在重试： {}", "第${failCount}次重试，时间间隔${time / 1000}s")
+                logger.error("Connector retry： {}", failCount)
                 conntection()
             }
 
@@ -69,13 +63,13 @@ internal class SocketUdpClient(tag: String, private val config: SocketConfigurat
     }
 
     override fun init() {
-
+        failCount = 0
     }
 
     override fun createConnector(): IoConnector {
         return connector ?: NioDatagramConnector()
             .apply {
-                logger.info("初始化 connector : {}", "ip: ${config.ip}, port: ${config.port} 初始化 connector")
+                logger.info("Connector init {}", "ip: ${config.ip}, port: ${config.port}")
                 //添加过滤器
                 val loggingFilter = config.loggerIoFilterAdapter
                 filterChain.addLast("logger", loggingFilter)
@@ -98,75 +92,47 @@ internal class SocketUdpClient(tag: String, private val config: SocketConfigurat
                 connectTimeoutMillis = (config.TIMEOUT).toLong()
 
                 //设置消息拦截器
-                val ioHandler = config.ioHandler
+                val ioHandler = MinaClientHandler(config.response) {
+                if (!config.long) close()
+            }
                 handler = ioHandler
 
                 val socketAddress = InetSocketAddress(config.ip, config.port)
 
                 setDefaultRemoteAddress(socketAddress)
 
-                addListener(this)
+                if (config.long) addListener(this)
                 connector = this
             }
 
     }
 
-    override fun stopSession() {
+    override fun stopConnector() {
 
         if (session != null && session!!.isConnected) {
             session!!.closeFuture.awaitUninterruptibly()// 等待连接断开
             connector?.dispose()//彻底释放Session,退出程序时调用不需要重连的可以调用这句话，也就是短连接不需要重连。长连接不要调用这句话，注释掉就OK。
         }
     }
-
-
-    override fun addListener(connector: IoConnector) {
-        // 监听客户端是否断线
-        connector.addListener(object : IoListener() {
-            override fun sessionDestroyed(arg0: IoSession) {
-                super.sessionDestroyed(arg0)
-                if (config.long) {
-                    logger.info("尝试重连: {}", "ip: ${config.ip}, port: ${config.port}")
-                    conntection()
-                }
-
-            }
-        })
-    }
-
-    override fun send(msg: String) {
+    private var message: String? = null
+    override fun send(msg: String?) {
+        this.message = msg ?: return
         session?.let {
             val pack = Pack(content = msg)
-            if (it.isConnected) it.write(pack)
-        }
-    }
-
-    private var shortMsg: String? = null
-
-    @Throws
-    override fun sendShortData(msg: String) {
-        if (config.long) {
-            throw Exception("不是短链接")
-        }
-        this.shortMsg = msg
-        session?.let {
-
-            val pack = Pack(content = msg)
-            if (!it.isConnected && !initing) {
-                conntection()
-            } else {
+            if (it.isConnected) {
                 it.write(pack)
+                message = null
             }
-            return@let
         }
-
     }
+
+    override fun connectorState() = session?.isConnected ?: false
 
     /**
      * 关闭Mina长连接 **
      */
     override fun close() {
-        logger.info("关闭重连: {}", "close()")
+//        stopConnector()
         session?.closeNow()
 
         future?.cancel()
@@ -178,10 +144,10 @@ internal class SocketUdpClient(tag: String, private val config: SocketConfigurat
             }
         }
 
-        logger.info("连接已关闭: {}")
+        logger.info("Connector closed")
     }
 
-    override fun getIsAliveThread(): Boolean  = isAlive
+    override fun getIsAliveThread(): Boolean = isAlive
 
     override fun startThread() {
         start()

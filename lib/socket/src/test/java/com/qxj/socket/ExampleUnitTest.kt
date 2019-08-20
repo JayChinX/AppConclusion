@@ -3,6 +3,7 @@ package com.qxj.socket
 import org.junit.Test
 
 import org.junit.Assert.*
+import org.slf4j.LoggerFactory
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -30,40 +31,18 @@ class ExampleUnitTest {
 }
 
 fun main(args: Array<String>) {
-    var count = 0
 
+    val logger = LoggerFactory.getLogger("Test")
+    val request = "{\"cmd\":\"login\",\"param\":{\"name\":\"qxj\",\"password\":\"123456\"}}"
+    logger.info("start")
+    SocketClient.Builder()
+            .setType(SocketClient.Type.TCP, false)
+            .setTag("SocketSingle")
+            .setIp(ip = "106.12.184.238", port = 9999)
+            .send(request)
+            .setResponse(Response {
 
-//    while (true) {
-//        val msg = "{\"name\":\"${count++}\",\"name1\":\"${count++}\",\"name2\":\"${count++}\",\"name3\":\"${count++}\",\"name4\":\"${count++}\"" +
-//                ",\"name5\":\"${count++}\",\"name6\":\"${count++}\",\"name7\":\"${count++}\",\"name8\":\"${count++}\",\"name9\":\"${count++}\",\"name10\":\"${count++}\"}"
-//        TaskFactory.getInstance().getTcpTask("10.202.91.95", 7084, msg, object : Received {
-//            override fun parseData(result: Result<String>) {
-//                if (result.isSuccess) {
-//                    println("接受的消息： $result")
-//                } else {
-//                    println("error： $result")
-//                }
-//
-//            }
-//        })
-//        Thread.sleep(3000)
-//    }
-
-    while (true) {
-        val msg =
-            "{\"name\":\"${count++}\",\"name1\":\"${count++}\",\"name2\":\"${count++}\",\"name3\":\"${count++}\",\"name4\":\"${count++}\"" +
-                    ",\"name5\":\"${count++}\",\"name6\":\"${count++}\",\"name7\":\"${count++}\",\"name8\":\"${count++}\",\"name9\":\"${count++}\",\"name10\":\"${count++}\"}"
-        TaskFactory.getInstance().getUdpTask("10.202.91.95", 7084, msg, object : Received {
-            override fun parseData(result: Result<String>) {
-                if (result.isSuccess) {
-                    println("接受的消息： $result")
-                } else {
-                    println("error： $result")
-                }
-
-            }
-        })
-        Thread.sleep(3000)
-    }
+            })
+            .builder()
 
 }

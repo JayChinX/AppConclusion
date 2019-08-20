@@ -2,11 +2,4 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.qxj.socket">
 
-    <application>
-        <service
-            android:name=".SocketService"
-            android:enabled="true"
-            android:exported="true"></service>
-    </application>
-
 </manifest>
