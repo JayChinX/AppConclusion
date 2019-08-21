@@ -36,7 +36,7 @@ public enum IoEventType {
     /** The session has been closed */
     SESSION_CLOSED, 
     
-    /** A message has been received */
+    /** A message has been response */
     MESSAGE_RECEIVED, 
     
     /** A message has been sent */

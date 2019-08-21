@@ -1,7 +1,8 @@
 package com.qxj.socket
 
+import com.qxj.socket.default.Pack
+import com.qxj.socket.default.ProtocolCodecFactoryImpl
 import org.junit.Test
-
 import org.junit.Assert.*
 import org.slf4j.LoggerFactory
 
@@ -30,9 +31,13 @@ class ExampleUnitTest {
 
 }
 
-fun main(args: Array<String>) {
 
-    val logger = LoggerFactory.getLogger("Test")
+fun main(args: Array<String>) {
+    test()
+}
+
+fun test() {
+    val logger = LoggerFactory.getLogger("test")
     val request = "{\"cmd\":\"login\",\"param\":{\"name\":\"qxj\",\"password\":\"123456\"}}"
     logger.info("start")
     SocketClient.Builder()
@@ -40,9 +45,9 @@ fun main(args: Array<String>) {
             .setTag("SocketSingle")
             .setIp(ip = "106.12.184.238", port = 9999)
             .send(request)
+            .setCodecFactory(ProtocolCodecFactoryImpl(Pack(header = "****", HEADER = 4, LENGTH = 4)))
             .setResponse(Response {
 
             })
             .builder()
-
 }

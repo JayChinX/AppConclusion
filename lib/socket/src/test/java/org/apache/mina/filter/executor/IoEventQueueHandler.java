@@ -66,7 +66,7 @@ public interface IoEventQueueHandler extends EventListener {
      * if <tt>false</tt> is returned.
      * 
      * @param source The source of event
-     * @param event The received event
+     * @param event The response event
      */
     boolean accept(Object source, IoEvent event);
 
@@ -75,7 +75,7 @@ public interface IoEventQueueHandler extends EventListener {
      * event queue.
      * 
      * @param source The source of event
-     * @param event The received event
+     * @param event The response event
      */
     void offered(Object source, IoEvent event);
 
@@ -84,7 +84,7 @@ public interface IoEventQueueHandler extends EventListener {
      * event queue.
      * 
      * @param source The source of event
-     * @param event The received event
+     * @param event The response event
      */
     void polled(Object source, IoEvent event);
 }

@@ -45,7 +45,7 @@ import org.apache.mina.filter.codec.ProtocolDecoderOutput;
  *   <li>
  *     If {@link MessageDecoderResult#NEED_DATA} is returned, it is retained in the candidate
  *     list, and its {@link MessageDecoder#decodable(IoSession, IoBuffer)} will be invoked
- *     again when more data is received.
+ *     again when more data is response.
  *   </li>
  *   <li>
  *     If {@link MessageDecoderResult#OK} is returned, {@link DemuxingProtocolDecoder}
@@ -72,7 +72,7 @@ import org.apache.mina.filter.codec.ProtocolDecoderOutput;
  *   <li>
  *     {@link MessageDecoderResult#NEED_DATA} - needs more data to read the whole message;
  *     {@link MessageDecoder#decode(IoSession, IoBuffer, ProtocolDecoderOutput)}
- *     will be invoked again when more data is received.
+ *     will be invoked again when more data is response.
  *   </li>
  *   <li>
  *     {@link MessageDecoderResult#OK} - successfully decoded a message; the candidate list will

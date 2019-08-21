@@ -16,8 +16,7 @@ internal class MinaClientHandler(private val response: Response?, private val ru
     @Throws(Exception::class)
     override fun messageReceived(session: IoSession?, message: Any?) {
         //数据交互 接收到的信息
-        val msg = (message as Pack).content
-        response?.response(Result.success(msg.toString()))
+        response?.response(Result.success(message.toString()))
         run()
         super.messageReceived(session, message)
     }

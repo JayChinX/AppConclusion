@@ -117,11 +117,11 @@ public interface IoSession {
      * TODO This javadoc is wrong. The return tag should be short.
      * 
      * @return a {@link ReadFuture} which is notified when a new message is
-     * received, the connection is closed or an exception is caught.  This
+     * response, the connection is closed or an exception is caught.  This
      * operation is especially useful when you implement a client application.
      * TODO : Describe here how we enable this feature.
      * However, please note that this operation is disabled by default and
-     * throw {@link IllegalStateException} because all received events must be
+     * throw {@link IllegalStateException} because all response events must be
      * queued somewhere to support this operation, possibly leading to memory
      * leak.  This means you have to keep calling {@link #read()} once you
      * enabled this operation.  To enable this operation, please call

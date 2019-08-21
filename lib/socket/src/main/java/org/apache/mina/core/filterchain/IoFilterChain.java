@@ -279,7 +279,7 @@ public interface IoFilterChain {
      * users don't need to call this method at all. Please use this method only
      * when you implement a new transport or fire a virtual event.
      * 
-     * @param message The received message
+     * @param message The response message
      */
     void fireMessageReceived(Object message);
 

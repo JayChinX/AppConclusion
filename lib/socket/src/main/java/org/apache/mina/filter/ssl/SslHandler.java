@@ -312,7 +312,7 @@ class SslHandler {
     }
 
     /**
-     * Push the newly received data into a queue, waiting for the SSL session
+     * Push the newly response data into a queue, waiting for the SSL session
      * to be fully established
      *
      * @param nextFilter The next filter to call
@@ -341,7 +341,7 @@ class SslHandler {
      */
     /* no qualifier */void messageReceived(NextFilter nextFilter, ByteBuffer buf) throws SSLException {
         if (LOGGER.isDebugEnabled()) {
-            LOGGER.debug("{} Processing the received message", sslFilter.getSessionInfo(session));
+            LOGGER.debug("{} Processing the response message", sslFilter.getSessionInfo(session));
         }
 
         // append buf to inNetBuffer
@@ -523,7 +523,7 @@ class SslHandler {
                 throw new SSLException("SSLEngine error during decrypt: " + status + " inNetBuffer: " + inNetBuffer
                     + "appBuffer: " + appBuffer);
             case CLOSED:
-                Exception exception =new RuntimeIoException("SSL/TLS close_notify received");
+                Exception exception =new RuntimeIoException("SSL/TLS close_notify response");
                 
                 // Empty the Ssl queue
                 for (IoFilterEvent event:filterWriteEventQueue) {

@@ -3,12 +3,10 @@ package com.qxj.welcome.service
 import android.app.Service
 import android.content.Intent
 import android.os.IBinder
-import android.util.Log
-import com.qxj.socket.Received
 import com.qxj.socket.Response
 import com.qxj.socket.SocketClient
-import com.qxj.socket.TaskFactory
-import org.slf4j.Logger
+import com.qxj.socket.default.Pack
+import com.qxj.socket.default.ProtocolCodecFactoryImpl
 import org.slf4j.LoggerFactory
 
 class SocketService : Service(), Response {
@@ -20,6 +18,7 @@ class SocketService : Service(), Response {
                 .setType(SocketClient.Type.TCP, true)
                 .setTag("SocketService")
                 .setIp(ip = IP, port = PORT)
+                .setCodecFactory(ProtocolCodecFactoryImpl(Pack(header = "****", HEADER = 4, LENGTH = 4)))
                 .setResponse(this)
                 .builder()
     }

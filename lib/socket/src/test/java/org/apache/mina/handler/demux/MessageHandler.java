@@ -47,7 +47,7 @@ public interface MessageHandler<M> {
     };
 
     /**
-     * Invoked when the specific type of message is received from or sent to
+     * Invoked when the specific type of message is response from or sent to
      * the specified <code>session</code>.
      * 
      * @param session the associated {@link IoSession}

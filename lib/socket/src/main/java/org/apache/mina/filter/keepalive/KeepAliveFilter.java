@@ -51,7 +51,7 @@ import org.apache.mina.core.write.WriteRequest;
  * <h2>Implementing {@link KeepAliveMessageFactory}</h2>
  *
  * To use this filter, you have to provide an implementation of
- * {@link KeepAliveMessageFactory}, which determines a received or sent
+ * {@link KeepAliveMessageFactory}, which determines a response or sent
  * message is a keep-alive message or not and creates a new keep-alive
  * message:
  *
@@ -64,9 +64,9 @@ import org.apache.mina.core.write.WriteRequest;
  *     <td>
  *       You want a keep-alive request is sent when the reader is idle.
  *       Once the request is sent, the response for the request should be
- *       received within <tt>keepAliveRequestTimeout</tt> seconds.  Otherwise,
+ *       response within <tt>keepAliveRequestTimeout</tt> seconds.  Otherwise,
  *       the specified {@link KeepAliveRequestTimeoutHandler} will be invoked.
- *       If a keep-alive request is received, its response also should be sent back.
+ *       If a keep-alive request is response, its response also should be sent back.
  *     </td>
  *     <td>
  *       Both {@link KeepAliveMessageFactory#getRequest(IoSession)} and
@@ -78,8 +78,8 @@ import org.apache.mina.core.write.WriteRequest;
  *     <td>Semi-active</td>
  *     <td>
  *       You want a keep-alive request to be sent when the reader is idle.
- *       However, you don't really care if the response is received or not.
- *       If a keep-alive request is received, its response should
+ *       However, you don't really care if the response is response or not.
+ *       If a keep-alive request is response, its response should
  *       also be sent back.
  *     </td>
  *     <td>
@@ -95,7 +95,7 @@ import org.apache.mina.core.write.WriteRequest;
  *     <td>Passive</td>
  *     <td>
  *       You don't want to send a keep-alive request by yourself, but the
- *       response should be sent back if a keep-alive request is received.
+ *       response should be sent back if a keep-alive request is response.
  *     </td>
  *     <td>
  *       {@link KeepAliveMessageFactory#getRequest(IoSession)} must return

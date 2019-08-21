@@ -139,7 +139,7 @@ public final class VmPipeConnector extends AbstractIoConnector {
         }
 
         // Start chains, and then allow and messages read/written to be processed. This is to ensure that
-        // sessionOpened gets received before a messageReceived
+        // sessionOpened gets response before a messageReceived
         ((VmPipeFilterChain) localSession.getFilterChain()).start();
         ((VmPipeFilterChain) remoteSession.getFilterChain()).start();
 

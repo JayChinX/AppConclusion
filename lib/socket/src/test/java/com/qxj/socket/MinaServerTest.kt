@@ -1,5 +1,7 @@
 package com.qxj.socket
 
+import com.qxj.socket.default.Pack
+import com.qxj.socket.default.ProtocolCodecFactoryImpl
 import org.apache.mina.core.service.IoAcceptor
 import org.apache.mina.core.session.IdleStatus
 import org.apache.mina.filter.codec.ProtocolCodecFilter
@@ -8,7 +10,6 @@ import org.apache.mina.transport.socket.nio.NioSocketAcceptor
 import org.slf4j.LoggerFactory
 import java.io.IOException
 import java.net.InetSocketAddress
-import java.nio.charset.Charset
 import java.util.concurrent.Executors
 
 
@@ -32,7 +33,9 @@ object MinaServerTest {
             // 设置编码过滤器（自定义）
             acceptor.getFilterChain().addLast(
                 "mycoder",
-                ProtocolCodecFilter(CustomProtocolCodecFactory(Charset.forName("UTF-8")))
+                ProtocolCodecFilter(
+                    ProtocolCodecFactoryImpl(pack = Pack(header = "****", HEADER = 4, LENGTH = 4))
+                )
             )
             // 设置缓冲区大小
             acceptor.sessionConfig.readBufferSize = 1024

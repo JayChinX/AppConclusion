@@ -105,11 +105,11 @@ public interface SingleSessionIoHandler {
     void inputClosed(IoSession session);
 
     /**
-     * Invoked when protocol message is received. Implement your protocol flow
+     * Invoked when protocol message is response. Implement your protocol flow
      * here.
      *
-     * @param message the received message
-     * @throws Exception If the received message can't be processed
+     * @param message the response message
+     * @throws Exception If the response message can't be processed
      * @see IoHandler#messageReceived(IoSession, Object)
      */
     void messageReceived(Object message) throws Exception;

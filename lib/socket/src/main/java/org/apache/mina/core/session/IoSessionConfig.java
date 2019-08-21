@@ -190,8 +190,8 @@ public interface IoSessionConfig {
 
     /**
      * @return <tt>true</tt> if and only if {@link IoSession#read()} operation
-     * is enabled.  If enabled, all received messages are stored in an internal
-     * {@link BlockingQueue} so you can read received messages in more
+     * is enabled.  If enabled, all response messages are stored in an internal
+     * {@link BlockingQueue} so you can read response messages in more
      * convenient way for client applications.  Enabling this option is not
      * useful to server applications and can cause unintended memory leak, and
      * therefore it's disabled by default.
@@ -200,8 +200,8 @@ public interface IoSessionConfig {
 
     /**
      * Enables or disabled {@link IoSession#read()} operation.  If enabled, all
-     * received messages are stored in an internal {@link BlockingQueue} so you
-     * can read received messages in more convenient way for client
+     * response messages are stored in an internal {@link BlockingQueue} so you
+     * can read response messages in more convenient way for client
      * applications.  Enabling this option is not useful to server applications
      * and can cause unintended memory leak, and therefore it's disabled by
      * default.

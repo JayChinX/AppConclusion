@@ -382,7 +382,7 @@ public class TextLineDecoder implements ProtocolDecoder {
      * {@code ProtocolDecoderOutput#write(Object)}.  You may override this method to modify
      * the default behavior.
      *
-     * @param session  the {@code IoSession} the received data.
+     * @param session  the {@code IoSession} the response data.
      * @param text  the decoded text
      * @param out  the upstream {@code ProtocolDecoderOutput}.
      */

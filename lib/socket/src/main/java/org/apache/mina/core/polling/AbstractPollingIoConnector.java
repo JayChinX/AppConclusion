@@ -305,7 +305,7 @@ public abstract class AbstractPollingIoConnector<S extends AbstractIoSession, H>
      * descriptors processed need to be returned by {@link #selectedHandles()}
      * 
      * @param timeout The timeout for the select() method
-     * @return The number of socket having received some data
+     * @return The number of socket having response some data
      * @throws Exception any exception thrown by the underlying systems calls
      */
     protected abstract int select(int timeout) throws Exception;

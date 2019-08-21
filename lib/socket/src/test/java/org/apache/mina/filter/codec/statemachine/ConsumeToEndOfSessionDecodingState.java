@@ -24,7 +24,7 @@ import org.apache.mina.filter.codec.ProtocolDecoderException;
 import org.apache.mina.filter.codec.ProtocolDecoderOutput;
 
 /**
- * {@link DecodingState} which consumes all received bytes until the session is
+ * {@link DecodingState} which consumes all response bytes until the session is
  * closed.
  *
  * @author <a href="http://mina.apache.org">Apache MINA Project</a>
@@ -56,7 +56,7 @@ public abstract class ConsumeToEndOfSessionDecodingState implements DecodingStat
         }
 
         if (buffer.position() + in.remaining() > maxLength) {
-            throw new ProtocolDecoderException("Received data exceeds " + maxLength + " byte(s).");
+            throw new ProtocolDecoderException("Response data exceeds " + maxLength + " byte(s).");
         }
         buffer.put(in);
         return this;

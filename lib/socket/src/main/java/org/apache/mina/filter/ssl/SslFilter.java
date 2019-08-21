@@ -493,7 +493,7 @@ public class SslFilter extends IoFilterAdapter {
     @Override
     public void messageReceived(NextFilter nextFilter, IoSession session, Object message) throws SSLException {
         if (LOGGER.isDebugEnabled()) {
-            LOGGER.debug("{}: Message received : {}", getSessionInfo(session), message);
+            LOGGER.debug("{}: Message response : {}", getSessionInfo(session), message);
         }
 
         SslHandler sslHandler = getSslSessionHandler(session);
@@ -527,7 +527,7 @@ public class SslFilter extends IoFilterAdapter {
 			}
 
 			if (buf.hasRemaining()) {
-			    // Forward the data received after closure.
+			    // Forward the data response after closure.
 			    sslHandler.scheduleMessageReceived(nextFilter, buf);
 			}
 		    }

@@ -1,8 +1,8 @@
 // This is a generated file; do not edit or check into version control.
-FLUTTER_ROOT=C:\Users\xiaojie.qin\AppData\Local\flutter
-FLUTTER_APPLICATION_PATH=D:\Project\AppConclusion\flutter_module
-FLUTTER_TARGET=lib\main.dart
+FLUTTER_ROOT=/home/qin/Flutter/flutter
+FLUTTER_APPLICATION_PATH=/home/qin/AndroidStudioProjects/MY/AppConclusion/flutter_module
+FLUTTER_TARGET=lib/main.dart
 FLUTTER_BUILD_DIR=build
-SYMROOT=${SOURCE_ROOT}/../build\ios
+SYMROOT=${SOURCE_ROOT}/../build/ios
 FLUTTER_BUILD_NAME=1.0.0
 FLUTTER_BUILD_NUMBER=1

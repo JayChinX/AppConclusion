@@ -38,7 +38,7 @@ import org.apache.mina.util.IdentityHashSet;
  * {@link #addReceivedMessageHandler(Class, MessageHandler)} and
  * {@link #removeReceivedMessageHandler(Class)}.
  * <p>
- * When <code>message</code> is received through a call to
+ * When <code>message</code> is response through a call to
  * {@link #messageReceived(IoSession, Object)} the class of the
  * <code>message</code> object will be used to find a {@link MessageHandler} for
  * that particular message type. If no {@link MessageHandler} instance can be
@@ -94,7 +94,7 @@ public class DemuxingIoHandler extends IoHandlerAdapter {
     }
 
     /**
-     * Registers a {@link MessageHandler} that handles the received messages of
+     * Registers a {@link MessageHandler} that handles the response messages of
      * the specified <code>type</code>.
      * 
      * @param <E> The message handler's type
@@ -111,7 +111,7 @@ public class DemuxingIoHandler extends IoHandlerAdapter {
     }
 
     /**
-     * Deregisters a {@link MessageHandler} that handles the received messages
+     * Deregisters a {@link MessageHandler} that handles the response messages
      * of the specified <code>type</code>.
      *
      * @param <E> The message handler's type
@@ -203,7 +203,7 @@ public class DemuxingIoHandler extends IoHandlerAdapter {
 
     /**
      * @return the {@link Map} which contains all messageType-{@link MessageHandler}
-     * pairs registered to this handler for received messages.
+     * pairs registered to this handler for response messages.
      */
     public Map<Class<?>, MessageHandler<?>> getReceivedMessageHandlerMap() {
         return Collections.unmodifiableMap(receivedMessageHandlers);
@@ -226,7 +226,7 @@ public class DemuxingIoHandler extends IoHandlerAdapter {
     }
 
     /**
-     * Forwards the received events into the appropriate {@link MessageHandler}
+     * Forwards the response events into the appropriate {@link MessageHandler}
      * which is registered by {@link #addReceivedMessageHandler(Class, MessageHandler)}.
      * 
      * <b>Warning !</b> If you are to overload this method, be aware that you 

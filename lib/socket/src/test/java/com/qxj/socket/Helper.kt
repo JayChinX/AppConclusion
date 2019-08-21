@@ -3,23 +3,20 @@ package com.qxj.socket
 import org.apache.mina.core.service.IoHandlerAdapter
 import org.apache.mina.core.session.IdleStatus
 import org.apache.mina.core.session.IoSession
-import org.apache.mina.filter.codec.ProtocolCodecFactory
-import org.apache.mina.filter.codec.ProtocolDecoder
-import org.apache.mina.filter.codec.ProtocolEncoder
 import org.slf4j.LoggerFactory
-import java.nio.charset.Charset
 
 // 类继承handler
 internal class ServerHandler : IoHandlerAdapter() {
 
     @Throws(Exception::class)
     override fun messageReceived(session: IoSession?, message: Any?) {
-        val pack = message as Pack?
-        logger.info("服务端接收" + session!!.id + "消息成功：" + pack)
-        val content = "服务端发送测试数据OK"
-        val pack1 = Pack(content = content)
+        val msg = message.toString()
+        logger.info("服务端接收" + session!!.id + "消息成功：" + msg)
+        val content = mapOf(
+            "success" to "ok"
+        )
         //向客户端写入数据
-        val future = session.write(pack1)
+        val future = session.write(content.toString())
         //在100毫秒内写完
         future.awaitUninterruptibly(100)
         if (future.isWritten) {
@@ -31,8 +28,8 @@ internal class ServerHandler : IoHandlerAdapter() {
 
     @Throws(Exception::class)
     override fun messageSent(session: IoSession?, message: Any?) {
-        val pack = message as Pack?
-        logger.info("服务端发送" + session!!.id + "消息成功：" + pack)
+        val msg = message.toString()
+        logger.info("服务端发送" + session!!.id + "消息成功：" + msg)
     }
 
     @Throws(Exception::class)
@@ -54,28 +51,5 @@ internal class ServerHandler : IoHandlerAdapter() {
 
     companion object {
         private val logger = LoggerFactory.getLogger(ServerHandler::class.java)
-    }
-}
-
-
-internal class CustomProtocolCodecFactory// 构造方法注入编解码器
-@JvmOverloads constructor(charset: Charset = Charset.forName("UTF-8")) : ProtocolCodecFactory {
-
-    private val encoder: ProtocolEncoder
-    private val decoder: ProtocolDecoder
-
-    init {
-        this.encoder = ProtocolEncoderImpl(charset)
-        this.decoder = ProtocolDecoderImpl(charset)
-    }
-
-    @Throws(Exception::class)
-    override fun getEncoder(session: IoSession): ProtocolEncoder {
-        return encoder
-    }
-
-    @Throws(Exception::class)
-    override fun getDecoder(session: IoSession): ProtocolDecoder {
-        return decoder
     }
 }

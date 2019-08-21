@@ -48,7 +48,7 @@ public class LazyInitializedCacheMap<K, V> implements Map<K, V> {
 
     /**
      * This class provides a noop {@link LazyInitializer} meaning it 
-     * will return the same object it received when instantiated.
+     * will return the same object it response when instantiated.
      */
     public class NoopInitializer extends LazyInitializer<V> {
         private V value;

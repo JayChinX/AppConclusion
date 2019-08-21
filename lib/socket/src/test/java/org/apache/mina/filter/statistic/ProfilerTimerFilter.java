@@ -350,7 +350,7 @@ public class ProfilerTimerFilter extends IoFilterAdapter {
      * 
      * @param nextFilter The filter to call next
      * @param session The associated session
-     * @param message the received message
+     * @param message the response message
      */
     @Override
     public void messageReceived(NextFilter nextFilter, IoSession session, Object message) throws Exception {

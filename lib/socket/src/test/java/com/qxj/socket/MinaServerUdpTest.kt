@@ -1,5 +1,7 @@
 package com.qxj.socket
 
+import com.qxj.socket.default.Pack
+import com.qxj.socket.default.ProtocolCodecFactoryImpl
 import org.apache.mina.core.service.IoAcceptor
 import org.apache.mina.core.session.ExpiringSessionRecycler
 import org.apache.mina.core.session.IdleStatus
@@ -9,7 +11,6 @@ import org.apache.mina.transport.socket.nio.NioDatagramAcceptor
 import org.slf4j.LoggerFactory
 import java.io.IOException
 import java.net.InetSocketAddress
-import java.nio.charset.Charset
 import java.util.concurrent.Executors
 
 
@@ -17,7 +18,7 @@ object MinaServerUdpTest {
     private val logger = LoggerFactory.getLogger(MinaServerUdpTest::class.java)
 
     // 端口
-    private val MINA_PORT = 7084
+    private val MINA_PORT = 7085
 
     @JvmStatic
     fun main(args: Array<String>) {
@@ -33,7 +34,9 @@ object MinaServerUdpTest {
             // 设置编码过滤器（自定义）
             acceptor.getFilterChain().addLast(
                 "mycoder",
-                ProtocolCodecFilter(CustomProtocolCodecFactory(Charset.forName("UTF-8")))
+                ProtocolCodecFilter(
+                    ProtocolCodecFactoryImpl(pack = Pack(header = "****", HEADER = 4, LENGTH = 4))
+                )
             )
 
             // 设置会话超时时间（单位：毫秒），不设置则默认是10秒，请按需设置

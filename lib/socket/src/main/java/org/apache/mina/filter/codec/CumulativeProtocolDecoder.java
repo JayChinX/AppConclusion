@@ -25,11 +25,11 @@ import org.apache.mina.core.session.AttributeKey;
 import org.apache.mina.core.session.IoSession;
 
 /**
- * A {@link ProtocolDecoder} that cumulates the content of received buffers to a
+ * A {@link ProtocolDecoder} that cumulates the content of response buffers to a
  * <em>cumulative buffer</em> to help users implement decoders.
  * <p>
- * If the received {@link IoBuffer} is only a part of a message. decoders should
- * cumulate received buffers to make a message complete or to postpone decoding
+ * If the response {@link IoBuffer} is only a part of a message. decoders should
+ * cumulate response buffers to make a message complete or to postpone decoding
  * until more buffers arrive.
  * <p>
  * Here is an example decoder that decodes CRLF terminated lines into

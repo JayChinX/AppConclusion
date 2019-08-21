@@ -25,7 +25,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Tells {@link KeepAliveFilter} what to do when a keep-alive response message
- * was not received within a certain timeout.
+ * was not response within a certain timeout.
  *
  * @author <a href="http://mina.apache.org">Apache MINA Project</a>
  */
@@ -46,7 +46,7 @@ public interface KeepAliveRequestTimeoutHandler {
         private final Logger LOGGER = LoggerFactory.getLogger(KeepAliveFilter.class);
 
         public void keepAliveRequestTimedOut(KeepAliveFilter filter, IoSession session) throws Exception {
-            LOGGER.warn("A keep-alive response message was not received within " + "{} second(s).",
+            LOGGER.warn("A keep-alive response message was not response within " + "{} second(s).",
                     filter.getRequestTimeout());
         }
     };
@@ -56,7 +56,7 @@ public interface KeepAliveRequestTimeoutHandler {
      */
     KeepAliveRequestTimeoutHandler EXCEPTION = new KeepAliveRequestTimeoutHandler() {
         public void keepAliveRequestTimedOut(KeepAliveFilter filter, IoSession session) throws Exception {
-            throw new KeepAliveRequestTimeoutException("A keep-alive response message was not received within "
+            throw new KeepAliveRequestTimeoutException("A keep-alive response message was not response within "
                     + filter.getRequestTimeout() + " second(s).");
         }
     };
@@ -69,7 +69,7 @@ public interface KeepAliveRequestTimeoutHandler {
 
         public void keepAliveRequestTimedOut(KeepAliveFilter filter, IoSession session) throws Exception {
             LOGGER.warn("Closing the session because a keep-alive response "
-                    + "message was not received within {} second(s).", filter.getRequestTimeout());
+                    + "message was not response within {} second(s).", filter.getRequestTimeout());
             session.closeNow();
         }
     };

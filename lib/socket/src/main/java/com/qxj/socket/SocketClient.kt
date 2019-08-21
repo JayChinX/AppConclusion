@@ -5,7 +5,10 @@ import org.apache.mina.core.future.ConnectFuture
 import org.apache.mina.core.future.IoFuture
 import org.apache.mina.core.service.IoConnector
 import org.apache.mina.core.session.IoSession
+import org.apache.mina.filter.codec.ProtocolCodecFactory
 import org.apache.mina.filter.codec.ProtocolCodecFilter
+import org.apache.mina.filter.codec.textline.LineDelimiter
+import org.apache.mina.filter.codec.textline.TextLineCodecFactory
 import org.apache.mina.filter.keepalive.KeepAliveFilter
 import org.apache.mina.filter.keepalive.KeepAliveRequestTimeoutHandler
 import org.apache.mina.filter.logging.LoggingFilter
@@ -19,41 +22,15 @@ interface SocketClient {
 
     fun createConnector(): IoConnector
 
-    @Throws
-    fun initFuture(connector: IoConnector): ConnectFuture {
-        return connector.let {
-            val future = it.connect()
-            // 等待连接创建完成
-            future.awaitUninterruptibly()
-        }
-    }
+    fun initFuture(connector: IoConnector): ConnectFuture
 
-    @Throws
-    fun initSession(future: IoFuture?): IoSession? {
-        return future?.let {
-            //开始连接
-            val session = future.session// 获得session
-            if (session != null && session.isConnected) {
-                return@let session
-            } else {
-                return@let null
-            }
-        }
-    }
+    fun initSession(future: IoFuture?): IoSession?
 
     fun stopConnector()
 
     fun connectorState(): Boolean
 
-    fun addListener(connector: IoConnector) {
-        // 监听客户端是否断线
-        connector.addListener(object : IoListener() {
-            override fun sessionDestroyed(arg0: IoSession) {
-                super.sessionDestroyed(arg0)
-                conntection()
-            }
-        })
-    }
+    fun addListener(connector: IoConnector)
 
     fun send(msg: String?)
 
@@ -61,9 +38,6 @@ interface SocketClient {
 
     fun startThread()
 
-    /**
-     * 关闭Mina长连接 **
-     */
     fun close()
 
     enum class Type {
@@ -131,8 +105,9 @@ interface SocketClient {
             return this
         }
 
-        fun setCodecFilter(codecFilter: IoFilter): Builder {
-            this.protocolCodecIoFilterAdapter = codecFilter
+        fun setCodecFactory(factory: ProtocolCodecFactory): Builder {
+            val protocolCodecFilter = ProtocolCodecFilter(factory)
+            this.protocolCodecIoFilterAdapter = protocolCodecFilter
             return this
         }
 
@@ -186,15 +161,14 @@ interface SocketClient {
         }
 
         private fun createCodec(): IoFilter {
-//            val factory = TextLineCodecFactory(
-//                Charset.forName("UTF-8"),
-//                LineDelimiter.WINDOWS.value,
-//                LineDelimiter.WINDOWS.value
-//            )
-//            factory.decoderMaxLineLength = 1024 * 1024
-//            factory.encoderMaxLineLength = 1024 * 1024
+            val factory = TextLineCodecFactory(
+                Charset.forName(charsetName),
+                LineDelimiter.WINDOWS.value,
+                LineDelimiter.WINDOWS.value
+            )
+            factory.decoderMaxLineLength = 1024 * 1024
+            factory.encoderMaxLineLength = 1024 * 1024
 
-            val factory = ProtocolCodecImplFactory(Charset.forName(charsetName))
             return ProtocolCodecFilter(factory)
         }
 

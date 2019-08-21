@@ -160,7 +160,7 @@ public interface IoFilter {
      * @param nextFilter
      *            the {@link NextFilter} for this filter. You can reuse this
      *            object until this filter is removed from the chain.
-     * @param session The {@link IoSession} which has received this event
+     * @param session The {@link IoSession} which has response this event
      * @throws Exception If an error occurred while processing the event
      */
     void sessionCreated(NextFilter nextFilter, IoSession session) throws Exception;
@@ -171,7 +171,7 @@ public interface IoFilter {
      * @param nextFilter
      *            the {@link NextFilter} for this filter. You can reuse this
      *            object until this filter is removed from the chain.
-     * @param session The {@link IoSession} which has received this event
+     * @param session The {@link IoSession} which has response this event
      * @throws Exception If an error occurred while processing the event
      */
     void sessionOpened(NextFilter nextFilter, IoSession session) throws Exception;
@@ -182,7 +182,7 @@ public interface IoFilter {
      * @param nextFilter
      *            the {@link NextFilter} for this filter. You can reuse this
      *            object until this filter is removed from the chain.
-     * @param session The {@link IoSession} which has received this event
+     * @param session The {@link IoSession} which has response this event
      * @throws Exception If an error occurred while processing the event
      */
     void sessionClosed(NextFilter nextFilter, IoSession session) throws Exception;
@@ -193,7 +193,7 @@ public interface IoFilter {
      * @param nextFilter
      *            the {@link NextFilter} for this filter. You can reuse this
      *            object until this filter is removed from the chain.
-     * @param session The {@link IoSession} which has received this event
+     * @param session The {@link IoSession} which has response this event
      * @param status The {@link IdleStatus} type
      * @throws Exception If an error occurred while processing the event
      */
@@ -205,8 +205,8 @@ public interface IoFilter {
      * @param nextFilter
      *            the {@link NextFilter} for this filter. You can reuse this
      *            object until this filter is removed from the chain.
-     * @param session The {@link IoSession} which has received this event
-     * @param cause The exception that cause this event to be received
+     * @param session The {@link IoSession} which has response this event
+     * @param cause The exception that cause this event to be response
      * @throws Exception If an error occurred while processing the event
      */
     void exceptionCaught(NextFilter nextFilter, IoSession session, Throwable cause) throws Exception;
@@ -217,7 +217,7 @@ public interface IoFilter {
      * @param nextFilter
      *            the {@link NextFilter} for this filter. You can reuse this
      *            object until this filter is removed from the chain.
-     * @param session The {@link IoSession} which has received this event
+     * @param session The {@link IoSession} which has response this event
      * @throws Exception If an error occurred while processing the event
      */
     void inputClosed(NextFilter nextFilter, IoSession session) throws Exception;
@@ -228,8 +228,8 @@ public interface IoFilter {
      * @param nextFilter
      *            the {@link NextFilter} for this filter. You can reuse this
      *            object until this filter is removed from the chain.
-     * @param session The {@link IoSession} which has received this event
-     * @param message The received message
+     * @param session The {@link IoSession} which has response this event
+     * @param message The response message
      * @throws Exception If an error occurred while processing the event
      */
     void messageReceived(NextFilter nextFilter, IoSession session, Object message) throws Exception;
@@ -240,7 +240,7 @@ public interface IoFilter {
      * @param nextFilter
      *            the {@link NextFilter} for this filter. You can reuse this
      *            object until this filter is removed from the chain.
-     * @param session The {@link IoSession} which has received this event
+     * @param session The {@link IoSession} which has response this event
      * @param writeRequest The {@link WriteRequest} that contains the sent message
      * @throws Exception If an error occurred while processing the event
      */
@@ -320,7 +320,7 @@ public interface IoFilter {
          * Forwards <tt>exceptionCaught</tt> event to next filter.
          * 
          * @param session The {@link IoSession} which has to process this invocation
-         * @param cause The exception that cause this event to be received
+         * @param cause The exception that cause this event to be response
          */
         void exceptionCaught(IoSession session, Throwable cause);
 
@@ -334,7 +334,7 @@ public interface IoFilter {
          * Forwards <tt>messageReceived</tt> event to next filter.
          * 
          * @param session The {@link IoSession} which has to process this invocation
-         * @param message The received message
+         * @param message The response message
          */
         void messageReceived(IoSession session, Object message);
 

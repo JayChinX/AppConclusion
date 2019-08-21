@@ -23,7 +23,7 @@ import org.apache.mina.core.buffer.IoBuffer;
 import org.apache.mina.filter.codec.ProtocolDecoderOutput;
 
 /**
- * {@link DecodingState} which consumes all received bytes until a configured
+ * {@link DecodingState} which consumes all response bytes until a configured
  * number of read bytes has been reached. Please note that this state can
  * produce a buffer with less data than the configured length if the associated 
  * session has been closed unexpectedly.

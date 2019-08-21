@@ -1,10 +1,25 @@
-/buil
-.idea
-.gradle
+.idea/
+.gradle/
 build/
 flutter_module/.android/Flutter/flutter.iml
-welcome/build/
-
 lib/dialog/dialog.iml
 lib/socket/socket.iml
-/.idea/
+将删除 doc/
+将删除 lib/dialog/lib-dialog.iml
+将删除 lib/dialog/libs/
+将删除 lib/logger/lib-logger.iml
+将删除 lib/logger/libs/
+将删除 lib/logger/src/androidTest/
+将删除 lib/logger/src/main/res/drawable/
+将删除 lib/logger/src/test/
+将删除 lib/socket/lib-socket.iml
+将删除 lib/socket/libs/
+将删除 lib/socket/src/main/java/org/apache/mina/filter/textline/
+将删除 lib/socket/src/main/res/drawable/
+将删除 lib-socket.iml
+将删除 libs/
+将删除 src/main/res/drawable/
+将删除 lib-logger.iml
+将删除 src/androidTest/
+将删除 src/test/
+将删除 lib-dialog.iml
