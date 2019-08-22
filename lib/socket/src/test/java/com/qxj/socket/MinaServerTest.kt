@@ -17,7 +17,7 @@ object MinaServerTest {
     private val logger = LoggerFactory.getLogger(MinaServerTest::class.java)
 
     // 端口
-    private val MINA_PORT = 7084
+    private val MINA_PORT = 7085
 
     @JvmStatic
     fun main(args: Array<String>) {
@@ -34,7 +34,7 @@ object MinaServerTest {
             acceptor.getFilterChain().addLast(
                 "mycoder",
                 ProtocolCodecFilter(
-                    ProtocolCodecFactoryImpl(pack = Pack(header = "****", HEADER = 4, LENGTH = 4))
+                    ProtocolCodecFactoryImpl(pack = Pack(header = "5aa5", HEADER = 2, LENGTH = 4))
                 )
             )
             // 设置缓冲区大小

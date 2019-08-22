@@ -36,18 +36,20 @@ fun main(args: Array<String>) {
     test()
 }
 
-fun test() {
+fun test () {
+
     val logger = LoggerFactory.getLogger("test")
     val request = "{\"cmd\":\"login\",\"param\":{\"name\":\"qxj\",\"password\":\"123456\"}}"
     logger.info("start")
-    SocketClient.Builder()
-            .setType(SocketClient.Type.TCP, false)
-            .setTag("SocketSingle")
-            .setIp(ip = "106.12.184.238", port = 9999)
-            .send(request)
-            .setCodecFactory(ProtocolCodecFactoryImpl(Pack(header = "****", HEADER = 4, LENGTH = 4)))
-            .setResponse(Response {
+    val client = SocketClient.Builder()
+        .setType(SocketClient.Type.TCP, true)
+        .setTag("SocketSingle")
+        .setIp(ip = "172.17.0.1", port = 7085)
+        .setCodecFactory(ProtocolCodecFactoryImpl(Pack(header = "5aa5", HEADER = 2, LENGTH = 4)))
+        .setResponse(Response {
 
-            })
-            .builder()
+        })
+        .builder()
+
+    client.send(request)
 }

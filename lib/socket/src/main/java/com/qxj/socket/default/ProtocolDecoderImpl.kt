@@ -6,6 +6,7 @@ import org.apache.mina.filter.codec.CumulativeProtocolDecoder
 import org.apache.mina.filter.codec.ProtocolDecoderOutput
 import org.slf4j.LoggerFactory
 import java.nio.charset.Charset
+import java.util.*
 
 /**
  * 自定义解码器
@@ -36,8 +37,8 @@ class ProtocolDecoderImpl(private val charset: Charset, private val pack: Pack) 
                     //消息总长度
                     val lengthBytes = ByteArray(pack.LENGTH)
                     System.arraycopy(bytes, pack.HEADER, lengthBytes, 0, pack.LENGTH)
-                    logger.info("解码长度：{}", Pack.getInt(lengthBytes))
-                    Pack.getInt(lengthBytes) + PACK_HEAD_LEN
+                    logger.info("解码长度 ${Arrays.toString(lengthBytes)}：{}", Pack.getBytesToInt(lengthBytes))
+                    Pack.getBytesToInt(lengthBytes) + PACK_HEAD_LEN
                 } else {
                     p1.limit()
                 }

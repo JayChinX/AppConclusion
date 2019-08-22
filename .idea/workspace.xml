@@ -39,407 +39,12 @@
     <last-search-timestamp>1563784655374</last-search-timestamp>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aacb55a9-5b93-400c-9c0f-ebfa7ae5ac4b" name="Default Changelist" comment="feat(socket, dialog): socket, dialog">
-      <change afterPath="$PROJECT_DIR$/lib/socket/src/main/java/com/qxj/socket/BaseSocketClient.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/socket/src/main/java/com/qxj/socket/default/Pack.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/socket/src/main/java/com/qxj/socket/default/ProtocolCodecFactoryImpl.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/socket/src/main/java/com/qxj/socket/default/ProtocolDecoderImpl.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/socket/src/main/java/com/qxj/socket/default/ProtocolEncoderImpl.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/welcome/build/intermediates/build-info/debug/build-info.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/welcome/build/intermediates/incremental-verifier/debug/com/qxj/socket/CustomProtocolCodecFactory.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/welcome/build/intermediates/incremental-verifier/debug/com/qxj/socket/CustomProtocolDecoder.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/welcome/build/intermediates/incremental-verifier/debug/com/qxj/socket/CustomProtocolEncoder.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/welcome/build/intermediates/incremental-verifier/debug/com/qxj/socket/IoListener$logger$2.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/welcome/build/intermediates/incremental-verifier/debug/com/qxj/socket/MinaClientHandler$logger$2.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/welcome/build/intermediates/incremental-verifier/debug/com/qxj/socket/MinaServerCustom.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/welcome/build/intermediates/incremental-verifier/debug/com/qxj/socket/MyServerHandler.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/welcome/build/intermediates/incremental-verifier/debug/com/qxj/socket/Pack$Companion.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/welcome/build/intermediates/incremental-verifier/debug/com/qxj/socket/Pack.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/welcome/build/intermediates/incremental-verifier/debug/com/qxj/socket/Packs.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/welcome/build/intermediates/incremental-verifier/debug/com/qxj/socket/ProtocolCodecImplFactory.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/welcome/build/intermediates/incremental-verifier/debug/com/qxj/socket/ProtocolDecoderImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/welcome/build/intermediates/incremental-verifier/debug/com/qxj/socket/ProtocolEncoderImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/welcome/build/intermediates/incremental-verifier/debug/com/qxj/socket/ServerHandler.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/welcome/build/intermediates/incremental-verifier/debug/com/qxj/welcome/viewmodels/HomeViewModel$sendMsg$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/welcome/build/intermediates/incremental-verifier/debug/org/slf4j/impl/SimpleLogger$Companion.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/welcome/build/intermediates/incremental-verifier/debug/org/slf4j/impl/SimpleLogger.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/welcome/build/intermediates/incremental-verifier/debug/org/slf4j/impl/SimpleLoggerAdapter$Companion.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/welcome/build/intermediates/incremental-verifier/debug/org/slf4j/impl/SimpleLoggerAdapter.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/welcome/build/intermediates/incremental-verifier/debug/org/slf4j/impl/SimpleLoggerConfiguration$Companion.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/welcome/build/intermediates/incremental-verifier/debug/org/slf4j/impl/SimpleLoggerConfiguration.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/welcome/build/intermediates/incremental-verifier/debug/org/slf4j/impl/SimpleLoggerFactory.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/welcome/build/intermediates/instant-run-apk/debug/output.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/welcome/build/intermediates/instant-run-apk/debug/welcome-debug.apk" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/welcome/build/intermediates/instant_run_main_apk_resources/debug/instantRunMainApkResourcesDebug/out/main_resources/resources_ap" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/welcome/build/intermediates/instant_run_main_apk_resources/debug/instantRunMainApkResourcesDebug/out/output.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/welcome/build/intermediates/instant_run_split_apk_resources/debug/instantRunSplitApkResourcesDebug/out/slice_0/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/welcome/build/intermediates/instant_run_split_apk_resources/debug/instantRunSplitApkResourcesDebug/out/slice_0/resources_ap" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/welcome/build/intermediates/instant_run_split_apk_resources/debug/instantRunSplitApkResourcesDebug/out/slice_1/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/welcome/build/intermediates/instant_run_split_apk_resources/debug/instantRunSplitApkResourcesDebug/out/slice_1/resources_ap" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/welcome/build/intermediates/instant_run_split_apk_resources/debug/instantRunSplitApkResourcesDebug/out/slice_2/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/welcome/build/intermediates/instant_run_split_apk_resources/debug/instantRunSplitApkResourcesDebug/out/slice_2/resources_ap" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/welcome/build/intermediates/instant_run_split_apk_resources/debug/instantRunSplitApkResourcesDebug/out/slice_3/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/welcome/build/intermediates/instant_run_split_apk_resources/debug/instantRunSplitApkResourcesDebug/out/slice_3/resources_ap" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/welcome/build/intermediates/instant_run_split_apk_resources/debug/instantRunSplitApkResourcesDebug/out/slice_4/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/welcome/build/intermediates/instant_run_split_apk_resources/debug/instantRunSplitApkResourcesDebug/out/slice_4/resources_ap" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/welcome/build/intermediates/instant_run_split_apk_resources/debug/instantRunSplitApkResourcesDebug/out/slice_5/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/welcome/build/intermediates/instant_run_split_apk_resources/debug/instantRunSplitApkResourcesDebug/out/slice_5/resources_ap" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/welcome/build/intermediates/instant_run_split_apk_resources/debug/instantRunSplitApkResourcesDebug/out/slice_6/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/welcome/build/intermediates/instant_run_split_apk_resources/debug/instantRunSplitApkResourcesDebug/out/slice_6/resources_ap" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/welcome/build/intermediates/instant_run_split_apk_resources/debug/instantRunSplitApkResourcesDebug/out/slice_7/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/welcome/build/intermediates/instant_run_split_apk_resources/debug/instantRunSplitApkResourcesDebug/out/slice_7/resources_ap" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/welcome/build/intermediates/instant_run_split_apk_resources/debug/instantRunSplitApkResourcesDebug/out/slice_8/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/welcome/build/intermediates/instant_run_split_apk_resources/debug/instantRunSplitApkResourcesDebug/out/slice_8/resources_ap" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/welcome/build/intermediates/instant_run_split_apk_resources/debug/instantRunSplitApkResourcesDebug/out/slice_9/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/welcome/build/intermediates/instant_run_split_apk_resources/debug/instantRunSplitApkResourcesDebug/out/slice_9/resources_ap" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/welcome/build/intermediates/manifest-checker/debug/manifest.crc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/welcome/build/intermediates/manifest-checker/debug/manifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/welcome/build/intermediates/resources/instant-run/debug/output.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/welcome/build/intermediates/resources/instant-run/debug/resources-debug.apk" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/welcome/build/intermediates/split-apk/debug/dep/dependencies.apk" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/welcome/build/intermediates/split-apk/debug/resources/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/welcome/build/intermediates/split-apk/debug/slices/slice_0.apk" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/welcome/build/intermediates/split-apk/debug/slices/slice_1.apk" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/welcome/build/intermediates/split-apk/debug/slices/slice_2.apk" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/welcome/build/intermediates/split-apk/debug/slices/slice_3.apk" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/welcome/build/intermediates/split-apk/debug/slices/slice_4.apk" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/welcome/build/intermediates/split-apk/debug/slices/slice_5.apk" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/welcome/build/intermediates/split-apk/debug/slices/slice_6.apk" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/welcome/build/intermediates/split-apk/debug/slices/slice_7.apk" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/welcome/build/intermediates/split-apk/debug/slices/slice_8.apk" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/welcome/build/intermediates/split-apk/debug/slices/slice_9.apk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="aacb55a9-5b93-400c-9c0f-ebfa7ae5ac4b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/AppConclusion.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Administrator.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/kotlinc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_activity_activity_1_0_0_alpha06_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_annotation_annotation_1_0_0_beta01_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_annotation_annotation_1_1_0_beta01_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_appcompat_appcompat_1_1_0_alpha04_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_appcompat_appcompat_resources_1_1_0_alpha04_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_arch_core_core_common_2_0_0_beta01_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_arch_core_core_common_2_1_0_alpha01_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_arch_core_core_runtime_2_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_arch_core_core_runtime_2_0_0_beta01_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_arch_core_core_runtime_2_1_0_alpha01_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_asynclayoutinflater_asynclayoutinflater_1_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_asynclayoutinflater_asynclayoutinflater_1_0_0_beta01_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_cardview_cardview_1_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_collection_collection_1_0_0_beta01_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_collection_collection_1_1_0_beta01_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_concurrent_concurrent_futures_1_0_0_alpha02_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_coordinatorlayout_coordinatorlayout_1_0_0_beta01_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_coordinatorlayout_coordinatorlayout_1_1_0_alpha01_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_core_core_1_0_0_beta01_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_core_core_1_1_0_alpha05_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_cursoradapter_cursoradapter_1_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_cursoradapter_cursoradapter_1_0_0_beta01_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_customview_customview_1_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_customview_customview_1_0_0_beta01_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_documentfile_documentfile_1_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_documentfile_documentfile_1_0_0_beta01_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_drawerlayout_drawerlayout_1_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_drawerlayout_drawerlayout_1_0_0_beta01_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_fragment_fragment_1_0_0_beta01_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_fragment_fragment_1_1_0_alpha06_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_interpolator_interpolator_1_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_interpolator_interpolator_1_0_0_beta01_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_legacy_legacy_support_core_ui_1_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_legacy_legacy_support_core_ui_1_0_0_beta01_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_legacy_legacy_support_core_utils_1_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_legacy_legacy_support_core_utils_1_0_0_beta01_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_legacy_legacy_support_v13_1_0_0_beta01_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_legacy_legacy_support_v4_1_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_legacy_legacy_support_v4_1_0_0_beta01_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_common_2_0_0_beta01_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_common_2_1_0_alpha04_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_extensions_2_1_0_alpha04_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_livedata_2_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_livedata_2_1_0_alpha04_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_livedata_core_2_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_livedata_core_2_0_0_beta01_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_livedata_core_2_1_0_alpha04_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_process_2_1_0_alpha04_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_runtime_2_0_0_beta01_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_runtime_2_1_0_alpha04_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_service_2_1_0_alpha04_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_viewmodel_2_0_0_beta01_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_viewmodel_2_1_0_alpha04_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_loader_loader_1_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_loader_loader_1_0_0_beta01_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_localbroadcastmanager_localbroadcastmanager_1_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_localbroadcastmanager_localbroadcastmanager_1_0_0_beta01_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_media_media_1_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_media_media_1_0_0_beta01_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_multidex_multidex_2_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_multidex_multidex_instrumentation_2_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_print_print_1_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_print_print_1_0_0_beta01_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_recyclerview_recyclerview_1_1_0_alpha01_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_savedstate_savedstate_1_0_0_alpha02_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_slidingpanelayout_slidingpanelayout_1_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_slidingpanelayout_slidingpanelayout_1_0_0_beta01_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_swiperefreshlayout_swiperefreshlayout_1_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_swiperefreshlayout_swiperefreshlayout_1_0_0_beta01_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_transition_transition_1_0_1_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_vectordrawable_vectordrawable_1_1_0_alpha01_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_vectordrawable_vectordrawable_animated_1_1_0_alpha01_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_versionedparcelable_versionedparcelable_1_0_0_beta01_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_versionedparcelable_versionedparcelable_1_1_0_alpha02_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_viewpager_viewpager_1_0_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_viewpager_viewpager_1_0_0_beta01_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_alibaba_arouter_annotation_1_0_6_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_alibaba_arouter_api_1_4_1_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_alibaba_fastjson_1_2_48_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_bumptech_glide_annotations_4_9_0_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_bumptech_glide_disklrucache_4_9_0_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_bumptech_glide_gifdecoder_4_9_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_bumptech_glide_glide_4_9_0_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_material_material_1_1_0_alpha05_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_code_findbugs_jsr305_2_0_1_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_code_gson_gson_2_8_2_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_guava_listenablefuture_1_0_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_javawriter_2_1_1_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_okhttp3_logging_interceptor_3_13_1_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_okio_okio_2_2_2_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_retrofit2_adapter_rxjava2_2_5_0_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_retrofit2_converter_gson_2_5_0_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_retrofit2_retrofit_2_5_0_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_uber_autodispose_autodispose_0_6_1_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_uber_autodispose_autodispose_android_0_6_1_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_uber_autodispose_autodispose_android_archcomponents_0_6_1_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__io_reactivex_rxjava2_rxandroid_2_1_1_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__io_reactivex_rxjava2_rxjava_2_2_6_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__io_reactivex_rxjava2_rxkotlin_2_3_0_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__javax_inject_javax_inject_1_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__junit_junit_4_12_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__net_sf_kxml_kxml2_2_3_0_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hamcrest_hamcrest_core_1_3_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hamcrest_hamcrest_integration_1_3_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hamcrest_hamcrest_library_1_3_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_anko_anko_common_0_10_7_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_anko_anko_commons_0_10_7_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_anko_commons_base_0_10_7_aar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_jetbrains_annotations_13_0_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_reactivestreams_reactive_streams_1_0_2_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/AppConclusion.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conclusion/conclusion.iml" beforeDir="false" afterPath="$PROJECT_DIR$/conclusion/conclusion.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_module/.android/.gradle/4.10.2/fileChanges/last-build.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_module/.android/.gradle/4.10.2/fileContent/fileContent.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_module/.android/.gradle/4.10.2/fileHashes/fileHashes.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_module/.android/.gradle/4.10.2/fileHashes/fileHashes.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_module/.android/.gradle/4.10.2/fileHashes/resourceHashesCache.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_module/.android/.gradle/4.10.2/gc.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_module/.android/.gradle/4.10.2/javaCompile/classAnalysis.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_module/.android/.gradle/4.10.2/javaCompile/jarAnalysis.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_module/.android/.gradle/4.10.2/javaCompile/javaCompile.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_module/.android/.gradle/4.10.2/javaCompile/taskHistory.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_module/.android/.gradle/4.10.2/taskHistory/taskHistory.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_module/.android/.gradle/4.10.2/taskHistory/taskHistory.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_module/.android/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_module/.android/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_module/.android/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_module/.android/.gradle/vcs-1/gc.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_module/.android/Flutter/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_module/.android/Flutter/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_module/.android/Flutter/src/main/java/io/flutter/facade/Flutter.java" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_module/.android/Flutter/src/main/java/io/flutter/facade/Flutter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_module/.android/Flutter/src/main/java/io/flutter/facade/FlutterFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_module/.android/Flutter/src/main/java/io/flutter/facade/FlutterFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_module/.android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_module/.android/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_module/.android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_module/.android/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_module/.android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_module/.android/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_module/.android/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_module/.android/gradle.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_module/.android/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_module/.android/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_module/.android/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_module/.android/gradlew" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_module/.android/gradlew.bat" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_module/.android/gradlew.bat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_module/.android/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_module/.android/local.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_module/.android/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_module/.android/settings.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_module/.ios/Config/Release.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_module/.ios/Config/Release.xcconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_module/.ios/Flutter/Generated.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_module/.ios/Flutter/Generated.xcconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_module/.ios/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_module/.ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flutter_module/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/flutter_module/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/commonbase/commonbase.iml" beforeDir="false" afterPath="$PROJECT_DIR$/lib/commonbase/commonbase.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/logger/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/lib/logger/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/lib/socket/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/lib/socket/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/main/java/com/qxj/socket/MinaClientHandler.kt" beforeDir="false" afterPath="$PROJECT_DIR$/lib/socket/src/main/java/com/qxj/socket/MinaClientHandler.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/main/java/com/qxj/socket/Pack.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/main/java/com/qxj/socket/ProtocolCodecImplFactory.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/main/java/com/qxj/socket/ProtocolDecoderImpl.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/main/java/com/qxj/socket/ProtocolEncoderImpl.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/main/java/com/qxj/socket/SocketClient.kt" beforeDir="false" afterPath="$PROJECT_DIR$/lib/socket/src/main/java/com/qxj/socket/SocketClient.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/main/java/com/qxj/socket/SocketTcpClient.kt" beforeDir="false" afterPath="$PROJECT_DIR$/lib/socket/src/main/java/com/qxj/socket/SocketTcpClient.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/main/java/com/qxj/socket/SocketUdpClient.kt" beforeDir="false" afterPath="$PROJECT_DIR$/lib/socket/src/main/java/com/qxj/socket/SocketUdpClient.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/main/java/org/apache/mina/core/filterchain/IoFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/lib/socket/src/main/java/org/apache/mina/core/filterchain/IoFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/main/java/org/apache/mina/core/filterchain/IoFilterChain.java" beforeDir="false" afterPath="$PROJECT_DIR$/lib/socket/src/main/java/org/apache/mina/core/filterchain/IoFilterChain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/main/java/org/apache/mina/core/future/ReadFuture.java" beforeDir="false" afterPath="$PROJECT_DIR$/lib/socket/src/main/java/org/apache/mina/core/future/ReadFuture.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/main/java/org/apache/mina/core/polling/AbstractPollingIoConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/lib/socket/src/main/java/org/apache/mina/core/polling/AbstractPollingIoConnector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/main/java/org/apache/mina/core/service/IoHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/lib/socket/src/main/java/org/apache/mina/core/service/IoHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/main/java/org/apache/mina/core/session/IoEventType.java" beforeDir="false" afterPath="$PROJECT_DIR$/lib/socket/src/main/java/org/apache/mina/core/session/IoEventType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/main/java/org/apache/mina/core/session/IoSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/lib/socket/src/main/java/org/apache/mina/core/session/IoSession.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/main/java/org/apache/mina/core/session/IoSessionConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/lib/socket/src/main/java/org/apache/mina/core/session/IoSessionConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/main/java/org/apache/mina/filter/codec/CumulativeProtocolDecoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/lib/socket/src/main/java/org/apache/mina/filter/codec/CumulativeProtocolDecoder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/main/java/org/apache/mina/filter/codec/textline/TextLineDecoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/lib/socket/src/main/java/org/apache/mina/filter/codec/textline/TextLineDecoder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/main/java/org/apache/mina/filter/keepalive/KeepAliveFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/lib/socket/src/main/java/org/apache/mina/filter/keepalive/KeepAliveFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/main/java/org/apache/mina/filter/keepalive/KeepAliveRequestTimeoutException.java" beforeDir="false" afterPath="$PROJECT_DIR$/lib/socket/src/main/java/org/apache/mina/filter/keepalive/KeepAliveRequestTimeoutException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/main/java/org/apache/mina/filter/keepalive/KeepAliveRequestTimeoutHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/lib/socket/src/main/java/org/apache/mina/filter/keepalive/KeepAliveRequestTimeoutHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/main/java/org/apache/mina/filter/ssl/SslFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/lib/socket/src/main/java/org/apache/mina/filter/ssl/SslFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/main/java/org/apache/mina/filter/ssl/SslHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/lib/socket/src/main/java/org/apache/mina/filter/ssl/SslHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/lib/socket/src/main/res/values/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/com/qxj/socket/ExampleUnitTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/lib/socket/src/test/java/com/qxj/socket/ExampleUnitTest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/com/qxj/socket/Helper.kt" beforeDir="false" afterPath="$PROJECT_DIR$/lib/socket/src/test/java/com/qxj/socket/Helper.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/com/qxj/socket/MinaServerTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/lib/socket/src/test/java/com/qxj/socket/MinaServerTest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/com/qxj/socket/MinaServerUdpTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/lib/socket/src/test/java/com/qxj/socket/MinaServerUdpTest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/com/qxj/socket/Pack.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/com/qxj/socket/ProtocolDecoderImpl.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/com/qxj/socket/ProtocolEncoderImpl.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/IoUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/RuntimeIoException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/buffer/AbstractIoBuffer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/buffer/BufferDataException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/buffer/CachedBufferAllocator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/buffer/IoBuffer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/buffer/IoBufferAllocator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/buffer/IoBufferHexDumper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/buffer/IoBufferWrapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/buffer/SimpleBufferAllocator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/file/DefaultFileRegion.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/file/FileRegion.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/file/FilenameFileRegion.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/filterchain/DefaultIoFilterChain.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/filterchain/DefaultIoFilterChainBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/filterchain/IoFilter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/filterchain/IoFilterAdapter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/filterchain/IoFilterChain.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/filterchain/IoFilterChainBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/filterchain/IoFilterEvent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/filterchain/IoFilterLifeCycleException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/future/CloseFuture.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/future/ConnectFuture.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/future/DefaultCloseFuture.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/future/DefaultConnectFuture.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/future/DefaultIoFuture.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/future/DefaultReadFuture.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/future/DefaultWriteFuture.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/future/IoFuture.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/future/IoFutureListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/future/ReadFuture.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/future/WriteFuture.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/polling/AbstractPollingIoConnector.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/polling/AbstractPollingIoProcessor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/service/AbstractIoConnector.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/service/AbstractIoService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/service/DefaultTransportMetadata.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/service/IoAcceptor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/service/IoConnector.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/service/IoHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/service/IoHandlerAdapter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/service/IoProcessor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/service/IoService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/service/IoServiceListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/service/IoServiceListenerSupport.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/service/IoServiceStatistics.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/service/SimpleIoProcessorPool.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/service/TransportMetadata.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/session/AbstractIoSession.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/session/AbstractIoSessionConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/session/AttributeKey.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/session/DefaultIoSessionDataStructureFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/session/IdleStatus.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/session/IoEvent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/session/IoEventType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/session/IoSession.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/session/IoSessionAttributeMap.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/session/IoSessionConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/session/IoSessionDataStructureFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/session/IoSessionInitializationException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/session/IoSessionInitializer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/session/SessionState.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/write/DefaultWriteRequest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/write/NothingWrittenException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/write/WriteException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/write/WriteRequest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/write/WriteRequestQueue.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/write/WriteTimeoutException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/core/write/WriteToClosedSessionException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/filter/FilterEvent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/filter/codec/AbstractProtocolDecoderOutput.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/filter/codec/AbstractProtocolEncoderOutput.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/filter/codec/CumulativeProtocolDecoder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/filter/codec/ProtocolCodecException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/filter/codec/ProtocolCodecFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/filter/codec/ProtocolCodecFilter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/filter/codec/ProtocolDecoder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/filter/codec/ProtocolDecoderAdapter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/filter/codec/ProtocolDecoderException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/filter/codec/ProtocolDecoderOutput.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/filter/codec/ProtocolEncoder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/filter/codec/ProtocolEncoderAdapter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/filter/codec/ProtocolEncoderException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/filter/codec/ProtocolEncoderOutput.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/filter/codec/RecoverableProtocolDecoderException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/filter/codec/demux/DemuxingProtocolDecoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/filter/codec/demux/DemuxingProtocolDecoder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/filter/codec/statemachine/ConsumeToEndOfSessionDecodingState.java" beforeDir="false" afterPath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/filter/codec/statemachine/ConsumeToEndOfSessionDecodingState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/filter/codec/statemachine/DecodingStateMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/filter/codec/statemachine/DecodingStateMachine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/filter/codec/statemachine/FixedLengthDecodingState.java" beforeDir="false" afterPath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/filter/codec/statemachine/FixedLengthDecodingState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/filter/codec/textline/LineDelimiter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/filter/codec/textline/TextLineCodecFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/filter/codec/textline/TextLineDecoder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/filter/codec/textline/TextLineEncoder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/filter/executor/IoEventQueueHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/filter/executor/IoEventQueueHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/filter/keepalive/KeepAliveFilter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/filter/keepalive/KeepAliveMessageFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/filter/keepalive/KeepAliveRequestTimeoutException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/filter/keepalive/KeepAliveRequestTimeoutHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/filter/logging/LogLevel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/filter/logging/LoggingFilter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/filter/ssl/SslContextFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/filter/ssl/SslFilter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/filter/ssl/SslHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/filter/statistic/ProfilerTimerFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/filter/statistic/ProfilerTimerFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/filter/util/ReferenceCountingFilter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/handler/demux/DemuxingIoHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/handler/demux/DemuxingIoHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/handler/demux/MessageHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/handler/demux/MessageHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/handler/multiton/SingleSessionIoHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/handler/multiton/SingleSessionIoHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/transport/socket/AbstractDatagramSessionConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/transport/socket/AbstractSocketSessionConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/transport/socket/DatagramConnector.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/transport/socket/DatagramSessionConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/transport/socket/DefaultDatagramSessionConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/transport/socket/DefaultSocketSessionConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/transport/socket/SocketAcceptor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/transport/socket/SocketConnector.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/transport/socket/SocketSessionConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/transport/socket/nio/NioDatagramConnector.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/transport/socket/nio/NioDatagramSession.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/transport/socket/nio/NioDatagramSessionConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/transport/socket/nio/NioProcessor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/transport/socket/nio/NioSession.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/transport/socket/nio/NioSocketConnector.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/transport/socket/nio/NioSocketSession.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/transport/vmpipe/VmPipeConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/transport/vmpipe/VmPipeConnector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/util/DefaultExceptionMonitor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/util/ExceptionMonitor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/util/ExpirationListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/util/ExpiringMap.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/util/IdentityHashSet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/util/LazyInitializedCacheMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/util/LazyInitializedCacheMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/socket/src/test/java/org/apache/mina/util/NamePreservingRunnable.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/multichannel/multichannel.iml" beforeDir="false" afterPath="$PROJECT_DIR$/multichannel/multichannel.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/welcome/src/main/java/com/qxj/welcome/service/SocketService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/welcome/src/main/java/com/qxj/welcome/service/SocketService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/welcome/src/test/java/com/qxj/welcome/Test.kt" beforeDir="false" afterPath="$PROJECT_DIR$/welcome/src/test/java/com/qxj/welcome/Test.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/logger/logger.iml" beforeDir="false" afterPath="$PROJECT_DIR$/lib/logger/logger.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/welcome/welcome.iml" beforeDir="false" afterPath="$PROJECT_DIR$/welcome/welcome.iml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/lib/flutter_module/.android/Flutter/build/generated/not_namespaced_r_class_sources/" />
     <ignored path="$PROJECT_DIR$/lib/flutter_module/.android/Flutter/build/generated/source/r/" />
@@ -674,36 +279,32 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/welcome/src/main/java/com/qxj/welcome/service/SocketService.kt">
+        <entry file="file://$PROJECT_DIR$/lib/socket/src/test/java/com/qxj/socket/ExampleUnitTest.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="303">
-              <caret line="16" column="16" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
+            <state relative-caret-position="151">
+              <caret line="24" column="9" selection-start-line="24" selection-start-column="9" selection-end-line="24" selection-end-column="9" />
               <folding>
-                <element signature="e#33#212#0" expanded="true" />
+                <element signature="e#24#192#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/socket/src/test/java/com/qxj/socket/MinaServerTest.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="95">
+              <caret line="15" column="7" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/socket/src/test/java/com/qxj/socket/Helper.kt">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/lib/socket/build.gradle">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="516">
-              <caret line="66" column="42" selection-start-line="66" selection-start-column="42" selection-end-line="66" selection-end-column="42" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/logger/build.gradle">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="608">
-              <caret line="62" column="38" selection-start-line="62" selection-start-column="38" selection-end-line="62" selection-end-column="38" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/socket/src/main/java/com/qxj/socket/default/Pack.kt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="38">
@@ -713,10 +314,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/socket/src/main/java/com/qxj/socket/default/ProtocolCodecFactoryImpl.kt">
+        <entry file="file://$PROJECT_DIR$/lib/logger/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="8" column="16" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
+            <state relative-caret-position="1178">
+              <caret line="62" column="38" selection-start-line="62" selection-start-column="38" selection-end-line="62" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -732,12 +333,12 @@
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/socket/src/main/AndroidManifest.xml">
-          <provider editor-type-id="android-manifest" />
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="38">
               <caret line="2" column="29" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
             </state>
           </provider>
+          <provider editor-type-id="android-manifest" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -745,15 +346,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state>
               <caret column="94" selection-start-column="88" selection-end-column="94" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/socket/src/main/java/com/qxj/socket/SocketClient.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="16" column="16" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -867,20 +459,20 @@
         <option value="$PROJECT_DIR$/flutter_module/.android/build.gradle" />
         <option value="$PROJECT_DIR$/welcome/src/main/res/values/styles.xml" />
         <option value="$PROJECT_DIR$/lib/socket/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/lib/socket/src/test/java/com/qxj/socket/ExampleUnitTest.kt" />
         <option value="$PROJECT_DIR$/welcome/src/main/java/com/qxj/welcome/service/SocketService.kt" />
         <option value="$PROJECT_DIR$/welcome/src/test/java/com/qxj/welcome/Test.kt" />
         <option value="$PROJECT_DIR$/lib/socket/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/lib/socket/build.gradle" />
         <option value="$PROJECT_DIR$/lib/logger/build.gradle" />
+        <option value="$PROJECT_DIR$/lib/socket/src/test/java/com/qxj/socket/ExampleUnitTest.kt" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="960" />
-    <option name="y" value="24" />
-    <option name="width" value="960" />
-    <option name="height" value="1003" />
+    <option name="x" value="525" />
+    <option name="y" value="41" />
+    <option name="width" value="1144" />
+    <option name="height" value="947" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -911,96 +503,17 @@
           <select />
         </subPane>
       </pane>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="AppConclusion" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AppConclusion" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="AppConclusion" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AppConclusion" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AppConclusion" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AppConclusion" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="socket" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="AppConclusion" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AppConclusion" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="socket" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="build" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AppConclusion" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AppConclusion" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="socket" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AppConclusion" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AppConclusion" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="socket" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AppConclusion" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AppConclusion" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="socket" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AppConclusion" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AppConclusion" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-              <item name="socket" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="res" type="462c0819:PsiDirectoryNode" />
-              <item name="values" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AppConclusion" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AppConclusion" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="multichannel" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="AppConclusion" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AppConclusion" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="welcome" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
+      <pane id="ProjectPane" />
       <pane id="AndroidView">
         <subPane>
           <expand>
             <path>
               <item name="AppConclusion" type="1abcf292:AndroidViewProjectNode" />
-              <item name="logger" type="feadf853:AndroidModuleNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
             </path>
             <path>
               <item name="AppConclusion" type="1abcf292:AndroidViewProjectNode" />
               <item name="logger" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-            </path>
-            <path>
-              <item name="AppConclusion" type="1abcf292:AndroidViewProjectNode" />
-              <item name="logger" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="impl" type="cbb59c9e:AndroidPsiDirectoryNode" />
             </path>
             <path>
               <item name="AppConclusion" type="1abcf292:AndroidViewProjectNode" />
@@ -1022,42 +535,6 @@
               <item name="socket" type="feadf853:AndroidModuleNode" />
               <item name="java" type="edd41e36:AndroidSourceTypeNode" />
               <item name="socket" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="default" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AppConclusion" type="1abcf292:AndroidViewProjectNode" />
-              <item name="socket" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="mina" type="cbb59c9e:AndroidPsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AppConclusion" type="1abcf292:AndroidViewProjectNode" />
-              <item name="welcome" type="feadf853:AndroidModuleNode" />
-            </path>
-            <path>
-              <item name="AppConclusion" type="1abcf292:AndroidViewProjectNode" />
-              <item name="welcome" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-            </path>
-            <path>
-              <item name="AppConclusion" type="1abcf292:AndroidViewProjectNode" />
-              <item name="welcome" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="welcome" type="cbb59c9e:AndroidPsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AppConclusion" type="1abcf292:AndroidViewProjectNode" />
-              <item name="welcome" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="welcome" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AppConclusion" type="1abcf292:AndroidViewProjectNode" />
-              <item name="welcome" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="welcome" type="cbb59c9e:AndroidPsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="AppConclusion" type="1abcf292:AndroidViewProjectNode" />
@@ -1551,14 +1028,14 @@
       <option name="project" value="LOCAL" />
       <updated>1566282410060</updated>
     </task>
-    <task id="LOCAL-00013" summary="add">
-      <created>1555370666162</created>
+    <task id="LOCAL-00013" summary="feat(socket, dialog): socket, delete files">
+      <created>1566378950214</created>
       <option name="number" value="00013" />
       <option name="presentableId" value="LOCAL-00013" />
       <option name="project" value="LOCAL" />
-      <updated>1555370666162</updated>
+      <updated>1566378950214</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1604,10 +1081,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-4" width="1920" height="1031" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.17202573" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.17416935" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Build Variants" order="3" side_tool="true" />
       <window_info id="Image Layers" order="4" />
@@ -1616,7 +1092,7 @@
       <window_info id="Favorites" order="7" side_tool="true" />
       <window_info id="Resources Explorer" order="8" weight="0.28403002" />
       <window_info id="DB Browser" order="9" />
-      <window_info anchor="bottom" id="Run" order="0" weight="0.3643868" />
+      <window_info anchor="bottom" id="Run" order="0" weight="0.3635321" />
       <window_info anchor="bottom" id="Logcat" order="1" sideWeight="0.49839228" weight="0.6981132" />
       <window_info anchor="bottom" id="TODO" order="2" weight="0.32998884" />
       <window_info anchor="bottom" id="Android Profiler" order="3" show_stripe_button="false" sideWeight="0.4989282" weight="0.5613208" />
@@ -1704,12 +1180,10 @@
     <MESSAGE value="feat(socket): add udp and test" />
     <MESSAGE value="refactor(socket): add main code" />
     <MESSAGE value="feat(socket, dialog): socket, dialog" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(socket, dialog): socket, dialog" />
+    <MESSAGE value="feat(socket, dialog): socket, delete files" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(socket, dialog): socket, delete files" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/lib/socket/.gitignore">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/logger/.gitignore">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -1794,7 +1268,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/welcome/src/main/res/menu/home.xml">
-      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="114">
           <caret line="6" column="22" lean-forward="true" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
@@ -1803,6 +1276,7 @@
           </folding>
         </state>
       </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/welcome/src/main/java/com/qxj/welcome/ui/MainActivity.kt">
       <provider selected="true" editor-type-id="text-editor">
@@ -1861,12 +1335,12 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/welcome/src/main/res/menu/navigation.xml">
-      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor" />
+      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/welcome/src/main/res/menu/activity_home_drawer.xml">
-      <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor" />
+      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/logger/src/main/java/org/slf4j/impl/AndroidLoggerFactory.kt">
       <provider selected="true" editor-type-id="text-editor">
@@ -1876,9 +1350,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/socket/src/main/java/com/qxj/socket/Received.kt" />
-    <entry file="file://$PROJECT_DIR$/lib/socket/src/test/java/com/qxj/socket/Helper.kt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/welcome/src/main/java/com/qxj/welcome/proxy/Test.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="855">
@@ -1921,23 +1392,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/socket/src/main/java/com/qxj/socket/default/Pack.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" column="11" selection-start-line="2" selection-start-column="11" selection-end-line="2" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/socket/src/test/java/com/qxj/socket/ExampleUnitTest.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="588">
-          <caret line="47" column="97" lean-forward="true" selection-start-line="47" selection-start-column="8" selection-end-line="47" selection-end-column="97" />
-          <folding>
-            <element signature="e#24#192#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/socket/src/main/java/com/qxj/socket/BaseSocketClient.kt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -1955,6 +1409,56 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/welcome/src/main/java/com/qxj/welcome/service/SocketService.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="16" column="16" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/socket/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1254">
+          <caret line="66" column="42" selection-start-line="66" selection-start-column="42" selection-end-line="66" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/logger/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1178">
+          <caret line="62" column="38" selection-start-line="62" selection-start-column="38" selection-end-line="62" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/socket/src/main/java/com/qxj/socket/default/ProtocolCodecFactoryImpl.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="8" column="16" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/socket/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="1" column="29" selection-start-line="1" selection-start-column="29" selection-end-line="1" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/socket/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" column="29" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-manifest" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/settings.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="94" selection-start-column="88" selection-end-column="94" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/lib/socket/src/main/java/com/qxj/socket/SocketClient.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="76">
@@ -1969,56 +1473,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/welcome/src/main/java/com/qxj/welcome/service/SocketService.kt">
+    <entry file="file://$PROJECT_DIR$/lib/socket/src/test/java/com/qxj/socket/ExampleUnitTest.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="16" column="16" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
+        <state relative-caret-position="151">
+          <caret line="24" column="9" selection-start-line="24" selection-start-column="9" selection-end-line="24" selection-end-column="9" />
           <folding>
-            <element signature="e#33#212#0" expanded="true" />
+            <element signature="e#24#192#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/socket/src/main/java/com/qxj/socket/default/ProtocolCodecFactoryImpl.kt">
+    <entry file="file://$PROJECT_DIR$/lib/socket/src/test/java/com/qxj/socket/MinaServerTest.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="8" column="16" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
+        <state relative-caret-position="95">
+          <caret line="15" column="7" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/socket/src/main/AndroidManifest.xml">
-      <provider editor-type-id="android-manifest" />
+    <entry file="file://$PROJECT_DIR$/lib/socket/src/test/java/com/qxj/socket/Helper.kt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/socket/src/main/java/com/qxj/socket/default/Pack.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="38">
-          <caret line="2" column="29" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/settings.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="94" selection-start-column="88" selection-end-column="94" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/socket/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="1" column="29" selection-start-line="1" selection-start-column="29" selection-end-line="1" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/logger/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="608">
-          <caret line="62" column="38" selection-start-line="62" selection-start-column="38" selection-end-line="62" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/socket/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="516">
-          <caret line="66" column="42" selection-start-line="66" selection-start-column="42" selection-end-line="66" selection-end-column="42" />
+          <caret line="2" column="11" selection-start-line="2" selection-start-column="11" selection-end-line="2" selection-end-column="11" />
         </state>
       </provider>
     </entry>

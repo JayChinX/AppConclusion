@@ -43,6 +43,7 @@ abstract class BaseSocketClient(tag: String,protected val config: SocketConfigur
                 if (session == null) {
                     throw ConnectorException("Connector error session is null")
                 }
+                init()
                 send(message)
             } catch (e: RuntimeException) {
                 logger.error("Connector error: {}", e.toString())
@@ -50,7 +51,7 @@ abstract class BaseSocketClient(tag: String,protected val config: SocketConfigur
                 failCount++
 
                 //如果是短链接或者重试次数过多抛出异常 不进行重试操作
-                if (failCount > 10 || !config.long) {
+                if (!config.long) {
                     config.response?.response(Result.failure(SocketException("Socket error, $e")))
                     return@with this
                 }

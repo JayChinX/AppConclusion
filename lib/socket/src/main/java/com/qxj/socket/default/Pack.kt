@@ -30,10 +30,15 @@ data class Pack(
         }
 
         @JvmStatic
-        fun getInt(a: ByteArray): Int {
-
-            return bytes2Int(a)
+        fun getBytesToInt(bytes: ByteArray): Int {
+            var num = bytes[0].toInt() and 0xFF
+            num = num or (bytes[1].toInt() shl 8 and 0xFF00)
+            num = num or (bytes[2].toInt() shl 16 and 0xFF0000)
+            num = num or (bytes[3].toInt() shl 24 and 0xFF00000)
+            return num
         }
+
+
 
         fun isHex(hex: String): Boolean {
             val regex ="^[A-Fa-f0-9]+$"
@@ -62,10 +67,10 @@ data class Pack(
          */
         private fun int2ByteArray(i: Int): ByteArray {
             val result = ByteArray(4)
-            result[0] = (i shr 24 and 0xFF).toByte()
-            result[1] = (i shr 16 and 0xFF).toByte()
-            result[2] = (i shr 8 and 0xFF).toByte()
-            result[3] = (i and 0xFF).toByte()
+            result[0] = (i and 0xFF).toByte()
+            result[1] = (i shr 8 and 0xFF).toByte()
+            result[2] = (i shr 16 and 0xFF).toByte()
+            result[3] = (i shr 24 and 0xFF).toByte()
             return result
         }
 
