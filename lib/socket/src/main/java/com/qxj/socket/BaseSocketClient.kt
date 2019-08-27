@@ -19,6 +19,8 @@ abstract class BaseSocketClient(tag: String,protected val config: SocketConfigur
 
     protected var failCount = 0
 
+    protected var running = true
+
     override fun init() {
         failCount = 0
     }
@@ -55,10 +57,14 @@ abstract class BaseSocketClient(tag: String,protected val config: SocketConfigur
                     config.response?.response(Result.failure(SocketException("Socket error, $e")))
                     return@with this
                 }
-                val time = 1500L
-                sleep(time)
-                logger.error("Connector retry： {}", failCount)
-                conntection()
+                config.response?.response(Result.failure(e))
+                if (running) {
+                    val time = 1500L
+                    sleep(time)
+                    logger.error("Connector retry： {}", failCount)
+                    conntection()
+                }
+
             }
 
             return@with this
@@ -127,7 +133,7 @@ abstract class BaseSocketClient(tag: String,protected val config: SocketConfigur
                 it.dispose()
             }
         }
-
+        running = false
         logger.info("Connector closed")
     }
 
