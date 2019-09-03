@@ -1,12 +1,20 @@
 package com.hymnal.qin
 
-import android.support.v7.app.AppCompatActivity
-import android.os.Bundle
+import com.hymnal.base.mvvm.BaseActivity
+import com.hymnal.welcome.utilities.navActivity
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+
+    override fun getLayoutId(): Int = R.layout.activity_main
+
+    override fun subscribeUi() {
+        navActivity("/home/activity/HomeActivity")
     }
+
+
+    override fun initView() {
+
+    }
+
 }

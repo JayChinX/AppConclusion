@@ -1,0 +1,104 @@
+if (isModule.toBoolean()) {
+    apply plugin: 'com.android.library'
+} else {
+    apply plugin: 'com.android.application'
+}
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+def config = rootProject.ext.android
+def library = rootProject.ext.dep
+android {
+    compileSdkVersion config.compileSdkVersion
+
+    defaultConfig {
+        if (!isModule.toBoolean()) {
+            applicationId "com.hymnal.welcome"
+        }
+        minSdkVersion config.minSdkVersion
+        targetSdkVersion config.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+//        javaCompileOptions {
+//            annotationProcessorOptions {
+//                arguments = [AROUTER_MODULE_NAME: project.getName()]
+//            }
+//        }
+
+        multiDexEnabled true
+        vectorDrawables.useSupportLibrary = true
+
+        ndk {
+            abiFilters "armeabi-v7a", "x86"
+        }
+        packagingOptions { exclude 'META-INF/DEPENDENCIES' }
+    }
+
+    kapt {
+        arguments {
+            arg("AROUTER_MODULE_NAME", project.getName())
+        }
+    }
+
+    sourceSets {
+        main {
+            if (isModule.toBoolean()) {
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+            } else {
+                manifest.srcFile 'src/main/AndroidManifest-debug.xml'
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            buildConfigField("boolean", "api", "true")
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            buildConfigField("boolean", "api", "false")
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+
+    packagingOptions {
+        exclude 'META-INF/atomicfu.kotlin_module'
+        exclude 'META-INF/xxx'
+    }
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation library.support
+    implementation library.constraint
+    implementation library.kotlin
+    implementation library.alibaba.json
+
+    implementation library.alibaba.arouter
+    kapt library.alibaba.aroutercompiler
+
+    implementation library.vector
+    implementation library.lifecycle.lifecycle
+    implementation library.lifecycle.viewmodel
+
+    implementation library.paging
+    implementation library.kotlinx.coroutines
+    implementation project(path: ':commonbase')
+    implementation project(path: ':dialog')
+    implementation project(path: ':socket')
+
+    implementation 'org.slf4j:slf4j-api:1.7.26'
+    implementation project(path: ':logger')
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+}

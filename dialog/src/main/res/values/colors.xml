@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="basePrimary">#ffffff</color>
+    <color name="basePrimaryDark">#00574B</color>
+    <color name="baseAccent">#00ba29</color>
+    <color name="home_tab_text">#696970</color>
+    <color name="home_table_text_select">#00bb2c</color>
+    <color name="pager_background">#f8f8ff</color>
+    <color name="tools_icon_color">#43434a</color>
+    <color name="tools_text_color">#9b9ba5</color>
+    <color name="click">#9b9ba5</color>
+    <color name="text_block">#15161a</color>
+    <!--9b9ba5  15161a  ffbf00  ababb4 00ba29  ecedf1-->
+</resources>
