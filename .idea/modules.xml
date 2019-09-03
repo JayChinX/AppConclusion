@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/AppConclusion.iml" filepath="$PROJECT_DIR$/.idea/AppConclusion.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lib/commonbase/commonbase.iml" filepath="$PROJECT_DIR$/lib/commonbase/commonbase.iml" />
+      <module fileurl="file://$PROJECT_DIR$/conclusion/conclusion.iml" filepath="$PROJECT_DIR$/conclusion/conclusion.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lib/dialog/dialog.iml" filepath="$PROJECT_DIR$/lib/dialog/dialog.iml" />
+      <module fileurl="file://$PROJECT_DIR$/flutter_module/.android/Flutter/flutter.iml" filepath="$PROJECT_DIR$/flutter_module/.android/Flutter/flutter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lib/logger/logger.iml" filepath="$PROJECT_DIR$/lib/logger/logger.iml" />
+      <module fileurl="file://$PROJECT_DIR$/multichannel/multichannel.iml" filepath="$PROJECT_DIR$/multichannel/multichannel.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lib/socket/socket.iml" filepath="$PROJECT_DIR$/lib/socket/socket.iml" />
+      <module fileurl="file://$PROJECT_DIR$/welcome/welcome.iml" filepath="$PROJECT_DIR$/welcome/welcome.iml" />
+    </modules>
+  </component>
+</project>
