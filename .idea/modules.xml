@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/AppConclusion.iml" filepath="$PROJECT_DIR$/.idea/AppConclusion.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AppConclusion-dev.iml" filepath="$PROJECT_DIR$/AppConclusion-dev.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/lib/commonbase/commonbase.iml" filepath="$PROJECT_DIR$/lib/commonbase/commonbase.iml" />
       <module fileurl="file://$PROJECT_DIR$/conclusion/conclusion.iml" filepath="$PROJECT_DIR$/conclusion/conclusion.iml" />

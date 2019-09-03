@@ -9,14 +9,6 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/conclusion" />
-            <option value="$PROJECT_DIR$/flutter_module/.android/Flutter" />
-            <option value="$PROJECT_DIR$/lib/commonbase" />
-            <option value="$PROJECT_DIR$/lib/dialog" />
-            <option value="$PROJECT_DIR$/lib/logger" />
-            <option value="$PROJECT_DIR$/lib/socket" />
-            <option value="$PROJECT_DIR$/multichannel" />
-            <option value="$PROJECT_DIR$/welcome" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

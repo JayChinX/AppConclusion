@@ -1,0 +1,22 @@
+# Created by .ignore support plugin (hsz.mobi)
+*.iml
+将删除 .gradle/5.1.1/vcsMetadata-1/
+将删除 .gradle/buildOutputCleanup/
+将删除 .gradle/vcs-1/
+将删除 .idea/caches/
+将删除 app/libs/
+.gradle
+/local.properties
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+/gradle
+.gitignore
+/.idea
+将删除 app/release/
+将删除 screenMatch.properties
+将删除 screenMatch_example_dimens.xml
+将删除 "workfile/.~lock.hmi\346\236\266\346\236\204\345\233\276.pptx#"
