@@ -3,4 +3,9 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <!--dialog-->
+    <color name="msg_text_block">#15161a</color>
+    <color name="btn_ripple_light">#bbbbbbbb</color>
+    <color name="line_color">#9b9ba5</color>
 </resources>

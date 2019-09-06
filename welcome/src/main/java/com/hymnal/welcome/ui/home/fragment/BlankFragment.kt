@@ -13,14 +13,6 @@ class BlankFragment : BaseFragment() {
 
     override fun getLayoutId(): Int = R.layout.blank_fragment
 
-    override fun initView() {
-        start.setOnClickListener {
-
-            viewModel.get()
-
-        }
-    }
-
     private val viewModel by lazy(LazyThreadSafetyMode.NONE) {
         val factory = InjectorUtils.provideBlankViewModelFactory()
         ViewModelProviders.of(this, factory)
@@ -31,6 +23,16 @@ class BlankFragment : BaseFragment() {
         viewModel.data.observe(viewLifecycleOwner, Observer {
             name_blank.text = it
         })
+
+        start.setOnClickListener {
+
+//            viewModel.get()
+            dynamic.loading()
+            dynamic.setSpeed(82)
+        }
+
+        dynamic.setSpeed(50)
+
     }
 
 }

@@ -1,1 +1,1 @@
-include ':app', ':commonbase', ':dialog', ':logger', ':socket', ':welcome'
+include ':app', ':commonbase', ':dialog', ':welcome'

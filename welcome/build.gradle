@@ -93,10 +93,10 @@ dependencies {
     implementation library.kotlinx.coroutines
     implementation project(path: ':commonbase')
     implementation project(path: ':dialog')
-    implementation project(path: ':socket')
 
+    implementation 'com.github.Hymnal-Qin:logger-core:v1.1.1'
+    implementation 'com.github.Hymnal-Qin:socket-core:v1.1.0'
     implementation 'org.slf4j:slf4j-api:1.7.26'
-    implementation project(path: ':logger')
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'

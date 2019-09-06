@@ -22,10 +22,6 @@ class OneFragment : BaseFragment() {
 
     override fun getLayoutId()= R.layout.fragment_one
 
-    override fun initView() {
-
-    }
-
     private val viewModel by lazy(LazyThreadSafetyMode.NONE) {
         val factory = InjectorUtils.provideOneViewModelFactory()
         ViewModelProviders.of(this, factory)

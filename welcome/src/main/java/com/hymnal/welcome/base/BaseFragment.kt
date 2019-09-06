@@ -5,7 +5,7 @@ import com.hymnal.welcome.utilities.injectARouter
 
 abstract class BaseFragment : BaseFragment() {
 
-    override fun initView() {
-        injectARouter()
+    override fun init() {
+        context?.injectARouter(this)
     }
 }

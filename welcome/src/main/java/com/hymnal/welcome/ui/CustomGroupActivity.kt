@@ -6,7 +6,7 @@ import com.hymnal.welcome.base.BaseActivity
 
 @Route(path = "/home/activity/CustomGroupActivity", group = "customGroup")
 class CustomGroupActivity : BaseActivity() {
-    override fun initView() {
+    override fun init() {
     }
 
     override fun getLayoutId(): Int = R.layout.activity_custom_group

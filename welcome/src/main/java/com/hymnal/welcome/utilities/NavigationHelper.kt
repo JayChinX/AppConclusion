@@ -31,12 +31,8 @@ fun Application.initARouter() {
     Log.d("BaseApp", "ARouter init")
 }
 
-fun Activity.injectARouter() {
-    ARouter.getInstance().inject(this)
-}
-
-fun Fragment.injectARouter() {
-    ARouter.getInstance().inject(this)
+fun Context.injectARouter(thiz: Any) {
+    ARouter.getInstance().inject(thiz)
 }
 
 fun getFragment(path: String) =

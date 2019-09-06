@@ -12,7 +12,8 @@ abstract class BaseActivity : BaseActivity() {
         setStatusBarColor(this)
     }
 
-    override fun initView() {
-        injectARouter()
+    override fun init() {
+        injectARouter(this)
     }
+
 }

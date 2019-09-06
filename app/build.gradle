@@ -14,7 +14,7 @@ android {
     buildToolsVersion "29.0.1"
     defaultConfig {
         applicationId "com.hymnal.qin"
-        minSdkVersion 19
+        minSdkVersion 23
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -76,10 +76,10 @@ dependencies {
     implementation library.kotlinx.coroutines
     implementation project(path: ':commonbase')
     implementation project(path: ':dialog')
-    implementation project(path: ':socket')
 
+    implementation 'com.github.Hymnal-Qin:logger-core:v1.1.1'
+    implementation 'com.github.Hymnal-Qin:socket-core:v1.1.0'
     implementation 'org.slf4j:slf4j-api:1.7.26'
-    implementation project(path: ':logger')
 
     if (isModule.toBoolean()) {
         implementation project(path: ':welcome')

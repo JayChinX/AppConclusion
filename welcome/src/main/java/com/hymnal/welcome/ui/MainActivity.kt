@@ -50,7 +50,7 @@ class MainActivity : BaseActivity() {
 
     private val TAG = MainActivity::class.java.simpleName
 
-    override fun initView() {
+    override fun init() {
         /**
          * 启动时间查看
          *

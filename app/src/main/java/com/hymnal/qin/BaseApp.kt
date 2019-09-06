@@ -8,13 +8,13 @@ import com.hymnal.welcome.utilities.initARouter
 class BaseApp : BaseApplication() {
     //
     companion object {
-        lateinit var instance: BaseApp
+        lateinit var INSTANCE: BaseApp
             private set
     }
 
     override fun onCreate() {
         super.onCreate()
-        instance = this
+        INSTANCE = this
         initARouter()
     }
 

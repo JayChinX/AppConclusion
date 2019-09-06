@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".ui.home.HomeActivity"
-    tools:showIn="@layout/app_bar_home">
+    tools:showIn="@layout/home_app_bar">
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"

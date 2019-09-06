@@ -1,8 +1,11 @@
 package com.hymnal.welcome.ui.home
 
+import android.annotation.SuppressLint
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
@@ -23,10 +26,10 @@ import com.hymnal.welcome.R
 import com.hymnal.welcome.base.BaseActivity
 import com.hymnal.welcome.ui.home.data.model.Garden
 import com.hymnal.welcome.utilities.InjectorUtils
-import kotlinx.android.synthetic.main.activity_home.*
-import kotlinx.android.synthetic.main.app_bar_home.*
+import kotlinx.android.synthetic.main.home_activity.*
 import kotlinx.android.synthetic.main.content_home.*
 import kotlinx.android.synthetic.main.floating_button.*
+import kotlinx.android.synthetic.main.home_app_bar.*
 
 @Route(path = "/home/activity/HomeActivity", group = "home")
 class HomeActivity : BaseActivity() {
@@ -35,60 +38,64 @@ class HomeActivity : BaseActivity() {
 
     //侧滑菜单
     private val onNavigationItemSelectedListener = NavigationView
-            .OnNavigationItemSelectedListener { item ->
-                when (item.itemId) {
-                    R.id.nav_camera -> {
-                        // Handle the camera action
-                    }
-                    R.id.nav_gallery -> {
-
-                    }
-                    R.id.nav_slideshow -> {
-
-                    }
-                    R.id.nav_manage -> {
-
-                    }
-                    R.id.nav_share -> {
-
-                    }
-                    R.id.nav_send -> {
-
-                    }
+        .OnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.nav_camera -> {
+                    // Handle the camera action
                 }
-                drawer_layout.closeDrawer(GravityCompat.START)
-                true
+                R.id.nav_gallery -> {
+
+                }
+                R.id.nav_slideshow -> {
+
+                }
+                R.id.nav_manage -> {
+
+                }
+                R.id.nav_share -> {
+
+                }
+                R.id.nav_send -> {
+
+                }
             }
+//                drawer_layout.closeDrawer(GravityCompat.START)
+            true
+        }
 
     //底部导航
     private val mOnNavigationItemSelectedListener = BottomNavigationView
-            .OnNavigationItemSelectedListener { item ->
-                when (item.itemId) {
-                    R.id.navigation_home -> {
-                        pagerChange(0)
-                        true
-                    }
-                    R.id.navigation_dashboard -> {
-                        pagerChange(1)
-                        true
-                    }
-                    R.id.navigation_notifications -> {
-                        pagerChange(2)
-                        true
-                    }
-                    R.id.navigation_find -> {
-                        pagerChange(3)
-                        true
-                    }
-                    else -> false
+        .OnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.navigation_home -> {
+                    pagerChange(0)
+                    true
                 }
+                R.id.navigation_dashboard -> {
+                    pagerChange(1)
+                    true
+                }
+                R.id.navigation_notifications -> {
+                    pagerChange(2)
+                    true
+                }
+                R.id.navigation_find -> {
+                    pagerChange(3)
+                    true
+                }
+                else -> false
             }
+        }
 
     private val mOnPageChangeListener = object : ViewPager.OnPageChangeListener {
         override fun onPageScrollStateChanged(state: Int) {
         }
 
-        override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+        override fun onPageScrolled(
+            position: Int,
+            positionOffset: Float,
+            positionOffsetPixels: Int
+        ) {
         }
 
         override fun onPageSelected(position: Int) {
@@ -97,32 +104,42 @@ class HomeActivity : BaseActivity() {
 
     }
 
-    override fun getLayoutId(): Int = R.layout.activity_home
+    override fun getLayoutId(): Int = R.layout.home_activity
 
-    override fun initView() {
-        setSupportActionBar(toolbar)
-        supportActionBar?.setDisplayShowTitleEnabled(false)
-    }
 
     private val viewModel by lazy(LazyThreadSafetyMode.NONE) {
         val factory = InjectorUtils.provideHomeViewModelFactory()
         ViewModelProviders.of(this, factory)
-                .get(HomeViewModel::class.java)
+            .get(HomeViewModel::class.java)
     }
 
     override fun subscribeUi() {
+//        isFullScreen()
+//        setStatusBarColor()
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
 
         drawer_layout.let {
-            val toggle = ActionBarDrawerToggle(this, it, toolbar,
-                    R.string.navigation_drawer_open,
-                    R.string.navigation_drawer_close)
+            val toggle = ActionBarDrawerToggle(
+                this, it, toolbar,
+                R.string.navigation_drawer_open,
+                R.string.navigation_drawer_close
+            )
             it.addDrawerListener(toggle)
             toggle.syncState()
+            //关联drawerLayout后设置有效，在xml或之前设置无效
+//            toolbar.setNavigationIcon(R.mipmap.nav_icon_menu)
+        }
+
+        checkPermission {
+
         }
 
         viewModel.posts.observe(this, Observer {
-            viewPager.adapter = FragmentPagerAdapter(supportFragmentManager,
-                    *it.toTypedArray())
+            viewPager.adapter = FragmentPagerAdapter(
+                supportFragmentManager,
+                *it.toTypedArray()
+            )
         })
 
 
@@ -150,27 +167,26 @@ class HomeActivity : BaseActivity() {
 
         viewModel.showData()
 
-        checkPermission {
-            if (it) {
-                //有权限
-            } else {
-                //没有权限
-            }
-        }
-
-
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
+                .setAction("Action", null).show()
 //            showDialog("提示", "信息")
             viewModel.sendMsg()
         }
         nav_view.setNavigationItemSelectedListener(onNavigationItemSelectedListener)
         viewPager.addOnPageChangeListener(mOnPageChangeListener)
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+
+        val textLayout = nav_view.menu.findItem(R.id.nav_share).actionView as LinearLayout
+        val text = textLayout.findViewById<TextView>(R.id.text_d)
+        text.text = "Hello"
     }
 
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         permissionsResult(requestCode, permissions, grantResults)
     }
@@ -206,10 +222,11 @@ class HomeActivity : BaseActivity() {
         }
     }
 
-    internal class FragmentPagerAdapter(fm: FragmentManager,
-                                        private vararg var fragments: Garden
-    )
-        : FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
+    @SuppressLint("WrongConstant")
+    internal class FragmentPagerAdapter(
+        fm: FragmentManager,
+        private vararg var fragments: Garden
+    ) : FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
         override fun getItem(position: Int): Fragment = fragments[position].fragment
 
         override fun getItemPosition(`object`: Any): Int = PagerAdapter.POSITION_NONE
