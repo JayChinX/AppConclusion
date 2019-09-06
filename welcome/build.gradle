@@ -83,6 +83,8 @@ dependencies {
     implementation library.alibaba.json
 
     implementation library.alibaba.arouter
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     kapt library.alibaba.aroutercompiler
 
     implementation library.vector
@@ -97,6 +99,25 @@ dependencies {
     implementation 'com.github.Hymnal-Qin:logger-core:v1.1.1'
     implementation 'com.github.Hymnal-Qin:socket-core:v1.1.0'
     implementation 'org.slf4j:slf4j-api:1.7.26'
+
+    // 基础组件
+    implementation 'org.kodein.di:kodein-di-generic-jvm:5.2.0'
+    // Android扩展组件
+    implementation 'org.kodein.di:kodein-di-framework-android-core:5.2.0'
+    // support扩展组件，我的项目中用到了v4包的Fragment，因此我需要它
+    implementation 'org.kodein.di:kodein-di-framework-android-support:5.2.0'
+
+
+    //Koin for android
+    implementation "org.koin:koin-android:2.0.0-rc-1"
+    //Koin for scope feature
+    implementation "org.koin:koin-android-scope:2.0.0-rc-1"
+    //Koin for viewModel feature
+    implementation "org.koin:koin-android-viewmodel:2.0.0-rc-1"
+    // AndroidX 添加
+//    implementation 'org.koin:koin-androidx-viewmodel:2.0.0-rc-1'
+
+
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'

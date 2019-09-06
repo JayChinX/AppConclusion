@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.qxj.welcome">
+    package="com.hymnal.welcome">
     <!-- To access Google+ APIs: -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -88,6 +88,10 @@
         </activity>
         <activity android:name="com.hymnal.welcome.ui.web.URLWebActivity" />
         <activity android:name="com.hymnal.welcome.ui.web.URLWebTwoActivity">
+
+        </activity>
+
+        <activity android:name=".koin.SampleActivity">
 
         </activity>
 
