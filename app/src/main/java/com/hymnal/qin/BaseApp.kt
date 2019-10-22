@@ -2,8 +2,8 @@ package com.hymnal.qin
 
 import com.hymnal.base.BaseApplication
 import com.hymnal.base.CommonBaseApp
-import com.hymnal.welcome.base.App
-import com.hymnal.welcome.utilities.initARouter
+//import com.hymnal.welcome.base.App
+//import com.hymnal.welcome.utilities.initARouter
 
 class BaseApp : BaseApplication() {
     //
@@ -15,12 +15,12 @@ class BaseApp : BaseApplication() {
     override fun onCreate() {
         super.onCreate()
         INSTANCE = this
-        initARouter()
+//        initARouter()
     }
 
     override fun registerModule(): List<String> {
         return listOf(
-            App::class.java.name,
+//            App::class.java.name,
             CommonBaseApp::class.java.name
         )
     }

@@ -6,6 +6,8 @@ import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.hymnal.alert.Alert
+import com.hymnal.alert.alert
 
 
 fun AppCompatActivity.checkPermission(run: (() -> Unit)? = null) {
@@ -16,14 +18,23 @@ fun AppCompatActivity.checkPermission(run: (() -> Unit)? = null) {
             run?.invoke()
         } else {
             //没有权限
-            showPermissionDialog("权限说明", "该应用需要访问存储权限，现在去设置") {
-                if (it) {
-                    //点击确认去设置
-                    toSettings()
-                } else {
-                    //点击取消
+            alert {
+                title = "权限说明"
+                msg = "该应用需要访问存储权限，现在去设置"
+                left = "取消"
+                right = "去设置"
+                type = Alert.Type.NORMAL
+                cancelable = false
+                listener = {
+                    if (it) {
+                        //点击确认去设置
+                        toSettings()
+                    } else {
+                        //点击取消
+                    }
                 }
             }
+
         }
     }
 }

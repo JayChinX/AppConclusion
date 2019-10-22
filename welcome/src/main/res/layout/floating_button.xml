@@ -11,7 +11,7 @@
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="@dimen/fab_margin"
         android:layout_marginBottom="@dimen/fab_margin_bottom"
-        app:backgroundTint="@color/basePrimary"
+        app:backgroundTint="@color/colorPrimary"
         app:srcCompat="@mipmap/c62_icon_plus" />
     <!--android:src：FAB中显示的图标.
      app:backgroundTint：正常的背景颜色

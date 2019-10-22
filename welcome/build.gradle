@@ -69,6 +69,11 @@ android {
         exclude 'META-INF/atomicfu.kotlin_module'
         exclude 'META-INF/xxx'
     }
+    lintOptions {  //build release 版本时开启lint检测
+        checkReleaseBuilds true
+        //lint 遇到error时继续构建，true为不继续构建(默认)，false为继续构建
+        abortOnError true
+    }
     compileOptions {
         sourceCompatibility = '1.8'
         targetCompatibility = '1.8'
@@ -94,10 +99,10 @@ dependencies {
     implementation library.paging
     implementation library.kotlinx.coroutines
     implementation project(path: ':commonbase')
-    implementation project(path: ':dialog')
-
     implementation 'com.github.Hymnal-Qin:logger-core:v1.1.1'
-    implementation 'com.github.Hymnal-Qin:socket-core:v1.1.0'
+    implementation 'com.github.Hymnal-Qin:socket-core:v1.1.4'
+    implementation 'com.github.Hymnal-Qin:androidx-alert:v1.0.0'
+//    implementation 'com.github.Hymnal-Qin:lbs:v1.0.3'
     implementation 'org.slf4j:slf4j-api:1.7.26'
 
     // 基础组件
@@ -116,7 +121,6 @@ dependencies {
     implementation "org.koin:koin-android-viewmodel:2.0.0-rc-1"
     // AndroidX 添加
 //    implementation 'org.koin:koin-androidx-viewmodel:2.0.0-rc-1'
-
 
 
     testImplementation 'junit:junit:4.12'

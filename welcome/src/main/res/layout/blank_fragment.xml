@@ -5,25 +5,35 @@
     style="@style/AppTheme.Fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/text_block"
+    android:background="@color/msg_text_block"
     android:orientation="vertical"
     tools:context=".ui.home.fragment.BlankFragment">
 
-    <com.hymnal.welcome.view.PannelDynamicView
+    <com.hymnal.welcome.view.SpeedView
         android:id="@+id/dynamic"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:text="80"
-        android:gravity="center"
-        android:textColor="#8fbaff"
-        android:background="@color/baseAccent"/>
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_gravity="center_horizontal"/>
+
+    <com.hymnal.welcome.view.LimitSpeedView
+        android:id="@+id/dynamic1"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_gravity="center_horizontal"/>
+
     <Button
         android:id="@+id/start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="300dp"
         android:text="start" />
+
+    <Button
+        android:id="@+id/end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="end" />
 
     <TextView
         android:id="@+id/name_blank"

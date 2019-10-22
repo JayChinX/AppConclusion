@@ -25,10 +25,17 @@ class BlankFragment : BaseFragment() {
         })
 
         start.setOnClickListener {
+            dynamic1.setSpeed(80)
+            dynamic.setSpeed(90)
+            dynamic.setLimitSpeed(90, true)
 
-//            viewModel.get()
-            dynamic.loading()
-            dynamic.setSpeed(82)
+        }
+
+        end.setOnClickListener {
+            dynamic1.setSpeed(0)
+            dynamic.setSpeed(50)
+            dynamic.setLimitSpeed(50, false)
+
         }
 
         dynamic.setSpeed(50)

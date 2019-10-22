@@ -94,6 +94,9 @@
         <activity android:name=".koin.SampleActivity">
 
         </activity>
+        <activity android:name=".anim.SampleActivity">
+
+        </activity>
 
         <service android:name=".service.InitIntentService" />
 

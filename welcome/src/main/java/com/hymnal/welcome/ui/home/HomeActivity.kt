@@ -206,7 +206,30 @@ class HomeActivity : BaseActivity() {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.home, menu)
+        //        val item = menu.add(0, Menu.NONE, 0, "")
+//
+//        /**
+//         * setShowAsAction参数说明  MenuItem接口的一些常量
+//         * SHOW_AS_ACTION_ALWAYS  总是显示这个项目作为一个操作栏按钮。
+//         * SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW  此产品的动作视图折叠成一个正常的菜单项。
+//         * SHOW_AS_ACTION_IF_ROOM  显示此项目作为一个操作栏的按钮,如果系统有空间。
+//         * SHOW_AS_ACTION_NEVER   从不显示该项目作为一个操作栏按钮。
+//         * SHOW_AS_ACTION_WITH_TEXT 当这个项目是在操作栏中,始终以一个文本标签显示它,即使它也有指定一个图标。
+//         */
+//        item.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS)//主要是这句话
+//
+////        item.setOnMenuItemClickListener(this)//添加监听事件
+//        item.setIcon(R.mipmap.c62_icon_plus)//设置图标
         return true
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu): Boolean {
+        /**
+         * 在onCreateOptionsMenu执行后，菜单被显示前调用；如果菜单已经被创建，则在菜单显示前被调用。 同样的，
+         * 返回true则显示该menu,false 则不显示; （可以通过此方法动态的改变菜单的状态，比如加载不同的菜单等） TODO
+         * Auto-generated method stub
+         */
+        return super.onPrepareOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

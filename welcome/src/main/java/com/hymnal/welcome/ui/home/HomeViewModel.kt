@@ -41,7 +41,7 @@ class HomeViewModel internal constructor(application: Application, private val r
     }
 
     fun startActivity(res: Int) {
-        startActivity("/home/activity/SecondActivity")
+        startActivity("/sample/anim/SampleActivity")
     }
 
     private fun startSocket() {
